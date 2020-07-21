@@ -235,6 +235,16 @@ As you can see, I believe there are sufficient issues with the current solution 
 The following sections focus on documenting what the studied software are and some of the useful information I learned about them.
 
 
+\subsubsection{Abbreviations}
+
+Here are some of the abbreviations you can encounter :
+\begin{itemize}
+	\item RMXP - RPG Maker XP
+	\item RGSS - Ruby Game Scripting System
+	\item PE - Pokemon Essentials
+	\item PU - Pokemon Uranium
+\end{itemize}
+
 
 
 
@@ -263,10 +273,17 @@ This is only one instance among the long line of RPG Maker releases, some of whi
 
 %TODO
 
-%\subsubsection{Scripting system}
+\subsubsection{Ruby Game Scripting System}
 
-%TODO
+\href{https://rmvxace.fandom.com/wiki/RGSS}{An article} writes : 
 
+\say{RGSS stands for Ruby Game Scripting System, a library that has been used in RPG Maker engines since RPG Maker XP.  It's a Ruby library, and as such, all scripting is done in the Ruby language.
+	
+In all of its incarnations, RGSS has included objects and methods with which to handle graphics, audio, and data, including basic data structures for the RPG Maker engine.
+
+The original version, RGSS, [...] was based on Ruby 1.81.}
+
+RGSS's latest version, RGSS3, was introduced with RPG Maker VX Ace in 2011-2012.
 
 
 
@@ -282,9 +299,23 @@ According to its \href{https://essentialsdocs.fandom.com/wiki/Essentials_Docs_Wi
 	\item \say{a collection of gameplay-altering original code designed for use in an RPG Maker XP game}.
 	\item is a RMXP project, made to be the basis for a game.
 	\item was forked from Flameguru's Pokémon Starter Kit.
-	\item was developped by Peter O. (2007-2010) and Maruno (2011-2017)
+	\item was developped by Peter O. (2007-2010) and Maruno (2011-today)
 	\item was last updated in October of 2017, when it was hit by DMCA takedown notice.
 	\item is the source of a fair proportion of Pokemon fan-made games.
+	\item is up-to-date with the \nth{5} generation of the mainline Pokemon games.
+\end{itemize}
+
+
+\subsubsection{Digging for information on PE}
+
+Here are some of my findings :
+
+\begin{itemize}
+\item Users have been able to produce content-adding patches, like support for newer generation creatures, items and abilities.
+
+\item There is \href{https://www.reddit.com/r/PokemonRMXP/comments/ckeaov/pok\%C3\%A9mon\_essentials\_v18\_progress\_report/}{a v18 in the works} (release date unclear). \href{https://www.reddit.com/r/PokemonRMXP/comments/hb6i6m/should\_i\_wait\_for\_essentials\_v18/}{Here} Maruno stated "hopefully it won't be long now" in June 2020.
+
+\item It is notably hosted  \href{https://archive.org/details/PokmonEssentialsV17.220171015}{on archive.org} but I downloaded it from \href{https://www.youtube.com/watch?v=-aLAoeZnRDw}{this source} because it has a Wikia dump and later file modification timestamps. %TODO:verify diffs
 \end{itemize}
 
 
@@ -294,10 +325,11 @@ According to its \href{https://essentialsdocs.fandom.com/wiki/Essentials_Docs_Wi
 
 \subsubsection{Comments}
 
+%TODO:eval if it's the right place for that
+
 Programming with RPG Maker XP and Pokemon Essentials is complex, and is typically done in very small teams of amateurs, not using collaborative source code management tools like \textit{git}. This results in ambitious project requiring years before they can be released and are hard to maintain.
 
 I believe this is the reason most projects never see a release, and the ones that do are buggy.
-
 
 
 
@@ -318,6 +350,24 @@ According to its \href{https://en.wikipedia.org/wiki/Pok\%C3\%A9mon_Uranium}{Wik
 	\item Fan-made website and following game updates are community efforts.
 \end{itemize}
 
+\subsubsection{Digging for information on PU}
+
+Here are some of my findings :
+
+\begin{itemize}
+	\item Fans have been able to patch bugs and update the game for some time. I suppose there is a small group of people with access to the project's source code and files that have been maintaining it and its online services.
+	
+	\item The game was mostly complete when released. Fans were able to add elements to push it farther towards completion but there still are some hanging threads, particularly in the post game (after the main plot is over).
+	
+	\item I wasn't able to identify the used versions of RPG Maker XP or Pokemon Essentials, but I determined this wouldn't significantly impact on working on it.
+	
+	\item Despite efforts to patch it, the game has a \href{https://pokemon-uranium.fandom.com/wiki/Bugs_and_Errors}{long list} of unresolved bugs and game breaking/crashing situations.
+	
+	\item GitHub user \textit{acedogblast} launched a \href{https://github.com/acedogblast/Project-Uranium-Godot}{re-implementation project} on the Godot game engine in early 2019. As of writing, he states that :
+	\say{Only a limited portion of the game is playable currently.}
+	
+	\item Download links are hosted \href{https://www.reddit.com/r/pokemonuranium/comments/a0cw0i/download_links/}{on Reddit}. Current version is \verb|1.2.4| and was released on October \nth{29} 2018.
+\end{itemize}
 
 
 \newpage
@@ -366,24 +416,6 @@ PE and PU have a similar structure :
 \end{tabular}
 
 
-\subsubsection{Digging for information on PU}
-
-Here are some of my findings :
-
-\begin{itemize}
-	\item Fans have been able to patch bugs and update the game for some time. I suppose there is a small group of people with access to the project's source code and files that have been maintaining it and its online services.
-	
-	\item The game was mostly complete when released. Fans were able to add elements to push it farther towards completion but there still are some hanging threads, particularly in the post game (after the main plot is over).
-	
-	\item I wasn't able to identify the used versions of RPG Maker XP or Pokemon Essentials, but I determined this wouldn't significantly impact on working on it.
-	
-	\item Despite efforts to patch it, the game has a \href{https://pokemon-uranium.fandom.com/wiki/Bugs_and_Errors}{long list} of unresolved bugs and game breaking/crashing situations.
-	
-	\item GitHub user \textit{acedogblast} launched a \href{https://github.com/acedogblast/Project-Uranium-Godot}{re-implementation project} on the Godot game engine in early 2019. As of writing, he states that :
-	\say{Only a limited portion of the game is playable currently.}
-	
-	\item Download links are hosted \href{https://www.reddit.com/r/pokemonuranium/comments/a0cw0i/download_links/}{on Reddit}. Current version is \verb|1.2.4| and was released on October \nth{29} 2018.
-\end{itemize}
 
 
 \subsubsection{Data representation}
@@ -399,7 +431,7 @@ The data that constitutes a PE project is diverse :
 	\hline
 	Objects & Files containing sets of class instances, grouped per file & \verb|dat| and \verb|rxdata| files \\
 	\hline
-	Maps & Contain map representation, one per file & \verb|MapXXX.rxdata| \\
+	Maps & Contain map representation (incl. events), one per file & \verb|MapXXX.rxdata| \\
 	\hline
 	Dialogue & Contain dialogue & TODO \\
 	\hline
@@ -424,28 +456,24 @@ Findings :
 
 Here are some of my research findings that doesn't fit in the previous section. 
 
+\subsubsection{About fanmade games}
+
+The projects I researched have a particular characteristic that I wasn't execting, but makes sense : They are personal side-projects from (mostly) individual developers. 
+
+With this in mind, it is no surprise that they are very long running projects that took years to release and displayed other properties I used to find odd :
 \begin{itemize}
-	\item The projects I researched have a particular characteristic that I wasn't execting, but makes sense : They are personal side-projects from (mostly) individual developers. 
-	
-	With this in mind, it is no surprise that they are very long running projects that took years to release and displayed other properties I used to find odd :
-	\begin{itemize}
-		\item Closed source projects : Because they were very personal.
-		\item Don't use code source management : Because there's no need, they are 1-2 developer personal projects that happened to be eventually released. Perhaps developers didn't consider the advantages of using one, or one wasn't available or familiar to them.
-		\item Buggy projects (years after release) : With so few maintainers and such code complexity, patching bugs is a challenge.
-	\end{itemize} 
+	\item Closed source projects : Because they were very personal.
+	\item Don't use code source management : Because there's no need, they are 1-2 developer personal projects that happened to be eventually released. Perhaps developers didn't consider the advantages of using one, or one wasn't available or familiar to them.
+	\item Buggy projects (years after release) : With so few maintainers and such code complexity, patching bugs is a challenge.
+\end{itemize} 
 
-	As if the challenges facing such endeavors weren't great enough already, they were struck with the threat of legal repercussions on their authors, forcing these to abandon their creation. I can't help but having sincere sentiments of admiration for their work and sadness for the tragic destiny of their projects.
-\end{itemize}
-
-
-
-
+As if the challenges facing such endeavors weren't great enough already, they were struck with the threat of legal repercussions on their authors, forcing these to abandon their creation. I can't help but having sincere sentiments of admiration for their work and sadness for the tragic destiny of their projects.
 
 
 
 Fortunately, we can learn from the failures of the past how to better go forward. It is my firm belief that there is a solution that solves the challenges that brought these projects down.
 
-
+\newpage
 \subsection{Extracting data}
 
 In order to decouple PE from its original code base and RGSS, it became obvious that all useful data had to be extracted from the project.
@@ -457,11 +485,9 @@ See section \textit{Data representation} for categories of data that were identi
 
 \subsubsection{Scripts}
 
-
-
 What I found :
 \begin{itemize}
-	\item \verb|Scripts.rxdata| is the second largest \verb|rxdata| file of the project, and contains over 120k lines of code.
+	\item \verb|Scripts.rxdata| is the second largest compiled file of the project, and contains over 120k lines of code.
 	
 	\item The script is unique : it is divided in named sections (that appear in RMXP's editor on the left hand side) that allow to manage its colossal line count.
 	
@@ -470,13 +496,21 @@ What I found :
 
 I spent quite a lot of time working on a python script able to decrypt \verb|rxdata| files, and this one in particular, but didn't have much success, so I tried looking elsewhere.
 
-After some more digging, I found a functional utility that was created for the purpose of editing/extracting the scripts from this file : Gemini Editor.
+\textbf{Trying something else} : After some more digging, I found a functional utility that was created for the purpose of editing/extracting the scripts from this file : Gemini Editor.
 
 Here are links to \href{https://forum.chaos-project.com/index.php/topic,10420.0.html}{a forum post about it} and \href{https://github.com/terabin/Gemini}{a github repository}.
 
 With it, I was able to extract Pokemon Essentials scripts (see '\verb|PE_scripts|' directory).
 
 It proved invaluable to be able to explore/search the whole script base using a more powerful code editor, saving lots of time from my attempts to create my own scripts to export data.
+
+
+\subsubsection{Maps}
+
+What I found :
+\begin{itemize}
+	\item A tileset 
+\end{itemize}
 
 
 
@@ -492,12 +526,12 @@ It proved invaluable to be able to explore/search the whole script base using a 
 
 \subsection{Contact}
 
-%TODO
+Contact the author by email : \href{mailto:David.Rodriguez.1@etu.unige.ch}{David.Rodriguez.1@etu.unige.ch}
 
 \subsection{Privacy Policy}
 \label{sec:privacypolice}
 
-This document and its content are private and confidential. It is only intended for its academic recipient. It is strictly prohibited to copy, print, publish or distribute any part of it without written permission from its original author.
+This document and its content are private and confidential. It is only intended for its academic recipient. It is strictly prohibited to copy, print, publish, share or distribute any part of it without written permission from its original author.
 
 If you received this document by mistake, please inform its author and delete it. Thank you for your cooperation and understanding.
 
