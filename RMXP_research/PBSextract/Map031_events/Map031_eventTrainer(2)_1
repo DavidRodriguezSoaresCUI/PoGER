@@ -1,0 +1,140 @@
+[EVENT]
+{
+  "_class": "Event",
+  "name": "Trainer(2)",
+  "x": 7,
+  "y": 17
+}
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": null,
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "trchar034",
+    "character_hue": 0,
+    "direction": "Up",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onEventTouch"
+}
+
+# "Battle: \\rBattle me now!"
+# "Battle: \\rBattle me now!"
+# "Type: PICNICKER"
+# "Name: Susie"
+# "EndSpeech: Defeated!  Oh my!"
+# "EndBattle: \\rI'll say the same thing after every battle."
+# "RegSpeech: \\\\rCan I add you to my contacts list?"
+Script, "pbTrainerIntro(:PICNICKER)"
+Script, "Kernel.pbNoticePlayer(get_character(0))"
+Show Text, "\\rBattle me now!"
+Script, "Kernel.pbTrainerCheck(:PICNICKER,\"Susie\",2,0)"
+Conditional Branch, pbTrainerBattle(:PICNICKER,"Susie",_I("Defeated!  Oh my!"),false,0,false,0)
+  Script, "pbPhoneRegisterBattle(_I(\"\\\\rCan I add you to my contacts list?\"),get_character(0),:PICNICKER,\"Susie\",2)"
+  Control Self Switch, :A, ON
+Branch END
+Script, "pbTrainerEnd"
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": "B",
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "trchar034",
+    "character_hue": 0,
+    "direction": "Up",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onPlayerAction"
+}
+
+Conditional Branch, pbPhoneBattleCount(:PICNICKER,"Susie")>=1
+  Script, "pbTrainerIntro(:PICNICKER)"
+  Show Text, "\\rBattle me now!"
+  Conditional Branch, pbTrainerBattle(:PICNICKER,"Susie",_I("Defeated!  Oh my!"),false,1,false,0)
+    Script, "pbPhoneIncrement(:PICNICKER,\"Susie\",2)"
+    Control Self Switch, :A, ON
+    Control Self Switch, :B, OFF
+    Script, "pbTrainerEnd"
+  Branch END
+  Exit Event Processing
+Branch END
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": "A",
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "trchar034",
+    "character_hue": 0,
+    "direction": "Up",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onPlayerAction"
+}
+
+Conditional Branch, pbPhoneBattleCount(:PICNICKER,"Susie")>1
+  Show Text, "\\rI'll say the same thing after every battle."
+  Script, "pbPhoneRegisterBattle(_I(\"\\\\rCan I add you to my contacts list?\"),get_character(0),:PICNICKER,\"Susie\",2)"
+  Exit Event Processing
+Branch END
+Show Text, "\\rI'll say the same thing after every battle."
+Script, "pbPhoneRegisterBattle(_I(\"\\\\rCan I add you to my contacts list?\"),get_character(0),:PICNICKER,\"Susie\",2)"

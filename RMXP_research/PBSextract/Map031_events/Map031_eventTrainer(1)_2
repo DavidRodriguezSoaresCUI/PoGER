@@ -1,0 +1,86 @@
+[EVENT]
+{
+  "_class": "Event",
+  "name": "Trainer(1)",
+  "x": 11,
+  "y": 14
+}
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": null,
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "trchar015",
+    "character_hue": 0,
+    "direction": "Left",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onEventTouch"
+}
+
+# "Battle: \\bI'll get my tackle out for you!"
+# "Type: FISHERMAN"
+# "Name: Andrew"
+# "EndSpeech: Washed out!"
+# "EndBattle: \\bI don't understand why my Magikarp", # "couldn't beat you."
+Script, "pbTrainerIntro(:FISHERMAN)"
+Script, "Kernel.pbNoticePlayer(get_character(0))"
+Show Text, "\\bI'll get my tackle out for you!"
+Conditional Branch, pbTrainerBattle(:FISHERMAN,"Andrew",_I("Washed out!"),false,0,false,0)
+  Control Self Switch, :A, ON
+Branch END
+Script, "pbTrainerEnd"
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": "A",
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "trchar015",
+    "character_hue": 0,
+    "direction": "Left",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onPlayerAction"
+}
+
+Show Text, "\\bI don't understand why my Magikarp", "couldn't beat you."

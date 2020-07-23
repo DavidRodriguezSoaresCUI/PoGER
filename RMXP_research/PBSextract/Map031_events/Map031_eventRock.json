@@ -1,8 +1,8 @@
 {
     "_class": "Event",
-    "name": "Exit",
-    "x": 6,
-    "y": 8,
+    "name": "Rock",
+    "x": 51,
+    "y": 7,
     "pages": [
         {
             "_class": "Page",
@@ -17,7 +17,7 @@
             "graphic": {
                 "_class": "Page::Graphic",
                 "tile_id": 0,
-                "character_name": "",
+                "character_name": "Object rock",
                 "character_hue": 0,
                 "direction": "Down",
                 "pattern": 0,
@@ -32,67 +32,54 @@
             "direction_fix": false,
             "through": false,
             "always_on_top": false,
-            "trigger": "onPlayerTouch",
+            "trigger": "onPlayerAction",
             "list": [
                 {
                     "_class": "EventCommand",
-                    "code": 250,
-                    "indent": 0,
-                    "parameters": {
-                        "_class": "AudioFile",
-                        "name": "Door exit",
-                        "volume": 80,
-                        "pitch": 100
-                    }
-                },
-                {
-                    "_class": "EventCommand",
-                    "code": 223,
-                    "indent": 0,
-                    "parameters": [
-                        {
-                            "_class": "Tone",
-                            "red": -255,
-                            "green": -255,
-                            "blue": -255,
-                            "gray": 0
-                        },
-                        6
-                    ]
-                },
-                {
-                    "_class": "EventCommand",
-                    "code": 106,
-                    "indent": 0,
-                    "parameters": 8
-                },
-                {
-                    "_class": "EventCommand",
-                    "code": 201,
+                    "code": 209,
                     "indent": 0,
                     "parameters": [
                         0,
-                        5,
-                        11,
-                        6,
-                        0,
-                        1
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 16,
+                                    "parameters": null
+                                }
+                            ]
+                        }
                     ]
                 },
                 {
                     "_class": "EventCommand",
-                    "code": 223,
+                    "code": 111,
                     "indent": 0,
                     "parameters": [
-                        {
-                            "_class": "Tone",
-                            "red": 0,
-                            "green": 0,
-                            "blue": 0,
-                            "gray": 0
-                        },
-                        6
+                        12,
+                        "Kernel.pbRockSmash"
                     ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbSmashThisEvent"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "Kernel.pbRockSmashRandomEncounter"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
                 }
             ]
         }

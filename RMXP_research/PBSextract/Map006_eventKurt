@@ -1,5 +1,4 @@
 [EVENT]
-
 {
   "_class": "Event",
   "name": "Kurt",
@@ -7,9 +6,7 @@
   "y": 4
 }
 
-
 [PAGE]
-
 {
   "_class": "Page",
   "condition": {
@@ -41,7 +38,6 @@
   "trigger": "onPlayerAction"
 }
 
-
 Conditional Branch, :C is OFF
   Show Text, "\\bHello! I'm Kurt!"
   Show Text, "\\bI specialise in turning Apricorns into Poké Balls."
@@ -55,7 +51,7 @@ Show Choices, ['Yes', 'No'], default=2
 When 'Yes'
   Show Text, "\\bWhich Apricorn would you like me to convert?"
   Script, "pbChooseApricorn(8)"
-  Conditional Branch, :Apricorn being converted == 0
+  Conditional Branch, :Apricornbeingconverted == 0
     # "Player didn't choose an Apricorn."
     Show Text, "\\bLet me know when you want me to convert an ",     "Apricorn for you."
   Else
@@ -72,9 +68,7 @@ When 'No'
   # "Player doesn't want to choose an Apricorn."
   Show Text, "\\bCome back when you have an Apricorn for me."
 
-
 [PAGE]
-
 {
   "_class": "Page",
   "condition": {
@@ -106,11 +100,10 @@ When 'No'
   "trigger": "onPlayerAction"
 }
 
-
-Conditional Branch, :Apricorn being converted > 0
+Conditional Branch, :Apricornbeingconverted > 0
   Show Text, "\\bI've been waiting for you. I've completed the Poké ",   "Ball you asked me to make."
   Conditional Branch, Kernel.pbReceiveItem(pbGet(8))
-    Control Variables, Apricorn being converted = 0
+    Control Variables, Apricornbeingconverted = 0
     Control Self Switch, :B, OFF
   Else
     Show Text, "\\bYou have no room left. Make room, then come see ",     "me."
@@ -121,9 +114,7 @@ Else
   Control Self Switch, :B, OFF
 Branch END
 
-
 [PAGE]
-
 {
   "_class": "Page",
   "condition": {
@@ -155,12 +146,9 @@ Branch END
   "trigger": "onPlayerAction"
 }
 
-
 Show Text, "\\bI'm still working on your Apricorn. Come back later."
 
-
 [PAGE]
-
 {
   "_class": "Page",
   "condition": {
@@ -191,7 +179,6 @@ Show Text, "\\bI'm still working on your Apricorn. Come back later."
   "always_on_top": false,
   "trigger": "onAutorun"
 }
-
 
 Control Self Switch, :A, OFF
 Control Self Switch, :B, ON

@@ -1,0 +1,88 @@
+[EVENT]
+{
+  "_class": "Event",
+  "name": "Trainer(1)",
+  "x": 10,
+  "y": 13
+}
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": null,
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "trchar007",
+    "character_hue": 0,
+    "direction": "Down",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onEventTouch"
+}
+
+# "Battle: \\rI've brought my own special backdrop!"
+# "Type: BEAUTY"
+# "Name: Bridget"
+# "EndSpeech: My Skitty!"
+# "EndBattle: \\rI battled you first because my event's", # "number (7) comes before the Hiker's and Fisherman's", # "event numbers."
+# "Backdrop: Champion"
+Script, "pbTrainerIntro(:BEAUTY)"
+Script, "Kernel.pbNoticePlayer(get_character(0))"
+Show Text, "\\rI've brought my own special backdrop!"
+Script, "$PokemonGlobal.nextBattleBack=\"Champion\""
+Conditional Branch, pbTrainerBattle(:BEAUTY,"Bridget",_I("My Skitty!"),false,0,false,0)
+  Control Self Switch, :A, ON
+Branch END
+Script, "pbTrainerEnd"
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": "A",
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "trchar007",
+    "character_hue": 0,
+    "direction": "Down",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onPlayerAction"
+}
+
+Show Text, "\\rI battled you first because my event's", "number (7) comes before the Hiker's and Fisherman's", "event numbers."

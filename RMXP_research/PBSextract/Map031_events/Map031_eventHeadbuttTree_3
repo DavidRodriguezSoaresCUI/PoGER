@@ -1,9 +1,9 @@
 [EVENT]
 {
   "_class": "Event",
-  "name": "Exit",
-  "x": 6,
-  "y": 8
+  "name": "HeadbuttTree",
+  "x": 48,
+  "y": 7
 }
 
 [PAGE]
@@ -20,7 +20,7 @@
   "graphic": {
     "_class": "Page::Graphic",
     "tile_id": 0,
-    "character_name": "",
+    "character_name": "Object tree 2",
     "character_hue": 0,
     "direction": "Down",
     "pattern": 0,
@@ -35,11 +35,7 @@
   "direction_fix": false,
   "through": false,
   "always_on_top": false,
-  "trigger": "onPlayerTouch"
+  "trigger": "onPlayerAction"
 }
 
-Play SE, {"_class": "AudioFile", "name": "Door exit", "volume": 80, "pitch": 100}
-Fadeout, Black
-Wait, 8
-Transfer Player, destination=(5,11,6), direction="Keep", fading="NoFading"
-Fadein
+Script, "pbHeadbutt"

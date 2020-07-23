@@ -1,0 +1,142 @@
+[EVENT]
+{
+  "_class": "Event",
+  "name": "Trainer(2)",
+  "x": 7,
+  "y": 14
+}
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": null,
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "trchar033",
+    "character_hue": 0,
+    "direction": "Down",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onEventTouch"
+}
+
+# "Battle: \\bDid I notice you, or did you notice me?"
+# "Battle: \\bLet's have a rematch!"
+# "Type: CAMPER"
+# "Name: Jeff"
+# "EndSpeech: A very good battle, indeed."
+# "EndSpeech: You beat me again!"
+# "EndBattle: \\bI'll get even stronger, and beat you", # "next time!"
+# "EndBattle: \\bI don't think I'll ever be able to beat", # "you."
+# "RegSpeech: \\\\bShall we exchange numbers, so we", # "can have a rematch?"
+Script, "pbTrainerIntro(:CAMPER)"
+Script, "Kernel.pbNoticePlayer(get_character(0))"
+Show Text, "\\bDid I notice you, or did you notice me?"
+Script, "Kernel.pbTrainerCheck(:CAMPER,\"Jeff\",2,0)"
+Conditional Branch, pbTrainerBattle(:CAMPER,"Jeff",_I("A very good battle, indeed."),false,0,false,0)
+  Script, "pbPhoneRegisterBattle(_I(\"\\\\bShall we exchange numbers, so we",   "can have a rematch?\"),get_character(0),:CAMPER,\"Jeff\",2)"
+  Control Self Switch, :A, ON
+Branch END
+Script, "pbTrainerEnd"
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": "B",
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "trchar033",
+    "character_hue": 0,
+    "direction": "Down",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onPlayerAction"
+}
+
+Conditional Branch, pbPhoneBattleCount(:CAMPER,"Jeff")>=1
+  Script, "pbTrainerIntro(:CAMPER)"
+  Show Text, "\\bLet's have a rematch!"
+  Conditional Branch, pbTrainerBattle(:CAMPER,"Jeff",_I("You beat me again!"),false,1,false,0)
+    Script, "pbPhoneIncrement(:CAMPER,\"Jeff\",2)"
+    Control Self Switch, :A, ON
+    Control Self Switch, :B, OFF
+    Script, "pbTrainerEnd"
+  Branch END
+  Exit Event Processing
+Branch END
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": "A",
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "trchar033",
+    "character_hue": 0,
+    "direction": "Down",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onPlayerAction"
+}
+
+Conditional Branch, pbPhoneBattleCount(:CAMPER,"Jeff")>1
+  Show Text, "\\bI don't think I'll ever be able to beat",   "you."
+  Script, "pbPhoneRegisterBattle(_I(\"\\\\bShall we exchange numbers, so we",   "can have a rematch?\"),get_character(0),:CAMPER,\"Jeff\",2)"
+  Exit Event Processing
+Branch END
+Show Text, "\\bI'll get even stronger, and beat you", "next time!"
+Script, "pbPhoneRegisterBattle(_I(\"\\\\bShall we exchange numbers, so we", "can have a rematch?\"),get_character(0),:CAMPER,\"Jeff\",2)"

@@ -1,0 +1,86 @@
+[EVENT]
+{
+  "_class": "Event",
+  "name": "Trainer(2)",
+  "x": 5,
+  "y": 14
+}
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": null,
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "trchar037",
+    "character_hue": 0,
+    "direction": "Down",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onEventTouch"
+}
+
+# "Battle: \\bHi!  I like shorts!  They're comfy and easy to", # "wear!"
+# "Type: YOUNGSTER"
+# "Name: Ben"
+# "EndSpeech: Aww, I lost."
+# "EndBattle: \\bYou can't get a trainer event simpler", # "than me!"
+Script, "pbTrainerIntro(:YOUNGSTER)"
+Script, "Kernel.pbNoticePlayer(get_character(0))"
+Show Text, "\\bHi!  I like shorts!  They're comfy and easy to", "wear!"
+Conditional Branch, pbTrainerBattle(:YOUNGSTER,"Ben",_I("Aww, I lost."),false,0,false,0)
+  Control Self Switch, :A, ON
+Branch END
+Script, "pbTrainerEnd"
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": "A",
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "trchar037",
+    "character_hue": 0,
+    "direction": "Down",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onPlayerAction"
+}
+
+Show Text, "\\bYou can't get a trainer event simpler", "than me!"

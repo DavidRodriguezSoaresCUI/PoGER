@@ -217,7 +217,7 @@ def command_102( parameters ):
 
 def command_104( parameters ):
     print(f'command_104: parameters={parameters}, {type(parameters)}')
-    return "Change Text Options [not in VX]"
+    return "Change Text Options"
 
 def command_106( parameters ):
     #print(f'command_106: parameters={parameters}, {type(parameters)}')
@@ -305,9 +305,8 @@ def command_121( parameters ):
     return "Control Switches"
 
 def command_122( parameters ):
-    from PE_variables_switches import variables
-    print(f'command_122: parameters={parameters}, {type(parameters)}')
-    var = variables.get( parameters[0], None )
+    import PE_variables_switches
+    var = PE_variables_switches.variables.get( parameters[0], None )
     op_switcher = {
         0:'=',
         1:'+=',
@@ -329,6 +328,7 @@ def command_122( parameters ):
         s=variables.get( parameters[4], None )
         assert s
     else:
+        print(f'command_122: parameters={parameters}, {type(parameters)}')
         s='Unimplemented operand'
 
     return f"Control Variables, {var} {operation} {s}"
@@ -369,13 +369,16 @@ def command_210( parameters ):
     #print(f'command_210: parameters={parameters}, {type(parameters)}')
     return "Wait for Move's Completion"
 
+# https://www.youtube.com/watch?v=4ykNtsDQKVM
 def command_221( parameters ):
-    print(f'command_221: parameters={parameters}, {type(parameters)}')
-    return "Prepare for Transition [Not in VX, now called Fadeout Screen]"
+    #print(f'command_221: parameters={parameters}, {type(parameters)}')
+    assert parameters==None
+    return "Prepare for Transition (freeze screen)"
 
 def command_222( parameters ):
-    print(f'command_222: parameters={parameters}, {type(parameters)}')
-    return "Execute Transition [Not in VX, now called Fadein Screen]"
+    #print(f'command_222: parameters={parameters}, {type(parameters)}')
+    assert isinstance(parameters, str)
+    return f"Execute Transition, {parameters}"
 
 def command_223( parameters ):
     from RGSS_classes import Tone

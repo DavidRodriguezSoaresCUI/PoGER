@@ -91,7 +91,7 @@ class Event:
         class Condition:
 
             def __init__(self, obj):
-                print(f"Condition: obj is a {type(obj)}")
+                #print(f"Condition: obj is a {type(obj)}")
                 if obj==None:
                     tmp = dict()
                     tmp['_class']=='Page::Condition'
@@ -177,8 +177,9 @@ class Event:
 
         def conversion(self):
             commands_str.append( self.to_s() )
-            for command in self.list:
-                command.conversion()
+            if self.list:
+                for command in self.list:
+                    command.conversion()
             
     
     def __init__(self, obj):
@@ -338,7 +339,7 @@ def JSONdecode( obj ):
     # Get the function from switcher dictionary
     corresponding_class = switcher.get(c, None)
     assert corresponding_class != None, f'JSONdecode: object with unexpected class identifier : {c}'
-    print(f"JSONdecode: obj is a {type(obj)}, mapping to {c}")
+    #print(f"JSONdecode: obj is a {type(obj)}, mapping to {c}")
     return corresponding_class( obj )
 
 def JSONencode( obj ):

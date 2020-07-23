@@ -1,9 +1,9 @@
 [EVENT]
 {
   "_class": "Event",
-  "name": "Exit",
-  "x": 6,
-  "y": 8
+  "name": "Particle effect - rocket",
+  "x": 56,
+  "y": 25
 }
 
 [PAGE]
@@ -24,22 +24,18 @@
     "character_hue": 0,
     "direction": "Down",
     "pattern": 0,
-    "opacity": 255,
+    "opacity": 240,
     "blend_type": "Normal"
   },
   "move": "Fixed",
-  "move_speed": 3,
-  "move_frequency": 3,
-  "walk_anime": true,
-  "step_anime": false,
-  "direction_fix": false,
-  "through": false,
-  "always_on_top": false,
-  "trigger": "onPlayerTouch"
+  "move_speed": 4,
+  "move_frequency": 6,
+  "walk_anime": false,
+  "step_anime": true,
+  "direction_fix": true,
+  "through": true,
+  "always_on_top": true,
+  "trigger": "onPlayerAction"
 }
 
-Play SE, {"_class": "AudioFile", "name": "Door exit", "volume": 80, "pitch": 100}
-Fadeout, Black
-Wait, 8
-Transfer Player, destination=(5,11,6), direction="Keep", fading="NoFading"
-Fadein
+# "Particle Engine Type", # "rocket"

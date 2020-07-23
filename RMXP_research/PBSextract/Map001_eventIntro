@@ -1,0 +1,183 @@
+[EVENT]
+{
+  "_class": "Event",
+  "name": "Intro",
+  "x": 0,
+  "y": 0
+}
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": null,
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "",
+    "character_hue": 0,
+    "direction": "Down",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onAutorun"
+}
+
+Change Text Options
+Show Text, "<ac>\\c[8]\\l[3](Please refer to the\\nPokémon ", "Essentials Wiki\\nfor documentation.)"
+Change Text Options
+Prepare for Transition (freeze screen)
+Play BGM
+Show Picture
+Execute Transition,
+Wait, 18
+Show Picture
+Show Picture
+Move Picture
+Move Picture
+Wait, 18
+Show Text, "\\bHello! Sorry to keep you waiting!"
+Show Text, "\\bWelcome to the world of Pokémon."
+Show Text, "\\bMy name is Oak."
+Show Text, "\\bPeople call me the Pokémon Professor."
+Label, Help Choices
+Show Text, "\\bIf you need help, I am certainly capable of giving it."
+Show Choices, ['Controls', 'Adventure', 'No info needed'], default=3
+When 'Controls'
+  Script, "pbEventScreen(ButtonEventScene)"
+  Jump to Label, Help Choices
+When 'Adventure'
+  Show Text, "\\bWell then, without further ado..."
+  Script, "pbToneChangeAll(Tone.new(-255,-255,-255,0),10)"
+  Wait, 10
+  Show Picture
+  Move Picture
+  Wait, 10
+  Change Text Options
+  Show Text, "<ac>\\c[0]\\l[3]You are about to enter a world\\nwhere ",   "you will embark on a grand\\nadventure of your very ",   "own."
+  Show Text, "<ac>\\c[0]\\l[5]Speak to people and check things\\n",   "wherever you go, be it in towns,\\nroads or caves.\\n",   "Gather information and hints from\\n",   "every possible source."
+  Show Text, "<ac>\\c[0]\\l[3]New paths will open to you when\\n",   "you help people in need, overcome\\n",   "challenges, and solve mysteries."
+  Show Text, "<ac>\\c[0]\\l[7]At times, you will be challenged\\n",   "by others to a battle.\\n",   "At other times, wild creatures\\nmay stand in your way.\\n\\n",   "By overcoming such hurdles,\\nyou will gain great power."
+  Show Text, "<ac>\\c[0]\\l[2]However, your adventure is not\\n",   "solely about becoming powerful."
+  Show Text, "<ac>\\c[0]\\l[7]On your travels, we hope that\\n",   "you will meet countless people\\n",   "and, through them, achieve\\npersonal growth.\\n\\n",   "This is the most important\\nobjective of this adventure."
+  Move Picture
+  Wait, 10
+  Erase Picture
+  Script, "pbToneChangeAll(Tone.new(0,0,0,0),10)"
+  Wait, 10
+  Change Text Options
+  Jump to Label, Help Choices
+When 'No info needed'
+Wait, 5
+Move Picture
+Wait, 10
+Erase Picture
+Show Picture
+Move Picture
+Wait, 10
+Show Text, "\\bThis world is inhabited by creatures we call ", "Pokémon."
+Show Text, "\\bPeople and Pokémon live together by supporting ", "each other."
+Show Text, "\\bSome people play with Pokémon, some battle with ", "them."
+Wait, 5
+Move Picture
+Wait, 10
+Erase Picture
+Show Picture
+Move Picture
+Wait, 10
+Show Text, "\\bBut we don't know everything about Pokémon yet."
+Show Text, "\\bThere are still many mysteries to solve."
+Show Text, "\\bThat's why I study Pokémon every day."
+Wait, 5
+Move Picture
+Move Picture
+Wait, 10
+Erase Picture
+Wait, 15
+Show Text, "\\bAre you a boy or a girl?"
+Show Choices, ['Boy', 'Girl'], default=0
+When 'Boy'
+  # "Initializes player 0 (PlayerA).",   # "[\"pbChangePlayer\" takes a value from 0 through 7; ",   # "other values are not valid. To edit information about ",   # "a player, choose \"Set Metadata\" in the Pokemon ",   # "Essentials Editor and select \"Global\".]"
+  Script, "pbChangePlayer(0)"
+  Show Picture
+When 'Girl'
+  # "initializes player 1 (PlayerB)"
+  Script, "pbChangePlayer(1)"
+  Show Picture
+Move Picture
+Move Picture
+Wait, 10
+Show Text, "\\bNow what did you say your name was?"
+Label, Enter Name
+# "Opens the name entry screen and initializes the ", # "trainer object"
+Script, "pbTrainerName"
+Wait, 5
+Show Text, "\\bSo you're \\PN?"
+Show Choices, ['Yes', 'No'], default=2
+When 'Yes'
+When 'No'
+  Show Text, "\\bWhat is your name?"
+  Jump to Label, Enter Name
+Show Text, "\\b\\PN, are you ready?"
+Show Text, "\\bYour very own Pokémon story is about to unfold."
+Show Text, "\\bYou'll face fun times and tough challenges."
+Show Text, "\\bA world of dreams and adventures with Pokémon ", "awaits! Let's go!"
+Show Text, "\\bEnjoy the Starter Kit. You should give credit when ", "using it."
+Fade Out BGM
+Control Self Switch, :A, ON
+Script, "pbToneChangeAll(Tone.new(-255,-255,-255,0),20)"
+Wait, 20
+Erase Picture
+Erase Picture
+Erase Picture
+Transfer Player, destination=(32,7,13), direction="Down", fading="Fading"
+Script, "pbToneChangeAll(Tone.new(0,0,0,0),20)"
+Wait, 20
+
+[PAGE]
+{
+  "_class": "Page",
+  "condition": {
+    "_class": "Page::Condition",
+    "switch1": null,
+    "switch2": null,
+    "self_switch": "A",
+    "variable": null,
+    "variable_value": null
+  },
+  "graphic": {
+    "_class": "Page::Graphic",
+    "tile_id": 0,
+    "character_name": "",
+    "character_hue": 0,
+    "direction": "Down",
+    "pattern": 0,
+    "opacity": 255,
+    "blend_type": "Normal"
+  },
+  "move": "Fixed",
+  "move_speed": 3,
+  "move_frequency": 3,
+  "walk_anime": true,
+  "step_anime": false,
+  "direction_fix": false,
+  "through": false,
+  "always_on_top": false,
+  "trigger": "onPlayerAction"
+}
+
