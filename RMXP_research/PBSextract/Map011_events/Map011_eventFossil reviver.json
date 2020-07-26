@@ -1,0 +1,511 @@
+{
+    "_class": "Event",
+    "name": "Fossil reviver",
+    "x": 10,
+    "y": 3,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "character_name": "trchar028",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        2,
+                        "B",
+                        1
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bOh, hello. I'm a scientist."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bI can turn fossils into living, breathing Pok\u00e9mon!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 123,
+                    "indent": 1,
+                    "parameters": [
+                        "B",
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bAiyah! You come again!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bDo you have a fossil for me?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 0,
+                    "parameters": [
+                        [
+                            "Yes",
+                            "No"
+                        ],
+                        2
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        "Yes"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bWhich fossil do you want me to revive?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbChooseFossil(9)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        1,
+                        9,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 2,
+                    "parameters": "Player didn't choose a fossil."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bLet me know when you want me to revive a "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 2,
+                    "parameters": "fossil for you."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "$PokemonBag.pbDeleteItem(pbGet(9))"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbSet(3,PBItems.getName(pbGet(9)))"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bOkay. I'll see if I can revive your \\v[3]."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bCome back later."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 2,
+                    "parameters": "Convert fossil into species now."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbConvertItemToPokemon(9,["
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": ":HELIXFOSSIL,:OMANYTE,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": ":DOMEFOSSIL,:KABUTO,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": ":OLDAMBER,:AERODACTYL,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": ":ROOTFOSSIL,:LILEEP,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": ":CLAWFOSSIL,:ANORITH,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": ":SKULLFOSSIL,:CRANIDOS,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": ":ARMORFOSSIL,:SHIELDON,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": ":COVERFOSSIL,:TIRTOUGA,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": ":PLUMEFOSSIL,:ARCHEN])"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 123,
+                    "indent": 2,
+                    "parameters": [
+                        "A",
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 121,
+                    "indent": 2,
+                    "parameters": [
+                        13,
+                        13,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        "No"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 1,
+                    "parameters": "Player doesn't want to choose a fossil."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bI'll be here if you want my help."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ]
+        },
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": "A",
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "character_name": "trchar028",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        9,
+                        0,
+                        0,
+                        3
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bWhere have you been? I've finished reviving your"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "fossil."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbSet(3,PBSpecies.getName(pbGet(9)))"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bIt was \\v[3] like I thought."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "pbAddToParty(pbGet(9),1)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 122,
+                    "indent": 2,
+                    "parameters": [
+                        9,
+                        9,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 123,
+                    "indent": 2,
+                    "parameters": [
+                        "A",
+                        1
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bYou have no room left. Make room, then come see "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 2,
+                    "parameters": "me."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bI managed to revive your fossil."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bHowever, what I brought back didn't live long...\\1 "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "fortunately."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bSorry."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 123,
+                    "indent": 1,
+                    "parameters": [
+                        "A",
+                        1
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ]
+        },
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": "13",
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "character_name": "trchar028",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bI told you, come back later."
+                }
+            ]
+        }
+    ]
+}

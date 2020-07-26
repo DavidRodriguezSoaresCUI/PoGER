@@ -4,7 +4,7 @@ import json, pathlib
 from pprint import pprint
 #from RGSS_Command_conversion import command_to_str
 
-map='Map031'
+map='Map066'
 with open(f'{map}_events.txt','r', encoding='utf-8-sig') as f:
     source=f.read()
     sourceOK = source.replace('\\', '\\\\')

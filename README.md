@@ -4,4 +4,4 @@ A game-engine-recreation attempt.
 
 ### Status
 
-TODO
+v1 release around ends of august 2020.
