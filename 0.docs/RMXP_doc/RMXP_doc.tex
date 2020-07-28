@@ -146,16 +146,13 @@
 \begin{document}
 \maketitle
 
-\vspace{90mm}
+\vspace*{\fill}
 
 \textbf{Privacy policy}
 
 This is a confidential document and should not be distributed under any circumstance. \hyperref[sec:privacypolice]{Please click and read}.
 
-\textbf{Abstract}
-
-\lipsum[2-3]
-
+\vspace{20mm}
 
 \newpage
 
@@ -167,7 +164,7 @@ This is a confidential document and should not be distributed under any circumst
 \newpage
 \section{What this document is about}
 
-This document holds information about how RPG Maker XP implements \textit{Events}, which is relevant in project PoGER's map/feature extraction effort.
+This document holds information about how RPG Maker XP implements \textit{Maps} and \textit{Events}, which is relevant in project PoGER's map/feature extraction effort.
 
 Please read this document's \hyperref[sec:privacypolice]{Privacy Policy}.
 
@@ -181,8 +178,44 @@ The following abbreviations may be present :
 	\item \textbf{PE} - Pokemon Essentials
 \end{itemize}
 
+Please note that the author is not a native English speaker.
 
 
+\newpage
+\section{How RMXP stores data}
+
+A crucial first step in any reverse-engineering effort in data extraction is to understand used data structures.
+
+As RMXP games run on a \textit{Ruby interpreter}, every element we encounter is either of a \textit{primitive type} or an \textit{object} (class instance).
+
+Ruby primitive types :
+\begin{itemize}
+	\item Arrays
+	\item Hashes
+	\item Boolean
+	\item Symbols
+	\item Numbers
+	\item Strings
+	
+\end{itemize}
+
+\vspace{2mm}
+For the task at end, let's focus on the classes that are associated with maps and events, most of which are part of the RMXP library (other are defined in PE scripts).
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=\linewidth]{RMXP_full}
+		\caption{Simplified class map representation for Map/Event}
+	
+\end{figure}
+
+
+\textit{Semantic/Syntax} : Linked classes (with arity) display an \textbf{associative relationship}.
+
+\textit{Note} : There is no inheritance relationship between any two classes represented. Arities are logically deduced and may not be exact depending in proprietary implementation details. Class \verb|RPG::AudioFile| was duplicated for ease of association routing.
+
+
+\newpage
 \section{Events}
 
 An event, or more precisely a \textit{map event}, is a way to introduce elements with behavior, therefore bringing flexibility and dynamism into the game world.
@@ -194,7 +227,7 @@ Events have two aspects :
 	\begin{center}
 		\includegraphics[width=0.75\textwidth]{Event} 
 	\end{center}
-
+	\newpage
 	\item Its data class instance counterpart \verb|RPG::Event|
 	
 	
@@ -971,7 +1004,7 @@ Parameters are mostly identical to "Show Picture". This is mostly used to animat
 \end{tabular}
 
 \newpage
-\section{Representation decisions}
+\section{Command Representation decisions}
 
 The representation chosen is a result of careful consideration of its future usage requirements (including but not limited to) :
 \begin{itemize}
@@ -1015,6 +1048,23 @@ Particular decisions :
 	
 	Then, setting a timer for $x$ seconds could be as simple as storing (\verb|:PlayTime| + $x$) in a variable and testing it later against the current value of \verb|:PlayTime| !
 \end{itemize}
+
+
+\newpage
+\section{Maps}
+
+Here we will focus on \verb|RPG::Map|. Here are its components :
+
+\begin{tabular}{|a | l | l|}
+	\hline
+	\verb|tileset_id| & int & Value of a \verb|RPG::Tileset| unique identifier component \verb|id|. The \verb|RPG::Tileset| object \\
+	& & can be retrieved through the global hash \verb|$data_tilesets| using the id as the key. \\
+	\hline
+	\verb|width,height| & int,int & Attribute euivalent to \verb|data.xsize()| and \verb|data.ysize()|. \\
+	\hline
+\end{tabular}
+
+
 
 
 \newpage
