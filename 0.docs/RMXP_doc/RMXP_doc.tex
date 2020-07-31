@@ -1122,6 +1122,9 @@ NUM_EXPR               // expression that returns a numerical value
 
 \newpage
 \begin{Verbatim}[frame=single, fontsize=\footnotesize]
+PARAMETER_NAME
+    : WORD
+
 SCRIPT
     : 's:' WORD (WHITESPACE PARAMETERS)?
 
@@ -1141,6 +1144,7 @@ VAR_ID
 VALUE
     : NUMBER
     | STRING
+    | WORD
     
 STRING
     : '"' [^"]*  '"'
@@ -1176,12 +1180,10 @@ ASSIGN_OPERATOR
     | '*='
     | '/='
     
-ADD_OP
+MATH_OP
     : '+'
     | '-'
-    
-MUL_OP
-    : '*'
+    | '*'
     | '/'
 \end{Verbatim}
 
