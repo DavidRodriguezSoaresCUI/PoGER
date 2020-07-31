@@ -1,0 +1,64 @@
+[EVENT]
+xy=[10,3]
+graphic=trchar28
+direction=S
+movement=Fixed
+move_animation=True
+trigger=onPlayerAction
+
+[PAGE]
+# No condition/graphic/movement/option change
+
+# Greeting :B used as a 'first interaction' check
+If :B == :OFF
+  Show Text "Oh hello. I'm a scientist."
+  Show Text "I can turn fossils into living breathing Pokémon!"
+  :B = :ON
+Else
+  Show Text "Aiyah! You come again!"
+
+# Ask for fossil conversion
+Show Text "Do you have a fossil for me?"
+Choices ["Yes" "No"], cancel=2
+When "Yes"
+  Show Text "Which fossil do you want me to revive?"
+  s:pbChooseFossil
+  If :Fossilbeingrevived == None
+    # "Player didn't choose a fossil."
+    Show Text "Let me know when you want me to revive a fossil for you."
+  Else
+    s:PokemonBag.DeleteItem item=:Fossilbeingrevived
+    :TempPokemonName = s:PBItems.getName(:Fossilbeingrevived)
+    Show Text "Okay. I'll see if I can revive your {:TempPokemonName}."
+    Show Text "Come back later."
+    :Fossil_revival = 1
+    Set Timer t=3600 i=":Fossil_revival = 2"
+  Branch END
+When "No"
+  # "Player doesn't want to choose a fossil."
+  Show Text "I'll be here if you want my help."
+[END]
+
+[PAGE]
+# condition/graphic/movement/option change
+:Fossil_revival >= 1
+
+If :Fossil_revival == 1
+  Show Text "I told you come back later."
+  END
+If :Fossilbeingrevived != None
+  Show Text "Where have you been? I've finished reviving your fossil."
+  :Revivedfossil = s:reviveFossil fossil=:Fossilbeingrevived
+  Show Text "It was {:Revivedfossil} like I thought."
+  If s:canAcceptPartyMember
+    s:addPartyMember member=:Revivedfossil
+    :Fossilbeingrevived = 0
+    :Fossil_revival = 0
+  Else
+    Show Text "You have no room left. Make room then come see me."
+Else
+  Show Text "I managed to revive your fossil."
+  Show Text "However what I brought back didn't live long...\\1 fortunately."
+  Show Text "Sorry."
+  :Fossil_revival = 0
+[END]

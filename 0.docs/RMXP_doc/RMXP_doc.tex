@@ -9,6 +9,8 @@
 \usepackage{geometry}
 \geometry{margin=16mm}
 
+\usepackage{caption}
+
 
 % fix for underlined text not hyphenating :
 %\usepackage{soul} % use this
@@ -78,6 +80,9 @@
 \usepackage{color}
 
 \definecolor{mylightgray}{rgb}{0.95,0.95,0.95}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
 
 \usepackage[super]{nth}
 
@@ -200,7 +205,7 @@ Ruby primitive types :
 \end{itemize}
 
 \vspace{2mm}
-For the task at end, let's focus on the classes that are associated with maps and events, most of which are part of the RMXP library (other are defined in PE scripts).
+For the task at end, let's focus on the classes that are associated with maps and events, most of which are part of the RMXP library (other are defined in PE scripts). \textit{See RMXP\_full.png}
 
 \begin{figure}[!h]
 	\centering
@@ -287,6 +292,8 @@ Additionally, \textit{EventCommands} have an \textit{indent} integer value, tied
 
 In order to successfully \textit{extract semantic from events}, it was decided that \textit{documenting} every command used in Pokemon Essentials and finding an appropriate (human-readable) \textit{representation} was the way forward.
 
+The objective is to formalize a \textbf{DSL} (Domain Specific Language) into which events will be translated to, which exhibit desirable properties (\hyperref[sec:cmdrepr]{See Command Representation decisions section}.).
+
 % I tested a few table designs
 
 %\begin{table}[h!]
@@ -349,10 +356,11 @@ Implementation details :
 
 
 \vspace{4mm}
-\subsection{List of commands}
-
 
 \newpage
+\subsection{List of commands}
+
+\vspace{4mm}
 \setcounter{codeID}{-1}
 {\small
 \begin{tabular}{|c a l|}
@@ -407,15 +415,15 @@ Implementation details :
 	& Notes & See footnote\footnotemark[1] \\
 	& Representation & "Move, R" \\
 	\hline
-	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move towards player \\
-	& Parameters & None \\
-	& Notes & See footnotes\footnotemark[1]\textsuperscript{,}\footnotemark[3] \\
-	& Representation & "Move, TODO" \\
-	\hline
 \end{tabular}
 
 \newpage
 \begin{tabular}{|c a l|}
+	\hline
+	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move towards player \\
+	& Parameters & None \\
+	& Notes & See footnotes\footnotemark[1]\textsuperscript{,}\footnotemark[3] \\
+	& Representation & "Move, TODO" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move away from player \\
 	& Parameters & None \\
@@ -467,15 +475,15 @@ Implementation details :
 	& Notes & See footnote\footnotemark[2] \\
 	& Representation & "Turn, R" \\
 	\hline
-	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn  \degrees{90} left, relative to current position \\
-	& Parameters & None \\
-	& Notes & See footnote\footnotemark[2] \\
-	& Representation & "Turn, L" \\
-	\hline
 \end{tabular}
 
 \newpage
 \begin{tabular}{|c a l|}
+	\hline
+	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn  \degrees{90} left, relative to current position \\
+	& Parameters & None \\
+	& Notes & See footnote\footnotemark[2] \\
+	& Representation & "Turn, L" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn  \degrees{180} \\
 	& Parameters & None \\
@@ -529,15 +537,15 @@ Implementation details :
 	& Notes & \parbox{.7\linewidth}{Elevate the display priority, therefore bringing the event graphic to the forefront (above any tile/character)} \\
 	& Representation & "AOT, ON" \\
 	\hline
-	\nextcodeID & Description & \verb|RPG::MoveCommand| - Always on top OFF \\
-	& Parameters & None \\
-	& Notes &  \\
-	& Representation & "AOT, OFF" \\
-	\hline
 \end{tabular}
 
 \newpage
 \begin{tabular}{|c a l|}
+	\hline
+	\nextcodeID & Description & \verb|RPG::MoveCommand| - Always on top OFF \\
+	& Parameters & None \\
+	& Notes &  \\
+	& Representation & "AOT, OFF" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Change event's graphic \\
 	& Parameters & TODO \\
@@ -585,15 +593,15 @@ Implementation details :
 	& Notes & Has no effect. TODO:research link to particle effects. \\
 	& Representation & "\# $s$" \\
 	\hline
-	\multirow{4}{*}{408} & Description & \verb|RPG::EventCommand| - Comment (continued) \\
-	& Parameters & [1] - \textbf{0}:comment text $s$ \verb|[String]| \\
-	& Notes & Happens after a 108. \\
-	& Representation & "\# $s$" \\
-	\hline
 \end{tabular}
 
 \newpage
 \begin{tabular}{|c a l|}
+	\hline
+	\multirow{4}{*}{408} & Description & \verb|RPG::EventCommand| - Comment (continued) \\
+	& Parameters & [1] - \textbf{0}:comment text $s$ \verb|[String]| \\
+	& Notes & Happens after a 108. \\
+	& Representation & "\# $s$" \\
 	\hline
 	\multirow{4}{*}{111} & Description & \verb|RPG::EventCommand| - Conditional branch \\
 	& Parameters & See \hyperref[sec:condbranch]{"Conditional branch" section}. \\
@@ -640,15 +648,15 @@ Implementation details :
 	& Notes & $n$ follows "common relation 3". \\
 	& Representation & "Control SS, $s$, $n$.toString()" \\
 	\hline
-	\multirow{4}{*}{125} & Description & \verb|RPG::EventCommand| - Change Gold \\
-	& Parameters & [3] - \textbf{0}:operation $o$ \verb|[integer 0-1]|, \ \textbf{1}:operand $n$ \verb|[integer 0-1]|, \ \textbf{2}:value $v$ \verb|[integer]| \\
-	& Notes & Values of $n$: 0:$v$ is a constant, 1:$v$ is a variable(id). $o$ follows "common relation 4" \\
-	& Representation & "Control Variable, :Money $o$.toString() $v$.toString()" \\
-	\hline
 \end{tabular}
 
 \newpage
 \begin{tabular}{|c a l|}
+	\hline
+	\multirow{4}{*}{125} & Description & \verb|RPG::EventCommand| - Change Gold \\
+	& Parameters & [3] - \textbf{0}:operation $o$ \verb|[integer 0-1]|, \ \textbf{1}:operand $n$ \verb|[integer 0-1]|, \ \textbf{2}:value $v$ \verb|[integer]| \\
+	& Notes & Values of $n$: 0:$v$ is a constant, 1:$v$ is a variable(id). $o$ follows "common relation 4" \\
+	& Representation & "Control Variable, :Money $o$.toString() $v$.toString()" \\
 	\hline
 	\multirow{5}{*}[-1mm]{201} & Description & \verb|RPG::EventCommand| - Transfer Player \\
 	& \multirow{2}{*}[1mm]{Parameters} & [6] - \textbf{1}:map $m$ \verb|[integer]|, \ \textbf{2}:coordinate $x$ \verb|[integer]|, \ \textbf{3}:coordinate $y$ \verb|[integer]|, \\
@@ -697,20 +705,20 @@ Implementation details :
 	& Notes & \parbox{.7\linewidth}{Scarcely used in PE, \{0\} and \{1\} are not well defined so they can be deprecated. $d$ to be changed into ms.} \\
 	& Representation & "Shake Screen, $d$" \\
 	\hline
-	\multirow{4}{*}{231} & Description & \verb|RPG::EventCommand| - Show Picture \\
-	& Parameters & See \hyperref[sec:showpicture]{"Show Picture" section}. \\
-	& Notes &  \\
-	& Representation & TODO \\
-	\hline
 \end{tabular}
 
 \newpage
 \begin{tabular}{|c a l|}
 	\hline
+	\multirow{4}{*}{231} & Description & \verb|RPG::EventCommand| - Show Picture \\
+	& Parameters & See \hyperref[sec:showpicture]{"Show Picture" section}. \\
+	& Notes &  \\
+	& Representation &  \\
+	\hline
 	\multirow{4}{*}{232} & Description & \verb|RPG::EventCommand| - Move Picture \\
 	& Parameters & See \hyperref[sec:movepicture]{"Move Picture" section}. \\
 	& Notes &  \\
-	& Representation & TODO \\
+	& Representation & \\
 	\hline
 	\multirow{4}{*}{235} & Description & \verb|RPG::EventCommand| - Erase Picture \\
 	& Parameters & [1] - \textbf{0}:picture id \verb|[integer]| \\
@@ -752,15 +760,15 @@ Implementation details :
 	& Notes &  \\
 	& Representation & "Play SE, $a$.toString()" \\
 	\hline
-	\multirow{4}{*}{314} & Description & \verb|RPG::EventCommand| - Restore All \\
-	& Parameters & [1] - \textbf{0}:actor id \verb|[integer]| \\
-	& Notes & Equivalent to healing and restoring PPs. Ignore parameter. \\
-	& Representation & "Restore All" \\
-	\hline
 \end{tabular}
 
 \newpage
 \begin{tabular}{|c a l|}
+	\hline
+	\multirow{4}{*}{314} & Description & \verb|RPG::EventCommand| - Restore All \\
+	& Parameters & [1] - \textbf{0}:actor id \verb|[integer]| \\
+	& Notes & Equivalent to healing and restoring PPs. Ignore parameter. \\
+	& Representation & "Restore All" \\
 	\hline
 	\multirow{4}{*}{354} & Description & \verb|RPG::EventCommand| - Return to Title Screen \\
 	& Parameters & None \\
@@ -1005,6 +1013,7 @@ Parameters are mostly identical to "Show Picture". This is mostly used to animat
 
 \newpage
 \section{Command Representation decisions}
+\label{sec:cmdrepr}
 
 The representation chosen is a result of careful consideration of its future usage requirements (including but not limited to) :
 \begin{itemize}
@@ -1049,6 +1058,192 @@ Particular decisions :
 	Then, setting a timer for $x$ seconds could be as simple as storing (\verb|:PlayTime| + $x$) in a variable and testing it later against the current value of \verb|:PlayTime| !
 \end{itemize}
 
+\newpage
+\subsection{Formal grammar}
+
+\begin{Verbatim}[frame=single, fontsize=\footnotesize]
+EVENT
+    : '[event]' LF+ (CONFIG LF)+ LF+ PAGE+
+
+PAGE
+    : '[page]' LF+ (CONFIG_OR_COND LF)* LF+ STATEMENTS? '[end]' LF+
+    
+CONFIG
+    : CONFIG_VAR '=' PARAMETER
+    
+CONFIG_OR_COND
+    : LOG_EXPR
+    | CONFIG
+    
+STATEMENTS             // block of lines that define an event's behavior
+    : (STATEMENT LF+)+
+    
+STATEMENT              // line that define an event's behavior
+    : 'if' WHITESPACE LOG_EXPR LF CODE_BLOCK ('else' LF CODE_BLOCK)?
+    | 'loop' LF CODE_BLOCK
+    | 'when' WHITESPACE VALUE LF CODE_BLOCK
+    | 'break'
+    | CMD
+    | VAR_MANIPULATION
+    | SCRIPT
+    
+CODE_BLOCK             // block of lines whose execution is subject to flow control
+    : INDENT STATEMENTS DEDENT
+    
+CMD
+    : CMD_ID PARAMETERS?
+    
+PARAMETERS
+    : PARAMETER (',' WHITESPACE? PARAMETER)*
+    
+PARAMETER
+    : (PARAMETER_NAME '=')? PARAMETER_VALUE
+    
+PARAMETER_VALUE
+    : '[' VALUE (WHITESPACE VALUE)* ']'
+    | VALUE
+    
+VAR_MANIPULATION
+    : VAR_ID ASSIGN_OPERATOR EXPRESSION
+    
+EXPRESSION             // expression that returns a value
+    : LOG_EXPR
+    | NUM_EXPR
+    | SCRIPT
+    
+LOG_EXPR               // expression that returns a logical value
+    : COMPARABLE LOG_OPERATOR COMPARABLE
+    | SCRIPT
+    
+NUM_EXPR               // expression that returns a numerical value
+    : TERM (ADD_OP TERM)*
+\end{Verbatim}
+
+
+\newpage
+\begin{Verbatim}[frame=single, fontsize=\footnotesize]
+SCRIPT
+    : 's:' WORD (WHITESPACE PARAMETERS)?
+
+TERM
+    : FACTOR (MUL_OP FACTOR)*
+
+FACTOR
+    : NUMBER
+    | '(' NUM_EXPR ')'
+
+CMD_ID
+    : WORDS
+    
+VAR_ID
+    : ':' WORD
+    
+VALUE
+    : NUMBER
+    | STRING
+    
+STRING
+    : '"' [^"]*  '"'
+
+NUMBER
+    : -? [0-9]+ ('.' [0-9]+)?
+
+WHITESPACE
+    : ' '+
+
+LF
+    : '\r\n'
+    | '\n'
+    
+WORDS
+    : WORD (WHITESPACE WORD)*
+    
+WORD
+    : [a-z\_0-9]+
+    
+LOG_OPERATOR
+    : '=='
+    | '>='
+    | '<='
+    | '>'
+    | '<'
+    | '!='
+    
+ASSIGN_OPERATOR
+    : '='
+    | '+='
+    | '-='
+    | '*='
+    | '/='
+    
+ADD_OP
+    : '+'
+    | '-'
+    
+MUL_OP
+    : '*'
+    | '/'
+\end{Verbatim}
+
+\begin{itemize}
+	\item \verb|CMD_ID| is expected to be one of the defined operation. An error should be thrown otherwise.
+	
+	\item Comments must be stripped before lexing. Multi-line comments aren't supported.
+	
+	\item Tokens (terminal values) \verb|INDENT| and \verb|DEDENT| should be generated when reading the event file in order to represent indentation, thus allowing for block of statements to be syntactically represented.
+	
+\end{itemize}
+
+\subsubsection{Configuration variables}
+
+Mostly contained in the event, but can be overridden by the pages.
+
+\begin{table}[!h]
+	\centering
+\begin{tabular}{|a|c|c|l|}
+	\hline
+	\textbf{CONFIG\_VAR} & \textbf{type} & \textbf{Default} & \textbf{Description}. \\
+	\hline
+	{\ttfamily ID} & {\ttfamily int} & N/A & (Deprecated) Identifies the event. \\
+	\hline
+	{\ttfamily name} & {\ttfamily String} & N/A & (Deprecated:moved to file name) Identifies the event. \\
+	\hline
+	{\ttfamily xy} & {\ttfamily [int, int]} & N/A$^*$ & Position of the event. \\
+	\hline
+	{\ttfamily graphic} & {\ttfamily String} & None & Texture of the event. \\
+	\hline
+	{\ttfamily direction} & {\ttfamily String} & S & [N,E,S,W] Initial facing direction (if has {\ttfamily graphic}). \\
+	\hline
+	{\ttfamily trigger} & {\ttfamily String} & None & Trigger for the behavior of the event. \\
+	\hline
+	{\ttfamily move\_animation} & {\ttfamily bool} & TODO & . \\
+	\hline
+	{\ttfamily stop\_animation} & {\ttfamily bool} & TODO & . \\
+	\hline
+	{\ttfamily direction\_fix} & {\ttfamily bool} & TODO & . \\
+	\hline
+	{\ttfamily through} & {\ttfamily bool} & TODO & . \\
+	\hline
+	{\ttfamily always\_on\_top} & {\ttfamily bool} & TODO & . \\
+	\hline
+	{\ttfamily movement} & {\ttfamily TODO} &  & . \\
+	\hline
+	{\ttfamily movement\_speed} & {\ttfamily int} & TODO & . \\
+	\hline
+	{\ttfamily movement\_frequency} & {\ttfamily int} & TODO & . \\
+	\hline
+	{\ttfamily preset} & {\ttfamily String} & None & \parbox{0.51\linewidth}{\vspace{.2\baselineskip}Proposed "preset" for simple, common events (boulder, door, etc).} \\
+	\hline
+\end{tabular}
+\caption*{$^*$ : Mandatory configuration, therefore no default.}
+\end{table}
+
+Note that, like anything in an event file, it should be read in a case-insensitive way.
+
+
+
+
+
 
 \newpage
 \section{Maps}
@@ -1057,12 +1252,90 @@ Here we will focus on \verb|RPG::Map|. Here are its components :
 
 \begin{tabular}{|a | l | l|}
 	\hline
-	\verb|tileset_id| & int & Value of a \verb|RPG::Tileset| unique identifier component \verb|id|. The \verb|RPG::Tileset| object \\
-	& & can be retrieved through the global hash \verb|$data_tilesets| using the id as the key. \\
+	{\ttfamily tileset\_id} & int & \parbox{.66\linewidth}{\vspace{.2\baselineskip}Value of a {\ttfamily RPG::Tileset} unique identifier component {\ttfamily id}. The {\ttfamily RPG::Tileset} object can be retrieved through the global hash {\ttfamily \$data\_tilesets} using the id as the key.} \\
 	\hline
-	\verb|width,height| & int,int & Attribute euivalent to \verb|data.xsize()| and \verb|data.ysize()|. \\
+	{\ttfamily width,height} & int,int & Attribute equivalent to \verb|data.xsize()| and \verb|data.ysize()|. \\
+	\hline
+	{\ttfamily autoplay\_bgX} & bool & Indicated whether an audio is to be played as soon as the map is loaded. \\
+	\hline
+	{\ttfamily bgX} & AudioFile & The audio that is to be played. \\
+	\hline
+	{\ttfamily encounter\_list} & Array & TODO \\
+	\hline
+	{\ttfamily encounter\_step} & int & TODO \\
+	\hline
+	{\ttfamily data} & Table of int & Contain the \textit{map} representation of the 3 tile layers. \\
+	\hline
+	{\ttfamily events} & Hash & Contain the \textit{Event} representation ({\ttfamily RPG::Event}) for this map. \\
 	\hline
 \end{tabular}
+
+
+\subsection{Associated classes}
+
+\begin{itemize}
+	\item The role of the associated \verb|Game_Map| instance is to be studied further, but current understanding indicated that it is an alias derived from its \verb|RPG::Map| instance that is tailored for PE's needs.
+	
+	\item About the associated \verb|RPG::MapInfo| instance : It contains a few useful informations :
+	
+	
+	\begin{tabular}{|a | l | l|}
+		\hline
+		{\ttfamily name} & String & The name of the map. \\
+		\hline
+		{\ttfamily parent\_id} & int & In the map tree, the id of the parent map. \\
+		\hline
+	\end{tabular}
+	
+	This information can retrieved directly from the compiled \textit{MapInfos} file :
+	\begin{lstlisting}[language=Ruby]
+	mapinfos = pbLoadRxData("Data/MapInfos")
+	map_name = mapinfos[id].name
+	parent_map_id   = mapinfos[id].parent_id
+	parent_map_name = mapinfos[parent_map_id].name rescue nil\end{lstlisting}
+	\vspace{-8mm}
+	
+	\item \verb|RPG::AudioFile| : Basic data container :
+	
+	\begin{tabular}{|a | l | l|}
+		\hline
+		{\ttfamily name} & String & The name of the audio file (no extension). \\
+		\hline
+		{\ttfamily volume} & int & Acts like a volume slider, normalized at 100. \\
+		\hline
+		{\ttfamily pitch} & int & Allows to adjust sound pitch, normalized at 100. \\
+		\hline
+	\end{tabular}
+	
+	\item \verb|RPG::Tileset| : Represents a normal tileset :
+	
+	\begin{tabular}{|a | l | l|}
+		\hline
+		{\ttfamily id} & int & The id of the tileset. \\
+		\hline
+		{\ttfamily name} & String & Its name (no extension). \\
+		\hline
+		{\ttfamily autotile\_names} & Array of String & Names of associated autotiles (up to 7). \\
+		\hline
+		{\ttfamily panorama\_X} &  & TODO \\
+		\hline
+		{\ttfamily fog\_X} &  & TODO \\
+		\hline
+		{\ttfamily battleback\_name} & String & Name of the texture that appears during combat. \\
+		\hline
+		{\ttfamily passages} & 2D Table of int & Properties of individual textures. \\
+		\hline
+		{\ttfamily priorities} & 2D Table of int & Properties of individual textures. \\
+		\hline
+		{\ttfamily terrain\_tags} & 2D Table of int & Properties of individual textures. \\
+		\hline
+	\end{tabular}
+
+	\item \verb|Table| : Used for 2D/3D arrays, with 3 class mathods to retrieve dimensions. $x$ and $y$ correspond to their GUI map representation and $z$ the map layers (background, intermediate, foreground).
+	
+\end{itemize}
+
+
 
 
 
