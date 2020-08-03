@@ -21,7 +21,7 @@ def tokenize(str):
         #('Command', (r'',)),
         ('Marker', (r'(\[event\])|(\[page\])|(\[end\])',)),
         ('Indent', (r'(\[INDENT\])|(\[DEDENT\])',)),
-        ('Script', (r's\:[a-z][a-z\_0-9\.]*',)),
+        ('Script', (r's\:[a-z][a-z\_0-9\.\(\)\:]*',)),
         ('Symbol', (r'\:[a-z][a-z\_0-9]*',)),
         ('Bool', (r'(True)|(False)',)), # basically, a string without quotemarks, delimited by spaces
         ('Word', (r'[a-z][a-z\_0-9]*',)), # basically, a string without quotemarks, delimited by spaces
@@ -235,11 +235,11 @@ def parse( tokens ):
     return e
 
 def boolean_converter( s ):
-    return s.replace(':ON','True').replace(':OFF','False')
+    return s.replace(':ON','True').replace(':OFF','False').replace('true','True').replace('false','False')
 
 if __name__ == "__main__":
     cwd = pathlib.Path()
-    events = list(cwd.glob('Map000_*'))
+    events = list(cwd.glob('Map001_*'))
     pprint(events)
 
     for event in events:

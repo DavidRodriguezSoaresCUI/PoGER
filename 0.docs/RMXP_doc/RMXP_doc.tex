@@ -133,7 +133,7 @@
 \usepackage{multirow,booktabs} % https://jdhao.github.io/2019/08/27/latex_table_with_booktabs/
 
 \newcounter{codeID}[section]
-\newcommand{\nextcodeID}{\refstepcounter{codeID}\multirow{4}{*}{\thecodeID}}
+\newcommand{\nextcodeID}{\refstepcounter{codeID}\multirow{3}{*}{\thecodeID}}
 
 \usepackage{longtable}
 
@@ -368,451 +368,440 @@ Implementation details :
 	\nextcodeID & Description & Nothing, empty command or end of the event command list \\
 	& Parameters & None \\
 	& Notes & Will not be represented \\
-	& Representation & None \\
+	%& Representation & None \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move to the South \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[1] \\
-	& Representation & "Move, S" \\
+	%& Representation & "Move, S" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move to the West \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[1] \\
-	& Representation & "Move, W" \\
+	%& Representation & "Move, W" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move to the East \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[1] \\
-	& Representation & "Move, E" \\
+	%& Representation & "Move, E" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move to the North \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[1] \\
-	& Representation & "Move, N" \\
+	%& Representation & "Move, N" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move to the SouthWest \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[1] \\
-	& Representation & "Move, SW" \\
+	%& Representation & "Move, SW" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move to the SouthEast \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[1] \\
-	& Representation & "Move, SE" \\
+	%& Representation & "Move, SE" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move to the NorthWest \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[1] \\
-	& Representation & "Move, NW" \\
+	%& Representation & "Move, NW" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move to the NorthEast \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[1] \\
-	& Representation & "Move, NE" \\
+	%& Representation & "Move, NE" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move at random (N,E,S,W) \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[1] \\
 	& Representation & "Move, R" \\
 	\hline
-\end{tabular}
-
-\newpage
-\begin{tabular}{|c a l|}
-	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move towards player \\
 	& Parameters & None \\
 	& Notes & See footnotes\footnotemark[1]\textsuperscript{,}\footnotemark[3] \\
-	& Representation & "Move, TODO" \\
+	%& Representation & "Move, TODO" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Move away from player \\
 	& Parameters & None \\
 	& Notes & See footnotes\footnotemark[1]\textsuperscript{,}\footnotemark[3] \\
-	& Representation & "Move, TODO" \\
+	%& Representation & "Move, TODO" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Take 1 step forward \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[1] \\
-	& Representation & "Move, TODO" \\
+	%& Representation & "Move, TODO" \\
+	\hline
+\end{tabular}
+
+
+\newpage
+\begin{tabular}{|c a l|}
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Take 1 step backward \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[1] \\
-	& Representation & "Move, TODO" \\
+	%& Representation & "Move, TODO" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Jump to relative coordinates on the same map \\
 	& Parameters & [2] - \textbf{0}:deltaX \verb|[signed integer]|, \ \textbf{1}:deltaY \verb|[signed integer]| \\
 	& Notes &  \\
-	& Representation & "Jump, TODO" \\
+	%& Representation & "Jump, TODO" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Wait n seconds \\
 	& Parameters & [1] - \textbf{0}:number of seconds to wait $n$ \verb|[integer|$\;\in \mathbb{N}^*$\verb|]| \\
 	& Notes & Typically $n==2$, but values up to 15 were found in PE. \\
-	& Representation & "Wait seconds, $n$" \\
+	%& Representation & "Wait seconds, $n$" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn towards South \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[2] \\
-	& Representation & "Turn, S" \\
+	%& Representation & "Turn, S" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn towards West \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[2] \\
-	& Representation & "Turn, W" \\
+	%& Representation & "Turn, W" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn towards East \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[2] \\
-	& Representation & "Turn, E" \\
+	%& Representation & "Turn, E" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn towards North \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[2] \\
-	& Representation & "Turn, N" \\
+	%& Representation & "Turn, N" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn  \degrees{90} right, relative to current position \\
 	& Parameters & None \\
 	& Notes & See footnote\footnotemark[2] \\
-	& Representation & "Turn, R" \\
+	%& Representation & "Turn, R" \\
+	\hline
+	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn  \degrees{90} left, relative to current position \\
+	& Parameters & None \\
+	& Notes & See footnote\footnotemark[2] \\
+	%& Representation & "Turn, L" \\
+	\hline
+	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn  \degrees{180} \\
+	& Parameters & None \\
+	& Notes & See footnote\footnotemark[2] \\
+	%& Representation & "Turn, 180" \\
+	\hline
+	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn  \degrees{90} to the left or right, at random \\
+	& Parameters & None \\
+	& Notes & See footnote\footnotemark[2] \\
+	%& Representation & "Turn, 90random" \\
+	\hline
+	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn  at random (\degrees{90} or \degrees{180}) \\
+	& Parameters & None \\
+	& Notes & See footnote\footnotemark[2] \\
+	%& Representation & "Turn, random" \\
+	\hline
+	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn towards player \\
+	& Parameters & None \\
+	& Notes & See footnotes\footnotemark[2]\textsuperscript{,}\footnotemark[3] \\
+	%& Representation & "Turn, TODO" \\
+	\hline
+	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn away from player \\
+	& Parameters & None \\
+	& Notes & See footnotes\footnotemark[2]\textsuperscript{,}\footnotemark[3] \\
+	%& Representation & "Turn, TODO" \\
 	\hline
 \end{tabular}
 
 \newpage
 \begin{tabular}{|c a l|}
-	\hline
-	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn  \degrees{90} left, relative to current position \\
-	& Parameters & None \\
-	& Notes & See footnote\footnotemark[2] \\
-	& Representation & "Turn, L" \\
-	\hline
-	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn  \degrees{180} \\
-	& Parameters & None \\
-	& Notes & See footnote\footnotemark[2] \\
-	& Representation & "Turn, 180" \\
-	\hline
-	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn  \degrees{90} to the left or right, at random \\
-	& Parameters & None \\
-	& Notes & See footnote\footnotemark[2] \\
-	& Representation & "Turn, 90random" \\
-	\hline
-	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn  at random (\degrees{90} or \degrees{180}) \\
-	& Parameters & None \\
-	& Notes & See footnote\footnotemark[2] \\
-	& Representation & "Turn, random" \\
-	\hline
-	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn towards player \\
-	& Parameters & None \\
-	& Notes & See footnotes\footnotemark[2]\textsuperscript{,}\footnotemark[3] \\
-	& Representation & "Turn, TODO" \\
-	\hline
-	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn away from player \\
-	& Parameters & None \\
-	& Notes & See footnotes\footnotemark[2]\textsuperscript{,}\footnotemark[3] \\
-	& Representation & "Turn, TODO" \\
 	\hline
 	\setcounter{codeID}{32}
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn ON walking animation \\
 	& Parameters & None \\
 	& Notes &  \\
-	& Representation & "Animation, ON" \\
+	%& Representation & "Animation, ON" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn OFF walking animation \\
 	& Parameters & None \\
 	& Notes &  \\
-	& Representation & "Animation, OFF" \\
+	%& Representation & "Animation, OFF" \\
 	\hline
 	\setcounter{codeID}{36}
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn ON "through" \\
 	& Parameters & None \\
 	& Notes & \parbox{.7\linewidth}{Equivalent to activating "walk through walls", making it possible to walk through impassable tiles/characters.} \\
-	& Representation & "WTW, ON" \\
+	%& Representation & "WTW, ON" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Turn OFF "through" \\
 	& Parameters & None \\
 	& Notes & Equivalent to deactivating "walk through walls". \\
-	& Representation & "WTW, OFF" \\
+	%& Representation & "WTW, OFF" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Always on top ON \\
 	& Parameters & None \\
 	& Notes & \parbox{.7\linewidth}{Elevate the display priority, therefore bringing the event graphic to the forefront (above any tile/character)} \\
-	& Representation & "AOT, ON" \\
-	\hline
-\end{tabular}
-
-\newpage
-\begin{tabular}{|c a l|}
+	%& Representation & "AOT, ON" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Always on top OFF \\
 	& Parameters & None \\
 	& Notes &  \\
-	& Representation & "AOT, OFF" \\
+	%& Representation & "AOT, OFF" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Change event's graphic \\
 	& Parameters & TODO \\
 	& Notes &  \\
-	& Representation & "TODO" \\
+	%& Representation & "TODO" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Change event's graphic opacity \\
 	& Parameters & [1] - \textbf{0}:new opacity value $n$ \verb|[integer 0-255]| \\
 	& Notes &  \\
-	& Representation & "Opacity, $n$" \\
+	%& Representation & "Opacity, $n$" \\
 	\hline
 	\setcounter{codeID}{43}
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Play a sound effect \\
 	& Parameters & TODO \\ %[1] - \textbf{0}:sound effect \verb|[RPG::AudioFile]| \\
 	& Notes &  \\
-	& Representation & "Play SE, TODO" \\
+	%& Representation & "Play SE, TODO" \\
 	\hline
-	\multirow{4}{*}[-1mm]{101} & Description & \verb|RPG::EventCommand| - Show text \\
+	\multirow{3}{*}[-1mm]{101} & Description & \verb|RPG::EventCommand| - Show text \\
 	& Parameters & [1] - \textbf{0}:text $s$ \verb|[String]| \\
 	& Notes & \parbox{.7\linewidth}{$s$ must be properly double-quoted and formatted (inner double-quotes and backslashes must be escaped).} \\
-	& Representation & "Show Text, $s$" \\
+	%& Representation & "Show Text, $s$" \\
 	\hline
-	\multirow{4}{*}{401} & Description & \verb|RPG::EventCommand| - Show text (continued) \\
+	\multirow{3}{*}{401} & Description & \verb|RPG::EventCommand| - Show text (continued) \\
 	& Parameters & [1] - \textbf{0}:text $s$ \verb|[String]| \\
 	& Notes & Continuation of 101. \\
-	& Representation & See footnote\footnotemark[4] \\
+	%& Representation & See footnote\footnotemark[4] \\
 	\hline
-	\multirow{4}{*}{102} & Description & \verb|RPG::EventCommand| - Show choices \\
+	\multirow{3}{*}{102} & Description & \verb|RPG::EventCommand| - Show choices \\
 	& Parameters & [2] - \textbf{0}:array of size $n$ \verb|[Array of Strings]|, \ \textbf{1}:cancel behaviour \verb|[integer 0-4]| \\
 	& Notes & \parbox{.7\linewidth}{Displays up to 4 selectable options in a message window. Cancel behaviour : 0 disallow canceling, 1-4$\leq n$ selects choice by default.} \\
-	& Representation & "Choose, \{0\}, default=\{1\}" \\
+	%& Representation & "Choose, \{0\}, default=\{1\}" \\
 	\hline
-	\multirow{4}{*}[-1mm]{104} & Description & \verb|RPG::EventCommand| - Change text options \\
+	\multirow{3}{*}[-1mm]{104} & Description & \verb|RPG::EventCommand| - Change text options \\
 	& Parameters & [2] - \textbf{0}:position $p$ \verb|[integer 0-2]|, \ \textbf{1}:window border $b$ \verb|[integer 0-1]| \\
 	& Notes & \parbox{.7\linewidth}{Sets message window position and border. $p$ follows "common relation 1", $b$ follows "common relation 2"} \\
-	& Representation & "Change text options, position=\{0\}.toString(), border=\{1\}.toString()" \\
+	%& Representation & "Change text options, position=\{0\}.toString(), border=\{1\}.toString()" \\
 	\hline
-	\multirow{4}{*}[-1mm]{106} & Description & \verb|RPG::EventCommand| - Wait \\
+	\multirow{3}{*}[-1mm]{106} & Description & \verb|RPG::EventCommand| - Wait \\
 	& Parameters & [1] - \textbf{0}:number of frames to wait $n$ \verb|[integer|$\;\in \mathbb{N}^*$\verb|]| \\
 	& Notes & \parbox{.7\linewidth}{Conversion to milliseconds chosen for its more precise and general use : $m=n*1000/20\equiv n*50$, TODO:research its use}  \\
-	& Representation & "Wait ms, $m$" \\
+	%& Representation & "Wait ms, $m$" \\
 	\hline
-	\multirow{4}{*}{108} & Description & \verb|RPG::EventCommand| - Comment \\
+\end{tabular}
+
+\newpage
+\begin{tabular}{|c a l|}
+	\hline
+	\multirow{3}{*}{108} & Description & \verb|RPG::EventCommand| - Comment \\
 	& Parameters & [1] - \textbf{0}:comment text $s$ \verb|[String]| \\
 	& Notes & Has no effect. TODO:research link to particle effects. \\
-	& Representation & "\# $s$" \\
+	%& Representation & "\# $s$" \\
 	\hline
-\end{tabular}
-
-\newpage
-\begin{tabular}{|c a l|}
-	\hline
-	\multirow{4}{*}{408} & Description & \verb|RPG::EventCommand| - Comment (continued) \\
+	\multirow{3}{*}{408} & Description & \verb|RPG::EventCommand| - Comment (continued) \\
 	& Parameters & [1] - \textbf{0}:comment text $s$ \verb|[String]| \\
 	& Notes & Happens after a 108. \\
-	& Representation & "\# $s$" \\
+	%& Representation & "\# $s$" \\
 	\hline
-	\multirow{4}{*}{111} & Description & \verb|RPG::EventCommand| - Conditional branch \\
+	\multirow{3}{*}{111} & Description & \verb|RPG::EventCommand| - Conditional branch \\
 	& Parameters & See \hyperref[sec:condbranch]{"Conditional branch" section}. \\
 	& Notes & Complex but essential command. \\
-	& Representation & "If, \{condition\}" \\
+	%& Representation & "If, \{condition\}" \\
 	\hline
-	\multirow{4}{*}{112} & Description & \verb|RPG::EventCommand| - Loop \\
+	\multirow{3}{*}{112} & Description & \verb|RPG::EventCommand| - Loop \\
 	& Parameters & None \\
 	& Notes & Loops over commands until broken. TODO:research usage \\
-	& Representation & "Loop" \\
+	%& Representation & "Loop" \\
 	\hline
-	\multirow{4}{*}{113} & Description & \verb|RPG::EventCommand| - Break loop \\
+	\multirow{3}{*}{113} & Description & \verb|RPG::EventCommand| - Break loop \\
 	& Parameters & None \\
 	& Notes & Escape innermost loop. TODO:research usage \\
-	& Representation & "Break" \\
+	%& Representation & "Break" \\
 	\hline
-	\multirow{4}{*}{115} & Description & \verb|RPG::EventCommand| - Exit Event Processing \\
+	\multirow{3}{*}{115} & Description & \verb|RPG::EventCommand| - Exit Event Processing \\
 	& Parameters & None \\
 	& Notes & TODO:research usage \\
-	& Representation & TODO \\
+	%& Representation & TODO \\
 	\hline
-	\multirow{4}{*}{118} & Description & \verb|RPG::EventCommand| - Label \\
+	\multirow{3}{*}{118} & Description & \verb|RPG::EventCommand| - Label \\
 	& Parameters & [1] - \textbf{0}:label name $s$ \verb|[String]| \\
 	& Notes & Sets a label to allow jumping to. \\
-	& Representation & "Label, $s$" \\
+	%& Representation & "Label, $s$" \\
 	\hline
-	\multirow{4}{*}{119} & Description & \verb|RPG::EventCommand| - Jump to Label \\
+	\multirow{3}{*}{119} & Description & \verb|RPG::EventCommand| - Jump to Label \\
 	& Parameters & [1] - \textbf{0}:label name $s$ \verb|[String]| \\
 	& Notes & Jumps to a label. \\
-	& Representation & "Goto, $s$" \\
+	%& Representation & "Goto, $s$" \\
 	\hline
-	\multirow{4}{*}[-1mm]{121} & Description & \verb|RPG::EventCommand| - Control switches \\
+	\multirow{3}{*}[-1mm]{121} & Description & \verb|RPG::EventCommand| - Control switches \\
 	& Parameters & [3] - \textbf{0}:starting switch $ssa$ \verb|[integer]|, \ \textbf{0}:starting switch $ssz$ \verb|[integer]|, \ \textbf{0}:new state $n$ \verb|[integer]| \\
 	& Notes & \parbox{.7\linewidth}{Batch control is unused in PE, therefore deprecated. $n$ follows "common relation 3".} \\
-	& Representation & "Control Switch, $ssa$.toString(), $n$.toString()" \\
+	%& Representation & "Control Switch, $ssa$.toString(), $n$.toString()" \\
 	\hline
-	\multirow{4}{*}{122} & Description & \verb|RPG::EventCommand| - Control variables \\
+	\multirow{3}{*}{122} & Description & \verb|RPG::EventCommand| - Control variables \\
 	& Parameters & See \hyperref[sec:varctrl]{"Control variables" section}. \\
 	& Notes & Batch control is unused in PE, therefore deprecated. \\
-	& Representation & "Control Variable, TODO" \\
+	%& Representation & "Control Variable, TODO" \\
 	\hline
-	\multirow{4}{*}{123} & Description & \verb|RPG::EventCommand| - Control Self Switch \\
+	\multirow{3}{*}{123} & Description & \verb|RPG::EventCommand| - Control Self Switch \\
 	& Parameters & [2] - \textbf{0}:SS character $s$ \verb|[String of length 1]|, \ \textbf{1}:new state $n$ \verb|[integer 0-1]| \\
 	& Notes & $n$ follows "common relation 3". \\
-	& Representation & "Control SS, $s$, $n$.toString()" \\
+	%& Representation & "Control SS, $s$, $n$.toString()" \\
 	\hline
-\end{tabular}
-
-\newpage
-\begin{tabular}{|c a l|}
-	\hline
-	\multirow{4}{*}{125} & Description & \verb|RPG::EventCommand| - Change Gold \\
+	\multirow{3}{*}{125} & Description & \verb|RPG::EventCommand| - Change Gold \\
 	& Parameters & [3] - \textbf{0}:operation $o$ \verb|[integer 0-1]|, \ \textbf{1}:operand $n$ \verb|[integer 0-1]|, \ \textbf{2}:value $v$ \verb|[integer]| \\
 	& Notes & Values of $n$: 0:$v$ is a constant, 1:$v$ is a variable(id). $o$ follows "common relation 4" \\
-	& Representation & "Control Variable, :Money $o$.toString() $v$.toString()" \\
+	%& Representation & "Control Variable, :Money $o$.toString() $v$.toString()" \\
 	\hline
 	\multirow{5}{*}[-1mm]{201} & Description & \verb|RPG::EventCommand| - Transfer Player \\
 	& \multirow{2}{*}[1mm]{Parameters} & [6] - \textbf{1}:map $m$ \verb|[integer]|, \ \textbf{2}:coordinate $x$ \verb|[integer]|, \ \textbf{3}:coordinate $y$ \verb|[integer]|, \\
 	& {} & \textbf{4}:player direction $d$ \verb|[integer]|, \ \textbf{5}:fading $f$ \verb|[integer]|. \\
 	& Notes & \{0\} must be 0, 1 unused in PE. $d$ follows "common relation 5". $f$ follows "common relation 3". \\
-	& Representation & "Transfer Player, destination=($m$,$x$,$y$), direction=$d$.toString(), fading=$f$.toString()" \\
+	%& Representation & "Transfer Player, destination=($m$,$x$,$y$), direction=$d$.toString(), fading=$f$.toString()" \\
 	\hline
-	\multirow{4}{*}[-4mm]{202} & Description & \verb|RPG::EventCommand| - Set Event Location \\
+\end{tabular}
+
+\newpage
+\begin{tabular}{|c a l|}
+	\hline
+	\multirow{3}{*}[-4mm]{202} & Description & \verb|RPG::EventCommand| - Set Event Location \\
 	& \multirow{2}{*}[1mm]{Parameters} & [5] - \textbf{0}:event id $e$ \verb|[integer]|, \ \textbf{2}:coordinate $x$ \verb|[integer]|, \\
 	& & \textbf{3}:coordinate $y$ \verb|[integer]|, \ \textbf{4}:direction $d$ \verb|[integer]| \\
 	& Notes & \parbox{.7\linewidth}{Change an event's location on the current map. \{1\} must be 0, other values unused in PE. $d$ follows "common relation 5".} \\
-	& Representation & "Move Event, $e$.toString(), ($x$,$y$), direction=$d$.toString()" \\
+	%& Representation & "Move Event, $e$.toString(), ($x$,$y$), direction=$d$.toString()" \\
 	\hline
-	\multirow{4}{*}{208} & Description & \verb|RPG::EventCommand| - Change Transparency Flag \\
+	\multirow{3}{*}{208} & Description & \verb|RPG::EventCommand| - Change Transparency Flag \\
 	& Parameters & [2] - \textbf{0}:flag $d$ \verb|[integer 0-1]| \\
 	& Notes & When transparency is set, the graphic isn't displayed. $d$ follows "common relation 3". \\
-	& Representation & "Set Transparency, $d$.toString()" \\
+	%& Representation & "Set Transparency, $d$.toString()" \\
 	\hline
-	\multirow{4}{*}{209} & Description & \verb|RPG::EventCommand| - Set Move Route \\
+	\multirow{3}{*}{209} & Description & \verb|RPG::EventCommand| - Set Move Route \\
 	& Parameters & [2] - \textbf{0}:target id $d$ \verb|[integer]|, \ \textbf{1}:\verb|RPG::MoveRoute| \\
 	& Notes &  \\
-	& Representation & "Set Move Route, $d$.toString()" \\
+	%& Representation & "Set Move Route, $d$.toString()" \\
 	\hline
-	\multirow{4}{*}[-1mm]{210} & Description & \verb|RPG::EventCommand| - Wait for Move's Completion \\
+	\multirow{3}{*}[-1mm]{210} & Description & \verb|RPG::EventCommand| - Wait for Move's Completion \\
 	& Parameters & None \\
 	& Notes & \parbox{.7\linewidth}{To be put after a Set Move Route. Without it, further commands can be executed before the end of the walking animation.} \\
-	& Representation & "Wait for move route completion" \\
+	%& Representation & "Wait for move route completion" \\
 	\hline
-	\multirow{4}{*}[-1mm]{221} & Description & \verb|RPG::EventCommand| - Prepare for transition \\
+	\multirow{3}{*}[-1mm]{221} & Description & \verb|RPG::EventCommand| - Prepare for transition \\
 	& Parameters & None \\
 	& Notes & \parbox{.7\linewidth}{Freezes the screen, so there's nothing moving during the transition. To be fused with Execute Transition.} \\
-	& Representation & \\
+	%& Representation & \\
 	\hline
-	\multirow{4}{*}{222} & Description & \verb|RPG::EventCommand| - Execute Transition \\
+	\multirow{3}{*}{222} & Description & \verb|RPG::EventCommand| - Execute Transition \\
 	& Parameters & [1] - \textbf{0}:transition file name $s$ \verb|[String]| \\
 	& Notes & Plays the animation. TODO:research how transition work. \\
-	& Representation & "Transition, $s$, freeze=\{True/False\}" \\
+	%& Representation & "Transition, $s$, freeze=\{True/False\}" \\
 	\hline
-	\multirow{4}{*}{223} & Description & \verb|RPG::EventCommand| - Change Screen Color Tone \\
+	\multirow{3}{*}{223} & Description & \verb|RPG::EventCommand| - Change Screen Color Tone \\
 	& Parameters & [2] - \textbf{0}:\verb|RPG::Tone|, \ \textbf{1}:duration(frames) $d$ \verb|[integer]| \\
 	& Notes & Typically used in fade out (to black/white)/fade in cycles. $d$ to be changed into ms. \\
-	& Representation & "Change Screen Color Tone, $d$, \{0\}.toString()", "Fadein, $d$", "Fadeout, $d$, \{color\}" \\
+	%& Representation & "Change Screen Color Tone, $d$, \{0\}.toString()", "Fadein, $d$", "Fadeout, $d$, \{color\}" \\
 	\hline
-	\multirow{4}{*}[-1mm]{225} & Description & \verb|RPG::EventCommand| - Screen Shake \\
+	\multirow{3}{*}[-1mm]{225} & Description & \verb|RPG::EventCommand| - Screen Shake \\
 	& Parameters & [3] - \textbf{0}:shake power \verb|[integer]|, \ \textbf{1}:shake speed \verb|[integer]|, \ \textbf{2}:duration(frames) $d$ \verb|[integer]| \\
 	& Notes & \parbox{.7\linewidth}{Scarcely used in PE, \{0\} and \{1\} are not well defined so they can be deprecated. $d$ to be changed into ms.} \\
-	& Representation & "Shake Screen, $d$" \\
+	%& Representation & "Screen Shake, $d$" \\
 	\hline
-\end{tabular}
-
-\newpage
-\begin{tabular}{|c a l|}
-	\hline
-	\multirow{4}{*}{231} & Description & \verb|RPG::EventCommand| - Show Picture \\
+	\multirow{3}{*}{231} & Description & \verb|RPG::EventCommand| - Show Picture \\
 	& Parameters & See \hyperref[sec:showpicture]{"Show Picture" section}. \\
 	& Notes &  \\
-	& Representation &  \\
+	%& Representation &  \\
 	\hline
-	\multirow{4}{*}{232} & Description & \verb|RPG::EventCommand| - Move Picture \\
+	\multirow{3}{*}{232} & Description & \verb|RPG::EventCommand| - Move Picture \\
 	& Parameters & See \hyperref[sec:movepicture]{"Move Picture" section}. \\
 	& Notes &  \\
-	& Representation & \\
+	%& Representation & \\
 	\hline
-	\multirow{4}{*}{235} & Description & \verb|RPG::EventCommand| - Erase Picture \\
+	\multirow{3}{*}{235} & Description & \verb|RPG::EventCommand| - Erase Picture \\
 	& Parameters & [1] - \textbf{0}:picture id \verb|[integer]| \\
 	& Notes &  \\
-	& Representation & TODO \\
+	%& Representation & TODO \\
 	\hline
-	\multirow{4}{*}{236} & Description & \verb|RPG::EventCommand| - Set Weather effect \\
+	\multirow{3}{*}{236} & Description & \verb|RPG::EventCommand| - Set Weather effect \\
 	& Parameters & [3] - \textbf{0}:weather id \verb|[integer]|, \ \textbf{1}:power \verb|[integer]|, \ \textbf{2}:duration (frames) \verb|[integer]| \\
 	& Notes & \textit{power} to be removed. TODO:research how weather is generated. \\
-	& Representation & TODO \\
+	%& Representation & TODO \\
 	\hline
-	\multirow{4}{*}{241} & Description & \verb|RPG::EventCommand| - Play BGM \\
+	\multirow{3}{*}{241} & Description & \verb|RPG::EventCommand| - Play BGM \\
 	& Parameters & [1] - \textbf{0}:audio $a$ \verb|[AudioFile]| \\
 	& Notes &  \\
-	& Representation & "Play BGM, $a$.toString()" \\
+	%& Representation & "Play BGM, $a$.toString()" \\
 	\hline
-	\multirow{4}{*}{242} & Description & \verb|RPG::EventCommand| - Fade Out BGM \\
+	\multirow{2}{*}{242} & Description & \verb|RPG::EventCommand| - Fade Out BGM \\
 	& Parameters & [1] - \textbf{0}:duration (seconds) $n$ \verb|[integer]| \\
-	& Notes &  \\
-	& Representation & "Fade Out BGM, $n$" \\
-	\hline
-	\multirow{4}{*}{247} & Description & \verb|RPG::EventCommand| - Memorize BGM/BGS \\
-	& Parameters & None \\
-	& Notes &  \\
-	& Representation & "Memorize BGM/BGS" \\
-	\hline
-	\multirow{4}{*}{248} & Description & \verb|RPG::EventCommand| - Restore BGM/BGS \\
-	& Parameters & None \\
-	& Notes &  \\
-	& Representation & "Restore BGM/BGS" \\
-	\hline
-	\multirow{4}{*}{249} & Description & \verb|RPG::EventCommand| - Play ME \\
-	& Parameters & [1] - \textbf{0}:audio $a$ \verb|[AudioFile]| \\
-	& Notes &  \\
-	& Representation & "Play ME, $a$.toString()" \\
-	\hline
-	\multirow{4}{*}{250} & Description & \verb|RPG::EventCommand| - Play SE \\
-	& Parameters & [1] - \textbf{0}:audio $a$ \verb|[AudioFile]| \\
-	& Notes &  \\
-	& Representation & "Play SE, $a$.toString()" \\
+	%& Notes &  \\
+	%& Representation & "Fade Out BGM, $n$" \\
 	\hline
 \end{tabular}
 
 \newpage
 \begin{tabular}{|c a l|}
 	\hline
-	\multirow{4}{*}{314} & Description & \verb|RPG::EventCommand| - Restore All \\
+	\multirow{3}{*}{247} & Description & \verb|RPG::EventCommand| - Memorize BGM/BGS \\
+	& Parameters & None \\
+	& Notes &  \\
+	%& Representation & "Memorize BGM/BGS" \\
+	\hline
+	\multirow{3}{*}{248} & Description & \verb|RPG::EventCommand| - Restore BGM/BGS \\
+	& Parameters & None \\
+	& Notes &  \\
+	%& Representation & "Restore BGM/BGS" \\
+	\hline
+	\multirow{3}{*}{249} & Description & \verb|RPG::EventCommand| - Play ME \\
+	& Parameters & [1] - \textbf{0}:audio $a$ \verb|[AudioFile]| \\
+	& Notes &  \\
+	%& Representation & "Play ME, $a$.toString()" \\
+	\hline
+	\multirow{3}{*}{250} & Description & \verb|RPG::EventCommand| - Play SE \\
+	& Parameters & [1] - \textbf{0}:audio $a$ \verb|[AudioFile]| \\
+	& Notes &  \\
+	%& Representation & "Play SE, $a$.toString()" \\
+	\hline
+	\multirow{3}{*}{314} & Description & \verb|RPG::EventCommand| - Restore All \\
 	& Parameters & [1] - \textbf{0}:actor id \verb|[integer]| \\
 	& Notes & Equivalent to healing and restoring PPs. Ignore parameter. \\
-	& Representation & "Restore All" \\
+	%& Representation & "Restore All" \\
 	\hline
-	\multirow{4}{*}{354} & Description & \verb|RPG::EventCommand| - Return to Title Screen \\
+	\multirow{3}{*}{354} & Description & \verb|RPG::EventCommand| - Return to Title Screen \\
 	& Parameters & None \\
 	& Notes &  \\
-	& Representation & "Return to Title Screen" \\
+	%& Representation & "Return to Title Screen" \\
 	\hline
-	\multirow{4}{*}{355} & Description & \verb|RPG::EventCommand| - Script \\
+	\multirow{3}{*}{355} & Description & \verb|RPG::EventCommand| - Script \\
 	& Parameters & [1] - \textbf{0}:script string \verb|[String]| \\
 	& Notes & To be overhauled. \\
-	& Representation & TODO \\
+	%& Representation & TODO \\
 	\hline
-	\multirow{4}{*}{655} & Description & \verb|RPG::EventCommand| - Script (continued) \\
+	\multirow{3}{*}{655} & Description & \verb|RPG::EventCommand| - Script (continued) \\
 	& Parameters & [1] - \textbf{0}:script string \verb|[String]| \\
 	& Notes & To be overhauled. \\
-	& Representation & TODO \\
+	%& Representation & TODO \\
 	\hline
-	\multirow{4}{*}{402} & Description & \verb|RPG::EventCommand| - When \\
+	\multirow{3}{*}{402} & Description & \verb|RPG::EventCommand| - When \\
 	& Parameters & [1] - \textbf{0}:choice id \verb|[integer]|, \ \textbf{1}:choice string equivalent \verb|[integer]| \\
 	& Notes & Used with choices and conditional branches, has code block per choice. \\
-	& Representation & TODO \\
+	%& Representation & TODO \\
 	\hline
-	\multirow{4}{*}{404} & Description & \verb|RPG::EventCommand| - End of When \\
+	\multirow{3}{*}{404} & Description & \verb|RPG::EventCommand| - End of When \\
 	& Parameters & None \\
 	& Notes &  \\
-	& Representation & None \\
+	%& Representation & None \\
 	\hline
-	\multirow{4}{*}{411} & Description & \verb|RPG::EventCommand| - Else \\
+	\multirow{3}{*}{411} & Description & \verb|RPG::EventCommand| - Else \\
 	& Parameters & None \\
 	& Notes & Used with conditional branch \verb|111|. \\
-	& Representation & TODO \\
+	%& Representation & TODO \\
 	\hline
-	\multirow{4}{*}[-1mm]{412} & Description & \verb|RPG::EventCommand| - Branch End \\
+	\multirow{3}{*}[-1mm]{412} & Description & \verb|RPG::EventCommand| - Branch End \\
 	& Parameters & None \\
 	& Notes & \parbox{.7\linewidth}{End of a code block (as result of branching). TODO:investigate whether it is present in every code block and if it should be represented (is indentation sufficient?).} \\
-	& Representation & TODO \\
+	%& Representation & TODO \\
 	\hline
-	\multirow{4}{*}{411} & Description & \verb|RPG::EventCommand| - Repeat above \\
+	\multirow{3}{*}{411} & Description & \verb|RPG::EventCommand| - Repeat above \\
 	& Parameters & None \\
 	& Notes & Marks end of Loop \verb|112| code block. \\
-	& Representation & TODO \\
+	%& Representation & TODO \\
 	\hline
 \end{tabular}}
-
-Current representation has $\approx$39 instructions ($>50\%$ reduction !).
 
 \footnotetext[1]{Movements consolidated with new \textit{Move} command with argument.}
 \footnotetext[2]{Turs consolidated with new \textit{Turn} command with argument.}
@@ -1058,10 +1047,10 @@ Particular decisions :
 	\item Commands have parameters (see examples) :
 	\begin{itemize}
 		\item No parameter : command line must contain the command keyword only.
-		\item 1 parameter : command line must contain the command keyword, plus the expected parameter value (no parameter name; parameter may be facultative)
+		\item 1 parameter : command line must contain the command keyword, plus the expected parameter \verb|parameter_name = parameter_value| (parameter name recommended but not mandatory; parameter may be facultative)
 		\item n$>$1 parameters : command line must contain the command keyword, and the expected parameters \verb|parameter_name = parameter_value| as a comma-separated list (no brackets; parameter name mandatory; parameter may be facultative).
 		\item Note on \textit{facultative} parameters : marked with a \verb|*|.
-		\item Strictly equivalent : \verb|:ON|$\equiv$\verb|True|, \verb|:OFF|$\equiv$\verb|False|
+		\item Strictly equivalent : '\verb|:ON|'$\equiv$'\verb|True|', '\verb|:OFF|'$\equiv$'\verb|False|'
 	\end{itemize}
 \end{itemize}
 
@@ -1142,26 +1131,27 @@ Particular decisions :
 		& Example & "\verb|Goto "here"|" \\
 		\hline
 		& Description & \verb|Transfer Player| - Teleport player. \\
-		& Parameters & [1] - \textbf{0}: \verb|map* - [String]|, \ \textbf{1}: \verb|x - [int]|, \ \textbf{2}: \verb|y - [int]| \\
+		& Parameters & [5] - \textbf{0}: \verb|map* - [String]|, \ \textbf{1}: \verb|x - [int]|, \ \textbf{2}: \verb|y - [int]| \\
 		&  & \textbf{3}: \verb|direction* - [String]|, \ \textbf{4}: \verb|fading* - [:ON/:OFF]| \\
 		& Notes & \verb|map| defaults to the one the player is in. \verb|direction|$\ \in \ $\{S,W,E,N,K\}, defaults to "K". \\
 		&  &  \verb|map| defaults to (TODO). \\
 		& Example & "\verb|Transfer Player map="Kurt's house", x=2, y=4|" \\
 		\hline
-		& Description & \verb|Set Move Route| \\
-		& Parameters & TODO \\
-		& Notes & TODO. \\
-		& Example & TODO \\
+		& Description & \verb|Set Move Route| - Set a sequence of commands, to be executed by a set event \\
+		& Parameters & [1] - \textbf{0}: \verb|event* - [String]| \\
+		& Notes & \verb|event| defaults to self. Must be followed by a \textit{code block}.  \\
+		&  & Used to move other events or to semantically indicate a "move sequence/route". \\
+		& Example & See "Move Route" section below. \\
 		\hline
-		& Description & \verb|Shake Screen| \\
-		& Parameters & TODO \\
-		& Notes & TODO. \\
-		& Example & TODO \\
+		& Description & \verb|Screen Shake| \\
+		& Parameters & [1] - \textbf{0}: \verb|duration - [int]| \\
+		& Notes & \verb|duration| is expressed in milliseconds. \\
+		& Example & "\verb|Screen Shake 600|" \\
 		\hline
-		& Description & \verb|Transition| \\
-		& Parameters & TODO \\
-		& Notes & TODO. \\
-		& Example & TODO \\
+		& Description & \verb|Transition| - Execute transition visual effect. \\
+		& Parameters & [2] - \textbf{0}: \verb|name - [String]|, \ \textbf{1}: \verb|freeze - [True/False]| \\
+		& Notes & If \verb|freeze| is enabled, stops every animation. \\
+		& Example & "\verb|Transition name="battle1", freeze=True|" \\
 		\hline
 		& Description & \verb|Show Picture| \\
 		& Parameters & TODO \\
@@ -1178,10 +1168,11 @@ Particular decisions :
 		& Notes & TODO. \\
 		& Example & TODO \\
 		\hline
-		& Description & \verb|Set weather| \\
-		& Parameters & TODO \\
-		& Notes & TODO. \\
-		& Example & TODO \\
+		& Description & \verb|Set weather| - Set overworld's weather. \\
+		& Parameters & [2] - \textbf{0}: \verb|name - [String]|, \ \textbf{1}: \verb|duration* - [int]| \\
+		& Notes & \verb|duration| defaults to infinite duration. The effect scope of \verb|Set weather| is to be determined (for \\
+		&  & current map, radius on the current map, across maps). Provisionally, it's limited to current map. \\
+		& Example & "\verb|Set weather name="Rainy", duration=12000|" \\
 		\hline
 	\end{tabular}
 }
@@ -1192,29 +1183,32 @@ Particular decisions :
 \begin{tabular}{|c a l|}
 		\hline
 		& Description & \verb|Fade out BGM| \\
-		& Parameters & TODO \\
-		& Notes & TODO. \\
-		& Example & TODO \\
+		& Parameters & [1] - \textbf{0}: \verb|duration - [int]| \\
+		& Notes & \verb|duration| in milliseconds. \\
+		& Example & "\verb|Fade out BGM 3000|" \\
 		\hline
 		& Description & \verb|Memorize BGx| \\
-		& Parameters & TODO \\
-		& Notes & TODO. \\
-		& Example & TODO \\
+		& Parameters & [0] \\
+		& Example & "\verb|Memorize BGx|" \\
 		\hline
 		& Description & \verb|Restore BGx| \\
-		& Parameters & TODO \\
-		& Notes & TODO. \\
-		& Example & TODO \\
+		& Parameters & [0] \\
+		& Example & "\verb|Restore BGx|" \\
 		\hline
 		& Description & \verb|Restore All| \\
-		& Parameters & TODO \\
-		& Notes & TODO. \\
-		& Example & TODO \\
+		& Parameters & [0] \\
+		& Notes & Restore all stats for player's party. \\
+		& Example & "\verb|Restore All|" \\
 		\hline
 		& Description & \verb|Return to title screen| \\
-		& Parameters & TODO \\
-		& Notes & TODO. \\
-		& Example & TODO \\
+		& Parameters & [0] \\
+		& Notes & Quits current game and returns to title screen (without saving). \\
+		& Example & \verb|Return to title screen| \\
+		\hline
+		& Description & \verb|Save| \\
+		& Parameters & [1] - \textbf{0}: \verb|allow_cancel - [True/False]| \\
+		& Notes & Prompts a "save your progress" dialog to the player. \\
+		& Example & \verb|Save allow_cancel=True| \\
 		\hline
 	\end{tabular}
 }
@@ -1222,11 +1216,25 @@ Particular decisions :
 Directions :
 \begin{itemize}
 	\item S,W,E,N : South, West, East, North (vertical/horizontal movement)
-	\item SW,NW,NE,SE : South-West, North-West, North-East, South-East (diagonal movement)
+	\item SW,NW,NE,SE : South-West, North-West, North-East, South-East (diagonal movement, not recommended)
 	\item R : random movement (S,W,E,N)
-	\item 1F,1B : one step Forwards/Backwards
+	\item 1F,1B : one step Forwards/Backwards (according to current orientation/direction)
 	\item 1A,1T : one step Away from/Towards the player
 	\item K : Keep the same (for teleportation)
+\end{itemize}
+
+Execution flow control :
+\begin{itemize}
+	\item \verb|if code_block [else code_block]?| : For implementing conditional execution of code blocks.
+	\item \verb|loop code_block| : \verb|code_block| must contain a \verb|break| statement for the loop to not be infinite. Infinite loop detection should be implemented.
+	\item \verb|choice ... [when (value) code_block]+| : For implementing behavior on player's choice.
+\end{itemize}
+
+Total : 
+\begin{itemize}
+	\item 25 (+ 1\textit{new}) commands $+$ 3 forms of flow control !
+	\item vs. 81 commands !
+	\item 3 pages de doc vs. 9 pages de doc
 \end{itemize}
 
 \newpage
