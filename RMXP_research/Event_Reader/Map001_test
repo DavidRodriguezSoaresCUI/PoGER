@@ -6,7 +6,5 @@ cfg2=0.99
 [PAGE]
 
 Show Text "Hello, World !"
-  Show Text "Hello, World !"
-  Show Text "Hello, World !"
 Show Text "Hello, World !"
 [end]

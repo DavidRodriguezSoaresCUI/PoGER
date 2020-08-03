@@ -1032,8 +1032,6 @@ At the time of writing these lines, representations in this document are still n
 
 Particular decisions :
 \begin{itemize}
-	\item \textbf{C}omma \textbf{S}eparated \textbf{V}alues-style : Enable software to leverage CSV libraries when interpreting \textit{Events}, significantly decreasing implementation complications.
-	
 	\item Python syntax style : Reduces explicit syntax (like semicolons and curly braces), therefore reducing syntax errors.
 	
 	\item Case insensitive : Simplification allowing any program to simply make everything lowercase when reading an \textit{Event}, and users to Use any casing style they prefer. This also makes it harder to have variable/switch name collisions by forcing users to explicitely name their variables.
@@ -1056,6 +1054,179 @@ Particular decisions :
 	\item Timers could be implemented as integers : Let \verb|:PlayTime| be a read-olny integer variable that counts the seconds of play time (an \href{https://en.wikipedia.org/wiki/Epoch_(computing)}{epoch} of sorts).
 	
 	Then, setting a timer for $x$ seconds could be as simple as storing (\verb|:PlayTime| + $x$) in a variable and testing it later against the current value of \verb|:PlayTime| !
+	
+	\item Commands have parameters (see examples) :
+	\begin{itemize}
+		\item No parameter : command line must contain the command keyword only.
+		\item 1 parameter : command line must contain the command keyword, plus the expected parameter value (no parameter name; parameter may be facultative)
+		\item n$>$1 parameters : command line must contain the command keyword, and the expected parameters \verb|parameter_name = parameter_value| as a comma-separated list (no brackets; parameter name mandatory; parameter may be facultative).
+		\item Note on \textit{facultative} parameters : marked with a \verb|*|.
+		\item Strictly equivalent : \verb|:ON|$\equiv$\verb|True|, \verb|:OFF|$\equiv$\verb|False|
+	\end{itemize}
+\end{itemize}
+
+
+\newpage
+\subsection{Commands}
+
+\vspace{4mm}
+{\small
+	\begin{tabular}{|c a l|}
+		\hline
+		 & Description & \verb|Step| - Move the event (perform 1 step). \\
+		& Parameters & [1] - \textbf{0}: \verb|direction - [String]| \\
+		& Notes & \verb|direction|$\ \in \ $\{S,W,E,N,SW,NW,NE,SE,R,1F,1B,1A,1T\}, see "Directions" below. \\
+		& Examples & "\verb|Step NW|", "\verb|Step 1T|" \\
+		\hline
+		& Description & \verb|Turn| - Turn the event (change direction). \\
+		& Parameters & [1] - \textbf{0}: \verb|direction - [String]| \\
+		& Notes & \verb|direction|$\ \in \ $\{S,W,E,N\}, see "Directions" below. \\
+		& Examples & "\verb|Turn N|", "\verb|Turn W|" \\
+		\hline
+		& Description & \verb|Move Event| - Move Event to absolute/relative coordinates on the same map. \\
+		& Parameters & [2] - \textbf{0}:\verb|event* - [String]| (name of the event to move) \\
+		&  & \textbf{1}:\verb|relative_coordinates/absolute_coordinates - [list of 2 int]| \\
+		& Notes & \verb|event| is optional, defaults to self.  \\
+		& Examples & "\verb|Move Event relative_coordinates=[7,-5]|",  \\
+		&  & "\verb|Move Event event=Jack, absolute_coordinates=[4,12]|" \\
+		\hline
+		& Description & \verb|Wait| - Pause event behavior execution for a given amount of time. \\
+		& Parameters & [1] - \textbf{0}: \verb|ms - [int]| (time in milliseconds) \\
+		& Examples & "\verb|Wait ms=3000|", "\verb|Wait ms=20|" \\
+		\hline
+		& Description & \verb|Switch| - Switch event properties on/off \\
+		& Parameters & [2] - \textbf{0}: \verb|property - [String]|, \ \textbf{1}: \verb|value - [int/String/:ON/OFF]| \\
+		& Notes & \verb|property| must be a configuration variable, see "Configuration variables" below. \\
+		&  & \verb|value| must be a valid value for that property. \\
+		& Examples & "\verb|Switch property=move_animation value=:ON|" \\
+		&  & "\verb|Switch property=Animation value=:OFF|" \\
+		&  & "\verb|Switch property=graphic value="trchar28"|" \\
+		\hline
+		& Description & \verb|Play| - Play audio. \\
+		& Parameters & [3] - \textbf{0}: \verb|SE/BGM/ME - [String]|, \ \textbf{1}: \verb|volume* - [int]|, \ \textbf{2}: \verb|pitch* - [int]| \\
+		& Notes & \verb|volume| and \verb|pitch| default to 100, their values are relative to 100 (percentage). \\
+		& Example & "\verb|Play BGM="022-Field05", volume=100, pitch=100|" \\
+		\hline
+		& Description & \verb|Show Text| \\
+		& Parameters & [1] - \textbf{0}: \verb|text - [String]| \\
+		& Example & "\verb|Show Text "Hello, World !"|" \\
+		\hline
+		& Description & \verb|Choose| - Give player a list of items to choose from. \\
+		& Parameters & [2] - \textbf{0}: \verb|choices - [list of String]|, \ \textbf{1}: \verb|default* - [int]| $n$ (behavior on cancel) \\
+		& Notes & If \verb|default| not set, the player must choose (no cancel). Otherwise, select $n^{th}$ item on the list. \\
+		& Examples & "\verb|Choose choices=["Yes","No"]|", "\verb|Choose choices=["One","Two","Three"], default=1|" \\
+		\hline
+		& Description & \verb|Change Text Options| \\
+		& Parameters & [2] - \textbf{0}: \verb|position* - [Top/Middle/Bottom]|, \ \textbf{1}: \verb|border* - [Show/Hide]| (window border)) \\
+		& Example & "\verb|Change Text Options position=Middle, border=Show|" \\
+		\hline
+		& Description & \verb|End Execution| - Ends behavior execution. \\
+		& Parameters & [0] \\
+		& Example & "\verb|End Execution|" \\
+		\hline
+	\end{tabular}
+}
+
+\newpage 
+
+{\small
+	\begin{tabular}{|c a l|}
+		\hline
+		& Description & \verb|Label| - Marks a line as a target for a \verb|Goto|. \\
+		& Parameters & [1] - \textbf{0}: \verb|name - [String]| \\
+		& Notes & Please find a good name for the label (not like the example). \\
+		& Example & "\verb|Label "here"|" \\
+		\hline
+		& Description & \verb|Goto| - Change line to be executed next. \\
+		& Parameters & [1] - \textbf{0}: \verb|label - [String]| \\
+		& Example & "\verb|Goto "here"|" \\
+		\hline
+		& Description & \verb|Transfer Player| - Teleport player. \\
+		& Parameters & [1] - \textbf{0}: \verb|map* - [String]|, \ \textbf{1}: \verb|x - [int]|, \ \textbf{2}: \verb|y - [int]| \\
+		&  & \textbf{3}: \verb|direction* - [String]|, \ \textbf{4}: \verb|fading* - [:ON/:OFF]| \\
+		& Notes & \verb|map| defaults to the one the player is in. \verb|direction|$\ \in \ $\{S,W,E,N,K\}, defaults to "K". \\
+		&  &  \verb|map| defaults to (TODO). \\
+		& Example & "\verb|Transfer Player map="Kurt's house", x=2, y=4|" \\
+		\hline
+		& Description & \verb|Set Move Route| \\
+		& Parameters & TODO \\
+		& Notes & TODO. \\
+		& Example & TODO \\
+		\hline
+		& Description & \verb|Shake Screen| \\
+		& Parameters & TODO \\
+		& Notes & TODO. \\
+		& Example & TODO \\
+		\hline
+		& Description & \verb|Transition| \\
+		& Parameters & TODO \\
+		& Notes & TODO. \\
+		& Example & TODO \\
+		\hline
+		& Description & \verb|Show Picture| \\
+		& Parameters & TODO \\
+		& Notes & TODO. \\
+		& Example & TODO \\
+		\hline
+		& Description & \verb|Move Picture| \\
+		& Parameters & TODO \\
+		& Notes & TODO. \\
+		& Example & TODO \\
+		\hline
+		& Description & \verb|Erase Picture| \\
+		& Parameters & TODO \\
+		& Notes & TODO. \\
+		& Example & TODO \\
+		\hline
+		& Description & \verb|Set weather| \\
+		& Parameters & TODO \\
+		& Notes & TODO. \\
+		& Example & TODO \\
+		\hline
+	\end{tabular}
+}
+
+\newpage 
+
+{\small
+\begin{tabular}{|c a l|}
+		\hline
+		& Description & \verb|Fade out BGM| \\
+		& Parameters & TODO \\
+		& Notes & TODO. \\
+		& Example & TODO \\
+		\hline
+		& Description & \verb|Memorize BGx| \\
+		& Parameters & TODO \\
+		& Notes & TODO. \\
+		& Example & TODO \\
+		\hline
+		& Description & \verb|Restore BGx| \\
+		& Parameters & TODO \\
+		& Notes & TODO. \\
+		& Example & TODO \\
+		\hline
+		& Description & \verb|Restore All| \\
+		& Parameters & TODO \\
+		& Notes & TODO. \\
+		& Example & TODO \\
+		\hline
+		& Description & \verb|Return to title screen| \\
+		& Parameters & TODO \\
+		& Notes & TODO. \\
+		& Example & TODO \\
+		\hline
+	\end{tabular}
+}
+
+Directions :
+\begin{itemize}
+	\item S,W,E,N : South, West, East, North (vertical/horizontal movement)
+	\item SW,NW,NE,SE : South-West, North-West, North-East, South-East (diagonal movement)
+	\item R : random movement (S,W,E,N)
+	\item 1F,1B : one step Forwards/Backwards
+	\item 1A,1T : one step Away from/Towards the player
+	\item K : Keep the same (for teleportation)
 \end{itemize}
 
 \newpage
@@ -1117,14 +1288,14 @@ LOG_EXPR               // expression that returns a logical value
     
 NUM_EXPR               // expression that returns a numerical value
     : TERM (ADD_OP TERM)*
+    
+PARAMETER_NAME
+    : WORD
 \end{Verbatim}
 
 
 \newpage
 \begin{Verbatim}[frame=single, fontsize=\footnotesize]
-PARAMETER_NAME
-    : WORD
-
 SCRIPT
     : 's:' WORD (WHITESPACE PARAMETERS)?
 
@@ -1213,6 +1384,8 @@ Mostly contained in the event, but can be overridden by the pages.
 	{\ttfamily xy} & {\ttfamily [int, int]} & N/A$^*$ & Position of the event. \\
 	\hline
 	{\ttfamily graphic} & {\ttfamily String} & None & Texture of the event. \\
+	\hline
+	{\ttfamily opacity} & {\ttfamily int} & TODO & . \\
 	\hline
 	{\ttfamily direction} & {\ttfamily String} & S & [N,E,S,W] Initial facing direction (if has {\ttfamily graphic}). \\
 	\hline
