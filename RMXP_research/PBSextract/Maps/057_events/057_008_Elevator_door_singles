@@ -1,0 +1,12 @@
+[EVENT]
+xy=[2, 1]
+graphic=doors9
+pattern=1
+preset=door
+
+[PAGE]
+
+
+
+[end]
+

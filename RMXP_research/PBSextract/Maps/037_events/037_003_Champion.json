@@ -1,0 +1,150 @@
+{
+    "_class": "Event",
+    "id": 3,
+    "name": "Champion",
+    "xy": [
+        6,
+        6
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "trchar071",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 0,
+                    "parameters": "pbTrainerIntro(:CHAMPION)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bEverything in here uses a temporary switch to "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "decide what to do, rather than a Self Switch, "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "because it all needs to reset each time you enter."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        12,
+                        "pbTrainerBattle(:CHAMPION,\"Blue\",_I(\"A good battle indeed!\"),false,0)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "setTempSwitchOn(\"A\")"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 1,
+                    "parameters": "Open door."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "get_character(1).setTempSwitchOn(\"A\")"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 0,
+                    "parameters": "pbTrainerEnd"
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        },
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": "21",
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "trchar071",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bYou beat me! Go on to the Hall of Fame."
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

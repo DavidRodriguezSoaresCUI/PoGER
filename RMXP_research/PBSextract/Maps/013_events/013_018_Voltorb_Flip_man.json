@@ -1,0 +1,120 @@
+{
+    "_class": "Event",
+    "id": 18,
+    "name": "Voltorb_Flip_man",
+    "xy": [
+        11,
+        8
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "NPC 17",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        2,
+                        "A",
+                        1
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bMy name is Mr. Game!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bMy heart pounds with excitement when people "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "enjoy my Coin game!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bIn fact, that's what I live for!\\nGo ahead and play it!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bMake my heart pound with excitement!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 123,
+                    "indent": 1,
+                    "parameters": [
+                        "A",
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bGo ahead and play my Coin game!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bMake my heart pound with excitement!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

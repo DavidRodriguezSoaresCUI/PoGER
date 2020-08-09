@@ -1,0 +1,18 @@
+[EVENT]
+xy=[28, 2]
+trigger=onPlayerTouch
+
+[PAGE]
+
+
+
+Set Move Route :player
+  Set property=through value=:ON
+  Set property=always_on_top value=:ON
+  Turn W
+  Step W
+  Set property=through value=:OFF
+  Set property=always_on_top value=:OFF
+Transfer Player map=3, x=9, y=2, direction="K", fading="Fading"
+[end]
+

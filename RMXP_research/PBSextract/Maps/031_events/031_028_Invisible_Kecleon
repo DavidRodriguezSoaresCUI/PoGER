@@ -1,0 +1,49 @@
+[EVENT]
+xy=[45, 44]
+
+
+[PAGE]
+
+
+
+if s:$PokemonBag.pbHasItem?(:SILPHSCOPE)
+  Show Text "Something unseeable is in the way. Want to use the Silph Scope?"
+  Show Choices choices=['Yes', 'No'], default=2
+  When 'Yes'
+    Goto Battle
+  When 'No'
+Else
+  if s:$PokemonBag.pbHasItem?(:DEVONSCOPE)
+    Show Text "Something unseeable is in the way. Want to use the Devon Scope?"
+    Show Choices choices=['Yes', 'No'], default=2
+    When 'Yes'
+      Goto Battle
+    When 'No'
+  Else
+    Show Text "Something unseeable is in the way."
+  
+End Execution
+Label Battle
+Show Text "The invisible Pokémon became completely visible!"
+Show Text "The startled Pokémon attacked!"
+s:pbWildBattle(:KECLEON,30,1)
+# If won
+if :TempPokemonChoice == 1
+  s:pbFadeOutIn(99999){}
+  :A = :ON
+# If escaped
+if :TempPokemonChoice == 3
+  s:pbFadeOutIn(99999){}
+  :A = :ON
+# If caught
+if :TempPokemonChoice == 4
+  :A = :ON
+[end]
+
+
+[PAGE]
+through=True
+:A == :ON
+
+[end]
+

@@ -1,0 +1,12 @@
+[EVENT]
+xy=[10, 9]
+graphic="NPC 19"
+direction=N
+
+[PAGE]
+
+
+
+s:pbPokemonMart([ :TM21,:TM27, :TM87,:TM78, :TM12,:TM41, :TM20,:TM28, :TM76,:TM55, :TM72,:TM79 ])"
+[end]
+

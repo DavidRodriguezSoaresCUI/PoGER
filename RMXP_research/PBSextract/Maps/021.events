@@ -1,0 +1,241 @@
+﻿[
+{ "_class":"Event", "id": 27, "name": "HiddenItem", "x": 29, "y": 62, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 111, "indent": 0, "parameters": [ 12, "Kernel.pbItemBall(:RARECANDY,2)" ] },
+ { "_class":"EventCommand", "code": 123, "indent": 1, "parameters": [ "A", 0 ] },
+ { "_class":"EventCommand", "code": 412, "indent": 0, "parameters": null } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":true, "always_on_top":false, "trigger":"onPlayerAction" },
+ "1": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":"A" },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":true, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 16, "name": "Item", "x": 24, "y": 6, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"Object ball", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 111, "indent": 0, "parameters": [ 12, "Kernel.pbItemBall(:GREATBALL)" ] },
+ { "_class":"EventCommand", "code": 123, "indent": 1, "parameters": [ "A", 0 ] },
+ { "_class":"EventCommand", "code": 411, "indent": 0, "parameters": null },
+ { "_class":"EventCommand", "code": 412, "indent": 0, "parameters": null } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" },
+ "1": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":"A" },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 5, "name": "EV005", "x": 27, "y": 45, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOn" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 22, "name": "EV022", "x": 22, "y": 57, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOn" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 11, "name": "EV011", "x": 15, "y": 32, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOn" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 17, "name": "HiddenItem", "x": 14, "y": 11, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 111, "indent": 0, "parameters": [ 12, "Kernel.pbItemBall(:RARECANDY)" ] },
+ { "_class":"EventCommand", "code": 123, "indent": 1, "parameters": [ "A", 0 ] },
+ { "_class":"EventCommand", "code": 411, "indent": 0, "parameters": null },
+ { "_class":"EventCommand", "code": 412, "indent": 0, "parameters": null } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":true, "always_on_top":false, "trigger":"onPlayerAction" },
+ "1": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":"A" },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":true, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 6, "name": "EV006", "x": 28, "y": 45, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOn" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 28, "name": "EV028", "x": 25, "y": 45, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOff" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 23, "name": "EV023", "x": 14, "y": 69, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOff" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 12, "name": "EV012", "x": 16, "y": 32, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOn" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 1, "name": "EV001", "x": 26, "y": 46, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOff" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 18, "name": "HiddenItem", "x": 25, "y": 12, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 111, "indent": 0, "parameters": [ 12, "Kernel.pbItemBall(:POTION)" ] },
+ { "_class":"EventCommand", "code": 123, "indent": 1, "parameters": [ "A", 0 ] },
+ { "_class":"EventCommand", "code": 412, "indent": 0, "parameters": null } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":true, "always_on_top":false, "trigger":"onPlayerAction" },
+ "1": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":"A" },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":true, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 7, "name": "EV007", "x": 14, "y": 31, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOff" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 29, "name": "EV029", "x": 29, "y": 45, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOff" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 24, "name": "EV024", "x": 15, "y": 69, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOff" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 13, "name": "HeadbuttTree", "x": 13, "y": 31, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"Object tree 2", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbHeadbutt" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 2, "name": "EV002", "x": 27, "y": 46, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOff" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 19, "name": "EV019", "x": 23, "y": 58, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOff" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 8, "name": "EV008", "x": 15, "y": 31, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOff" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 25, "name": "EV025", "x": 14, "y": 68, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOn" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 14, "name": "HeadbuttTree", "x": 13, "y": 32, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"Object tree 2", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbHeadbutt" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 3, "name": "EV003", "x": 28, "y": 46, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOff" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 20, "name": "EV020", "x": 22, "y": 58, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOff" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 9, "name": "EV009", "x": 16, "y": 31, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOff" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 26, "name": "EV026", "x": 15, "y": 68, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOn" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 15, "name": "Item", "x": 27, "y": 36, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"Object ball", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 111, "indent": 0, "parameters": [ 12, "Kernel.pbItemBall(:LEFTOVERS)" ] },
+ { "_class":"EventCommand", "code": 123, "indent": 1, "parameters": [ "A", 0 ] },
+ { "_class":"EventCommand", "code": 412, "indent": 0, "parameters": null } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" },
+ "1": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":"A" },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":true, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 4, "name": "EV004", "x": 26, "y": 45, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOn" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 21, "name": "EV021", "x": 23, "y": 57, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOn" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+,
+
+{ "_class":"Event", "id": 10, "name": "EV010", "x": 14, "y": 32, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 355, "indent": 0, "parameters": "pbBridgeOn" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerTouch" } } }
+
+]

@@ -1,0 +1,212 @@
+{
+    "_class": "Event",
+    "id": 8,
+    "name": "Pok\u00e9mon_ball_-_Advanced",
+    "xy": [
+        6,
+        7
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "Object ball",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "This is an example of giving a Pok\u00e9mon which has "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 0,
+                    "parameters": "been modified. The Pok\u00e9mon is defined separately "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 0,
+                    "parameters": "before being given to the player."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        12,
+                        "!pbBoxesFull?"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "p=PokeBattle_Pokemon.new(:PICHU,30,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "   $Trainer)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "p.setItem(:ZAPPLATE)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "p.form=1                # Spiky-eared"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "p.makeFemale"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "p.makeNotShiny"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "p.pbLearnMove(:VOLTTACKLE)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "p.pbLearnMove(:HELPINGHAND)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "p.pbLearnMove(:SWAGGER)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "p.pbLearnMove(:PAINSPLIT)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "p.calcStats"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "Kernel.pbAddPokemon(p)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 123,
+                    "indent": 1,
+                    "parameters": [
+                        "A",
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "There's no more room for Pok\u00e9mon!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "The Pok\u00e9mon Boxes are full and can't accept any more!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        },
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": "A",
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": null,
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

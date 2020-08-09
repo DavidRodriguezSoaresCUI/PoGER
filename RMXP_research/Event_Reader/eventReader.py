@@ -6,9 +6,10 @@ from pprint import pprint
 from funcparserlib.parser import (some, a, many, skip, finished, maybe, with_forward_decls, oneplus)
 from funcparserlib.lexer import make_tokenizer, Token, LexerError
 from event import Event
+from collections.abc import Iterable
+from utils import unquote
 
-import funcparserlib.parser
-funcparserlib.parser.debug=True
+DEBUG=False
 
 def tokenize(str):
     '''str -> Sequence(Token)'''
@@ -21,14 +22,16 @@ def tokenize(str):
         #('Command', (r'',)),
         ('Marker', (r'(\[event\])|(\[page\])|(\[end\])',)),
         ('Indent', (r'(\[INDENT\])|(\[DEDENT\])',)),
-        ('Script', (r's\:[a-z][a-z\_0-9\.\(\)\:]*',)),
+        ('Script', (r's\:.*',)),
         ('Symbol', (r'\:[a-z][a-z\_0-9]*',)),
+        ('CMD_ID',(r'(step)|(turn)|(move event)|(wait)|(set)|(play)|(show text)|(choose)|(change text options)|(end execution)|(label)|(goto)|(transfer player)|(set move route)|(screen shake)|(transition)|(show picture)|(move picture)|(erase picture)|(set weather)|(fade out bgm)|(memorize bgx)|(restore bgx)|(restore all)|(return to title screen)|(save)',)),
+        ('TurnValue', (r'"?((90 Right)|(90 Left)|(180)|(90 random)|(random)|(towards player)|(away from player))"?',)),
         ('Bool', (r'(True)|(False)',)), # basically, a string without quotemarks, delimited by spaces
         ('Word', (r'[a-z][a-z\_0-9]*',)), # basically, a string without quotemarks, delimited by spaces
         ('Log_Op', (r'(==)|(>=)|(<=)|(>)|(<)|(!=)',)),
         ('Assign_Op', (r'[\+\-\*/]?=',)),
         ('Op', (r'[\+\-\*/]',)),
-        ('Number', (r'-?[0-9]+(\.[0-9]*)?',)),
+        ('Number', (r'-?[0-9]+(\.[0-9]+)?',)),
         ('Bracket', (r'[\[\]]',)),
         #('Parenthesis', (r'[\(\)]',)),
         ('String', (r'"[^"]*"',)), # '\"' escapes are ignored
@@ -44,17 +47,25 @@ def indentation_converter( s ):
     ''' interprets indentation '''
     
     lines = s.split('\n')
-    last_sc = 0
+    last_ind = 0
+    ind_len = 0
     lines_OK = list()
     for line in lines:
         line_clean = line.lstrip(' ')
-        sc = len(line) - len(line_clean)
-        if last_sc != sc:
-            if last_sc < sc:
-                line_clean = '[INDENT]'+line_clean
+        ind = len(line) - len(line_clean)
+        diff = last_ind - ind
+        if diff!=0:
+            if ind_len==0:
+                ind_len = ind
+                if DEBUG:
+                    print(f'indentation_converter : ind_len={ind_len}')
+            if diff < 0:
+                n = (-diff) // ind_len
+                line_clean = '[INDENT]'*n + line_clean
             else:
-                line_clean = '[DEDENT]'+line_clean
-            last_sc = sc
+                n = diff // ind_len
+                line_clean = '[DEDENT]'*n + line_clean
+            last_ind = ind
         lines_OK.append( line_clean )
     
 
@@ -63,17 +74,22 @@ def indentation_converter( s ):
 def parse( tokens ):
     'Sequence(Tokens) -> int/float/None'
 
-    e=Event()
-    e.add_behavior()
-
     def make_number(s):
         try:
             return int(s)
         except ValueError:
             return float(s)
 
+    def flatten_list( l ):
+        import functools
+        return functools.reduce(operator.iconcat, l, [])
+
     def new_page( x ):
         e.add_behavior()
+        return x
+
+    def print_and_return( x ):
+        print(f'print_and_return: x,{type(x)}, {x}')
         return x
     
     # const(x) [function] takes no arg and returns x
@@ -81,6 +97,8 @@ def parse( tokens ):
     # unarg(f) [function] takes arguments and returns f(*x)
     unarg  = lambda f: lambda x: f(*x)
     tokval = lambda tok: tok.value
+    symval = lambda tok: f'glob["{tok.value}"]'
+    scriptval = lambda tok: tok.value[2:] if ( '(' in tok.value ) else tok.value[2:]+'()'
     # makeop(s,f) [function] returns an operator : symbol s, behaves like actual operator f
     makeop = lambda s, f: op(s) >> const(f)
     assign_op = lambda s: a(Token('Assign_Op', s)) >> tokval
@@ -99,6 +117,10 @@ def parse( tokens ):
         some(lambda tok: tok.type=='Word')
         >> tokval )
 
+    cmd_id = (
+        some(lambda tok: tok.type=='CMD_ID')
+        >> tokval )
+
     comma = (
         some(lambda tok: tok.type=='Comma')
         >> tokval )
@@ -110,12 +132,18 @@ def parse( tokens ):
 
     symbol = (
         some(lambda tok: tok.type=='Symbol')
-        >> tokval
+        >> symval
     )
 
     script = (
         some(lambda tok: tok.type=='Script')
+        >> scriptval
+    )
+
+    turn_value = (
+        some(lambda tok: tok.type=='TurnValue')
         >> tokval
+        >> unquote
     )
 
     a_tok = lambda t_type, t_val: a(Token(t_type, t_val))
@@ -123,22 +151,48 @@ def parse( tokens ):
     words = oneplus(word)
 
     # parsing indentation
-    indent = a_tok('Indent', '[INDENT]')
-    dedent = a_tok('Indent', '[DEDENT]')
+    indent = skip(a_tok('Indent', '[INDENT]'))
+    dedent = skip(a_tok('Indent', '[DEDENT]'))
 
-    # parsing keywords
-    a_if = a_tok('Word', 'if')
-    a_else = a_tok('Word', 'else')
+    def bool2str( b ):
+        switcher = {
+            ':on':True,
+            ':off':False,
+            'True':True,
+            'False':False
+        }
+        return switcher[b]
+
+
+    # parsing booleans
+    b_true = a_tok('Bool', 'True')
+    b_false = a_tok('Bool', 'False')
+    b_true2 = a_tok('Symbol', ':on')
+    b_false2 = a_tok('Symbol', ':off')
+    bool_value = ( 
+        (b_true | b_false | b_true2 | b_false2)
+        >> tokval
+        >> bool2str )
+
+
+    # parsing keywords ('Keyword', (r'(if)|(else)|(when)|(loop)|(break)',)),
+    kw = lambda o: a_tok('Keyword', o)
+    a_if    = kw('if') >> tokval
+    a_else  = kw('else') >> tokval
+    a_when  = kw('when') >> tokval
+    a_loop  = kw('loop') >> tokval
+    a_break = kw('break') >> tokval
 
     # parsing ops
     log_op = lambda o: a_tok('Log_Op', o)
     equ = log_op('==')
+    equ2 = a_tok('Word', 'is')
     geq = log_op('>=')
     leq = log_op('<=')
     gtr = log_op('>')
     lss = log_op('<')
     neq = log_op('!=')
-    log_operator = equ | geq | leq | gtr | lss | neq
+    log_operator = (equ | equ2 | geq | leq | gtr | lss | neq)  >> tokval
 
     assign_op = lambda o: a_tok('Assign_Op', o)
     assi = assign_op('=')
@@ -146,13 +200,14 @@ def parse( tokens ):
     amin = assign_op('-=')
     amul = assign_op('*=')
     adiv = assign_op('/=')
-    assign_operator = assi | apls | amin | amul | adiv
+    assign_operator = (assi | apls | amin | amul | adiv) >> tokval
     
     math_op = lambda o: a_tok('Op', o)
     madd = math_op('+')
     mmin = math_op('-')
     mmul = math_op('*')
     mdiv = math_op('/')
+    math_operator = ( madd | mmin | mmul | mdiv ) >> tokval
     
 
     # Parsing brackets
@@ -171,7 +226,7 @@ def parse( tokens ):
     a_marker = lambda t_val: a_tok('Marker', t_val)
     a_marker_ = lambda t_val: skip(a_marker(t_val))
     event_marker = a_marker_('[event]')
-    page_marker  = a_marker_('[page]') >> new_page
+    page_marker  = a_marker_('[page]') # >> new_page
     end_marker   = a_marker_('[end]')
 
     # Parsing line feeds
@@ -180,84 +235,127 @@ def parse( tokens ):
     LFs = many(LF)
     LFs_ = skip(maybe(LFs))
 
-    value = number | string | word
+    value = number | string | word | turn_value
+
+    def cleanup_array( a ):
+        if isinstance( a, list ):
+            l = len(a)
+            if l==0:
+                return None
+            elif l==1:
+                return cleanup_array( a[0] )
+        return a
 
     def make_array(n):
-        print(f'make_array: n:{type(n)},{n}')
-        return [] if (n is None) else [n[0]] + n[1]
+        if DEBUG:
+            print(f'make_array: n:{type(n)},{n}')
+        if isinstance(n, str):
+            return n
+        if n==None:
+            return None #[]
+        if n[1]==[] or n[1]==None:
+            return [n[0]] if isinstance(n[0], list) else n[0] 
+        if not isinstance(n[1], list):
+            return [n[0], n[1]]
+        return [n[0]] + n[1]
 
-    def print_and_return( x ):
-        print(f'print_and_return: x,{type(x)}, {x}')
-        return x
+    def make_str( a ):
+        if DEBUG:
+            print( f'make_str : a {type(a)}, {a}' )
+        if isinstance(a, Iterable) and (not isinstance(a, str)):
+            return ' '.join( [ item if isinstance(item, str) else str(item) for item in a ] )
+        return a
 
-    a_list = opening_bracket + value + many(skip(maybe(comma)) + value) + closing_bracket >> make_array
-    parameter_value = value | a_list
+    a_list = (
+        (opening_bracket + value + many(skip(maybe(comma)) + value) + closing_bracket)
+        >> make_array )
+
+    parameter_value = value | a_list | bool_value
     config_var = word
 
     deal_with_config = lambda l : e.add_parameter(l)
-    config = maybe( config_var + skip(assi) + parameter_value ) >> deal_with_config
+    config = (
+        maybe( config_var + skip(assi) + parameter_value )
+        >> make_array ) # >> deal_with_config
 
-    cmd_id = words
     parameter_name = word
-    parameter = maybe(parameter_name + assi) + value #>> make_array
-    parameters = parameter + many( skip(maybe(comma)) + parameter ) #>> make_array
-
-    def deal_with_cmd(s): 
-        print(f'deal_with_cmd: s,{type(s)},{s}')
-        e.behavior_add_instruction( cmd_id=''.join(s[0]), parameters=s[1] )
+    parameter = maybe(parameter_name + skip(assi)) + parameter_value
+    parameters = parameter + many( skip(maybe(comma)) + parameter )
     
-    cmd = cmd_id + many(parameters) >> deal_with_cmd
+    cmd = ( cmd_id + many(parameters) )
 
-    comparable = number | symbol | script
-    log_expr = comparable + log_operator + comparable
+    comparable = number | symbol | script | bool_value | word
+    log_expr = (
+        ( comparable + log_operator + comparable )
+        >> make_str )
 
     @with_forward_decls
     def code_block(): # hack to use 'statements' above its declaration
-        return indent + statements + dedent
-    if_cond = skip(a_if) + log_expr + LFs_ + code_block + maybe( skip(a_else) + LFs_ + code_block )
+        return indent + LFs_ + statements + dedent
+        
+    if_block = (a_if + (log_expr | script) + LFs_ + code_block + maybe( skip(a_else) + LFs_ + code_block ) ) 
 
-    statement = cmd# | if_cond
+    expression = (
+        ( oneplus( math_operator | number | symbol ) | log_expr | script | parameter_value )
+        >> make_str ) # | number | symbol | #  | num_expr
+    
+    var_manipulation = (
+        (symbol + assign_operator + expression)
+        >> make_str)
+
+    when_block = a_when + value + LFs_ + code_block
+
+    # TODO : loop
+    statement = ( cmd | if_block | var_manipulation | when_block | script | a_break )
+
     statements = many(statement + LFs_)
 
-    config_or_cond = (maybe( config_var + assign_op_('=') + parameter_value ) >> deal_with_config) \
-        | (log_expr >> print_and_return)
+    config_or_cond = maybe( ( config_var + assign_op_('=') + parameter_value )  | log_expr )
 
-    page = (
-        page_marker + LFs_ + many(config_or_cond + LF_) + LFs_ + statements + end_marker + LFs_
-        >> print_and_return )
+    page = ( page_marker + LFs_ + many(config_or_cond + LF_) + LFs_ + statements + skip(end_marker) + LFs_ ) # >> print_and_return #
 
     end = skip(finished)
-    event = event_marker + LFs_ + oneplus(config + LF_) + LFs_ + many(page) + end
+    event = LFs_ + event_marker + LFs_ + oneplus(config + LF_) + LFs_ + many(page) + end
     
     res = event.parse(tokens)
-    print('res:{}'.format(res))
+    #print('res:{}'.format(res))
 
-    return e
+    return res
 
 def boolean_converter( s ):
-    return s.replace(':ON','True').replace(':OFF','False').replace('true','True').replace('false','False')
+    return s.replace('true','True').replace('false','False')
 
-if __name__ == "__main__":
-    cwd = pathlib.Path()
-    events = list(cwd.glob('Map001_*'))
-    pprint(events)
+def build_event( event_file, test=True ):
+    assert isinstance( event_file, pathlib.Path ) and event_file.is_file()
 
-    for event in events:
-        content = None
-        with event.open( 'r' ) as f:
-            content = f.read().lower()
-        
-        assert not ( '\t' in content )
-        content_ok = boolean_converter( indentation_converter(content) )
-        tok = tokenize( content_ok )
-        
+    content = None
+    with event_file.open( 'r' ) as f:
+        content = f.read().lower()
+    
+    assert not ( '\t' in content )
+    content_ok = boolean_converter( indentation_converter(content) )
+    tok = tokenize( content_ok )
+    
+    if test:
         with open('test', 'w') as f:
             for token in tok:
                 #f.write(str(type(token.type)))
                 f.write(str(token) + '\n')
-        
-        out = parse( tok )
-        print(type(out))
-        pprint(str(out))
-        '''with open('test2', 'w') as f:
-            f.write(str(out))'''
+    
+    out = parse( tok )
+    #print(type(out))
+    #pprint(out)
+    '''with open('test2', 'w') as f:
+        f.write(str(out))'''
+    return out
+
+if __name__ == "__main__":
+    cwd = pathlib.Path()
+    events = list(cwd.glob('011_*'))
+    pprint(events)
+
+    for event_file in events:
+        e = Event( event_file )
+        for b in e.behaviors:
+            print('behavior')
+            pprint(str(b))

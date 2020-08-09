@@ -1,0 +1,19 @@
+[EVENT]
+xy=[12, 9]
+
+
+[PAGE]
+trigger=onPlayerTouch
+graphic="Object boulder"
+
+
+s:pbPushThisBoulder
+[end]
+
+
+[PAGE]
+
+:Boulderdownholerockcave == :ON
+
+[end]
+

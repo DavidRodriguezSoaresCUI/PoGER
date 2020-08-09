@@ -1,0 +1,387 @@
+{
+    "_class": "Event",
+    "id": 13,
+    "name": "Dex_access",
+    "xy": [
+        3,
+        10
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "trchar028",
+                "character_hue": 0,
+                "direction": "Right",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 118,
+                    "indent": 0,
+                    "parameters": "Start"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bI can control your Pok\u00e9dex access.  What do you "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "want me to do?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 0,
+                    "parameters": [
+                        [
+                            "Kanto Dex access",
+                            "Johto Dex access",
+                            "National Dex access",
+                            "Exit"
+                        ],
+                        4
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        "Kanto Dex access"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bWhat about it?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 1,
+                    "parameters": [
+                        [
+                            "Unlock Kanto Dex",
+                            "Lock Kanto Dex",
+                            "Exit"
+                        ],
+                        3
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        0,
+                        "Unlock Kanto Dex"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbUnlockDex(0)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bThe Kanto Dex was unlocked."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        1,
+                        "Lock Kanto Dex"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbLockDex(0)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bThe Kanto Dex was locked."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        2,
+                        "Exit"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 2,
+                    "parameters": "Start"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        "Johto Dex access"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bWhat about it?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 1,
+                    "parameters": [
+                        [
+                            "Unlock Johto Dex",
+                            "Lock Johto Dex",
+                            "Exit"
+                        ],
+                        3
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        0,
+                        "Unlock Johto Dex"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbUnlockDex(1)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bThe Johto Dex was unlocked."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        1,
+                        "Lock Johto Dex"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbLockDex(1)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bThe Johto Dex was locked."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        2,
+                        "Exit"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 2,
+                    "parameters": "Start"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        2,
+                        "National Dex access"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bWhat about it?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 1,
+                    "parameters": [
+                        [
+                            "Unlock National Dex",
+                            "Lock National Dex",
+                            "Exit"
+                        ],
+                        3
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        0,
+                        "Unlock National Dex"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbUnlockDex"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 121,
+                    "indent": 2,
+                    "parameters": [
+                        29,
+                        29,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bThe National Dex was unlocked."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        1,
+                        "Lock National Dex"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbLockDex"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 121,
+                    "indent": 2,
+                    "parameters": [
+                        29,
+                        29,
+                        1
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bThe National Dex was locked."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        2,
+                        "Exit"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 2,
+                    "parameters": "Start"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        3,
+                        "Exit"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

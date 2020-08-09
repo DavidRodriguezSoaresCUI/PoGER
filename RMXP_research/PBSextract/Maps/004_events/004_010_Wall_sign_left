@@ -1,0 +1,12 @@
+[EVENT]
+xy=[6, 1]
+
+
+[PAGE]
+
+
+
+Show Text "The event next to the Professor contains the autorun commands."
+Show Text "There are two lots: those that happen when the player first enters the map, and those that happen when the player has chosen a starter."
+[end]
+

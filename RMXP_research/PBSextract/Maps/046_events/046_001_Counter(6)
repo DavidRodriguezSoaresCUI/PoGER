@@ -1,0 +1,26 @@
+[EVENT]
+xy=[6, 2]
+graphic="NPC 01"
+
+[PAGE]
+trigger=onEventTouch
+
+
+if s:$PokemonBag.pbHasItem?(:BICYCLE)
+  s:setTempSwitchOn("A")
+Else
+  s:Kernel.pbExclaim(get_character(0))
+  Show Text "\\bSorry, you can't enter Cycle Road without a Bicycle."
+  Set Move Route :player
+    Turn E
+    Step E
+[end]
+
+
+[PAGE]
+
+s:isSSon("A") == :ON
+
+Show Text "\\bCycling Road is a great ride."
+[end]
+

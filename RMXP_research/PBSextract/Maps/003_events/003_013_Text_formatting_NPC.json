@@ -1,0 +1,427 @@
+{
+    "_class": "Event",
+    "id": 13,
+    "name": "Text_formatting_NPC",
+    "xy": [
+        10,
+        7
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "NPC 07",
+                "character_hue": 0,
+                "direction": "Left",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 118,
+                    "indent": 0,
+                    "parameters": "Start"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "Choose a text option."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 0,
+                    "parameters": [
+                        [
+                            "Colour and formatting",
+                            "Showing extra things",
+                            "Other",
+                            "Cancel"
+                        ],
+                        4
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        "Colour and formatting"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bThis is the text of a male character."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "\\rThis is the text of a female character."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\pgThis text is the colour of the player's gender. "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "\\pogThis text is the colour of the opposite gender to "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "the player."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\c[0]Default text, \\c[1]blue text, \\c[2]red text, \\c[3]"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "green text, \\c[4]cyan text, \\c[5]magenta text, \\c[6]"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "yellow text, \\c[7]grey text, \\c[8]white text."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "<b>Bold text,</b> <i>italic text,</i> <u>underlined "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "text,</u> <s>strikethrough text,</s> <outln>outline "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "text,</outln> <outln2>thicker outline text.</outln2>"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "<fn=Arial>Arial text,</fn> <fs=25>size 25 text,</fs> "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "<fs=40>size 40 text,</fs> <o=128>half-transparent "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "text.</o>"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "This is a line\\n break. Text is \\n<r>right-aligned until "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "next line\\n break. Text is <ac>centred</ac> here. "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "Text is <ar>right-aligned</ar> here."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 1,
+                    "parameters": "Start"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        "Showing extra things"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\PN is the player's name, \\PM is the player's money, "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "\\v[12] is the content of Variable 12."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\GThe money window is shown."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\CNThe coins window is shown."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\G\\CNThe money and coins windows are both "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "shown. The coins window must be shown second."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\f[introBoy]The introBoy picture from the "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "Graphics/Pictures folder is shown."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\ff[introBoy]The introBoy picture is shown again, but "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "cropped to the top-left 96x96 pixels of it."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "This is <icon=bagPocket3> bagPocket3 from the "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "folder Graphics/Icons. Icons shown this "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "way are not padded."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 1,
+                    "parameters": "Start"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        2,
+                        "Other"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\w[signskin]The windowskin has changed to "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "\"signskin\" here."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\l[3]This message box has 3 lines to it rather than 2, "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "so more text can be shown at once. Lorem ipsum "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "dolor sit amet, consectetur adipisicing elit."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\wuThis message box is at the top."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\wmThis message box is in the middle."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\wuThis message box is\\wm jumping around the "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "screen\\wd in a rather off-putting way."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\opThis message box slides on-screen at the start."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\clThis message box slides off-screen at the end."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\ts[]This text appeared instantly!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\ts[5]This text is slow."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\se[Pkmn move learnt]Sound effect \"Pkmn move "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "learnt\" was played."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "Music effect \"Item get\" will be played."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "\\me[Item get]"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 1,
+                    "parameters": "Start"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        3,
+                        "Cancel"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "A complete list of all message options is available on "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "the wiki."
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

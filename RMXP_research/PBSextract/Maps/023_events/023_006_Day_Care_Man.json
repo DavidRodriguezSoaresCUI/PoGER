@@ -1,0 +1,530 @@
+{
+    "_class": "Event",
+    "id": 6,
+    "name": "Day_Care_Man",
+    "xy": [
+        26,
+        11
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "NPC 18",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        12,
+                        "Kernel.pbEggGenerated?"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bAh, it's you!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bWe were raising your Pok\u00e9mon, and my goodness, "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "were we surprised!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bYour Pok\u00e9mon was holding an Egg!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bWe don't know how it got there, but your Pok\u00e9mon "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "had it."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bYou do want it, don't you?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 1,
+                    "parameters": [
+                        [
+                            "Yes",
+                            "No"
+                        ],
+                        2
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        0,
+                        "Yes"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 118,
+                    "indent": 2,
+                    "parameters": "ReceiveEgg"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 2,
+                    "parameters": [
+                        12,
+                        "$Trainer.partyCount>=6"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "\\bYou have no room for it right now... Come back "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "when you've made room."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 115,
+                    "indent": 3,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\PN received the Egg from the Day-Care Man."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bYou take good care of it."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbDayCareGenerateEgg"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "$PokemonGlobal.daycareEgg=0"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "$PokemonGlobal.daycareEggSteps=0"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        1,
+                        "No"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bI really will keep it. You do want this Egg, yes?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 2,
+                    "parameters": [
+                        [
+                            "Yes",
+                            "No"
+                        ],
+                        2
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        0,
+                        "Yes"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "ReceiveEgg"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        "No"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "\\bWell all right then, I'll take it. Thank you."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "\\bThat is, I don't think we'll ever find another..."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "\\bNo, no, I'm sure we'll find another one. I'm definitely "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "sure of it!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 3,
+                    "parameters": "$PokemonGlobal.daycareEgg=0"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 3,
+                    "parameters": "$PokemonGlobal.daycareEggSteps=0"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 115,
+                    "indent": 3,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "Kernel.pbDayCareDeposited==0"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bI'm the Day-Care Man."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bI help take care of the precious Pok\u00e9mon of "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 2,
+                    "parameters": "trainers."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bAny Pok\u00e9mon you'd like to have raised you can "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 2,
+                    "parameters": "leave in my wife's care."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "Kernel.pbDayCareDeposited==1"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbDayCareGetDeposited(-1,3,-1)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bAh, it's you!\\nGood to see you!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bYour \\v[3] is doing just fine."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "Kernel.pbDayCareDeposited==2"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbDayCareGetDeposited(0,3,-1)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "pbDayCareGetDeposited(1,4,-1)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "pbDayCareGetCompatibility(5)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bAh, it's you!\\nGood to see you!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bYour \\v[3] and \\v[4] are doing just fine."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        5,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "\\bThe two play with other Pok\u00e9mon rather than with "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "each other..."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        5,
+                        0,
+                        1,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "\\bThe two don't seem to like each other much."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        5,
+                        0,
+                        2,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "\\bThe two seem to get along."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        5,
+                        0,
+                        3,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "\\bThe two seem to get along very well."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

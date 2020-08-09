@@ -1,0 +1,201 @@
+{
+    "_class": "Event",
+    "id": 5,
+    "name": "Trainer(3)",
+    "xy": [
+        22,
+        17
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "trchar046",
+                "character_hue": 0,
+                "direction": "Right",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onEventTouch",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "Battle: \\rI'm a swimming trainer, just like any other"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 0,
+                    "parameters": "trainer!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "Type: SWIMMER2_F"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "Name: Ariel"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "EndSpeech: Washed out!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "EndBattle: \\rJust make sure swimming trainers don't"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 0,
+                    "parameters": "try to swim over land to get to the player when they"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 0,
+                    "parameters": "spot them."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 0,
+                    "parameters": "pbTrainerIntro(:SWIMMER2_F)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 0,
+                    "parameters": "Kernel.pbNoticePlayer(get_character(0))"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\rI'm a swimming trainer, just like any other"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "trainer!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        12,
+                        "pbTrainerBattle(:SWIMMER2_F,\"Ariel\",_I(\"Washed out!\"),false,0,false,0)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 123,
+                    "indent": 1,
+                    "parameters": [
+                        "A",
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 0,
+                    "parameters": "pbTrainerEnd"
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        },
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": "A",
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "trchar046",
+                "character_hue": 0,
+                "direction": "Right",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\rJust make sure swimming trainers don't"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "try to swim over land to get to the player when they"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "spot them."
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

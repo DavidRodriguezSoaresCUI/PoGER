@@ -1,0 +1,15 @@
+[EVENT]
+xy=[52, 29]
+
+
+[PAGE]
+
+
+
+Show Text "These are all the particle effects available in Essentials. An event can only have one particle effect."
+Show Text "Shadow sources can be modified as in the top left particle event."
+Show Text "All four parameters (anglemax, anglemin, maxdistance, opacity) must be included in that order if you want to change any of them."
+Show Text "The default values are \"anglemax 0\", \"anglemin 0\", \maxdistance 350\, \opacity 100\. Distance is in pixels."
+Show Text "The shadow-related comments must come before the particle effect comment."
+[end]
+

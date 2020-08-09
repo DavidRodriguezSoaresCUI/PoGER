@@ -1,0 +1,58 @@
+[EVENT]
+xy=[11, 10]
+walk_anime=False
+
+[PAGE]
+move_speed=4
+
+
+[end]
+
+
+[PAGE]
+graphic="Healing balls 1"
+direction=W
+:PokéCenterhealingballcount >= 1
+
+[end]
+
+
+[PAGE]
+graphic="Healing balls 1"
+direction=E
+:PokéCenterhealingballcount >= 2
+
+[end]
+
+
+[PAGE]
+graphic="Healing balls 1"
+direction=N
+:PokéCenterhealingballcount >= 3
+
+[end]
+
+
+[PAGE]
+graphic="Healing balls 2"
+direction=W
+:PokéCenterhealingballcount >= 4
+
+[end]
+
+
+[PAGE]
+graphic="Healing balls 2"
+direction=E
+:PokéCenterhealingballcount >= 5
+
+[end]
+
+
+[PAGE]
+graphic="Healing balls 2"
+direction=N
+:PokéCenterhealingballcount >= 6
+
+[end]
+

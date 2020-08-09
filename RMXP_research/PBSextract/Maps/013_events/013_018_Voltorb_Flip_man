@@ -1,0 +1,19 @@
+[EVENT]
+xy=[11, 8]
+graphic="NPC 17"
+
+[PAGE]
+
+
+
+if A is :OFF
+  Show Text "\\bMy name is Mr. Game!"
+  Show Text "\\bMy heart pounds with excitement when people enjoy my Coin game!"
+  Show Text "\\bIn fact, that's what I live for!\\nGo ahead and play it!"
+  Show Text "\\bMake my heart pound with excitement!"
+  :A = :ON
+Else
+  Show Text "\\bGo ahead and play my Coin game!"
+  Show Text "\\bMake my heart pound with excitement!"
+[end]
+

@@ -1,0 +1,105 @@
+{
+    "_class": "Event",
+    "id": 10,
+    "name": "Apricorn_tree",
+    "xy": [
+        10,
+        10
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "graphic": "Object tree 2",
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "Gives 1 random Apricorn each time."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "For demonstration purposes only - Apricorn trees "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 0,
+                    "parameters": "should provide a fixed Apricorn, have a 24 hour delay "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 0,
+                    "parameters": "(like Kurt does), and should look different to "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 0,
+                    "parameters": "Headbutt trees."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 122,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        1,
+                        0,
+                        0,
+                        21
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 122,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        1,
+                        1,
+                        2,
+                        0,
+                        6
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 0,
+                    "parameters": "Kernel.pbItemBall(pbGet(1))"
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

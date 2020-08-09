@@ -1,0 +1,32 @@
+[EVENT]
+xy=[8, 6]
+graphic=trchar022
+
+[PAGE]
+
+
+
+Show Text "\\bMy Shuckie is a great Pokémon, but I can't train it anymore."
+Show Text "\\bWould you take Shuckie and raise it like it deserves?"
+Show Choices choices=['Yes', 'No'], default=2
+When 'Yes'
+  # pbAddForeignPokemon can only add a Pokémon to
+  # the player's party, so a space is required.
+  if s:pbAddForeignPokemon(:SHUCKLE,20,_I("Kirk"),_I("Shuckie"))
+    Show Text "\\bTake good care of Shuckie!"
+    :A = :ON
+  Else
+    Show Text "\\bOh, you don't have any space for it."
+  
+When 'No'
+  Show Text "\\bOh, that's a shame."
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+Show Text "\\bAre you raising my Shuckie well?"
+[end]
+

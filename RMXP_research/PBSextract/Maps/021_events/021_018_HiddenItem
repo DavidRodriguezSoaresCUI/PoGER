@@ -1,0 +1,19 @@
+[EVENT]
+xy=[25, 12]
+through=True
+
+[PAGE]
+
+
+
+if s:Kernel.pbItemBall(:POTION)
+  :A = :ON
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+[end]
+

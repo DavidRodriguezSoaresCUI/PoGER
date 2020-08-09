@@ -1,0 +1,29 @@
+[EVENT]
+xy=[3, 4]
+graphic=trchar020
+
+[PAGE]
+
+
+
+# Gives or upgrades a contest ribbon for the lead
+# Pokémon.
+# The method upgradeRibbon either upgrades an
+# existing ribbon to the next one listed, or gives the
+# first ribbon if the Pokémon has none of them.
+# Returns 0 if couldn't add/upgrade a ribbon.
+Show Text "\\rHi!  I'm the Contest Lady!"
+Show Text "\\rI give out contest ribbons. Do you want one?"
+Show Choices choices=['Yes', 'No'], default=2
+When 'Yes'
+  s:p=$Trainer.firstPokemon ret=p.upgradeRibbon(:HOENNCOOL, :HOENNCOOLSUPER, :HOENNCOOLHYPER, :HOENNCOOLMASTER) pbSet(1,ret) pbSet(2,p.name) if ret>0 pbSet(3,PBRibbons.getName(ret)) end"
+  if :TempPokemonChoice == 0
+    Show Text "\\rSorry, your \\v[2] already has the highest ranked Cool Ribbon."
+  Else
+    Show Text "\\PN received the \\v[3]. \\me[Item get]\\wtnp[20]"
+    Show Text "\\PN put the \\v[3] on \\v[2]."
+  
+When 'No'
+  Show Text "\\rThat's your choice."
+[end]
+

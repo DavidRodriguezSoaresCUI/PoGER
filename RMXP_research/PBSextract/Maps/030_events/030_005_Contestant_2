@@ -1,0 +1,18 @@
+[EVENT]
+xy=[3, 6]
+direction=N
+
+[PAGE]
+
+
+
+[end]
+
+
+[PAGE]
+graphic=trchar033
+s:pbBugContestDecided? == :ON
+
+Show Text "Barry: \\bI work a lot, but that's not good enough to win."
+[end]
+

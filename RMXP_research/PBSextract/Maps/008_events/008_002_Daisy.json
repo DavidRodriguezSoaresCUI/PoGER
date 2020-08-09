@@ -1,0 +1,179 @@
+{
+    "_class": "Event",
+    "id": 2,
+    "name": "Daisy",
+    "xy": [
+        5,
+        4
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "NPC 26",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\rDaisy: Hi, \\PN!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\rDaisy: Would you like me to groom one of your "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "Pok\u00e9mon?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 0,
+                    "parameters": [
+                        [
+                            "Yes",
+                            "No"
+                        ],
+                        2
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        "Yes"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\rDaisy: Which Pok\u00e9mon do you want me to groom?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbChooseNonEggPokemon(1,2)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        1,
+                        1,
+                        0,
+                        0,
+                        4
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\rDaisy: Oh, okay then."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 115,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "poke=pbGetPokemon(1)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "poke.changeHappiness(\"groom\")"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "poke.beauty+=40"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\rDaisy: There! \\v[2] looks a lot happier and prettier "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "now!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        "No"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\rDaisy: Oh, okay then."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

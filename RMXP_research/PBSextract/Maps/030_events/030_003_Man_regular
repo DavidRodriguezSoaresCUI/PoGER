@@ -1,0 +1,19 @@
+[EVENT]
+xy=[5, 2]
+
+
+[PAGE]
+graphic="NPC 01"
+
+
+# Today is not a Contest day.
+Show Text "\\bWe hold contests regularly in the Park. You should give it a shot."
+[end]
+
+
+[PAGE]
+
+s:isWeekday == :ON
+
+[end]
+

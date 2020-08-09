@@ -1,0 +1,12 @@
+[EVENT]
+xy=[4, 1]
+
+
+[PAGE]
+
+
+
+Show Text "\\sign[signskin]Top-Grade Items for Trainers!"
+Show Text "\\sign[signskin]2F: Trainer's Market"
+[end]
+

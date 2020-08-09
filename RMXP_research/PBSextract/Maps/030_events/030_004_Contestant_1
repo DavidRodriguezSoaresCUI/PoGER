@@ -1,0 +1,19 @@
+[EVENT]
+xy=[2, 5]
+
+
+[PAGE]
+direction=N
+
+
+[end]
+
+
+[PAGE]
+graphic=trchar010
+direction=E
+s:pbBugContestDecided? == :ON
+
+Show Text "Josh: \\bI study a lot, but that's not good enough to win."
+[end]
+

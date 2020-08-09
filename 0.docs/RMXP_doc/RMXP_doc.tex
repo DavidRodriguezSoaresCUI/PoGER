@@ -169,21 +169,10 @@ This is a confidential document and should not be distributed under any circumst
 \newpage
 \section{What this document is about}
 
-This document holds information about how RPG Maker XP implements \textit{Maps} and \textit{Events}, which is relevant in project PoGER's map/feature extraction effort.
 
-Please read this document's \hyperref[sec:privacypolice]{Privacy Policy}.
 
-As a result of the limited scope of PoGER and the limited time and information available to the author, the following documentation isn't complete and may not be accurate.
 
-The information was obtained through the official RPG Maker XP built-in documentation, user content found on the internet (forum posts, videos) and the author's reverse-engineering work.
-
-The following abbreviations may be present :
-\begin{itemize}
-	\item \textbf{RMXP} - RPG Maker XP
-	\item \textbf{PE} - Pokemon Essentials
-\end{itemize}
-
-Please note that the author is not a native English speaker.
+% TODO : Common events, RMXP animations
 
 
 \newpage
@@ -544,8 +533,8 @@ Implementation details :
 	%& Representation & "AOT, OFF" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Change event's graphic \\
-	& Parameters & TODO \\
-	& Notes &  \\
+	& Parameters & [2] - \textbf{0}:texture file (no ext) \verb|[String]|, \ \textbf{1}:hue - unused, \ \textbf{2}:direction $d$ \verb|[integer]|, \ \textbf{3}:step \verb|[integer 0-3]| \\
+	& Notes & \textit{step} is the horizontal offset (column), \textit{direction} is the vertical offset \\
 	%& Representation & "TODO" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Change event's graphic opacity \\
@@ -717,8 +706,9 @@ Implementation details :
 	%& Representation & TODO \\
 	\hline
 	\multirow{3}{*}{236} & Description & \verb|RPG::EventCommand| - Set Weather effect \\
-	& Parameters & [3] - \textbf{0}:weather id \verb|[integer]|, \ \textbf{1}:power \verb|[integer]|, \ \textbf{2}:duration (frames) \verb|[integer]| \\
-	& Notes & \textit{power} to be removed. TODO:research how weather is generated. \\
+	& Parameters & [3] - \textbf{0}:weather id \verb|[integer]|, \ \textbf{1}:power \verb|[integer]|, \ \textbf{2}:transition duration (frames) \verb|[integer]| \\
+	& Notes & \textit{power} and \textit{transition duration} to be removed. TODO:research how weather is generated. \\
+	&  & \textit{weather id} follows "common relation 13".  \\
 	%& Representation & TODO \\
 	\hline
 	\multirow{3}{*}{241} & Description & \verb|RPG::EventCommand| - Play BGM \\
@@ -825,6 +815,8 @@ In parenthesis are the proposed representation or information :
 	\item 0:coordinate X, 1:coordinate Y, 2:direction (3-5 unused)
 	\item 0:NW, 1:Centered (picture coordinate origin)
 	\item 0:Normal, 1:Additive, 2:Substractive (blending type)
+	
+	\item 0:None, 1:Rain, 2:Storm, 3:Snow
 \end{enumerate}
 
 TODO:determine if division is always rounded to an integer (and how) or not.
@@ -1000,8 +992,9 @@ Parameters are mostly identical to "Show Picture". This is mostly used to animat
 	\hline
 \end{tabular}
 
+
 \newpage
-\section{Command Representation decisions}
+\section{Command Representation}
 \label{sec:cmdrepr}
 
 The representation chosen is a result of careful consideration of its future usage requirements (including but not limited to) :
@@ -1019,21 +1012,19 @@ The representation chosen is a result of careful consideration of its future usa
 
 At the time of writing these lines, representations in this document are still not final, it's a work-in-progress.
 
-Particular decisions :
+\textbf{Particular decisions}
 \begin{itemize}
-	\item Python syntax style : Reduces explicit syntax (like semicolons and curly braces), therefore reducing syntax errors.
+	\item Python syntax style : Reduces explicit syntax (like semicolons and curly braces), therefore reducing syntax errors. Takes advantage of "implicit" syntax by making indentation itself meaningful.
 	
 	\item Case insensitive : Simplification allowing any program to simply make everything lowercase when reading an \textit{Event}, and users to Use any casing style they prefer. This also makes it harder to have variable/switch name collisions by forcing users to explicitely name their variables.
 	
-	\item Switches, Self-switches and variables : Should be all represented as \textbf{symbols}. 
+	\item Switches, self-switches and variables : Should be all represented as \textbf{symbols}. 
 	
 	Proposed representation : \verb|":s" [String]| \textit{(string beginning with colon)}
 	
 	Let \verb|s| be the string representation (name) of the Switch/Self-switch/Variable. \verb|s| of length 1 is to be reserved to self-switches.
 	
 	Note that merging variables and switches may allow greater flexibility for users.
-	
-	\item Symbol length limit : TODO
 	
 \end{itemize}
 
@@ -1050,7 +1041,7 @@ Particular decisions :
 		\item 1 parameter : command line must contain the command keyword, plus the expected parameter \verb|parameter_name = parameter_value| (parameter name recommended but not mandatory; parameter may be facultative)
 		\item n$>$1 parameters : command line must contain the command keyword, and the expected parameters \verb|parameter_name = parameter_value| as a comma-separated list (no brackets; parameter name mandatory; parameter may be facultative).
 		\item Note on \textit{facultative} parameters : marked with a \verb|*|.
-		\item Strictly equivalent : '\verb|:ON|'$\equiv$'\verb|True|', '\verb|:OFF|'$\equiv$'\verb|False|'
+		\item Strictly equivalent : '\verb|:ON|'$\equiv$'\verb|True|', '\verb|:OFF|'$\equiv$'\verb|False|', '\verb|is|'$\equiv$'\verb|==|' (when placed where a comparator would be).
 	\end{itemize}
 \end{itemize}
 
@@ -1069,27 +1060,29 @@ Particular decisions :
 		\hline
 		& Description & \verb|Turn| - Turn the event (change direction). \\
 		& Parameters & [1] - \textbf{0}: \verb|direction - [String]| \\
-		& Notes & \verb|direction|$\ \in \ $\{S,W,E,N\}, see "Directions" below. \\
+		& Notes & \verb|direction|, see "Directions" below. \\
 		& Examples & "\verb|Turn N|", "\verb|Turn W|" \\
 		\hline
 		& Description & \verb|Move Event| - Move Event to absolute/relative coordinates on the same map. \\
-		& Parameters & [2] - \textbf{0}:\verb|event* - [String]| (name of the event to move) \\
+		& Parameters & [3] - \textbf{0}:\verb|event* - [String/int]| (name/id of the event to move) \\
 		&  & \textbf{1}:\verb|relative_coordinates/absolute_coordinates - [list of 2 int]| \\
-		& Notes & \verb|event| is optional, defaults to self.  \\
+		&  & \textbf{2}:\verb|direction* - [int]| \\
+		& Notes & \verb|event| is optional, defaults to self. \verb|direction| is optional, defaults to "K".  \\
 		& Examples & "\verb|Move Event relative_coordinates=[7,-5]|",  \\
 		&  & "\verb|Move Event event=Jack, absolute_coordinates=[4,12]|" \\
 		\hline
 		& Description & \verb|Wait| - Pause event behavior execution for a given amount of time. \\
-		& Parameters & [1] - \textbf{0}: \verb|ms - [int]| (time in milliseconds) \\
-		& Examples & "\verb|Wait ms=3000|", "\verb|Wait ms=20|" \\
+		& Parameters & [1] - \textbf{0}: \verb|ms/s - [int]| (time in milliseconds/seconds) \\
+		& Notes & If parameter name is unspecified, defaults to \verb|s|.  \\
+		& Examples & "\verb|Wait ms=3000|", "\verb|Wait s=3|" \\
 		\hline
-		& Description & \verb|Switch| - Switch event properties on/off \\
+		& Description & \verb|Set| - Set event properties value \\
 		& Parameters & [2] - \textbf{0}: \verb|property - [String]|, \ \textbf{1}: \verb|value - [int/String/:ON/OFF]| \\
 		& Notes & \verb|property| must be a configuration variable, see "Configuration variables" below. \\
 		&  & \verb|value| must be a valid value for that property. \\
-		& Examples & "\verb|Switch property=move_animation value=:ON|" \\
-		&  & "\verb|Switch property=Animation value=:OFF|" \\
-		&  & "\verb|Switch property=graphic value="trchar28"|" \\
+		& Examples & "\verb|Set property=move_animation value=:ON|" \\
+		&  & "\verb|Set property=Animation value=:OFF|" \\
+		&  & "\verb|Set property=graphic value="trchar28,S,0"|" \\
 		\hline
 		& Description & \verb|Play| - Play audio. \\
 		& Parameters & [3] - \textbf{0}: \verb|SE/BGM/ME - [String]|, \ \textbf{1}: \verb|volume* - [int]|, \ \textbf{2}: \verb|pitch* - [int]| \\
@@ -1109,10 +1102,6 @@ Particular decisions :
 		& Parameters & [2] - \textbf{0}: \verb|position* - [Top/Middle/Bottom]|, \ \textbf{1}: \verb|border* - [Show/Hide]| (window border)) \\
 		& Example & "\verb|Change Text Options position=Middle, border=Show|" \\
 		\hline
-		& Description & \verb|End Execution| - Ends behavior execution. \\
-		& Parameters & [0] \\
-		& Example & "\verb|End Execution|" \\
-		\hline
 	\end{tabular}
 }
 
@@ -1120,6 +1109,10 @@ Particular decisions :
 
 {\small
 	\begin{tabular}{|c a l|}
+		\hline
+		& Description & \verb|End Execution| - Ends behavior execution. \\
+		& Parameters & [0] \\
+		& Example & "\verb|End Execution|" \\
 		\hline
 		& Description & \verb|Label| - Marks a line as a target for a \verb|Goto|. \\
 		& Parameters & [1] - \textbf{0}: \verb|name - [String]| \\
@@ -1131,10 +1124,10 @@ Particular decisions :
 		& Example & "\verb|Goto "here"|" \\
 		\hline
 		& Description & \verb|Transfer Player| - Teleport player. \\
-		& Parameters & [5] - \textbf{0}: \verb|map* - [String]|, \ \textbf{1}: \verb|x - [int]|, \ \textbf{2}: \verb|y - [int]| \\
+		& Parameters & [6] - \textbf{0}: \verb|map* - [String]|, \ \textbf{1}: \verb|x - [int]|, \ \textbf{2}: \verb|y - [int]| \\
 		&  & \textbf{3}: \verb|direction* - [String]|, \ \textbf{4}: \verb|fading* - [:ON/:OFF]| \\
 		& Notes & \verb|map| defaults to the one the player is in. \verb|direction|$\ \in \ $\{S,W,E,N,K\}, defaults to "K". \\
-		&  &  \verb|map| defaults to (TODO). \\
+		&  &  \verb|fading| defaults to (TODO). \\
 		& Example & "\verb|Transfer Player map="Kurt's house", x=2, y=4|" \\
 		\hline
 		& Description & \verb|Set Move Route| - Set a sequence of commands, to be executed by a set event \\
@@ -1168,12 +1161,6 @@ Particular decisions :
 		& Notes & TODO. \\
 		& Example & TODO \\
 		\hline
-		& Description & \verb|Set weather| - Set overworld's weather. \\
-		& Parameters & [2] - \textbf{0}: \verb|name - [String]|, \ \textbf{1}: \verb|duration* - [int]| \\
-		& Notes & \verb|duration| defaults to infinite duration. The effect scope of \verb|Set weather| is to be determined (for \\
-		&  & current map, radius on the current map, across maps). Provisionally, it's limited to current map. \\
-		& Example & "\verb|Set weather name="Rainy", duration=12000|" \\
-		\hline
 	\end{tabular}
 }
 
@@ -1181,6 +1168,12 @@ Particular decisions :
 
 {\small
 \begin{tabular}{|c a l|}
+		\hline
+		& Description & \verb|Set weather| - Set overworld's weather. \\
+		& Parameters & [2] - \textbf{0}: \verb|name - [String]|, \ \textbf{1}: \verb|duration* - [int]| \\
+		& Notes & \verb|duration| defaults to infinite duration. The effect scope of \verb|Set weather| is to be determined (for \\
+		&  & current map, radius on the current map, across maps). Provisionally, it's limited to current map. \\
+		& Example & "\verb|Set weather name="Rainy", duration=12000|" \\
 		\hline
 		& Description & \verb|Fade out BGM| \\
 		& Parameters & [1] - \textbf{0}: \verb|duration - [int]| \\
@@ -1213,15 +1206,32 @@ Particular decisions :
 	\end{tabular}
 }
 
+\newpage
 Directions :
 \begin{itemize}
 	\item S,W,E,N : South, West, East, North (vertical/horizontal movement)
-	\item SW,NW,NE,SE : South-West, North-West, North-East, South-East (diagonal movement, not recommended)
-	\item R : random movement (S,W,E,N)
-	\item 1F,1B : one step Forwards/Backwards (according to current orientation/direction)
-	\item 1A,1T : one step Away from/Towards the player
-	\item K : Keep the same (for teleportation)
+	
+	\item Step directions :
+	\begin{itemize}
+		\item SW,NW,NE,SE : South-West, North-West, North-East, South-East (diagonal movement, not recommended)
+		\item R : random movement (S,W,E,N)
+		\item 1F,1B : one step Forwards/Backwards (according to current orientation/direction)
+		\item 1A,1T : one step Away from/Towards the player
+	\end{itemize}
+
+	\item Turn directions:
+	\begin{itemize}
+		\item "90 Right", "90 Left" : Turn 90 degrees right/left.
+		\item "random", "90 random" : Turn at random, turn "90 Right" or "90 Left" at random.
+		\item "towards player", "away from player" : Turn based on player's position.
+	\end{itemize}
+
+	\item Transfer directions:
+	\begin{itemize}
+		\item K : Keep the same (for teleportation)
+	\end{itemize}	
 \end{itemize}
+
 
 Execution flow control :
 \begin{itemize}
@@ -1242,23 +1252,20 @@ Total :
 
 \begin{Verbatim}[frame=single, fontsize=\footnotesize]
 EVENT
-    : '[event]' LF+ (CONFIG LF)+ LF+ PAGE+
+    : LF* '[event]' LF+ (CONFIG LF)+ LF+ PAGE+ <EOF>
 
 PAGE
-    : '[page]' LF+ (CONFIG_OR_COND LF)* LF+ STATEMENTS? '[end]' LF+
-    
-CONFIG
-    : CONFIG_VAR '=' PARAMETER
+    : '[page]' LF+ (CONFIG_OR_COND LF)* LF+ STATEMENTS '[end]' LF+
     
 CONFIG_OR_COND
-    : LOG_EXPR
-    | CONFIG
+    : CONFIG_VAR '=' PARAMETER_VALUE
+    | LOG_EXPR
     
 STATEMENTS             // block of lines that define an event's behavior
-    : (STATEMENT LF+)+
+    : (STATEMENT LF+)*
     
 STATEMENT              // line that define an event's behavior
-    : 'if' WHITESPACE LOG_EXPR LF CODE_BLOCK ('else' LF CODE_BLOCK)?
+    : 'if' LOG_EXPR LF CODE_BLOCK ('else' LF CODE_BLOCK)?
     | 'loop' LF CODE_BLOCK
     | 'when' WHITESPACE VALUE LF CODE_BLOCK
     | 'break'
@@ -1279,16 +1286,18 @@ PARAMETER
     : (PARAMETER_NAME '=')? PARAMETER_VALUE
     
 PARAMETER_VALUE
-    : '[' VALUE (WHITESPACE VALUE)* ']'
+    : LIST
     | VALUE
+    | BOOL
     
 VAR_MANIPULATION
-    : VAR_ID ASSIGN_OPERATOR EXPRESSION
+    : SYMBOL ASSIGN_OPERATOR EXPRESSION
     
 EXPRESSION             // expression that returns a value
     : LOG_EXPR
-    | NUM_EXPR
+    | (MATH_OP | NUMBER | SYMBOL)+ // Imperfect : allows invalid expressions
     | SCRIPT
+    | PARAMETER_VALUE
     
 LOG_EXPR               // expression that returns a logical value
     : COMPARABLE LOG_OPERATOR COMPARABLE
@@ -1304,8 +1313,11 @@ PARAMETER_NAME
 
 \newpage
 \begin{Verbatim}[frame=single, fontsize=\footnotesize]
+LIST
+    : '[' VALUE (WHITESPACE VALUE)* ']'
+
 SCRIPT
-    : 's:' WORD (WHITESPACE PARAMETERS)?
+    : s\:.*
 
 TERM
     : FACTOR (MUL_OP FACTOR)*
@@ -1317,53 +1329,47 @@ FACTOR
 CMD_ID
     : WORDS
     
-VAR_ID
+SYMBOL
     : ':' WORD
     
 VALUE
     : NUMBER
     | STRING
     | WORD
+    | TURN_VALUE
     
 STRING
     : '"' [^"]*  '"'
 
 NUMBER
-    : -? [0-9]+ ('.' [0-9]+)?
-
-WHITESPACE
-    : ' '+
+    : -?[0-9]+('.'[0-9]+)?
 
 LF
-    : '\r\n'
-    | '\n'
+    : '\r\n' | '\n'
     
 WORDS
-    : WORD (WHITESPACE WORD)*
+    : WORD+
     
 WORD
-    : [a-z\_0-9]+
+    : [a-z][a-z\_0-9]*
+    
+BOOL
+    : ':ON' | ':OFF' | 'True' | 'False'
     
 LOG_OPERATOR
-    : '=='
-    | '>='
-    | '<='
-    | '>'
-    | '<'
-    | '!='
+    : '==' | '>=' | '<=' | '>' | '<' | '!='
     
 ASSIGN_OPERATOR
-    : '='
-    | '+='
-    | '-='
-    | '*='
-    | '/='
+    : '=' | '+=' | '-=' | '*=' | '/='
     
 MATH_OP
-    : '+'
-    | '-'
-    | '*'
-    | '/'
+    : '+' | '-' | '*' | '/'
+    
+COMMENT                // Rejected by the lexer
+    : #.*
+    
+SPACE                  // Rejected by the lexer
+    : [ \t]+
 \end{Verbatim}
 
 \begin{itemize}
@@ -1381,47 +1387,111 @@ Mostly contained in the event, but can be overridden by the pages.
 
 \begin{table}[!h]
 	\centering
-\begin{tabular}{|a|c|c|l|}
-	\hline
-	\textbf{CONFIG\_VAR} & \textbf{type} & \textbf{Default} & \textbf{Description}. \\
-	\hline
-	{\ttfamily ID} & {\ttfamily int} & N/A & (Deprecated) Identifies the event. \\
-	\hline
-	{\ttfamily name} & {\ttfamily String} & N/A & (Deprecated:moved to file name) Identifies the event. \\
-	\hline
-	{\ttfamily xy} & {\ttfamily [int, int]} & N/A$^*$ & Position of the event. \\
-	\hline
-	{\ttfamily graphic} & {\ttfamily String} & None & Texture of the event. \\
-	\hline
-	{\ttfamily opacity} & {\ttfamily int} & TODO & . \\
-	\hline
-	{\ttfamily direction} & {\ttfamily String} & S & [N,E,S,W] Initial facing direction (if has {\ttfamily graphic}). \\
-	\hline
-	{\ttfamily trigger} & {\ttfamily String} & None & Trigger for the behavior of the event. \\
-	\hline
-	{\ttfamily move\_animation} & {\ttfamily bool} & TODO & . \\
-	\hline
-	{\ttfamily stop\_animation} & {\ttfamily bool} & TODO & . \\
-	\hline
-	{\ttfamily direction\_fix} & {\ttfamily bool} & TODO & . \\
-	\hline
-	{\ttfamily through} & {\ttfamily bool} & TODO & . \\
-	\hline
-	{\ttfamily always\_on\_top} & {\ttfamily bool} & TODO & . \\
-	\hline
-	{\ttfamily movement} & {\ttfamily TODO} &  & . \\
-	\hline
-	{\ttfamily movement\_speed} & {\ttfamily int} & TODO & . \\
-	\hline
-	{\ttfamily movement\_frequency} & {\ttfamily int} & TODO & . \\
-	\hline
-	{\ttfamily preset} & {\ttfamily String} & None & \parbox{0.51\linewidth}{\vspace{.2\baselineskip}Proposed "preset" for simple, common events (boulder, door, etc).} \\
-	\hline
-\end{tabular}
-\caption*{$^*$ : Mandatory configuration, therefore no default.}
+	{\small 
+	\begin{tabular}{|a|c|c|l|}
+		\hline
+		\textbf{CONFIG\_VAR} & \textbf{type} & \textbf{Default} & \textbf{Description}. \\
+		\hline
+		{\ttfamily name} & {\ttfamily String} & N/A & Identifies the event. \\
+		\hline
+		{\ttfamily xy} & {\ttfamily [int, int]} & N/A$^*$ & Position of the event. \\
+		\hline
+		{\ttfamily graphic} & {\ttfamily String/int} & None & Texture of the event. \\
+		\hline
+		{\ttfamily pattern} & {\ttfamily int} & 0 & Column index for the sub-texture from \verb|graphic| to use. \\
+		\hline
+		{\ttfamily opacity} & {\ttfamily int} & 255 & \verb|0-255| Opacity for event's texture. \\
+		\hline
+		{\ttfamily transparent} & {\ttfamily bool} & False & Transparency flag. When enabled, \verb|graphic| isn't displayed. \\
+		\hline
+		{\ttfamily direction} & {\ttfamily String} & S & [N,E,S,W] Initial facing direction (if has {\ttfamily graphic}). \\
+		\hline
+		{\ttfamily trigger} & {\ttfamily String} & "onPlayerAction" & Trigger for the behavior of the event. \\
+		\hline
+		{\ttfamily move\_animation} & {\ttfamily bool} & True & Whether the graphic should be animated when moving/walking. \\
+		\hline
+		{\ttfamily stop\_animation} & {\ttfamily bool} & False & Whether the graphic should be animated when not moving/walking. \\
+		\hline
+		{\ttfamily direction\_fix} & {\ttfamily bool} & False & The direction (of the texture) of the event cannot be changed \\
+		 &  &  & when True. \\
+		\hline
+		{\ttfamily through} & {\ttfamily bool} & False & "Walk through walls" switch: when True, collision is ignored and \\
+		 &  &  & the event can go anywhere (walk on water, walls, holes, etc). \\
+		\hline
+		{\ttfamily always\_on\_top} & {\ttfamily bool} & False & Event's graphic should be drawn last, as to always be "on top" \\
+		 &  &  & of everything else. Scarcely used. \\
+		\hline
+		{\ttfamily movement} & {\ttfamily String} & "Fixed" & "Fixed", "Random" or "Approach". \\
+		\hline
+		{\ttfamily movement\_speed} & {\ttfamily String} & "Slow" & "Slow" or "Fast". Vaguely defined. Player's movement is "Fast". \\
+		\hline
+		{\ttfamily preset} & {\ttfamily String} & None & Proposed "preset" for simple, common events (boulder, door, etc). \\
+		\hline
+	\end{tabular}
+	}
+	\caption*{$^*$ : Mandatory configuration, therefore no default.}
 \end{table}
 
-Note that, like anything in an event file, it should be read in a case-insensitive way.
+Notes :
+\begin{itemize}
+	\item \verb|graphic| can be either a string (name of a character file) or a int (tile id from the current tileset). Defaults to None : the event has no texture.
+	
+	\item \verb|move_animation:False, stop_animation:True| is mostly used for berry trees.
+	
+	\item As anything in an event file, it should be read in a case-insensitive way.
+	
+	\item \verb|trigger| can have values : 
+	\begin{itemize}
+		\item \textit{onPlayerAction} : The event is triggered by the player interacting (using action button) with it.
+		
+		\item \textit{onPlayerTouch} : The event is triggered by the player touching (walking into) it.
+		
+		\item \textit{onTouch} : The event is triggered by the player touching (walking into) it OR the event touching the player.
+		
+		\item \textit{onAutorun} : The event is triggered when the map is loaded.
+		
+		\item \textit{ready} : The event is always triggered, its execution is controlled through its behavior conditions.
+		
+		\item \textit{onSeen n} : The event is triggered when the player is on the event's line of sight, within n tiles (n is optional, defaults to no limit)
+	\end{itemize}
+	
+\end{itemize}
+
+
+
+
+
+
+
+\newpage
+\subsection{Notes}
+
+Unfortunately, it is not possible to cover every command used in PE, just as it is not possible to extract the underlying semantic behind every event, for the simple reason that PE doesn't always implement things in a straightforward way.
+
+Reading some events, it appears obvious that the authors of PE had to work around limitations of event commands, relying on scripts to expand capabilities. These result in artifacts.
+
+These include, but are not limited to :
+\begin{itemize}
+	\item Recurring events : Some events, like \textit{doors}, are common and have straightforward behavior, so authors just copy-pasted them everywhere they were needed, only applying modifications when necessary (eg: appearance and transfer destination on doors).
+	
+	These were the motivation behind the creation of the \verb|preset| configuration variable on events. It would allow for all recurring commands to be abstracted away, allowing for shorter and cleaner events.
+	
+	\item Text hack : According to PE's wiki, there are plenty of modifiers that can be integrated to text in order to modify its behavior : changing text font, size, setting it bold, italic, changing its position or alignment, displaying a selection menu, etc..
+	
+	This would need to be re-implemented entirely to replicate behavior.
+	
+	\item Arbitrary code : The ability to execute scripts in events, and the global nature of most elements in the game, allows scripts to perform basically any action.
+	
+	Replicating this much flexibility without a Ruby interpreter and PE's original scripts would be completely impractical. The only sensible way forward would be to implement the basic function calls and elevate the abstraction level for complex behavior, or fixing it by hand. Decision are to be made on a case-by-case basis.
+	
+	\item Arbitrary variable use : This is not exactly an artifact or RMXP's limitations, but one of PE's authors. They sometimes use variables,  whose name imply a certain usage scope, for unrelated purposes
+	. 
+	
+	This could have been simply avoided by creating new variables. It is not technically an issue : the game already runs with these artifacts, therefore it doesn't need fixing.
+	
+	There is no other solution than fixing it by hand (by creating new variables and changing usage).
+	
+\end{itemize} 
 
 
 
@@ -1441,11 +1511,11 @@ Here we will focus on \verb|RPG::Map|. Here are its components :
 	\hline
 	{\ttfamily autoplay\_bgX} & bool & Indicated whether an audio is to be played as soon as the map is loaded. \\
 	\hline
-	{\ttfamily bgX} & AudioFile & The audio that is to be played. \\
+	{\ttfamily bgm/bgs} & AudioFile & The audio that is to be played when loading the map. \textit{bgs unused by PE} \\
 	\hline
-	{\ttfamily encounter\_list} & Array & TODO \\
+	{\ttfamily encounter\_list} & Array & \textit{Unused by PE}. \\
 	\hline
-	{\ttfamily encounter\_step} & int & TODO \\
+	{\ttfamily encounter\_step} & int & \textit{Unused by PE}. \\
 	\hline
 	{\ttfamily data} & Table of int & Contain the \textit{map} representation of the 3 tile layers. \\
 	\hline
@@ -1477,18 +1547,7 @@ Here we will focus on \verb|RPG::Map|. Here are its components :
 	parent_map_id   = mapinfos[id].parent_id
 	parent_map_name = mapinfos[parent_map_id].name rescue nil\end{lstlisting}
 	\vspace{-8mm}
-	
-	\item \verb|RPG::AudioFile| : Basic data container :
-	
-	\begin{tabular}{|a | l | l|}
-		\hline
-		{\ttfamily name} & String & The name of the audio file (no extension). \\
-		\hline
-		{\ttfamily volume} & int & Acts like a volume slider, normalized at 100. \\
-		\hline
-		{\ttfamily pitch} & int & Allows to adjust sound pitch, normalized at 100. \\
-		\hline
-	\end{tabular}
+	RMXP allows maps to be structured in a hierarchy, where a map can have a "parent map", but this is only used in the UI to emulate a file system-like tree. This is purely cosmetic. Only the \verb|name| value will be used.
 	
 	\item \verb|RPG::Tileset| : Represents a normal tileset :
 	
@@ -1498,13 +1557,15 @@ Here we will focus on \verb|RPG::Map|. Here are its components :
 		\hline
 		{\ttfamily name} & String & Its name (no extension). \\
 		\hline
-		{\ttfamily autotile\_names} & Array of String & Names of associated autotiles (up to 7). \\
+		{\ttfamily tileset\_name} & String & Name of tileset. \textit{Moved to Map}. \\
 		\hline
-		{\ttfamily panorama\_X} &  & TODO \\
+		{\ttfamily autotile\_names} & Array of String & Names of associated autotiles (up to 7). \textit{Moved to Map}. \\
 		\hline
-		{\ttfamily fog\_X} &  & TODO \\
+		{\ttfamily panorama\_*} &  & \textit{Unused by PE}. \\
 		\hline
-		{\ttfamily battleback\_name} & String & Name of the texture that appears during combat. \\
+		{\ttfamily fog\_*} &  & \textit{Unused by PE}. \\
+		\hline
+		{\ttfamily battleback\_name} & String & Name of the texture that appears during combat. \textit{Moved to Map}. \\
 		\hline
 		{\ttfamily passages} & 2D Table of int & Properties of individual textures. \\
 		\hline
@@ -1513,14 +1574,148 @@ Here we will focus on \verb|RPG::Map|. Here are its components :
 		{\ttfamily terrain\_tags} & 2D Table of int & Properties of individual textures. \\
 		\hline
 	\end{tabular}
+	
+	\newpage
+	\item \verb|RPG::AudioFile| : Basic data container :
+	
+	\begin{tabular}{|a | l | l|}
+	\hline
+	{\ttfamily name} & String & The name of the audio file (no extension). \\
+	\hline
+	{\ttfamily volume} & int & Acts like a volume slider, normalized at 100. \\
+	\hline
+	{\ttfamily pitch} & int & Allows to adjust sound pitch, normalized at 100. \\
+	\hline
+	\end{tabular}
+
+	A global variable (\verb|$data_tilesets, Array|) stores this information.
 
 	\item \verb|Table| : Used for 2D/3D arrays, with 3 class mathods to retrieve dimensions. $x$ and $y$ correspond to their GUI map representation and $z$ the map layers (background, intermediate, foreground).
 	
 \end{itemize}
 
 
+\subsubsection{Values for tileset tables}
+
+Each table contains \verb|int| values, one for each texture. This value is to be interpreted .
+
+\verb|passages|: let's consider the 6 least significant bits
+\begin{itemize}
+	\item bit 0 : Cannot move S
+	\item bit 1 : Cannot move W
+	\item bit 2 : Cannot move E
+	\item bit 3 : Cannot move N
+	\item bit 4 : Is a bush
+	\item bit 5 : Is a counter (tile through which interaction is possible)
+\end{itemize}
+
+\verb|terrain_tags|: see \verb|PBTerrain| module for values.
 
 
+\verb|priorities|: default value is 0. Any higher value means that the texture has priority. In practice, it means that the texture is "above" its own layer (drawn last). Combined with passability, it's possible for it to be on the same layer as NPCs/the player and give the illusion that they can pass behind it. 
+
+Proposition : integrate \verb|priorities| to \verb|passages| as a \nth{7} bit (\textit{bit 6 : Can be passed behind}).
+
+\newpage
+\subsection{Map and Tileset files}
+
+There should be a well-defined way of representing extracted map and tileset information. 
+
+\textbf{Map}
+\begin{itemize}
+
+	\item Located in the "Maps" directory.
+	
+	\item Naming convention : \verb|<id>_<name>.txt| (\textit{id} must have 3 digits and use zero-padding). The \textit{name} is only here as a quality-of-life addition, for developers to easily know what map they're dealing with. It must be present, though.
+	
+	\item Location agnostic : A map file can be at the root of the "Maps" directory, or in any subdirectory, allowing for the same flexibility as RMXP's UI.
+	
+	
+	\item Content : JSON with the following entries
+	
+	{\small
+	\begin{tabular}{|a | l | l|}
+		\hline
+		{\ttfamily \_class} & String & Must be \verb|"Map"|. \\
+		\hline
+		{\ttfamily name} & String & Map's name. \\
+		\hline
+		{\ttfamily width} & int & Map's width. Should be checked against the content of {\ttfamily table}. \\
+		\hline
+		{\ttfamily height} & int & Map's height. Should be checked against the content of {\ttfamily table}. \\
+		\hline
+		{\ttfamily battleback} & String & Picture to be displayed behind battles. \\
+		\hline
+		{\ttfamily tileset} & String & Map's tileset (without extension). \\
+		\hline
+		{\ttfamily autoplay\_bgm} & bool & Sets whether the bmg should be played when entering the map. \\
+		\hline
+		{\ttfamily bgm} & String & Map's background music.  \\
+		\hline
+		{\ttfamily table} & 3D array of int & Describes map's texture placement (3 layers).  \\
+		\hline
+	\end{tabular}}
+
+	Note : \verb|bgm| formats : \verb|"<name>"| or \verb|"<name>,<volume>,<pitch>"|
+	
+	Note : \verb|table| must have dimensions \verb|width x height x 3|
+\end{itemize} 
+
+\textbf{Tileset}
+\begin{itemize}
+
+	\item Located in the "Tileset" directory.
+	
+	\item Naming convention : \verb|<id>_<name>.txt| (\textit{id} must have 3 digits and use zero-padding). The \textit{name} is only here as a quality-of-life addition, for developers to easily know what map they're dealing with. It must be present, though.
+	
+	
+	\item Content : JSON with the following entries
+	
+	{\small
+		\begin{tabular}{|a | l | l|}
+			\hline
+			{\ttfamily \_class} & String & Must be \verb|"Tileset"|. \\
+			\hline
+			{\ttfamily name} & String & Tileset's file name (without extension). Referenced by map's property \verb|tileset| \\
+			\hline
+			{\ttfamily passages} & 1D array of int & Tileset's passage table. \\
+			\hline
+			{\ttfamily terrain\_tags} & 1D array of int & Tileset's terrain tag table. \\
+			\hline
+	\end{tabular}}
+
+	\item Advantages : Decoupling a \verb|Tileset| from the autotilesets used for a particular map allows
+\end{itemize}
+
+
+
+\newpage
+\section{Manual extraction}
+
+Unfortunately, I found some elements of RPG Maker XP to not be accessible using scripting or external utilities, thus making it impossible to automatically extract.
+
+Fortunately, they are scarce and there is a manual way to extract them from the UI.
+
+\subsection{Switch and Variable names}
+
+There are around 34 switches and a dozen variables used by PE. Commands that use them use their \textit{id} to reference them, not their name.
+
+While it is not strictly necessary to extract their corresponding names, it makes resulting commands way easier to read.
+
+The most straightforward id-to-name conversion strategy is to create a Python dictionary with ids as key and name as values. This allows the conversion with a simple dictionary call.
+
+You can find such an implementation in the \verb|PE_variables_switches.py| file.
+
+Procedure to extract names :
+\begin{enumerate}
+	\item Create/Select an event, to display the "Event" window.
+	
+	\item Create a new event command. In the "Event command" window, select "Conditional Branch". \textit{There are other commands that could do the trick, I just chose this one}.
+	
+	\item On the "Conditional Branch" window, select either "Switch" or "Variable" and click on the switch/variable selection box immediately to its right.
+	
+	\item You should see a new window lists of items. Just select them one by one and copy-paste their name in the dictionary you're building (at the corresponding index of course).
+\end{enumerate}
 
 
 \newpage

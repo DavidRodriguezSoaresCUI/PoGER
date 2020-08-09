@@ -1,0 +1,12 @@
+[EVENT]
+xy=[21, 29]
+
+
+[PAGE]
+
+
+
+Show Text "This is another boulder-down-hole puzzle."
+Show Text "It is identical to the regular kind, except the boulder downstairs is just a regular immovable event rather than a boulder itself."
+[end]
+

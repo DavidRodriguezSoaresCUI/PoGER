@@ -1,0 +1,122 @@
+[EVENT]
+xy=[3, 3]
+graphic=trchar028
+
+[PAGE]
+
+
+
+Show Text "\\bWelcome to the Battle Factory."
+Show Text "\\bWould you like to participate in a single battle?"
+Show Choices choices=['Yes', 'No'], default=2
+When 'Yes'
+  s:pbBattleChallenge.set("factorysingleopen",7, pbBattleFactoryRules(false,true))"
+  if s:pbSaveScreen
+    Show Text "\\bPlease come this way."
+    s:pbBattleChallenge.start
+    Set Move Route :self
+      Set property=through value=:ON
+      Wait s=4
+      Turn N
+      Step N
+      Step N
+      Set property=opacity value={opa}
+      Set property=through value=:OFF
+    Set Move Route :player
+      Set property=through value=:ON
+      Wait s=4
+      Turn N
+      Step N
+      Step N
+      Step N
+      Set property=opacity value={opa}
+      Set property=through value=:OFF
+    
+    Play SE="Door exit", volume=80, pitch=100
+    Fadeout color=Black, ms=300
+    Wait ms=400
+    Transfer Player map=63, x=4, y=9, direction="K", fading="NoFading"
+    Fadein ms=300
+  Else
+    Goto End
+  
+When 'No'
+  Label End
+  Show Text "\\bCome back another time."
+  s:pbBattleChallenge.pbCancel
+  End Execution
+[end]
+
+
+[PAGE]
+trigger=onAutorun
+s:pbInChallenge? == :ON
+
+# If Won
+if s:pbBattleChallenge.decision==1
+  Show Text "\\bCongratulations for winning."
+  Show Text "\\bI will take your rental Pokémon back and return your own Pokémon."
+  Show Text "\\bPlease take this prize."
+  if s:!Kernel.pbReceiveItem(:RARECANDY)
+    Show Text "\\bYou have no room for it. At least you won, though."
+  
+  if s:$PokemonTemp.lastbattle!=nil
+    Show Text "\\bWould you like to record your last battle?"
+    Show Choices choices=['Yes', 'No'], default=2
+    When 'Yes'
+      s:pbRecordLastBattle
+      Show Text "\\se[Pkmn exp full]The battle was recorded."
+    When 'No'
+  
+  Show Text "Your results will be recorded.\\wtnp[15]"
+  s:pbBattleChallenge.pbEnd
+  Show Text "\\bCome back another time."
+  End Execution
+# If Lost or Forfeited
+if s:pbBattleChallenge.decision==2
+  Show Text "\\bThanks for playing."
+  Show Text "\\bI will take your rental Pokémon back and return your own Pokémon."
+  if s:$PokemonTemp.lastbattle!=nil
+    Show Text "\\bWould you like to record your last battle?"
+    Show Choices choices=['Yes', 'No'], default=2
+    When 'Yes'
+      s:pbRecordLastBattle
+      Show Text "\\se[Pkmn exp full]The battle was recorded."
+    When 'No'
+  
+  Show Text "Your results will be recorded.\\wtnp[15]"
+  s:pbBattleChallenge.pbEnd
+  Show Text "\\bCome back another time."
+  End Execution
+if s:pbBattleChallenge.pbResting?
+  Show Text "\\bWe've been waiting for you. Please come this way."
+  s:pbBattleChallenge.pbGoOn
+  Set Move Route :self
+    Set property=through value=:ON
+    Wait s=4
+    Turn N
+    Step N
+    Step N
+    Set property=opacity value={opa}
+    Set property=through value=:OFF
+  Set Move Route :player
+    Set property=through value=:ON
+    Wait s=4
+    Turn N
+    Step N
+    Step N
+    Step N
+    Set property=opacity value={opa}
+    Set property=through value=:OFF
+  
+  Play SE="Door exit", volume=80, pitch=100
+  Fadeout color=Black, ms=300
+  Wait ms=400
+  Transfer Player map=63, x=4, y=9, direction="K", fading="NoFading"
+  Fadein ms=300
+Else
+  Show Text "\\bExcuse me, but you didn't save before finishing your challenge last time."
+  Show Text "\\bSorry, but your challenge has been canceled."
+  s:pbBattleChallenge.pbEnd
+[end]
+

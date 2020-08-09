@@ -1,0 +1,26 @@
+[EVENT]
+xy=[14, 19]
+graphic=trchar057
+direction=E
+
+[PAGE]
+
+
+
+s:pbTrainerIntro(:TEAMROCKET_F)
+Show Text "\\rYou can battle me repeatedly, and have unlimited attempts to snag my Shadow Pokémon."
+if s:pbTrainerBattle(:TEAMROCKET_F,"Grunt",_I("You're too good for me!"),false,1)
+  if s:$Trainer.shadowcaught[PBSpecies::ELECTABUZZ]
+    :A = :ON
+  
+s:pbTrainerEnd
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+Show Text "\\rYou've managed to snag my Shadow Electabuzz. I'm not going to do anything now."
+[end]
+

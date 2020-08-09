@@ -1,0 +1,31 @@
+[EVENT]
+xy=[13, 2]
+graphic="NPC 08"
+
+[PAGE]
+
+
+
+Show Text "\\rI'm here to explain the rules of Triple Triad."
+Label Choices
+Show Text "\\rWhich topic do you want to learn about?"
+Show Choices choices=['Basics', 'Game rules', 'Prizes', 'Exit'], default=4
+When 'Basics'
+  Show Text "\\rTriple Triad is a game played with special square cards placed on a 3x3 board."
+  Show Text "\\rEach card has 4 numbers on it, one per side. These numbers are so-called stats."
+  Show Text "\\rPlayers take turns placing cards on the board. As they do so, they try to capture and gain control of their opponent's cards."
+  Show Text "\\rThat's where the numbers come in. If a player places a card with a higher number next to a card with a lower number, the player captures that card."
+  Show Text "\\rThus, the goal of the game is to gain control of more cards than the other player by the end of the game."
+  Goto Choices
+When 'Game rules'
+  Show Text "\\rThere are a number of optional game rules you can apply to individual games."
+  Show Text "\\rThey can affect card stats, how cards capture each other, the scoring and the prizes."
+  Goto Choices
+When 'Prizes'
+  Show Text "\\rWhen you win a game, you will recive 1 random card from your opponent from their Deck."
+  Show Text "\\rThis also works the other way around: if you lose, you have to give your opponent one of your cards, chosen at random."
+  Show Text "\\rYou can change what you win or lose from a game by using an optional game rule."
+  Goto Choices
+When 'Exit'
+[end]
+

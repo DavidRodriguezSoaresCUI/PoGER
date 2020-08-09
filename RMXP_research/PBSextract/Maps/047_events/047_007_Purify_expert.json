@@ -1,0 +1,310 @@
+{
+    "_class": "Event",
+    "id": 7,
+    "name": "Purify_expert",
+    "xy": [
+        18,
+        22
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "trchar028",
+                "character_hue": 0,
+                "direction": "Left",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bI can tell you some things about Shadow Pok\u00e9mon"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "in Essentials. However, the wiki has far more "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "information about them."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 118,
+                    "indent": 0,
+                    "parameters": "Choices"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bWhat do you want to know?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 0,
+                    "parameters": [
+                        [
+                            "Information",
+                            "Shadow Pok\u00e9mon battles",
+                            "Purifying Pok\u00e9mon",
+                            "Exit"
+                        ],
+                        4
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        "Information"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bShadow Pok\u00e9mon are a special kind of Pok\u00e9mon "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "which appeared in Pok\u00e9mon Colosseum and "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "Pok\u00e9mon XD."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bThey can be included in Essentials as well. See "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "the wiki for information on how to do this."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 1,
+                    "parameters": "Choices"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        "Shadow Pok\u00e9mon battles"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bTrainers with Shadow Pok\u00e9mon are set up in "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "exactly the same way as any other trainer."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bAny Pok\u00e9 Ball can be defined as a Snag Ball in "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "items.txt. If $PokemonGlobal.snagMachine is TRUE, "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "all types of Pok\u00e9 Ball will be Snag Balls automatically."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "$PokemonGlobal.snagMachine=true"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\b$Trainer.shadowcaught is an array (like the "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "Pok\u00e9dex seen/owned arrays) which keeps track of "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "which Shadow Pok\u00e9mon species have been caught."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 1,
+                    "parameters": "Choices"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        2,
+                        "Purifying Pok\u00e9mon"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bYou can purify Shadow Pok\u00e9mon in two ways."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bThe first is by bringing them to the Relic Stone here."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bThe second is by placing them in the Purify "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "Chamber, which you can access from the PC in Pok\u00e9 "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "Centers."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "!$PokemonGlobal.seenPurifyChamber"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bI've now given you access to the Purify Chamber."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "$PokemonGlobal.seenPurifyChamber=true"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bThe effects of Heart Gauge-lowering items are "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "already in Essentials. You just need to add the items "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "themselves to items.txt."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 1,
+                    "parameters": "Choices"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        3,
+                        "Exit"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

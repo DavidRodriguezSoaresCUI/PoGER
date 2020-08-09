@@ -1,0 +1,12 @@
+[EVENT]
+xy=[18, 10]
+
+
+[PAGE]
+
+
+
+# This event is empty, but prevents boulders from
+# being pushed over it.
+[end]
+

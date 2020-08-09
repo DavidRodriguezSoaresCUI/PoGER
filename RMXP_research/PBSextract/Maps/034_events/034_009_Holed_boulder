@@ -1,0 +1,17 @@
+[EVENT]
+xy=[17, 30]
+
+
+[PAGE]
+
+
+
+[end]
+
+
+[PAGE]
+graphic="Object boulder"
+:Boulderdownholeicecave == :ON
+
+[end]
+

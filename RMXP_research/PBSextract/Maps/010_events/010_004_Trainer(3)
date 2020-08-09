@@ -1,0 +1,40 @@
+[EVENT]
+xy=[3, 8]
+graphic=trchar033
+direction=E
+
+[PAGE]
+trigger=onEventTouch
+
+
+# Battle: \bBattle me now!
+# Type: CAMPER
+# Name: Liam
+# EndSpeech: A very good battle, indeed.
+# EndBattle: \bYou're pretty hot. But not as hot as
+# Brock!
+# EndIfSwitch: 4
+s:pbTrainerIntro(:CAMPER)
+s:Kernel.pbNoticePlayer(get_character(0))
+Show Text "\\bBattle me now!"
+if s:pbTrainerBattle(:CAMPER,"Liam",_I("A very good battle, indeed."),false,0,false,0)
+  :A = :ON
+s:pbTrainerEnd
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+Show Text "\\bYou're pretty hot. But not as hot as Brock!"
+[end]
+
+
+[PAGE]
+
+:DefeatedGym1 == :ON
+
+Show Text "\\bYou're pretty hot. But not as hot as Brock!"
+[end]
+

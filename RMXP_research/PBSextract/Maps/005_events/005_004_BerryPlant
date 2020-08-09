@@ -1,0 +1,13 @@
+[EVENT]
+xy=[9, 18]
+move_frequency=2
+walk_anime=False
+step_anime=True
+
+[PAGE]
+
+
+
+s:pbBerryPlant
+[end]
+

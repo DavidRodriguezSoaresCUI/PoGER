@@ -1,0 +1,54 @@
+[EVENT]
+xy=[6, 7]
+graphic=trchar014
+
+[PAGE]
+
+
+
+Show Text "\\bUh...\\nOh, yes, I'm the Move Deleter."
+Show Text "\\bI can make Pokémon forget their moves."
+Show Text "\\bWould you like me to do that?"
+Show Choices choices=['Yes', 'No'], default=2
+When 'Yes'
+  Label ChoosePokemon
+  Show Text "\\bWhich Pokémon should forget a move?"
+  s:pbChoosePokemon(1,3)
+  # If variable 1 is less than 0, it means the player has
+  # canceled choosing a Pokémon.
+  if :TempPokemonChoice < 0
+    Show Text "\\bCome again if there are moves that need to be forgotten."
+  Else
+    if s:pbGetPokemon(1).isEgg?
+      Show Text "\\bWhat? No Egg should know any moves."
+      End Execution
+    
+    if s:(pbGetPokemon(1).isShadow? rescue false)
+      Show Text "\\bWhat? I can't make a Shadow Pokémon forget a move."
+      End Execution
+    
+    if s:pbGetPokemon(1).numMoves==1
+      Show Text "\\b\\v[3] seems to know only one move..."
+      End Execution
+    
+    Show Text "\\bWhich move should be forgotten?"
+    s:pbChooseMove(pbGetPokemon(1),2,4)
+    if :TempMoveChoice < 0
+      Goto ChoosePokemon
+    Else
+      Show Text "\\bHm! \\v[3]'s \\v[4]? That move should be forgotten?"
+      Show Choices choices=['Yes', 'No'], default=2
+      When 'Yes'
+        Play ME="013-Gag02", volume=100, pitch=100
+        Wait ms=4000
+        s:pbGetPokemon(1).pbDeleteMoveAtIndex( pbGet(2))"
+        Show Text "\\bIt worked to perfection!"
+        Show Text "\\b\\v[3] has forgotten \\v[4] completely."
+      When 'No'
+        Show Text "\\bCome again if there are moves that need to be forgotten."
+    
+  
+When 'No'
+  Show Text "\\bCome again if there are moves that need to be forgotten."
+[end]
+

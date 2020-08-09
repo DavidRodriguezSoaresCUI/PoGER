@@ -1,0 +1,31 @@
+[EVENT]
+xy=[11, 14]
+graphic=trchar015
+direction=W
+
+[PAGE]
+trigger=onEventTouch
+
+
+# Battle: \bI'll get my tackle out for you!
+# Type: FISHERMAN
+# Name: Andrew
+# EndSpeech: Washed out!
+# EndBattle: \bI don't understand why my Magikarp
+# couldn't beat you.
+s:pbTrainerIntro(:FISHERMAN)
+s:Kernel.pbNoticePlayer(get_character(0))
+Show Text "\\bI'll get my tackle out for you!"
+if s:pbTrainerBattle(:FISHERMAN,"Andrew",_I("Washed out!"),false,0,false,0)
+  :A = :ON
+s:pbTrainerEnd
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+Show Text "\\bI don't understand why my Magikarp couldn't beat you."
+[end]
+

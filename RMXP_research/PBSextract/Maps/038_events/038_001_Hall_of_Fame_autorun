@@ -1,0 +1,33 @@
+[EVENT]
+xy=[2, 13]
+trigger=onAutorun
+
+[PAGE]
+
+
+
+:DefeatedEliteFour = :ON
+:E4defeatedcount += 1
+:ResetMewencounter = :ON
+Wait ms=400
+Set Move Route :player
+  Turn N
+  Step N
+  Step N
+  Step N
+  Step N
+  Step N
+  Step N
+  Step N
+Wait ms=400
+Fadeout color=Black, ms=300
+Wait ms=400
+s:pbHallOfFameEntry
+s:$scene = Scene_Credits.new
+Wait ms=400
+Restore All
+s:for i in $Trainer.pokemonParty i.giveRibbon(:CHAMPION) end"
+Transfer Player map=36, x=13, y=12, direction="S", fading="NoFading"
+Fadein ms=300
+[end]
+

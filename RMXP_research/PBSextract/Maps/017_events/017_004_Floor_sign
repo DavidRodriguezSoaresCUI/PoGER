@@ -1,0 +1,12 @@
+[EVENT]
+xy=[4, 1]
+
+
+[PAGE]
+
+
+
+Show Text "\\sign[signskin]Express yourself with gifts!\\n4F: Wise Man Gifts"
+Show Text "\\sign[signskin]Evolution Special!\\nElement Stones on sale now!"
+[end]
+

@@ -1,0 +1,12 @@
+[EVENT]
+xy=[6, 3]
+
+
+[PAGE]
+
+
+
+if s:eventDirection(:player) == N
+  s:pbPokeCenterPC
+[end]
+

@@ -1,0 +1,28 @@
+[EVENT]
+xy=[6, 12]
+
+
+[PAGE]
+trigger=onAutorun
+
+
+Set Move Route :player
+  Wait s=8
+  Set property=through value=:ON
+  Step N
+  Step N
+  Step N
+  Step N
+  Step N
+  Set property=through value=:OFF
+Play SE="Door enter", volume=100, pitch=100
+s:setTempSwitchOn("A")
+[end]
+
+
+[PAGE]
+graphic=e4wall
+s:isSSon("A") == :ON
+
+[end]
+

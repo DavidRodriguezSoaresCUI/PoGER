@@ -1,0 +1,50 @@
+[EVENT]
+xy=[5, 1]
+tile_id=1721
+
+[PAGE]
+
+
+
+Label Start
+Show Text "Choose a roaming Pokémon."
+Show Choices choices=['Latias/Latios', 'Kyogre', 'Entei', 'Cancel'], default=4
+When 'Latias/Latios'
+  if :LatiasorLatiosroaming == :ON
+    Show Text "Switch 53 is on.  Latias and Latios are roaming."
+  Else
+    Show Text "Switch 53 is off. Latias and Latios are not roaming. Do you want to make Latias and Latios roam?"
+    Show Choices choices=['Yes', 'No'], default=2
+    When 'Yes'
+      :LatiasorLatiosroaming = :ON
+      Show Text "Latias and Latios are now roaming."
+    When 'No'
+  
+  Goto Start
+When 'Kyogre'
+  if :Kyogreroaming == :ON
+    Show Text "Switch 54 is on.  Kyogre is roaming."
+  Else
+    Show Text "Switch 54 is off. Kyogre is not roaming. Do you want to make Kyogre roam?"
+    Show Choices choices=['Yes', 'No'], default=2
+    When 'Yes'
+      :Kyogreroaming = :ON
+      Show Text "Kyogre is now roaming."
+    When 'No'
+  
+  Goto Start
+When 'Entei'
+  if :Enteiroaming == :ON
+    Show Text "Switch 55 is on.  Entei is roaming."
+  Else
+    Show Text "Switch 55 is off. Entei is not roaming. Do you want to make Entei roam?"
+    Show Choices choices=['Yes', 'No'], default=2
+    When 'Yes'
+      :Enteiroaming = :ON
+      Show Text "Entei is now roaming."
+    When 'No'
+  
+  Goto Start
+When 'Cancel'
+[end]
+

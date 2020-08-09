@@ -1,0 +1,60 @@
+[EVENT]
+xy=[7, 14]
+graphic=trchar033
+
+[PAGE]
+trigger=onEventTouch
+
+
+# Battle: \bDid I notice you, or did you notice me?
+# Battle: \bLet's have a rematch!
+# Type: CAMPER
+# Name: Jeff
+# EndSpeech: A very good battle, indeed.
+# EndSpeech: You beat me again!
+# EndBattle: \bI'll get even stronger, and beat you
+# next time!
+# EndBattle: \bI don't think I'll ever be able to beat
+# you.
+# RegSpeech: \\bShall we exchange numbers, so we
+# can have a rematch?
+s:pbTrainerIntro(:CAMPER)
+s:Kernel.pbNoticePlayer(get_character(0))
+Show Text "\\bDid I notice you, or did you notice me?"
+s:Kernel.pbTrainerCheck(:CAMPER,"Jeff",2,0)
+if s:pbTrainerBattle(:CAMPER,"Jeff",_I("A very good battle, indeed."),false,0,false,0)
+  s:pbPhoneRegisterBattle(_I("\\bShall we exchange numbers, so we can have a rematch?),get_character(0),:CAMPER,Jeff,2)"
+  :A = :ON
+s:pbTrainerEnd
+[end]
+
+
+[PAGE]
+
+:B == :ON
+
+if s:pbPhoneBattleCount(:CAMPER,"Jeff")>=1
+  s:pbTrainerIntro(:CAMPER)
+  Show Text "\\bLet's have a rematch!"
+  if s:pbTrainerBattle(:CAMPER,"Jeff",_I("You beat me again!"),false,1,false,0)
+    s:pbPhoneIncrement(:CAMPER,"Jeff",2)
+    :A = :ON
+    :B = :OFF
+    s:pbTrainerEnd
+  
+  End Execution
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+if s:pbPhoneBattleCount(:CAMPER,"Jeff")>1
+  Show Text "\\bI don't think I'll ever be able to beat you."
+  s:pbPhoneRegisterBattle(_I("\\bShall we exchange numbers, so we can have a rematch?),get_character(0),:CAMPER,Jeff,2)"
+  End Execution
+Show Text "\\bI'll get even stronger, and beat you next time!"
+s:pbPhoneRegisterBattle(_I("\\bShall we exchange numbers, so we can have a rematch?),get_character(0),:CAMPER,Jeff,2)"
+[end]
+

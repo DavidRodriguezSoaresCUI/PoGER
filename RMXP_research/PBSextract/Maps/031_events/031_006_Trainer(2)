@@ -1,0 +1,56 @@
+[EVENT]
+xy=[7, 17]
+graphic=trchar034
+direction=N
+
+[PAGE]
+trigger=onEventTouch
+
+
+# Battle: \rBattle me now!
+# Battle: \rBattle me now!
+# Type: PICNICKER
+# Name: Susie
+# EndSpeech: Defeated!  Oh my!
+# EndBattle: \rI'll say the same thing after every battle.
+# RegSpeech: \\rCan I add you to my contacts list?
+s:pbTrainerIntro(:PICNICKER)
+s:Kernel.pbNoticePlayer(get_character(0))
+Show Text "\\rBattle me now!"
+s:Kernel.pbTrainerCheck(:PICNICKER,"Susie",2,0)
+if s:pbTrainerBattle(:PICNICKER,"Susie",_I("Defeated!  Oh my!"),false,0,false,0)
+  s:pbPhoneRegisterBattle(_I("\\rCan I add you to my contacts list?"),get_character(0),:PICNICKER,"Susie",2)
+  :A = :ON
+s:pbTrainerEnd
+[end]
+
+
+[PAGE]
+
+:B == :ON
+
+if s:pbPhoneBattleCount(:PICNICKER,"Susie")>=1
+  s:pbTrainerIntro(:PICNICKER)
+  Show Text "\\rBattle me now!"
+  if s:pbTrainerBattle(:PICNICKER,"Susie",_I("Defeated!  Oh my!"),false,1,false,0)
+    s:pbPhoneIncrement(:PICNICKER,"Susie",2)
+    :A = :ON
+    :B = :OFF
+    s:pbTrainerEnd
+  
+  End Execution
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+if s:pbPhoneBattleCount(:PICNICKER,"Susie")>1
+  Show Text "\\rI'll say the same thing after every battle."
+  s:pbPhoneRegisterBattle(_I("\\rCan I add you to my contacts list?"),get_character(0),:PICNICKER,"Susie",2)
+  End Execution
+Show Text "\\rI'll say the same thing after every battle."
+s:pbPhoneRegisterBattle(_I("\\rCan I add you to my contacts list?"),get_character(0),:PICNICKER,"Susie",2)
+[end]
+

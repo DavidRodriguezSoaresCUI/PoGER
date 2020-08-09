@@ -1,0 +1,18 @@
+[EVENT]
+xy=[10, 10]
+graphic="Object tree 2"
+
+[PAGE]
+
+
+
+# Gives 1 random Apricorn each time.
+# For demonstration purposes only - Apricorn trees
+# should provide a fixed Apricorn, have a 24 hour delay
+# (like Kurt does), and should look different to
+# Headbutt trees.
+:TempPokemonChoice = 21
+:TempPokemonChoice += s:randint(0,6)
+s:Kernel.pbItemBall(pbGet(1))
+[end]
+

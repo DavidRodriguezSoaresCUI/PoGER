@@ -1,0 +1,32 @@
+[EVENT]
+xy=[13, 17]
+graphic=trchar038
+direction=N
+
+[PAGE]
+trigger=onEventTouch
+
+
+# Battle: \rGet ready for a double battle!
+# Type: LASS
+# Name: Crissy
+# EndSpeech: You didn't have to win so convincingly!
+# EndBattle: \rMake sure all double battle opponents
+# have at least 2 Pokémon!
+# DoubleBattle: true
+s:pbTrainerIntro(:LASS)
+s:Kernel.pbNoticePlayer(get_character(0))
+Show Text "\\rGet ready for a double battle!"
+if s:pbTrainerBattle(:LASS,"Crissy",_I("You didn't have to win so convincingly!"),true,0,false,0)
+  :A = :ON
+s:pbTrainerEnd
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+Show Text "\\rMake sure all double battle opponents have at least 2 Pokémon!"
+[end]
+

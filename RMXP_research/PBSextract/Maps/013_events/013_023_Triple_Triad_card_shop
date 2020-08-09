@@ -1,0 +1,29 @@
+[EVENT]
+xy=[14, 2]
+graphic="NPC 19"
+
+[PAGE]
+
+
+
+Label Shop Start
+Show Text "\\bWelcome to the Triad Card Shop."
+Label Choices
+Show Choices choices=['Buy Cards', 'Sell Cards', 'Information', 'Exit'], default=4
+When 'Buy Cards'
+  s:pbBuyTriads
+  Show Text "\\bAnything else I can do for you?"
+  Goto Choices
+When 'Sell Cards'
+  s:pbSellTriads
+  Show Text "\\bAnything else I can do for you?"
+  Goto Choices
+When 'Information'
+  Show Text "\\bHere is where you can purchase new cards for Triple Triad duels."
+  Show Text "\\bThe selection grows as you catch and find new Pokémon, so check often."
+  Show Text "\\bAnd, of course, stronger Pokémon cards cost more than weaker cards."
+  Goto Shop Start
+When 'Exit'
+  Show Text "\\bPlease come again."
+[end]
+

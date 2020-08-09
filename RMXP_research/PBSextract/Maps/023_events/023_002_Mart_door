@@ -1,0 +1,13 @@
+[EVENT]
+xy=[16, 14]
+graphic=doors3
+pattern=3
+preset=door
+
+[PAGE]
+trigger=onPlayerTouch
+
+
+Transfer Player map=25, x=4, y=7, direction="N", fading="Fading"
+[end]
+

@@ -1,0 +1,55 @@
+[EVENT]
+xy=[5, 7]
+graphic="NPC 06"
+
+[PAGE]
+
+
+
+if s:isTempSwitchOff?("A")
+  Show Text "\\bI'm the Pokémon Move Maniac."
+  Show Text "\\bI know every single move that Pokémon learn growing up."
+  Show Text "\\bI'm also a collector of Heart Scales."
+  Show Text "\\bIf you bring me one, I'll teach a move to one of your Pokémon."
+  s:setTempSwitchOn("A")
+if s:$PokemonBag.pbHasItem?(:HEARTSCALE)
+  Show Text "\\bOh! That's it! That's an honest to goodness Heart Scale!"
+  Show Text "\\bLet me guess, you want me to teach one of your Pokémon a move?"
+  Show Choices choices=['Yes', 'No'], default=2
+  When 'Yes'
+    Label ChoosePokemon
+    Show Text "\\bWhich Pokémon needs tutoring?"
+    s:pbChoosePokemon(1,3,proc{|p| pbHasRelearnableMove?(p) },true)"
+    # If variable 1 is less than 0, it means the player has
+    # canceled choosing a Pokémon.
+    if :TempPokemonChoice < 0
+      Show Text "\\bIf your Pokémon need to learn a move, come back with a Heart Scale."
+    Else
+      if s:pbGetPokemon(1).isEgg?
+        Show Text "\\bHunh? There isn't a single move that I can teach an Egg."
+        Goto ChoosePokemon
+      
+      if s:(pbGetPokemon(1).isShadow? rescue false)
+        Show Text "\\bNo way, I don't want to go near a Shadow Pokémon.."
+        Goto ChoosePokemon
+      
+      if s:!pbHasRelearnableMove?(pbGetPokemon(1))
+        Show Text "\\bSorry..."
+        Show Text "\\bIt doesn't appear as if I have any move I can teach to your \\v[3]."
+        Goto ChoosePokemon
+      
+      Show Text "\\bWhich move should I teach to your \\v[3]?"
+      if s:pbRelearnMoveScreen(pbGetPokemon(1))
+        s:$PokemonBag.pbDeleteItem(:HEARTSCALE)
+        Show Text "\\PN handed over one Heart Scale in exchange."
+        Show Text "\\bIf your Pokémon need to learn a move, come back with a Heart Scale."
+      Else
+        Show Text "\\bIf your Pokémon need to learn a move, come back with a Heart Scale."
+      
+    
+  When 'No'
+    Show Text "\\bIf your Pokémon need to learn a move, come back with a Heart Scale."
+Else
+  Show Text "\\bIf your Pokémon need to learn a move, come back with a Heart Scale."
+[end]
+

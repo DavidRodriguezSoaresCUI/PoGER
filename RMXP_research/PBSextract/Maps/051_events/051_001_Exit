@@ -1,0 +1,13 @@
+[EVENT]
+xy=[1, 1]
+trigger=onPlayerTouch
+tile_id=541
+preset=exit
+
+[PAGE]
+
+
+
+Transfer Player map=49, x=23, y=14, direction="W", fading="Fading"
+[end]
+

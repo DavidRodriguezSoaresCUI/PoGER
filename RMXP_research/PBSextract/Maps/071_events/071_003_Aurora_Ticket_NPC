@@ -1,0 +1,20 @@
+[EVENT]
+xy=[6, 5]
+graphic=trchar027
+direction=E
+
+[PAGE]
+
+
+
+if s:$PokemonBag.pbHasItem?(:AURORATICKET)
+  Show Text "\\bI've already given you an Aurora Ticket. Have you gone to Berth Island yet?"
+Else
+  Show Text "\\bHere, have this Aurora Ticket."
+  if s:Kernel.pbReceiveItem(:AURORATICKET)
+    Show Text "\\bYou can use that to sail to Berth Island."
+  Else
+    Show Text "\\bOh, you don't have any space in your Bag for it."
+  
+[end]
+

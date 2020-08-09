@@ -1,0 +1,18 @@
+[EVENT]
+xy=[7, 6]
+direction=N
+
+[PAGE]
+
+
+
+[end]
+
+
+[PAGE]
+graphic=trchar037
+s:pbBugContestDecided? == :ON
+
+Show Text "Samuel: \\bI put lots of effort in, but that's not good enough to win."
+[end]
+

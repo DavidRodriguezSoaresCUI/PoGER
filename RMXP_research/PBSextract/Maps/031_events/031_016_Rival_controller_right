@@ -1,0 +1,74 @@
+[EVENT]
+xy=[23, 13]
+
+
+[PAGE]
+trigger=onPlayerTouch
+
+
+# Position the Rival event level with the player.
+Move Event event=14, absolute_coordinates=[23,6], direction=S
+Set Move Route 14
+  Set property=through value=:ON
+  Step S
+  Step S
+  Step S
+  Step S
+  Step S
+  Step S
+  Set property=through value=:OFF
+s:pbTrainerIntro(:RIVAL1)
+Show Text "\\bHi \\PN! I'm your Rival!"
+Show Text "\\bDo you want to name me, or leave me with my default name as defined in trainers.txt?"
+Show Choices choices=['Rename', 'Cancel'], default=2
+When 'Rename'
+  s:pbSet(12,pbEnterNPCName( Rival's name?,1,10,Blue, trchar004) )"
+  Show Text "\\bSo my name is \\v[12], huh? Okay then."
+When 'Cancel'
+  s:pbSet(12,nil)
+Show Text "\\bLet's get down to the battle!"
+if :Starterchoice == 1
+  # Player chose Bulbasaur, rival has Charmander.
+  if s:pbTrainerBattle(:RIVAL1,"Blue",_I("Not too shabby."),false,1)
+    :A = :ON
+  
+Else
+  if :Starterchoice == 2
+    # Player chose Charmander, rival has Squirtle.
+    if s:pbTrainerBattle(:RIVAL1,"Blue",_I("Not too shabby."),false,2)
+      :A = :ON
+    
+  Else
+    # Player chose Squirtle, rival has Bulbasaur.
+    if s:pbTrainerBattle(:RIVAL1,"Blue",_I("Not too shabby."),false,0)
+      :A = :ON
+    
+  
+if A is :ON
+  Show Text "\\bI'm going to leave now. Smell you later!"
+  # Move the Rival event off-screen.
+  Set Move Route 14
+    Set property=through value=:ON
+    Step N
+    Step N
+    Step N
+    Step N
+    Step N
+    Step N
+    Set property=through value=:OFF
+  
+  # Clear the rival's event.
+  s:pbSetSelfSwitch(14,"A",true)
+  # Disable both controller events.
+  :A = :ON
+  s:pbSetSelfSwitch(15,"A",true)
+s:pbTrainerEnd
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+[end]
+

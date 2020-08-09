@@ -1,0 +1,31 @@
+[EVENT]
+xy=[30, 16]
+graphic=trchar002
+
+[PAGE]
+
+
+
+Show Text "\\bDo you want to team up with me?"
+Show Choices choices=['Yes', 'No'], default=2
+When 'Yes'
+  # Makes this event follow the player. The first
+  # parameter means "this event", the second is a name
+  # for that dependency, and the third is the Common
+  # Event number run when this following event is
+  # interacted with.
+  s:pbAddDependency2( @event_id,Brendan,2)"
+  # Creates a partner trainer to battle alongside the
+  # player. The parameters are the trainer type and
+  # name of the partner. The partner trainer is defined
+  # in trainers.txt just like any other trainer.
+  s:pbRegisterPartner( :POKEMONTRAINER_Brendan, Brendan)"
+  # Note that the above two features are entirely
+  # unrelated. You can have a dependent event which
+  # isn't also a partner trainer (e.g. escort mission), or a
+  # partner trainer who doesn't visibly follow you around.
+  Show Text "\\PN teamed up with Brendan!\\me[Item get]\\wtnp[20]"
+When 'No'
+  Show Text "\\bOK then."
+[end]
+

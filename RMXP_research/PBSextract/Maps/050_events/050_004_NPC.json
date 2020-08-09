@@ -1,0 +1,230 @@
+{
+    "_class": "Event",
+    "id": 4,
+    "name": "NPC",
+    "xy": [
+        21,
+        12
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "trchar017",
+                "character_hue": 0,
+                "direction": "Left",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bHello! I'm the Ruin Maniac!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bDo you want to dig for buried treasure?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 0,
+                    "parameters": [
+                        [
+                            "Yes",
+                            "No"
+                        ],
+                        2
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        "Yes"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bGrand! Let's dig into this wall."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        6,
+                        -1,
+                        6
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 2,
+                    "parameters": [
+                        -1,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 3,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 2,
+                    "parameters": [
+                        0,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 16,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 210,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 2,
+                    "parameters": [
+                        -1,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 18,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 210,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbMiningGame"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        "No"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bNo? Alright then."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bWhen using this mining minigame, it is "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "recommended that you limit how often the player can "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "play it, to prevent them gaining lots of items for free."
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

@@ -1,0 +1,183 @@
+{
+    "_class": "Event",
+    "id": 7,
+    "name": "Vendor",
+    "xy": [
+        12,
+        21
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "NPC 19",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "This vendor is selling a Key Item, the Pok\u00e9 Flute."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        12,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbPokemonMart(["
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": ":POKEFLUTE,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": ":ULTRABALL,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": ":LEMONADE,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": ":SODAPOP,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": ":FRESHWATER,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": ":MOOMOOMILK,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": ":TIMERBALL,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": ":REPEATBALL,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": ":LAVACOOKIE"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "])"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 115,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 0,
+                    "parameters": "pbPokemonMart(["
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 0,
+                    "parameters": ":POKEFLUTE,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 0,
+                    "parameters": ":ULTRABALL,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 0,
+                    "parameters": ":GREATBALL,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 0,
+                    "parameters": ":SODAPOP,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 0,
+                    "parameters": ":FRESHWATER"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 0,
+                    "parameters": "])"
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

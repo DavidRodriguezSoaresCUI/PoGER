@@ -1,0 +1,171 @@
+{
+    "_class": "Event",
+    "id": 5,
+    "name": "Single_results",
+    "xy": [
+        5,
+        3
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "Check results for which challenge?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 0,
+                    "parameters": [
+                        [
+                            "Level 50",
+                            "Open Level",
+                            "Cancel"
+                        ],
+                        3
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        "Level 50"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "$game_variables[1]="
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "pbBattleChallenge.getPreviousWins(\"palacesingle\")"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "$game_variables[2]="
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "pbBattleChallenge.getMaxWins(\"palacesingle\")"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\PN's Battle Palace Level 50 Single Battle results:"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "Last win streak: \\v[1]\\nRecord win streak: \\v[2]"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        "Open Level"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "$game_variables[1]="
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "pbBattleChallenge.getPreviousWins(\"palacesingleopen\")"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "$game_variables[2]="
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "pbBattleChallenge.getMaxWins(\"palacesingleopen\")"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\PN's Battle Palace Open Level Single Battle results:"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "Last win streak: \\v[1]\\nRecord win streak: \\v[2]"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        2,
+                        "Cancel"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

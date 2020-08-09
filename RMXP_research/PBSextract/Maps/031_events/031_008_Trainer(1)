@@ -1,0 +1,31 @@
+[EVENT]
+xy=[9, 14]
+graphic=trchar018
+direction=E
+
+[PAGE]
+trigger=onEventTouch
+
+
+# Battle: \bThis battle will go without a hitch!
+# Type: HIKER
+# Name: Ford
+# EndSpeech: You're too good for me!
+# EndBattle: \bHow did you manage to face all three of
+# us?
+s:pbTrainerIntro(:HIKER)
+s:Kernel.pbNoticePlayer(get_character(0))
+Show Text "\\bThis battle will go without a hitch!"
+if s:pbTrainerBattle(:HIKER,"Ford",_I("You're too good for me!"),false,0,false,0)
+  :A = :ON
+s:pbTrainerEnd
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+Show Text "\\bHow did you manage to face all three of us?"
+[end]
+

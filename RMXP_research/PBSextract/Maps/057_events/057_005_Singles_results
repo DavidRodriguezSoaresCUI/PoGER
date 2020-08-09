@@ -1,0 +1,27 @@
+[EVENT]
+xy=[4, 3]
+
+
+[PAGE]
+
+
+
+Show Text "Check results for which challenge?\\ch[1,5, Pika Cup,Fancy Cup,Poké Cup,Little Cup,Cancel]"
+if :TempPokemonChoice == 0
+  s:$game_variables[1]= pbBattleChallenge.getPreviousWins(pikacupsingle) $game_variables[2]= pbBattleChallenge.getMaxWins(pikacupsingle)"
+  Show Text "\\PN's Battle Tower Pika Cup Single Battle results:"
+  Show Text "Last win streak: \\v[1]\\nRecord win streak: \\v[2]"
+if :TempPokemonChoice == 1
+  s:$game_variables[1]= pbBattleChallenge.getPreviousWins(fancycupsingle) $game_variables[2]= pbBattleChallenge.getMaxWins(fancycupsingle)"
+  Show Text "\\PN's Battle Tower Fancy Cup Single Battle results:"
+  Show Text "Last win streak: \\v[1]\\nRecord win streak: \\v[2]"
+if :TempPokemonChoice == 2
+  s:$game_variables[1]= pbBattleChallenge.getPreviousWins(pokecupsingle) $game_variables[2]= pbBattleChallenge.getMaxWins(pokecupsingle)"
+  Show Text "\\PN's Battle Tower Poké Cup Single Battle results:"
+  Show Text "Last win streak: \\v[1]\\nRecord win streak: \\v[2]"
+if :TempPokemonChoice == 3
+  s:$game_variables[1]= pbBattleChallenge.getPreviousWins(littlecupsingle) $game_variables[2]= pbBattleChallenge.getMaxWins(littlecupsingle)"
+  Show Text "\\PN's Battle Tower Little Cup Single Battle results:"
+  Show Text "Last win streak: \\v[1]\\nRecord win streak: \\v[2]"
+[end]
+

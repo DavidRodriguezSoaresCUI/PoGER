@@ -1,0 +1,19 @@
+[EVENT]
+xy=[29, 62]
+through=True
+
+[PAGE]
+
+
+
+if s:Kernel.pbItemBall(:RARECANDY,2)
+  :A = :ON
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+[end]
+

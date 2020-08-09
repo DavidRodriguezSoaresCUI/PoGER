@@ -1,0 +1,270 @@
+{
+    "_class": "Event",
+    "id": 2,
+    "name": "Lab_door",
+    "xy": [
+        18,
+        13
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "doors3",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 1,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerTouch",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 201,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        4,
+                        6,
+                        12,
+                        8,
+                        0
+                    ]
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        },
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": "22",
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "doors3",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 1,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onAutorun",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        12,
+                        "get_character(0).onEvent?"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 208,
+                    "indent": 1,
+                    "parameters": 0
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 1,
+                    "parameters": [
+                        0,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": true,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 44,
+                                    "parameters": {
+                                        "_class": "AudioFile",
+                                        "name": "Door enter",
+                                        "volume": 100,
+                                        "pitch": 100
+                                    }
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 15,
+                                    "parameters": 2
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 17,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 15,
+                                    "parameters": 2
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 18,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 15,
+                                    "parameters": 2
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 19,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 15,
+                                    "parameters": 2
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 210,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 208,
+                    "indent": 1,
+                    "parameters": 1
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 1,
+                    "parameters": [
+                        -1,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": true,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 210,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 1,
+                    "parameters": [
+                        0,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": true,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 18,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 15,
+                                    "parameters": 2
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 17,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 15,
+                                    "parameters": 2
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 16,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 15,
+                                    "parameters": 2
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 210,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 0,
+                    "parameters": "setTempSwitchOn(\"A\")"
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

@@ -1,0 +1,527 @@
+{
+    "_class": "Event",
+    "id": 16,
+    "name": "Rival_controller_right",
+    "xy": [
+        23,
+        13
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerTouch",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "Position the Rival event level with the player."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 202,
+                    "indent": 0,
+                    "parameters": [
+                        14,
+                        0,
+                        23,
+                        6,
+                        2
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 0,
+                    "parameters": [
+                        14,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 37,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 38,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 210,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 0,
+                    "parameters": "pbTrainerIntro(:RIVAL1)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bHi \\PN! I'm your Rival!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bDo you want to name me, or leave me with my "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "default name as defined in trainers.txt?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 0,
+                    "parameters": [
+                        [
+                            "Rename",
+                            "Cancel"
+                        ],
+                        2
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        "Rename"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbSet(12,pbEnterNPCName("
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "  \"Rival's name?\",1,10,\"Blue\","
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "  \"trchar004\")"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": ")"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bSo my name is \\v[12], huh? Okay then."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        "Cancel"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbSet(12,nil)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bLet's get down to the battle!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        7,
+                        0,
+                        1,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 1,
+                    "parameters": "Player chose Bulbasaur, rival has Charmander."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "pbTrainerBattle(:RIVAL1,\"Blue\",_I(\"Not too shabby.\"),false,1)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 123,
+                    "indent": 2,
+                    "parameters": [
+                        "A",
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        1,
+                        7,
+                        0,
+                        2,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 2,
+                    "parameters": "Player chose Charmander, rival has Squirtle."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 2,
+                    "parameters": [
+                        12,
+                        "pbTrainerBattle(:RIVAL1,\"Blue\",_I(\"Not too shabby.\"),false,2)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 123,
+                    "indent": 3,
+                    "parameters": [
+                        "A",
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 2,
+                    "parameters": "Player chose Squirtle, rival has Bulbasaur."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 2,
+                    "parameters": [
+                        12,
+                        "pbTrainerBattle(:RIVAL1,\"Blue\",_I(\"Not too shabby.\"),false,0)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 123,
+                    "indent": 3,
+                    "parameters": [
+                        "A",
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        2,
+                        "A",
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bI'm going to leave now. Smell you later!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 1,
+                    "parameters": "Move the Rival event off-screen."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 1,
+                    "parameters": [
+                        14,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 37,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 38,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 210,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 1,
+                    "parameters": "Clear the rival's event."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbSetSelfSwitch(14,\"A\",true)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 1,
+                    "parameters": "Disable both controller events."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 123,
+                    "indent": 1,
+                    "parameters": [
+                        "A",
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbSetSelfSwitch(15,\"A\",true)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 0,
+                    "parameters": "pbTrainerEnd"
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        },
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": "A",
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": null,
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

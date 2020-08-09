@@ -1,0 +1,12 @@
+[EVENT]
+xy=[5, 9]
+
+
+[PAGE]
+
+
+
+if s:eventDirection(:player) == E
+  s:pbSlotMachine
+[end]
+

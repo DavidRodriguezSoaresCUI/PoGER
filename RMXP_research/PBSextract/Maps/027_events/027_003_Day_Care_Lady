@@ -1,0 +1,123 @@
+[EVENT]
+xy=[4, 4]
+graphic="NPC 11"
+
+[PAGE]
+
+
+
+if s:Kernel.pbEggGenerated?
+  Show Text "\\rAh, there you are! My husband was looking for you."
+  End Execution
+:A = :OFF
+if s:Kernel.pbDayCareDeposited==0
+  Show Text "\\rI'm the Day-Care Lady. We can raise Pokémon for you."
+  Show Text "\\rWould you like us to raise your Pokémon?"
+  Show Choices choices=['Yes', 'No'], default=2
+  When 'Yes'
+    if s:$Trainer.pokemonCount<=1
+      Show Text "\\rOh? But you only have one Pokémon with you."
+      Show Text "\\rYou can't go off without a Pokémon. Come back another time."
+      End Execution
+    
+    Show Text "\\rWhich Pokémon should we raise for you?"
+    s:pbChooseNonEggPokemon(1,3)
+    if :TempPokemonChoice < 0
+      Show Text "\\rOh, fine, then.\\nCome again."
+      End Execution
+    
+    if s:!pbCheckAble(pbGet(1))
+      Show Text "\\rIf you leave me that Pokémon, what are you gonna battle with?"
+      Show Text "\\rCome back another time."
+      End Execution
+    
+    s:pbDayCareDeposit(pbGet(1))
+    Show Text "\\rFine, we'll raise your \\v[3] for a while."
+    Show Text "\\rCome back for it later."
+    Label RaiseAnother
+    Show Text "\\rWe can raise two of your Pokémon. Would you like us to raise another?"
+    Show Choices choices=['Yes', 'No'], default=2
+    When 'Yes'
+      if s:$Trainer.pokemonCount<=1
+        Show Text "\\rOh? But you only have one Pokémon with you."
+        Show Text "\\rYou can't go off without a Pokémon. Come back another time."
+        End Execution
+      
+      Show Text "\\rWhich Pokémon should we raise for you?"
+      s:pbChooseNonEggPokemon(1,3)
+      if :TempPokemonChoice < 0
+        Show Text "\\rVery good. Come again."
+        End Execution
+      
+      if s:!pbCheckAble(pbGet(1))
+        Show Text "\\rIf you leave me that Pokémon, what are you gonna battle with?"
+        Show Text "\\rCome back another time."
+        End Execution
+      
+      s:pbDayCareDeposit(pbGet(1))
+      Show Text "\\rFine, we'll raise your \\v[3] for a while."
+      Show Text "\\rCome back for it later."
+    When 'No'
+      if A is :ON
+        Goto TakeBack
+      Else
+        Show Text "\\rVery good. Come again."
+      
+  When 'No'
+    Show Text "\\rOh, fine, then.\\nCome again."
+Else
+  Show Text "\\rAh, it's you! Good to see you. Now, about your Pokémon..."
+  if s:pbDayCareGetLevelGain(0,3,4) && pbGet(4)>0
+    Show Text "\\rBy level, your \\v[3] has grown by about \\v[4]."
+  
+  if s:pbDayCareGetLevelGain(1,3,4) && pbGet(4)>0
+    Show Text "\\rBy level, your \\v[3] has grown by about \\v[4]."
+  
+  if s:Kernel.pbDayCareDeposited==1
+    :A = :ON
+    Goto RaiseAnother
+  Else
+    Label TakeBack
+    Show Text "\\rDo you want your Pokémon back?"
+    Show Choices choices=['Yes', 'No'], default=2
+    When 'Yes'
+      Label TakeBackChosen
+      if s:$Trainer.partyCount>=6
+        Show Text "\\rYour Pokémon team is full. Make room, then come see me."
+        End Execution
+      
+      s:pbDayCareChoose( _I(Which one do you want back?),1)"
+      if :TempPokemonChoice < 0
+        Show Text "\\rVery good. Come again."
+        End Execution
+      
+      s:pbDayCareGetDeposited(pbGet(1),3,4)
+      Show Text "\\G\\rIf you want your \\v[3] back, it will cost $\\v[4]."
+      Show Choices choices=['Yes', 'No'], default=2
+      When 'Yes'
+        :TempTextEntry = :Gold
+        if :TempTextEntry < 4
+          Show Text "\\G\\rYou don't have enough money..."
+          End Execution
+        
+        :Gold -= :TempMoveName
+        s:pbDayCareWithdraw(pbGet(1))
+        Show Text "\\G\\rExcellent\\nHere's your Pokémon."
+        Show Text "\\PN took \\v[3] back from the Day-Care Lady."
+        if s:Kernel.pbDayCareDeposited==1
+          Show Text "\\rDo you want to take back the other one, too?"
+          Show Choices choices=['Yes', 'No'], default=2
+          When 'Yes'
+            Goto TakeBackChosen
+          When 'No'
+            Show Text "\\rVery good. Come again."
+        Else
+          Show Text "\\rVery good. Come again."
+        
+      When 'No'
+        Show Text "\\rVery good. Come again."
+    When 'No'
+      Show Text "\\rVery good. Come again."
+  
+[end]
+

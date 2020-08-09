@@ -1,0 +1,33 @@
+[EVENT]
+xy=[10, 13]
+graphic=trchar007
+
+[PAGE]
+trigger=onEventTouch
+
+
+# Battle: \rI've brought my own special backdrop!
+# Type: BEAUTY
+# Name: Bridget
+# EndSpeech: My Skitty!
+# EndBattle: \rI battled you first because my event's
+# number (7) comes before the Hiker's and Fisherman's
+# event numbers.
+# Backdrop: Champion
+s:pbTrainerIntro(:BEAUTY)
+s:Kernel.pbNoticePlayer(get_character(0))
+Show Text "\\rI've brought my own special backdrop!"
+s:$PokemonGlobal.nextBattleBack="Champion"
+if s:pbTrainerBattle(:BEAUTY,"Bridget",_I("My Skitty!"),false,0,false,0)
+  :A = :ON
+s:pbTrainerEnd
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+Show Text "\\rI battled you first because my event's number (7) comes before the Hiker's and Fisherman's event numbers."
+[end]
+

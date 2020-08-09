@@ -1,0 +1,17 @@
+[EVENT]
+xy=[16, 5]
+graphic=trchar037
+direction=W
+
+[PAGE]
+
+
+
+Show Text "\\bI'm ready to duel with you."
+# The two numbers are the min and max level of the
+# opponent respectively. Each number can be between
+# 0 and 9 inclusive, and the max level must be higher
+# than or equal to the min level.
+s:pbTriadDuel("Jack",0,5)
+[end]
+

@@ -1,0 +1,25 @@
+[EVENT]
+xy=[4, 23]
+graphic="NPC 07"
+
+[PAGE]
+
+
+
+Show Text "\\CN\\bWe exchange your coins for prizes."
+Show Text "\\CN\\bWhich prize would you like?\\ch[1,6, Abra - 180 coins,Clefairy - 500 coins, Dratini - 2800 coins,Scyther - 5500 coins, Porygon - 9999 coins,No thanks]"
+s:item=[:ABRA,:CLEFAIRY, :DRATINI,:SCYTHER, :PORYGON,0][pbGet(1)] price=[180,500,2800,5500,9999, 0][pbGet(1)] lv=[9,8,18,25,26,0][pbGet(1)] if item && item!=0 item=getID(PBSpecies,item) end pbSet(1,item); pbSet(2,price) pbSet(3,PBSpecies.getName(item)) pbSet(4,lv)"
+if :TempPokemonChoice > 0
+  Show Text "\\CN\\bSo, you want the \\v[3]?"
+  Show Choices choices=['Yes', 'No'], default=2
+  When 'Yes'
+    if s:pbGet(2)>$PokemonGlobal.coins
+      Show Text "\\CN\\bSorry, you'll need more coins than that."
+    Else
+      if s:Kernel.pbAddPokemon(pbGet(1),pbGet(4))
+        s:$PokemonGlobal.coins-=pbGet(2)
+      
+    
+  When 'No'
+[end]
+

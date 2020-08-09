@@ -1,0 +1,24 @@
+[EVENT]
+xy=[5, 4]
+
+
+[PAGE]
+tile_id=1718
+
+
+if s:!$Trainer.pokedex
+  Play ME="Item get", volume=100, pitch=100
+  Show Text "\\PN received a Pokédex!"
+  s:$Trainer.pokedex=true
+  :A = :ON
+Else
+  Show Text "You already have a Pokédex."
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+[end]
+

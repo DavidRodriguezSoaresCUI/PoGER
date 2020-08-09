@@ -1,0 +1,89 @@
+{
+    "_class": "Event",
+    "id": 31,
+    "name": "Light",
+    "xy": [
+        52,
+        25
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 240,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 4,
+            "move_frequency": 6,
+            "walk_anime": false,
+            "step_anime": true,
+            "direction_fix": true,
+            "through": true,
+            "always_on_top": true,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "begin Shadow Source"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "anglemax 0"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "anglemin 0"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "maxdistance 100"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "opacity 100"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "Particle Engine Type"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 0,
+                    "parameters": "fire"
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

@@ -1,0 +1,92 @@
+[EVENT]
+xy=[4, 4]
+trigger=onAutorun
+graphic=trchar028
+
+[PAGE]
+
+
+
+Show Text "\\bThanks for competing.\\nLet me heal your party."
+Fadeout color=Black, ms=300
+Wait ms=400
+Restore All
+Fadein ms=300
+Wait ms=400
+Label Choice Menu
+s:pbSet(1, pbBattleChallenge.battleNumber)"
+if s:$PokemonTemp.lastbattle!=nil
+  Show Text "\\bBattle number \\v[1] is next. Are you ready?\\ch[2,0, Go on,Rest,Retire,Record]"
+Else
+  Show Text "\\bBattle number \\v[1] is next. Are you ready?\\ch[2,0, Go on,Rest,Retire]"
+# Record.
+if :TempMoveChoice == 3
+  Show Text "\\bWould you like to record your last battle?"
+  Show Choices choices=['Yes', 'No'], default=2
+  When 'Yes'
+    s:pbRecordLastBattle
+    Show Text "\\se[Pkmn exp full]The battle was recorded."
+  When 'No'
+  Goto Choice Menu
+# Retire.
+if :TempMoveChoice == 2
+  Show Text "\\bAre you sure you want to quit your challenge?"
+  Show Choices choices=['Yes', 'No'], default=2
+  When 'Yes'
+    s:pbBattleChallenge.setDecision(2)
+    Play SE="Door exit", volume=80, pitch=100
+    Fadeout color=Black, ms=300
+    Wait ms=400
+    s:pbBattleChallenge.pbGoToStart
+    Fadein ms=300
+    End Execution
+  When 'No'
+    Goto Choice Menu
+# Rest.
+if :TempMoveChoice == 1
+  Show Text "\\bWould you like to save the game and continue later?"
+  Show Choices choices=['Yes', 'No'], default=2
+  When 'Yes'
+    s:pbBattleChallenge.pbRest
+    Show Text "Your game has been saved."
+    Return to Title Screen
+    End Execution
+  When 'No'
+    Goto Choice Menu
+  Goto Choice Menu
+# Go on.
+if :TempMoveChoice == 0
+  s:pbBattleChallenge.pbGoOn
+  s:pbBattleChallenge.extra.pbPrepareSwaps
+  Show Text "\\bWould you like to swap a Pokémon first?"
+  Show Choices choices=['Yes', 'No'], default=2
+  When 'Yes'
+    if s:pbBattleChallenge.extra.pbChooseSwaps
+      Show Text "\\bOK, the Pokémon swap is complete."
+    Else
+    
+  When 'No'
+  Show Text "\\bCome with me."
+  Set Move Route :self
+    Set property=through value=:ON
+    Step N
+    Step N
+    Step N
+    Set property=opacity value={opa}
+    Set property=through value=:OFF
+  Set Move Route :player
+    Set property=through value=:ON
+    Step N
+    Step N
+    Step N
+    Step N
+    Set property=opacity value={opa}
+    Set property=through value=:OFF
+  
+  Play SE="Door exit", volume=80, pitch=100
+  Fadeout color=Black, ms=300
+  Wait ms=400
+  Transfer Player map=64, x=2, y=10, direction="K", fading="NoFading"
+  Fadein ms=300
+[end]
+

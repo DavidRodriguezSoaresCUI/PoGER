@@ -476,41 +476,9 @@ Fortunately, we can learn from the failures of the past how to better go forward
 \newpage
 \subsection{Extracting data}
 
-In order to decouple PE from its original code base and RGSS, it became obvious that all useful data had to be extracted from the project.
-
-Since \verb|Audio|, \verb|Graphics| and \verb|Fonts| directories contain already-accessible data, they didn't require any extraction efforts.
-
-See section \textit{Data representation} for categories of data that were identified to need extraction.
+% TODO : move to another document
 
 
-\subsubsection{Scripts}
-
-What I found :
-\begin{itemize}
-	\item \verb|Scripts.rxdata| is the second largest compiled file of the project, and contains over 120k lines of code.
-	
-	\item The script is unique : it is divided in named sections (that appear in RMXP's editor on the left hand side) that allow to manage its colossal line count.
-	
-	\item Like other compiled files, its content are almost impossible to read outside of RMXP.
-\end{itemize}
-
-I spent quite a lot of time working on a python script able to decrypt \verb|rxdata| files, and this one in particular, but didn't have much success, so I tried looking elsewhere.
-
-\textbf{Trying something else} : After some more digging, I found a functional utility that was created for the purpose of editing/extracting the scripts from this file : Gemini Editor.
-
-Here are links to \href{https://forum.chaos-project.com/index.php/topic,10420.0.html}{a forum post about it} and \href{https://github.com/terabin/Gemini}{a github repository}.
-
-With it, I was able to extract Pokemon Essentials scripts (see '\verb|PE_scripts|' directory).
-
-It proved invaluable to be able to explore/search the whole script base using a more powerful code editor, saving lots of time from my attempts to create my own scripts to export data.
-
-
-\subsubsection{Maps}
-
-What I found :
-\begin{itemize}
-	\item A tileset 
-\end{itemize}
 
 
 

@@ -1,0 +1,38 @@
+[EVENT]
+xy=[2, 6]
+graphic="NPC 06"
+
+[PAGE]
+
+
+
+Show Text "\\bI'm looking for a Rattata."
+Show Text "\\bWant to trade it for my Haunter?"
+Show Choices choices=['Yes', 'No'], default=2
+When 'Yes'
+  # The chosen Pokémon's party index goes in game
+  # variable 1. A value of -1 means no Pokémon was
+  # chosen.
+  # The chosen Pokémon's name goes in game variable 2.
+  s:pbChoosePokemonForTrade(1,2,:RATTATA)
+  if :TempPokemonChoice == -1
+    Show Text "\\bYou don't want to trade?  Aww..."
+  Else
+    Show Text "\\bOK, let's get started."
+    s:pbStartTrade(pbGet(1), :HAUNTER,HaHa,Andy)"
+    Show Text "\\PN traded Rattata for Haunter!"
+    Show Text "\\bThanks!"
+    :A = :ON
+  
+When 'No'
+  Show Text "\\bYou don't want to trade? Aww..."
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+Show Text "\\bThanks for trading with me!"
+[end]
+

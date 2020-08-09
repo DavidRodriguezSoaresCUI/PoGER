@@ -1,0 +1,15 @@
+[EVENT]
+xy=[51, 7]
+graphic="Object rock"
+
+[PAGE]
+
+
+
+Set Move Route :self
+  Turn S
+if s:Kernel.pbRockSmash
+  s:pbSmashThisEvent
+  s:Kernel.pbRockSmashRandomEncounter
+[end]
+

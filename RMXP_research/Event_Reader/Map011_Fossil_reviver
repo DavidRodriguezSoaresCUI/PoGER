@@ -19,7 +19,7 @@ Else
 
 # Ask for fossil conversion
 Show Text "Do you have a fossil for me?"
-Choices ["Yes" "No"], cancel=2
+Choose choices=["Yes" "No"], cancel=2
 When "Yes"
   Show Text "Which fossil do you want me to revive?"
   s:pbChooseFossil
@@ -32,20 +32,21 @@ When "Yes"
     Show Text "Okay. I'll see if I can revive your {:TempPokemonName}."
     Show Text "Come back later."
     :Fossil_revival = 1
-    Set Timer t=3600 i=":Fossil_revival = 2"
-  Branch END
+    :FossilRevivalTimer = :Time + 3600
+    
 When "No"
   # "Player doesn't want to choose a fossil."
   Show Text "I'll be here if you want my help."
+
 [END]
 
 [PAGE]
 # condition/graphic/movement/option change
-:Fossil_revival >= 1
+:Fossil_revival == 1
 
-If :Fossil_revival == 1
+If :FossilRevivalTimer > :Time
   Show Text "I told you come back later."
-  END
+  End Execution
 If :Fossilbeingrevived != None
   Show Text "Where have you been? I've finished reviving your fossil."
   :Revivedfossil = s:reviveFossil fossil=:Fossilbeingrevived

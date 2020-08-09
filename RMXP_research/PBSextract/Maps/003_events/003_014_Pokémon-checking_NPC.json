@@ -1,0 +1,316 @@
+{
+    "_class": "Event",
+    "id": 14,
+    "name": "Pok\u00e9mon-checking_NPC",
+    "xy": [
+        1,
+        5
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "trchar028",
+                "character_hue": 0,
+                "direction": "Right",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 118,
+                    "indent": 0,
+                    "parameters": "Choices"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "Choose a topic."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 0,
+                    "parameters": [
+                        [
+                            "What is your first Pok\u00e9mon?",
+                            "Is a Celebi in your party?",
+                            "Give a Celebi",
+                            "Cancel"
+                        ],
+                        4
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        "What is your first Pok\u00e9mon?"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 1,
+                    "parameters": "Get the first able Pok\u00e9mon in the party, and store its "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "party index in game variable 1."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "Stores -1 if it can't find an able Pok\u00e9mon in the party."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "An \"able\" Pok\u00e9mon is a non-Egg, non-fainted "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "Pok\u00e9mon."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbFirstAblePokemon(1)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        1,
+                        1,
+                        0,
+                        0,
+                        4
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "You don't have any Pok\u00e9mon with you."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 2,
+                    "parameters": "Retrieve the Pok\u00e9mon whose party index is in "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "game variable 1."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "Store that Pok\u00e9mon's name in game variable 2."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pkmn=pbGetPokemon(1)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "pbSet(2,pkmn.name)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\v[2] is the first Pok\u00e9mon in your party."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 1,
+                    "parameters": "Choices"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        "Is a Celebi in your party?"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 1,
+                    "parameters": "Counts fainted Pok\u00e9mon, but not Eggs."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "pbHasSpecies?(:CELEBI)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "You have a Celebi in your party."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "You don't have a Celebi in your party."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 1,
+                    "parameters": "Choices"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        2,
+                        "Give a Celebi"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 1,
+                    "parameters": "Gives the player a Level 20 Celebi."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "If it can't be added to the party, it is stored in the PC "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "instead."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "To only let the Pok\u00e9mon be added to the party, use "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "pbAddToParty instead."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 1,
+                    "parameters": "See the Pok\u00e9mon Fan Club events for more "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "examples."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbAddPokemon(:CELEBI,20)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        3,
+                        "Cancel"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

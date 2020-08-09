@@ -1,0 +1,120 @@
+[EVENT]
+xy=[8, 6]
+graphic=trchar027
+direction=N
+
+[PAGE]
+
+
+
+if s:$PokemonBag.pbHasItem?(:AURORATICKET)
+  if s:$PokemonBag.pbHasItem?(:OLDSEAMAP)
+    Show Text "\\bAhoy, there!\\nWhere do you want to sail?"
+    Show Choices choices=['Tiall Region', 'Berth Island', 'Faraday Island', 'Exit'], default=4
+    When 'Tiall Region'
+      Goto Tiall Region
+    When 'Berth Island'
+      Goto Berth Island
+    When 'Faraday Island'
+      Goto Faraday Island
+    When 'Exit'
+      Goto End
+  Else
+    Show Text "\\bAhoy, there!\\nWhere do you want to sail?"
+    Show Choices choices=['Tiall Region', 'Berth Island', 'Exit'], default=3
+    When 'Tiall Region'
+      Goto Tiall Region
+    When 'Berth Island'
+      Goto Berth Island
+    When 'Exit'
+      Goto End
+  
+Else
+  if s:$PokemonBag.pbHasItem?(:OLDSEAMAP)
+    Show Text "\\bAhoy, there!\\nWhere do you want to sail?"
+    Show Choices choices=['Tiall Region', 'Faraday Island', 'Exit'], default=3
+    When 'Tiall Region'
+      Goto Tiall Region
+    When 'Faraday Island'
+      Goto Faraday Island
+    When 'Exit'
+      Goto End
+  Else
+    Show Text "\\bAhoy, there!\\nWhere do you want to sail?"
+    Show Choices choices=['Tiall Region', 'Exit'], default=2
+    When 'Tiall Region'
+      Goto Tiall Region
+    When 'Exit'
+      Goto End
+  
+End Execution
+# ################################
+Label Tiall Region
+Show Text "\\bThe Tiall Region it is. All aboard!"
+Set Move Route 2
+  Set property=through value=:ON
+  Step S
+  Set property=opacity value={opa}
+  Set property=through value=:OFF
+Set Move Route :player
+  Set property=through value=:ON
+  Step S
+  Step S
+  Set property=through value=:OFF
+Play SE="Door exit", volume=80, pitch=100
+Set property=transparent value=:ON
+Fadeout color=Black, ms=300
+Wait ms=400
+Set property=transparent value=:OFF
+Transfer Player map=75, x=17, y=11, direction="S", fading="NoFading"
+Fadein ms=300
+End Execution
+# ################################
+Label Berth Island
+Show Text "\\bBerth Island it is. All aboard!"
+:VisitedBerthIsland = :ON
+Set Move Route 2
+  Set property=through value=:ON
+  Step S
+  Set property=opacity value={opa}
+  Set property=through value=:OFF
+Set Move Route :player
+  Set property=through value=:ON
+  Step S
+  Step S
+  Set property=through value=:OFF
+Play SE="Door exit", volume=80, pitch=100
+Set property=transparent value=:ON
+Fadeout color=Black, ms=300
+Wait ms=400
+Set property=transparent value=:OFF
+Transfer Player map=72, x=14, y=23, direction="N", fading="NoFading"
+Fadein ms=300
+End Execution
+# ################################
+Label Faraday Island
+Show Text "\\bFaraday Island it is. All aboard!"
+:VisitedFaradayIsland = :ON
+Set Move Route 2
+  Set property=through value=:ON
+  Step S
+  Set property=opacity value={opa}
+  Set property=through value=:OFF
+Set Move Route :player
+  Set property=through value=:ON
+  Step S
+  Step S
+  Set property=through value=:OFF
+Play SE="Door exit", volume=80, pitch=100
+Set property=transparent value=:ON
+Fadeout color=Black, ms=300
+Wait ms=400
+Set property=transparent value=:OFF
+Transfer Player map=73, x=14, y=23, direction="N", fading="NoFading"
+Fadein ms=300
+End Execution
+# ################################
+Label End
+Show Text "\\bLet me know if you want to set sail."
+[end]
+

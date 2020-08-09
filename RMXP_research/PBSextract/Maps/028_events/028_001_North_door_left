@@ -1,0 +1,24 @@
+[EVENT]
+xy=[26, 6]
+pattern=3
+
+[PAGE]
+trigger=onPlayerTouch
+
+
+Transfer Player map=30, x=5, y=8, direction="N", fading="Fading"
+[end]
+
+
+[PAGE]
+trigger=onAutorun
+s:isSSoff("A") == :ON
+
+if s:get_character(0).onEvent?
+  Set Move Route :player
+    Play SE="Door exit", volume=80, pitch=100
+    Step S
+  
+s:setTempSwitchOn("A")
+[end]
+

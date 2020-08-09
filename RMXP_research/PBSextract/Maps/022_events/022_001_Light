@@ -1,0 +1,24 @@
+[EVENT]
+xy=[3, 3]
+move_speed=4
+move_frequency=6
+walk_anime=False
+step_anime=True
+direction_fix=True
+through=True
+always_on_top=True
+opacity=240
+
+[PAGE]
+
+
+
+# begin Shadow Source
+# anglemax 0
+# anglemin 0
+# maxdistance 100
+# opacity 100
+# Particle Engine Type
+# fire
+[end]
+

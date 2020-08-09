@@ -1,0 +1,83 @@
+[EVENT]
+xy=[7, 2]
+graphic="NPC 16"
+
+[PAGE]
+
+
+
+s:Kernel.pbSetPokemonCenter
+Show Text "\\rHello, and welcome to the Pokémon Center."
+Show Text "\\rWe restore your tired Pokémon to full health."
+Show Text "\\rWould you like to rest your Pokémon?"
+Show Choices choices=['Yes', 'No'], default=2
+When 'Yes'
+  Show Text "\\rOK, I'll take your Pokémon for a few seconds."
+  Restore All
+  Set Move Route :self
+    Turn W
+    Wait s=2
+  
+  :PokéCenterhealingballcount = 0
+  s:count=$Trainer.pokemonCount for i in 1..count pbSet(6,i) pbSEPlay(Battle ball shake) pbWait(16) end"
+  Set Move Route 4
+    Set property=stop_animation value=:ON
+  Play ME="Pkmn healing", volume=100, pitch=100
+  Wait ms=2900
+  :PokéCenterhealingballcount = 0
+  Set Move Route 4
+    Set property=stop_animation value=:OFF
+  Set Move Route :self
+    Wait s=15
+    Turn S
+  
+  if s:Kernel.pbPokerus?
+    Show Text "\\rYour Pokémon may be infected by PokeRus."
+    Show Text "\\rLittle is known about the PokeRus except that they are microscopic life-forms that attach to Pokémon."
+    Show Text "\\rWhile infected, Pokémon are said to grow exceptionally well."
+    :SeenPokérusinPokéCenter = :ON
+  Else
+    Show Text "\\rThank you for waiting."
+    Show Text "\\rWe've restored your Pokémon to full health."
+    Set Move Route :self
+      Set property=graphic value="NPC 16,2,1"
+      Wait s=10
+      Set property=graphic value="NPC 16,2,0"
+    
+    Show Text "\\rWe hope to see you again!"
+  
+When 'No'
+  Show Text "\\rWe hope to see you again!"
+[end]
+
+
+[PAGE]
+trigger=onAutorun
+:Startingover == :ON
+
+Show Text "\\rFirst, you should restore your Pokémon to full health."
+Restore All
+Set Move Route :self
+  Turn W
+  Wait s=2
+:PokéCenterhealingballcount = 0
+s:for i in 1..$Trainer.pokemonCount pbSet(6,i) pbSEPlay(Battle ball shake) pbWait(16) end"
+Set Move Route 4
+  Set property=stop_animation value=:ON
+Play ME="Pkmn healing", volume=100, pitch=100
+Wait ms=2900
+:PokéCenterhealingballcount = 0
+Set Move Route 4
+  Set property=stop_animation value=:OFF
+Set Move Route :self
+  Wait s=15
+  Turn S
+Show Text "\\rYour Pokémon have been healed to perfect health."
+Set Move Route :self
+  Set property=graphic value="NPC 16,2,1"
+  Wait s=10
+  Set property=graphic value="NPC 16,2,0"
+Show Text "\\rWe hope you excel!"
+:Startingover = :OFF
+[end]
+

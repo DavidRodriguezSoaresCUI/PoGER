@@ -1,0 +1,22 @@
+[EVENT]
+xy=[14, 16]
+walk_anime=False
+step_anime=True
+
+[PAGE]
+direction_fix=True
+graphic=berrytreeCHESTOBERRY
+direction=N
+
+
+s:pbPickBerry(:CHESTOBERRY,2)
+[end]
+
+
+[PAGE]
+move_frequency=2
+:A == :ON
+
+s:pbBerryPlant
+[end]
+

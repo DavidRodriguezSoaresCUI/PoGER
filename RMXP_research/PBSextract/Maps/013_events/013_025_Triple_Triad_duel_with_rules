@@ -1,0 +1,15 @@
+[EVENT]
+xy=[16, 6]
+graphic=trchar038
+direction=W
+
+[PAGE]
+
+
+
+Show Text "\\rReady for a real rule duel?"
+# This duel includes certain battle rules. See the wiki
+# for details of what rules can be applied.
+s:pbTriadDuel("Alice",0,5,[ countunplayed, samewins, elements, direct])"
+[end]
+

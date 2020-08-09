@@ -1,0 +1,279 @@
+{
+    "_class": "Event",
+    "id": 4,
+    "name": "Gift_Pok\u00e9mon_-_Advanced",
+    "xy": [
+        9,
+        6
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "NPC 08",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\rI have a rather special Bulbasaur! Its ability is"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "something I could only dream of."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\rI can't look after it, though. Would you like "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 0,
+                    "parameters": "Bulbasaur?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 0,
+                    "parameters": [
+                        [
+                            "Yes",
+                            "No"
+                        ],
+                        2
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        "Yes"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 1,
+                    "parameters": "pbAddForeignPokemon can only add a Pok\u00e9mon to "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "the player's party, so a space is required."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "pbAddForeignPokemon(:BULBASAUR,10,_I(\"Dorima\"),_I(\"Sauri\"),1)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 2,
+                    "parameters": "Editing a foreign Pok\u00e9mon added with this method "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "can only be done afterwards. Remember to add "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "\"poke.calcStats\" at the end."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 2,
+                    "parameters": "The added Pok\u00e9mon will always be at the end of the "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "player's party, so you can use $Trainer.lastParty to "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "locate it."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pkmn=$Trainer.lastParty"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "pkmn.setAbility(2)   # Hidden Ability"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "pkmn.setNature(:MODEST)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "pkmn.ballused=15     # Cherish Ball"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "pkmn.makeShiny"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "pkmn.calcStats"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\rTake good care of Sauri!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 123,
+                    "indent": 2,
+                    "parameters": [
+                        "A",
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\rOh, you don't have any space."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        "No"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\rOh, that's a shame."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        },
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": "A",
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "NPC 08",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\rI hope you're taking good care of my Sauri!"
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

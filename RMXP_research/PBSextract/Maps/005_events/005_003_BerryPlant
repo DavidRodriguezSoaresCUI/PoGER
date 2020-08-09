@@ -1,0 +1,22 @@
+[EVENT]
+xy=[10, 16]
+walk_anime=False
+step_anime=True
+
+[PAGE]
+direction_fix=True
+graphic=berrytreeORANBERRY
+direction=N
+
+
+s:pbPickBerry(:ORANBERRY,2)
+[end]
+
+
+[PAGE]
+move_frequency=2
+:A == :ON
+
+s:pbBerryPlant
+[end]
+

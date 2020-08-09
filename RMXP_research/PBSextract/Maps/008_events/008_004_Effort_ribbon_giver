@@ -1,0 +1,27 @@
+[EVENT]
+xy=[2, 4]
+graphic="NPC 04"
+
+[PAGE]
+
+
+
+# Looks at the total EVs of the lead Pokémon, and
+# rewards a ribbon to it if the total is maxed (255).
+s:p=$Trainer.firstPokemon ev=0 for i in 0...6 ev+=p.ev[i] end maxed=(ev>=255) ? 1 : 0 maxed=2 if p.hasRibbon?(:EFFORT) pbSet(1,p.name) pbSet(2,maxed)"
+Show Text "\\rOh?\\nYour \\v[1]..."
+if :TempMoveChoice == 2
+  Show Text "\\rOh! Your \\v[1], that Effort Ribbon looks good on it!"
+Else
+  if :TempMoveChoice == 1
+    Show Text "\\rWent for it stupendously!"
+    Show Text "\\rAs its reward, please give it this Effort Ribbon."
+    s:poke=$Trainer.firstPokemon poke.giveRibbon(:EFFORT)"
+    Show Text "\\PN received the Effort Ribbon. \\me[Item get]\\wtnp[20]"
+    Show Text "\\PN put the Effort Ribbon on \\v[1]."
+  Else
+    Show Text "\\rYou have to go for it a little harder."
+    Show Text "\\rIf you do, I'll give your Pokémon something nice."
+  
+[end]
+

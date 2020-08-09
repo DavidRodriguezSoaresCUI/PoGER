@@ -1,0 +1,41 @@
+[EVENT]
+xy=[14, 12]
+
+
+[PAGE]
+graphic="Pokemon 09"
+character_hue=180
+pattern=1
+
+
+s:pbPlayCrySpecies(:MEW)
+Wait ms=750
+:ShinywildPokémon = :ON
+:Fatefulencounters = :ON
+s:pbWildBattle(:MEW,30,1)
+:ShinywildPokémon = :OFF
+:Fatefulencounters = :OFF
+if :TempPokemonChoice == 4
+  # Caught.
+  :B = :ON
+Else
+  :A = :ON
+[end]
+
+
+[PAGE]
+trigger="trigger_toString:Undocumented: 4"
+:A == :ON
+
+if :ResetMewencounter == :ON
+  :ResetMewencounter = :OFF
+  :A = :OFF
+[end]
+
+
+[PAGE]
+
+:B == :ON
+
+[end]
+

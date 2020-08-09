@@ -1,0 +1,950 @@
+{
+    "_class": "Event",
+    "id": 2,
+    "name": "Sailor",
+    "xy": [
+        8,
+        6
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "trchar027",
+                "character_hue": 0,
+                "direction": "Up",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        12,
+                        "$PokemonBag.pbHasItem?(:AURORATICKET)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "$PokemonBag.pbHasItem?(:OLDSEAMAP)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bAhoy, there!\\nWhere do you want to sail?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 2,
+                    "parameters": [
+                        [
+                            "Tiall Region",
+                            "Berth Island",
+                            "Faraday Island",
+                            "Exit"
+                        ],
+                        4
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        0,
+                        "Tiall Region"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "Tiall Region"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        "Berth Island"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "Berth Island"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        2,
+                        "Faraday Island"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "Faraday Island"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        3,
+                        "Exit"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "End"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bAhoy, there!\\nWhere do you want to sail?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 2,
+                    "parameters": [
+                        [
+                            "Tiall Region",
+                            "Berth Island",
+                            "Exit"
+                        ],
+                        3
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        0,
+                        "Tiall Region"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "Tiall Region"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        "Berth Island"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "Berth Island"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        2,
+                        "Exit"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "End"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "$PokemonBag.pbHasItem?(:OLDSEAMAP)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bAhoy, there!\\nWhere do you want to sail?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 2,
+                    "parameters": [
+                        [
+                            "Tiall Region",
+                            "Faraday Island",
+                            "Exit"
+                        ],
+                        3
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        0,
+                        "Tiall Region"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "Tiall Region"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        "Faraday Island"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "Faraday Island"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        2,
+                        "Exit"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "End"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bAhoy, there!\\nWhere do you want to sail?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 2,
+                    "parameters": [
+                        [
+                            "Tiall Region",
+                            "Exit"
+                        ],
+                        2
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        0,
+                        "Tiall Region"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "Tiall Region"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        "Exit"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "End"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 115,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "################################"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 118,
+                    "indent": 0,
+                    "parameters": "Tiall Region"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bThe Tiall Region it is. All aboard!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 0,
+                    "parameters": [
+                        2,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 37,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 42,
+                                    "parameters": 0
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 38,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 0,
+                    "parameters": [
+                        -1,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 37,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 38,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 210,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 250,
+                    "indent": 0,
+                    "parameters": {
+                        "_class": "AudioFile",
+                        "name": "Door exit",
+                        "volume": 80,
+                        "pitch": 100
+                    }
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 208,
+                    "indent": 0,
+                    "parameters": 0
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 223,
+                    "indent": 0,
+                    "parameters": [
+                        {
+                            "_class": "Tone",
+                            "red": -255,
+                            "green": -255,
+                            "blue": -255,
+                            "gray": 0
+                        },
+                        6
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 106,
+                    "indent": 0,
+                    "parameters": 8
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 208,
+                    "indent": 0,
+                    "parameters": 1
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 201,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        75,
+                        17,
+                        11,
+                        2,
+                        1
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 223,
+                    "indent": 0,
+                    "parameters": [
+                        {
+                            "_class": "Tone",
+                            "red": 0,
+                            "green": 0,
+                            "blue": 0,
+                            "gray": 0
+                        },
+                        6
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 115,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "################################"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 118,
+                    "indent": 0,
+                    "parameters": "Berth Island"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bBerth Island it is. All aboard!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 121,
+                    "indent": 0,
+                    "parameters": [
+                        51,
+                        51,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 0,
+                    "parameters": [
+                        2,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 37,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 42,
+                                    "parameters": 0
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 38,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 0,
+                    "parameters": [
+                        -1,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 37,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 38,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 210,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 250,
+                    "indent": 0,
+                    "parameters": {
+                        "_class": "AudioFile",
+                        "name": "Door exit",
+                        "volume": 80,
+                        "pitch": 100
+                    }
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 208,
+                    "indent": 0,
+                    "parameters": 0
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 223,
+                    "indent": 0,
+                    "parameters": [
+                        {
+                            "_class": "Tone",
+                            "red": -255,
+                            "green": -255,
+                            "blue": -255,
+                            "gray": 0
+                        },
+                        6
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 106,
+                    "indent": 0,
+                    "parameters": 8
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 208,
+                    "indent": 0,
+                    "parameters": 1
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 201,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        72,
+                        14,
+                        23,
+                        8,
+                        1
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 223,
+                    "indent": 0,
+                    "parameters": [
+                        {
+                            "_class": "Tone",
+                            "red": 0,
+                            "green": 0,
+                            "blue": 0,
+                            "gray": 0
+                        },
+                        6
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 115,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "################################"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 118,
+                    "indent": 0,
+                    "parameters": "Faraday Island"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bFaraday Island it is. All aboard!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 121,
+                    "indent": 0,
+                    "parameters": [
+                        52,
+                        52,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 0,
+                    "parameters": [
+                        2,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 37,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 42,
+                                    "parameters": 0
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 38,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 0,
+                    "parameters": [
+                        -1,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 37,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 1,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 38,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 210,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 250,
+                    "indent": 0,
+                    "parameters": {
+                        "_class": "AudioFile",
+                        "name": "Door exit",
+                        "volume": 80,
+                        "pitch": 100
+                    }
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 208,
+                    "indent": 0,
+                    "parameters": 0
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 223,
+                    "indent": 0,
+                    "parameters": [
+                        {
+                            "_class": "Tone",
+                            "red": -255,
+                            "green": -255,
+                            "blue": -255,
+                            "gray": 0
+                        },
+                        6
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 106,
+                    "indent": 0,
+                    "parameters": 8
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 208,
+                    "indent": 0,
+                    "parameters": 1
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 201,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        73,
+                        14,
+                        23,
+                        8,
+                        1
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 223,
+                    "indent": 0,
+                    "parameters": [
+                        {
+                            "_class": "Tone",
+                            "red": 0,
+                            "green": 0,
+                            "blue": 0,
+                            "gray": 0
+                        },
+                        6
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 115,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "################################"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 118,
+                    "indent": 0,
+                    "parameters": "End"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bLet me know if you want to set sail."
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

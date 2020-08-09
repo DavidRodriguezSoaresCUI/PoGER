@@ -1,0 +1,21 @@
+[EVENT]
+xy=[5, 3]
+
+
+[PAGE]
+
+
+
+Show Text "Check results for which challenge?"
+Show Choices choices=['Level 50', 'Open Level', 'Cancel'], default=3
+When 'Level 50'
+  s:$game_variables[1]= pbBattleChallenge.getPreviousWins(palacesingle) $game_variables[2]= pbBattleChallenge.getMaxWins(palacesingle)"
+  Show Text "\\PN's Battle Palace Level 50 Single Battle results:"
+  Show Text "Last win streak: \\v[1]\\nRecord win streak: \\v[2]"
+When 'Open Level'
+  s:$game_variables[1]= pbBattleChallenge.getPreviousWins(palacesingleopen) $game_variables[2]= pbBattleChallenge.getMaxWins(palacesingleopen)"
+  Show Text "\\PN's Battle Palace Open Level Single Battle results:"
+  Show Text "Last win streak: \\v[1]\\nRecord win streak: \\v[2]"
+When 'Cancel'
+[end]
+

@@ -1,0 +1,24 @@
+[EVENT]
+xy=[3, 6]
+direction=E
+
+[PAGE]
+
+
+
+[end]
+
+
+[PAGE]
+graphic="NPC 01"
+s:pbNextMysteryGiftID>0 == :ON
+
+if s:pbNextMysteryGiftID>0
+  Show Text "\\bHello. You must be \\PN."
+  Show Text "\\bI've received a gift for you.\\nHere you go!"
+  s:id=pbNextMysteryGiftID pbReceiveMysteryGift(id)"
+Else
+  Show Text "\\bI haven't received any other gifts for you."
+Show Text "\\bWe look forward to your next visit."
+[end]
+

@@ -1,0 +1,11 @@
+[EVENT]
+xy=[15, 69]
+trigger=onPlayerTouch
+
+[PAGE]
+
+
+
+s:pbBridgeOff
+[end]
+

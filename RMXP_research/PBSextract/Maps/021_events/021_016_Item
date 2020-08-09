@@ -1,0 +1,20 @@
+[EVENT]
+xy=[24, 6]
+
+
+[PAGE]
+graphic="Object ball"
+
+
+if s:Kernel.pbItemBall(:GREATBALL)
+  :A = :ON
+Else
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+[end]
+

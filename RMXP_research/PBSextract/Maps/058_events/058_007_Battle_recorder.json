@@ -1,0 +1,490 @@
+{
+    "_class": "Event",
+    "id": 7,
+    "name": "Battle_recorder",
+    "xy": [
+        8,
+        3
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        6,
+                        -1,
+                        8
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 1,
+                    "parameters": [
+                        [
+                            "Battle Palace rules",
+                            "Play recorded battle",
+                            "Cancel"
+                        ],
+                        3
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        0,
+                        "Battle Palace rules"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 118,
+                    "indent": 2,
+                    "parameters": "Top"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "Which heading do you want to read?\\ch[1,-1,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 2,
+                    "parameters": "Battle Basics,Pok\u00e9mon Nature,Pok\u00e9mon Moves,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 2,
+                    "parameters": "Underpowered,When in Danger,Exit]"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        1,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "In the Battle Palace, Pok\u00e9mon are required to think by "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "themselves."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "Unlike in the wild, Pok\u00e9mon that live with people "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "behave differently depending on their nature."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "Choices"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        1,
+                        0,
+                        1,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "Depending on its nature, a Pok\u00e9mon may prefer to "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "attack no matter what."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "Another Pok\u00e9mon may prefer to protect itself from "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "harm."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "Yet another may enjoy vexing or confounding its "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "foes."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "A Pok\u00e9mon's nature determines which moves it is "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "good at using, and which moves it has trouble using."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "Choices"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        1,
+                        0,
+                        2,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "There are offensive moves that deal direct damage "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "on the foe."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "There are defensive moves that are used to prepare "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "for enemy attacks or used to heal HP and so on."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "And there are other somewhat-odd moves that may "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "enfeeble the foe with status problems including "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "poison and paralysis."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "Pok\u00e9mon will consider using moves in these three "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "categories."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "Choices"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        1,
+                        0,
+                        3,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "When not taking commands from its Trainer, a "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "Pok\u00e9mon may be unable to effectively use certain "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "kinds of moves."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "A Pok\u00e9mon is not good at using any move that it "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "dislikes."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "If a Pok\u00e9mon only knows moves that don't conform "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "to its nature, it will often be unable to live up to its "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "potential."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "Choices"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        1,
+                        0,
+                        4,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "Depending on its nature, a Pok\u00e9mon may start using "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "moves that don't match its nature when it is in "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "trouble."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "If a Pok\u00e9mon begins behaving oddly in a pinch, watch "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 3,
+                    "parameters": "it carefully."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 3,
+                    "parameters": "Choices"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        1,
+                        "Play recorded battle"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 2,
+                    "parameters": [
+                        12,
+                        "$PokemonGlobal.lastbattle!=nil"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 3,
+                    "parameters": "pbPlayLastBattle"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "There is no battle recorded."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        2,
+                        "Cancel"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

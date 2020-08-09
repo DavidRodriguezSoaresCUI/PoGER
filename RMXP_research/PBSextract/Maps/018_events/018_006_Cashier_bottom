@@ -1,0 +1,11 @@
+[EVENT]
+xy=[1, 7]
+graphic="NPC 19"
+
+[PAGE]
+
+
+
+s:pbPokemonMart([ :XATTACK, :XDEFEND, :XSPEED, :XSPECIAL, :XSPDEF, :XACCURACY, :GUARDSPEC, :DIREHIT ])"
+[end]
+

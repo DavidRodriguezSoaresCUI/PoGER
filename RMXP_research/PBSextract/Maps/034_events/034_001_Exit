@@ -1,0 +1,16 @@
+[EVENT]
+xy=[23, 18]
+trigger=onPlayerTouch
+preset=exit
+
+[PAGE]
+
+
+
+Fadeout color=Black, ms=300
+Wait ms=400
+s:pbCaveExit
+Transfer Player map=31, x=55, y=8, direction="N", fading="NoFading"
+Fadein ms=300
+[end]
+

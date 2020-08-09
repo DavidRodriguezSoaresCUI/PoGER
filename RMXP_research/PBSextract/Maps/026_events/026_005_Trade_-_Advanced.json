@@ -1,0 +1,408 @@
+{
+    "_class": "Event",
+    "id": 5,
+    "name": "Trade_-_Advanced",
+    "xy": [
+        3,
+        6
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "trchar042",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\rI'm looking for a female Dragonair."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\rWant to trade it for my Dodrio?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 0,
+                    "parameters": [
+                        [
+                            "Yes",
+                            "No"
+                        ],
+                        2
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        "Yes"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 1,
+                    "parameters": "Because there are more requirements than just "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "wanting the correct species, the method "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "pbChoosePokemonForTrade cannot be used here. "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "Instead, it is recreated using method "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 1,
+                    "parameters": "pbChooseTradeablePokemon."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbChooseTradeablePokemon(1,2,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "proc {|pkmn|"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": " pkmn.isFemale? &&"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": " isConst?(pkmn.species,PBSpecies,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "    :DRAGONAIR)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 1,
+                    "parameters": "})"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        1,
+                        1,
+                        0,
+                        -1,
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\rYou don't want to trade?  Aww..."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\rOK, let's get started."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 2,
+                    "parameters": "This trade is providing a special Dodrio with certain "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "custom modifications. You should define this Pok\u00e9mon "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "first and modify it, and then put it in the trade."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 2,
+                    "parameters": "Remember to add \"poke.calcStats\" at the end. It "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "makes sure the Pok\u00e9mon's stats are correct, as some "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "modifications can affect them. It doesn't hurt to have "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "this line there just to be sure, even if you don't affect "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "the stats."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "p=PokeBattle_Pokemon.new(:DODRIO,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "   pbGetPokemon(1).level,$Trainer)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "p.setItem(:SMOKEBALL)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "p.makeFemale"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "p.setAbility(0)         # Run Away"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "p.setNature(:IMPISH)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "p.iv=[20,20,20,15,15,15]"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "p.ballused=10           # Luxury Ball"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "p.pbLearnMove(:SURF)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "p.calcStats"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbStartTrade(pbGet(1),p,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "_I(\"Doris\"),_I(\"Ayana\"),1)"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 2,
+                    "parameters": "The trade itself sets the received Pok\u00e9mon's "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "nickname, obtain method and OT details. These can "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "only be modified after the trade, although you "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 408,
+                    "indent": 2,
+                    "parameters": "shouldn't need to do so."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\PN traded Dragonair for Dodrio!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\rThanks!"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 123,
+                    "indent": 2,
+                    "parameters": [
+                        "A",
+                        0
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        "No"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\rYou don't want to trade?  Aww..."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        },
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": "A",
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "trchar042",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\rAre you taking good care of Doris?"
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

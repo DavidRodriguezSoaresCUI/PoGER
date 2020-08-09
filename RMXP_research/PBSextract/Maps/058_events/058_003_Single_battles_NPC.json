@@ -1,0 +1,1042 @@
+{
+    "_class": "Event",
+    "id": 3,
+    "name": "Single_battles_NPC",
+    "xy": [
+        3,
+        3
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "trchar016",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerAction",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bWelcome to the Battle Palace."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 0,
+                    "parameters": "\\bWould you like to participate in a single battle?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 0,
+                    "parameters": [
+                        [
+                            "Yes",
+                            "No"
+                        ],
+                        2
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        "Yes"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bDo you want to take the Level 50 challenge, or the "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "Open Level challenge?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 1,
+                    "parameters": [
+                        [
+                            "Level 50",
+                            "Open Level",
+                            "Cancel"
+                        ],
+                        3
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        0,
+                        "Level 50"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbBattleChallenge.set(\"palacesingle\",7,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "pbBattlePalaceRules(false,false))"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        1,
+                        "Open Level"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbBattleChallenge.set(\"palacesingleopen\",7,"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 655,
+                    "indent": 2,
+                    "parameters": "pbBattlePalaceRules(false,true))"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 1,
+                    "parameters": [
+                        2,
+                        "Cancel"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 2,
+                    "parameters": "End"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 1,
+                    "parameters": "Has 3 or more eligible Pokemon level 100 or less?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "!pbHasEligible?(3,100)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bSorry, you can't participate. You need three "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 2,
+                    "parameters": "different Pok\u00e9mon to enter."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bThey must be of a different species and hold "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 2,
+                    "parameters": "different items."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bCertain exotic species, as well as eggs, are "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 2,
+                    "parameters": "ineligible."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 2,
+                    "parameters": "End"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bPlease choose the three Pok\u00e9mon that will enter."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "!pbEntryScreen(3,100)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 2,
+                    "parameters": "End"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "pbSaveScreen"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bPlease come this way."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 2,
+                    "parameters": "pbBattleChallenge.start"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 2,
+                    "parameters": [
+                        0,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 37,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 15,
+                                    "parameters": 4
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 19,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 42,
+                                    "parameters": 0
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 38,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 2,
+                    "parameters": [
+                        -1,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 37,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 15,
+                                    "parameters": 4
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 19,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 42,
+                                    "parameters": 0
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 38,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 210,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 250,
+                    "indent": 2,
+                    "parameters": {
+                        "_class": "AudioFile",
+                        "name": "Door exit",
+                        "volume": 80,
+                        "pitch": 100
+                    }
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 223,
+                    "indent": 2,
+                    "parameters": [
+                        {
+                            "_class": "Tone",
+                            "red": -255,
+                            "green": -255,
+                            "blue": -255,
+                            "gray": 0
+                        },
+                        6
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 106,
+                    "indent": 2,
+                    "parameters": 8
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 201,
+                    "indent": 2,
+                    "parameters": [
+                        0,
+                        59,
+                        2,
+                        8,
+                        0,
+                        1
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 223,
+                    "indent": 2,
+                    "parameters": [
+                        {
+                            "_class": "Tone",
+                            "red": 0,
+                            "green": 0,
+                            "blue": 0,
+                            "gray": 0
+                        },
+                        6
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 119,
+                    "indent": 2,
+                    "parameters": "End"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 0,
+                    "parameters": [
+                        1,
+                        "No"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 118,
+                    "indent": 1,
+                    "parameters": "End"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bCome back another time."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbBattleChallenge.pbCancel"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 115,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        },
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": "28",
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "trchar016",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onAutorun",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "If Won"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        12,
+                        "pbBattleChallenge.decision==1"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bCongratulations for winning."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bPlease take this prize."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "!Kernel.pbReceiveItem(:RARECANDY)"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bYou have no room for it. At least you won, though."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "$PokemonTemp.lastbattle!=nil"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bWould you like to record your last battle?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 2,
+                    "parameters": [
+                        [
+                            "Yes",
+                            "No"
+                        ],
+                        2
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        0,
+                        "Yes"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 3,
+                    "parameters": "pbRecordLastBattle"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "\\se[Pkmn exp full]The battle was recorded."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        "No"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "Your results will be recorded.\\wtnp[15]"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbBattleChallenge.pbEnd"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bCome back another time."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 115,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 108,
+                    "indent": 0,
+                    "parameters": "If Lost or Forfeited"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        12,
+                        "pbBattleChallenge.decision==2"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bThanks for playing."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 1,
+                    "parameters": [
+                        12,
+                        "$PokemonTemp.lastbattle!=nil"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 2,
+                    "parameters": "\\bWould you like to record your last battle?"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 102,
+                    "indent": 2,
+                    "parameters": [
+                        [
+                            "Yes",
+                            "No"
+                        ],
+                        2
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        0,
+                        "Yes"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 3,
+                    "parameters": "pbRecordLastBattle"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 3,
+                    "parameters": "\\se[Pkmn exp full]The battle was recorded."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 402,
+                    "indent": 2,
+                    "parameters": [
+                        1,
+                        "No"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 404,
+                    "indent": 2,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "Your results will be recorded.\\wtnp[15]"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbBattleChallenge.pbEnd"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bCome back another time."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 115,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 111,
+                    "indent": 0,
+                    "parameters": [
+                        12,
+                        "pbBattleChallenge.pbResting?"
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bWe've been waiting for you. Please come this "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "way."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbBattleChallenge.pbGoOn"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 1,
+                    "parameters": [
+                        0,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 37,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 15,
+                                    "parameters": 4
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 19,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 42,
+                                    "parameters": 0
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 38,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 209,
+                    "indent": 1,
+                    "parameters": [
+                        -1,
+                        {
+                            "_class": "MoveRoute",
+                            "repeat": false,
+                            "skippable": false,
+                            "list": [
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 37,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 15,
+                                    "parameters": 4
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 19,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 4,
+                                    "parameters": null
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 42,
+                                    "parameters": 0
+                                },
+                                {
+                                    "_class": "MoveCommand",
+                                    "code": 38,
+                                    "parameters": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 210,
+                    "indent": 1,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 250,
+                    "indent": 1,
+                    "parameters": {
+                        "_class": "AudioFile",
+                        "name": "Door exit",
+                        "volume": 80,
+                        "pitch": 100
+                    }
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 223,
+                    "indent": 1,
+                    "parameters": [
+                        {
+                            "_class": "Tone",
+                            "red": -255,
+                            "green": -255,
+                            "blue": -255,
+                            "gray": 0
+                        },
+                        6
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 106,
+                    "indent": 1,
+                    "parameters": 8
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 201,
+                    "indent": 1,
+                    "parameters": [
+                        0,
+                        59,
+                        2,
+                        8,
+                        0,
+                        1
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 223,
+                    "indent": 1,
+                    "parameters": [
+                        {
+                            "_class": "Tone",
+                            "red": 0,
+                            "green": 0,
+                            "blue": 0,
+                            "gray": 0
+                        },
+                        6
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 411,
+                    "indent": 0,
+                    "parameters": null
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bExcuse me, but you didn't save before finishing "
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 401,
+                    "indent": 1,
+                    "parameters": "your challenge last time."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 101,
+                    "indent": 1,
+                    "parameters": "\\bSorry, but your challenge has been canceled."
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 1,
+                    "parameters": "pbBattleChallenge.pbEnd"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 412,
+                    "indent": 0,
+                    "parameters": null
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

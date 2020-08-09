@@ -1,0 +1,12 @@
+[EVENT]
+xy=[11, 29]
+graphic=doors6
+preset=door
+
+[PAGE]
+trigger=onPlayerTouch
+
+
+Transfer Player map=10, x=6, y=14, direction="N", fading="Fading"
+[end]
+

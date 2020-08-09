@@ -1,11 +1,12 @@
 #from RGSS_classes import EventCommand, MoveCommand, Tone, MoveRoute
 import RGSS_classes
+from utils import frame2ms, subject_to_string, quote, direction_toString, SS_val_str, common_relations_decoder
 
-''' Used codes : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
-16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 33, 34, 37, 38, 39, 40, 
-41, 42, 44, 101, 102, 104, 106, 108, 111, 112, 113, 115, 118, 119, 
-121, 122, 123, 125, 201, 202, 208, 209, 210, 221, 222, 223, 225, 231, 
-232, 235, 236, 241, 242, 247, 248, 249, 250, 314, 354, 355, 401, 402, 
+''' Used codes : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 33, 34, 37, 38, 39, 40,
+41, 42, 44, 101, 102, 104, 106, 108, 111, 112, 113, 115, 118, 119,
+121, 122, 123, 125, 201, 202, 208, 209, 210, 221, 222, 223, 225, 231,
+232, 235, 236, 241, 242, 247, 248, 249, 250, 314, 354, 355, 401, 402,
 404, 408, 411, 412, 413, 655
 '''
 
@@ -13,117 +14,89 @@ indent_nb=2
 indent_symbol=' '*indent_nb
 last_code=None
 
-def subject_to_string( s ):
-    if s==-1:
-        return ':self'
-    elif s==0:
-        return ':player'
-    else:
-        return f'subject_to_string:Undocumented subject {s}'
-
-def quote( s ):
-    return '"'+s.replace('\\', '\\\\').replace('"', '\\"')+'"'
-
-def direction_toString( dir ):
-    switcher={
-        0:'Keep',
-        2:'Down',
-        4:'Left',
-        6:'Right',
-        8:'Up',
-    }
-    res=switcher.get(dir, None)
-    assert res, f"direction_toString:Undocumented: {dir}"
-    return res
-
-def SS_val_str( val ):
-    SS_switcher = {
-        0:'ON',
-        1:'OFF'
-    }
-    return SS_switcher[val]
+next_transition_freeze = True
 
 def command_0( parameters ):
     assert parameters==None
-    return "END"
+    return "" # "END"
 
 def command_1( parameters ):
     assert parameters==None
-    return "Move Down"
+    return "Step S"
 
 def command_2( parameters ):
     assert parameters==None
-    return "Move Left"
+    return "Step W"
 
 def command_3( parameters ):
     assert parameters==None
-    return "Move Right"
+    return "Step E"
 
 def command_4( parameters ):
     assert parameters==None
-    return "Move Up"
+    return "Step N"
 
 def command_5( parameters ):
     assert parameters==None
-    return "Move SW"
+    return "Step SW"
 
 def command_6( parameters ):
     assert parameters==None
-    return "Move SE"
+    return "Step SE"
 
 def command_7( parameters ):
     assert parameters==None
-    return "Move NW"
+    return "Step NW"
 
 def command_8( parameters ):
     assert parameters==None
-    return "Move NE"
+    return "Step NE"
 
 def command_9( parameters ):
     assert parameters==None
-    return "Move at random"
+    return "Step R"
 
 def command_10( parameters ):
     assert parameters==None
-    return "Move Towards Player"
+    return "Step 1T"
 
 def command_11( parameters ):
     assert parameters==None
-    return "Move away from player"
+    return "Step 1A"
 
 def command_12( parameters ):
     assert parameters==None
-    return "1 step forward"
+    return "Step 1F"
 
 def command_13( parameters ):
     assert parameters==None
-    return "1 step backwards"
+    return "Step 1B"
 
 def command_14( parameters ):
     print(f'command_14: parameters={parameters}, {type(parameters)}')
-    return "Jump X+,Y+"
+    return "Move Event relative_coordinates=[+X,+Y]"
 
 def command_15( parameters ):
     #print(f'command_15: parameters={parameters}, {type(parameters)}')
     seconds=parameters
     assert isinstance(seconds, int)
-    return f"Wait seconds, {seconds}"
+    return f"Wait s={seconds}"
 
 def command_16( parameters ):
     assert parameters==None
-    return "Turn down"
+    return "Turn S"
 
 def command_17( parameters ):
     assert parameters==None
-    return "Turn left"
+    return "Turn W"
 
 def command_18( parameters ):
     assert parameters==None
-    return "Turn right"
+    return "Turn E"
 
 def command_19( parameters ):
     assert parameters==None
-    return "Turn Up"
+    return "Turn N"
 
 def command_20( parameters ):
     assert parameters==None
@@ -155,56 +128,70 @@ def command_26( parameters ):
 
 def command_33( parameters ): # Freeze every animation
     assert parameters==None
-    return "Stop Animation ON"
+    #return "Stop Animation ON"
+    return "Set property=stop_animation value=:ON"
 
 def command_34( parameters ):
     assert parameters==None
-    return "Stop Animation OFF"
+    #return "Stop Animation OFF"
+    return "Set property=stop_animation value=:OFF"
 
 def command_37( parameters ): # Walk through Walls
     assert parameters==None
     #print(f'command_37: parameters={parameters}, {type(parameters)}')
-    return "WTW ON"
+    #return "WTW ON"
+    return "Set property=through value=:ON"
 
 def command_38( parameters ):
     assert parameters==None
     #print(f'command_37: parameters={parameters}, {type(parameters)}')
-    return "WTW OFF"
+    #return "WTW OFF"
+    return "Set property=through value=:OFF"
 
 def command_39( parameters ): # Always on top
     assert parameters==None
-    return "AOT ON"
+    #return "AOT ON"
+    return "Set property=always_on_top value=:ON"
 
 def command_40( parameters ):
     assert parameters==None
-    return "AOT OFF"
+    #return "AOT OFF"
+    return "Set property=always_on_top value=:OFF"
 
 def command_41( parameters ):
-    print(f'command_41: parameters={parameters}, {type(parameters)}')
-    return "Change graphic"
+    #print(f'command_41: parameters={parameters}, {type(parameters)}')
+    #return "Change graphic"
+    graphic = parameters[0]
+    direction = parameters[2]
+    step = parameters[3]
+    return f'Set property=graphic value="{graphic},{direction},{step}"'
 
 def command_42( parameters ):
     #print(f'command_42: parameters={parameters}, {type(parameters)}')
     opa=parameters
     assert isinstance(opa, int)
-    return f"Change opacity, {opa}"
+    #return f"Change opacity {opa}"
+    return "Set property=opacity value={opa}"
 
 def command_44( parameters ):
-    print(f'command_44: parameters={parameters}, {type(parameters)}')
-    return "Play SE"
+    #print(f'command_44: parameters={parameters}, {type(parameters)}')
+    from RGSS_classes import AudioFile
+    audio=parameters
+    assert isinstance(audio, AudioFile)
+    return f"Play SE={str(audio)}"
 
 def command_101( parameters ):
     #print(f'command_101: parameters={parameters}, {type(parameters)}')
     assert isinstance(parameters, str)
-    return "Show Text, "+quote(parameters)
+    return "Show Text "+quote(parameters)
 
 def command_401( parameters ): # see 101
     #print(f'command_401: parameters={parameters}, {type(parameters)}')
     global last_code
-    
+
     if not (last_code==101 or last_code==401):
         raise ValueError( f'command_401: last_code={last_code}, not 101 or 401' )
-    
+
     assert isinstance(parameters, str)
     return (quote(parameters), True)
     #return "Show More Text"
@@ -212,110 +199,124 @@ def command_401( parameters ): # see 101
 def command_102( parameters ):
     #print(f'command_102: parameters={parameters}, {type(parameters)}')
     assert len(parameters)==2
-    choices=str(parameters[0])
-    return f"Show Choices, {choices}, default={parameters[1]}"
+    choices=str(parameters[0]).replace("'", '"')
+    return f"Choose choices={choices}, default={parameters[1]}"
 
 def command_104( parameters ):
     print(f'command_104: parameters={parameters}, {type(parameters)}')
-    return "Change Text Options"
+    position = common_relations_decoder( 1, parameters[0] )
+    border = common_relations_decoder( 2, parameters[1] )
+    return f"Change Text Options position={position}, border={border}"
 
 def command_106( parameters ):
     #print(f'command_106: parameters={parameters}, {type(parameters)}')
     assert isinstance( parameters, int )
-    return f"Wait, {parameters}"
+    wait_ms = frame2ms( parameters )
+    return f"Wait ms={wait_ms}"
 
 def command_108( parameters ): # differenciate for particle effect
     #print(f'command_108: parameters={parameters}, {type(parameters)}')
     assert isinstance( parameters, str )
-    return f"# {quote(parameters)}"
+    return f"# {parameters}"
 
 def command_408( parameters ): # see 108
     #print(f'command_408: parameters={parameters}, {type(parameters)}')
     global last_code
-    
+
     if not (last_code==108 or last_code==408):
         raise ValueError( f'command_408: last_code={last_code}, not 108 or 408' )
-    
+
     assert isinstance(parameters, str)
-    return (f"# {quote(parameters)}", True)
+    return (f"# {parameters}", False)
 
 def command_111( parameters ):
     code=parameters[0]
     assert isinstance(code, int)
     s=''
-    if code==1:
+    if code==0:
+        import PE_variables_switches
+        sw = PE_variables_switches.switches.get( parameters[1], None )
+        assert sw
+        st = common_relations_decoder( 3, parameters[2] )
+        s = f'{sw} == {st}'
+    elif code==1:
         # Variable check
         from PE_variables_switches import variables
-        op_switcher={
-            0:'==',
-            1:'>=',
-            2:'<=',
-            3:'>',
-            4:'<',
-            5:'!=',
-        }
-        var=variables.get( parameters[1], None )
-        val=parameters[3]
-        op=op_switcher.get( parameters[4], None)
+        var = variables.get( parameters[1], None )
+        val = parameters[3]
+        op = common_relations_decoder( 6, parameters[4])
         assert isinstance(var, str) and isinstance(op, str)
-        s=f':{var} {op} {val}'
+        s=f'{var} {op} {val}'
     elif code==2:
         # Self-switch check
         ss=parameters[1]
         assert isinstance(ss,str) and len(ss)==1
         val=SS_val_str( parameters[2] )
         s=f':{ss} is {val}'
+    elif code == 6:
+        # Check Event's direction
+        event_id = subject_to_string( parameters[1] )
+        direction = common_relations_decoder( 5, parameters[2] )
+        s=f's:eventDirection({event_id}) == {direction}'
+    elif code==7:
+        # Check player's money
+        amount = parameters[1]
+        comparator = common_relations_decoder( 8, parameters[2] )
+        s = f':Gold {comparator} {amount}'
     elif code==12:
         # Script condition
-        s=parameters[1]
+        s=f's:{parameters[1]}'
         assert len(parameters)==2
         assert isinstance(s, str)
     else:
         print(f'command_111: parameters={parameters}, {type(parameters)}')
         s=f'Unimplemented interpretation for code {code}'
 
-    return f"Conditional Branch, {s}"
+    return f"if {s}"
 
 def command_112( parameters ):
-    print(f'command_112: parameters={parameters}, {type(parameters)}')
+    #print(f'command_112: parameters={parameters}, {type(parameters)}')
     return "Loop"
 
+def command_413( parameters ): # Goes with Loop:112
+    #print(f'command_413: parameters={parameters}, {type(parameters)}')
+    return "" # "Repeat Above"
+
 def command_113( parameters ):
-    print(f'command_113: parameters={parameters}, {type(parameters)}')
-    return "Break Loop"
+    #print(f'command_113: parameters={parameters}, {type(parameters)}')
+    return "break"
 
 def command_115( parameters ):
     #print(f'command_115: parameters={parameters}, {type(parameters)}')
-    return "Exit Event Processing"
+    return "End Execution"
 
 def command_118( parameters ):
     #print(f'command_118: parameters={parameters}, {type(parameters)}')
     label=parameters
     assert isinstance(label, str)
-    return f"Label, {label}"
+    return f"Label {label}"
 
 def command_119( parameters ):
     #print(f'command_119: parameters={parameters}, {type(parameters)}')
     label=parameters
     assert isinstance(label, str)
-    return f"Jump to Label, {label}"
+    return f"Goto {label}"
 
 def command_121( parameters ):
-    print(f'command_121: parameters={parameters}, {type(parameters)}')
-    return "Control Switches"
+    #print(f'command_121: parameters={parameters}, {type(parameters)}')
+    switch=parameters[0]
+    state=parameters[2]
+    assert isinstance( switch, int ) and isinstance( state, int )
+    import PE_variables_switches
+    sw = PE_variables_switches.switches.get( switch, None )
+    st = common_relations_decoder( 3, state )
+    return f'{sw} = {st}'
 
 def command_122( parameters ):
     import PE_variables_switches
     var = PE_variables_switches.variables.get( parameters[0], None )
-    op_switcher = {
-        0:'=',
-        1:'+=',
-        2:'-=',
-        3:'*=',
-        4:'/=',
-        5:'%='
-    }
-    operation = op_switcher.get( parameters[2], None )
+    
+    operation = common_relations_decoder( 9, parameters[2] )
     assert operation
     operand = parameters[3]
     s=''
@@ -325,60 +326,86 @@ def command_122( parameters ):
     elif operand==1:
         from PE_variables_switches import variables
         assert len(parameters)==5
-        s=variables.get( parameters[4], None )
+        s = variables.get( parameters[4], None )
         assert s
+    elif operand==2:
+        assert all( [isinstance(parameters[x],int) for x in [4,5] ])
+        s = f's:randint({parameters[4]},{parameters[5]})'
+    elif operand==7 and parameters[4]==2:
+        s = ':Gold'
     else:
         print(f'command_122: parameters={parameters}, {type(parameters)}')
         s='Unimplemented operand'
 
-    return f"Control Variables, {var} {operation} {s}"
+    # return f"Control Variables, {var} {operation} {s}"
+    return f"{var} {operation} {s}"
 
 def command_123( parameters ):
     #print(f'command_123: parameters={parameters}, {type(parameters)}')
     ss=parameters[0]
-    val=SS_val_str( parameters[1] )
-    return f"Control Self Switch, :{ss}, {val}"
+    val = common_relations_decoder( 3, parameters[1] )
+    return f":{ss} = {val}"
 
 def command_125( parameters ):
-    print(f'command_125: parameters={parameters}, {type(parameters)}')
-    return "Change Gold"
+    from PE_variables_switches import variables
+    #print(f'command_125: parameters={parameters}, {type(parameters)}')
+
+    operation = common_relations_decoder( 4, parameters[0] )
+    operand = parameters[1]
+    assert operand==0 or operand==1
+    value = parameters[2] if operand==0 else variables.get(parameters[2], None)
+    assert value
+
+    return f":Gold {operation} {value}"
 
 def command_201( parameters ):
     #print(f'command_201: parameters={parameters}, {type(parameters)}')
     assert len(parameters)==6
     dest_map, dest_x, dest_y = parameters[1], parameters[2], parameters[3]
-    direction=direction_toString(parameters[4])
-    fading = 'Fading' if (parameters[5]==0) else 'NoFading' 
-    return f"Transfer Player, destination=({dest_map},{dest_x},{dest_y}), direction={quote(direction)}, fading={quote(fading)}"
+    direction = direction_toString(parameters[4])
+    fading = 'Fading' if (parameters[5]==0) else 'NoFading'
+    return f"Transfer Player map={dest_map}, x={dest_x}, y={dest_y}, direction={quote(direction)}, fading={quote(fading)}"
 
 def command_202( parameters ):
-    print(f'command_202: parameters={parameters}, {type(parameters)}')
-    return "Set Event Location"
+    #print(f'command_202: parameters={parameters}, {type(parameters)}')
+    assert parameters[1]==0
+    event_id = parameters[0]
+    coord_x = parameters[2]
+    coord_y = parameters[3]
+    direction = common_relations_decoder( 5, parameters[4] )
+    return f"Move Event event={event_id}, absolute_coordinates=[{coord_x},{coord_y}], direction={direction}"
 
 def command_208( parameters ):
-    print(f'command_208: parameters={parameters}, {type(parameters)}')
-    return "Change Transparent Flag [in VX: 211]"
+    #print(f'command_208: parameters={parameters}, {type(parameters)}')
+    transparency = parameters
+    assert isinstance(transparency, int)
+    return f"Set property=transparent value={SS_val_str(transparency)}"
 
 def command_209( parameters ):
     #print(f'command_209: parameters={parameters}, {type(parameters)}')
-    subject=subject_to_string(parameters[0])
+    subject = subject_to_string(parameters[0])
     #moveroute=parameters[1]
-    return f"Set Move Route, {subject}"
+    return f"Set Move Route {subject}"
 
 def command_210( parameters ):
     #print(f'command_210: parameters={parameters}, {type(parameters)}')
-    return "Wait for Move's Completion"
+    return "" # "Wait for Move's Completion"
 
 # https://www.youtube.com/watch?v=4ykNtsDQKVM
 def command_221( parameters ):
+    global next_transition_freeze
     #print(f'command_221: parameters={parameters}, {type(parameters)}')
     assert parameters==None
-    return "Prepare for Transition (freeze screen)"
+    next_transition_freeze = True
+    return "" # "Prepare for Transition (freeze screen)"
 
 def command_222( parameters ):
+    global next_transition_freeze
     #print(f'command_222: parameters={parameters}, {type(parameters)}')
     assert isinstance(parameters, str)
-    return f"Execute Transition, {parameters}"
+    freeze = ':ON' if next_transition_freeze else ':OFF'
+    next_transition_freeze = False
+    return f"Transition name={parameters}, freeze={freeze}"
 
 def command_223( parameters ):
     from RGSS_classes import Tone
@@ -386,17 +413,21 @@ def command_223( parameters ):
     tone, nbFrames = parameters[0], parameters[1]
     assert isinstance(tone, Tone) and isinstance( nbFrames, int) and len(parameters)==2
     fadeout, fadein = tone.isFadeOut(), tone.isFadeIn()
+    ms = frame2ms(nbFrames)
     #print( f'tone:{tone.to_s()}, fadein={fadein}, fadeout={fadeout}')
     if fadeout:
-        return f'Fadeout, {fadeout}'
+        return f'Fadeout color={fadeout}, ms={ms}'
     elif fadein:
-        return f'Fadein'
+        return f'Fadein ms={ms}'
     else:
-        return f"Change Screen Color Tone, {tone.to_s()}"
+        return f"Change Screen Color Tone {tone.to_s()}, ms={ms}"
 
 def command_225( parameters ):
-    print(f'command_225: parameters={parameters}, {type(parameters)}')
-    return "Screen Shake"
+    #print(f'command_225: parameters={parameters}, {type(parameters)}')
+    duration_fr = parameters[2]
+    assert isinstance( duration_fr, int )
+    duration_ms = frame2ms( duration_fr )
+    return f"Screen Shake duration={duration_ms}"
 
 def command_231( parameters ):
     print(f'command_231: parameters={parameters}, {type(parameters)}')
@@ -411,46 +442,48 @@ def command_235( parameters ):
     return "Erase Picture"
 
 def command_236( parameters ):
-    print(f'command_236: parameters={parameters}, {type(parameters)}')
-    return "Set Weather Effects"
+    #print(f'command_236: parameters={parameters}, {type(parameters)}')
+    weather = common_relations_decoder( 13, parameters[0] )
+    return f"Set Weather name={weather}"
 
 def command_241( parameters ):
-    print(f'command_241: parameters={parameters}, {type(parameters)}')
-    return "Play BGM"
+    #print(f'command_241: parameters={parameters}, {type(parameters)}')
+    from RGSS_classes import AudioFile
+    audio=parameters
+    assert isinstance(audio, AudioFile)
+    return f"Play BGM={str(audio)}"
 
 def command_242( parameters ):
-    print(f'command_242: parameters={parameters}, {type(parameters)}')
-    return "Fade Out BGM"
+    #print(f'command_242: parameters={parameters}, {type(parameters)}')
+    assert isinstance( parameters, int )
+    ms = (parameters * 1000)
+    return f"Fade Out BGM ms={ms}"
 
 def command_247( parameters ):
     assert parameters==None
-    return "Memorize BGM/BGS"
+    return "Memorize BGx"
 
 def command_248( parameters ):
     assert parameters==None
-    return "Restore BGM/BGS"
+    return "Restore BGx"
 
 def command_249( parameters ):
     #print(f'command_249: parameters={parameters}, {type(parameters)}')
     from RGSS_classes import AudioFile
-    import json
     audio=parameters
     assert isinstance(audio, AudioFile)
-    s = json.dumps( audio.__dict__ )
-    return f"Play ME, {s}"
+    return f"Play ME={str(audio)}"
 
 def command_250( parameters ):
     from RGSS_classes import AudioFile
-    import json
     #print(f'command_250: parameters={parameters}, {type(parameters)}')
     audio=parameters
     assert isinstance(audio, AudioFile)
-    s = json.dumps( audio.__dict__ )
-    return f"Play SE, {s}"
+    return f"Play SE={str(audio)}"
 
 def command_314( parameters ):
     # ignore parameter
-    return "Recover All"
+    return "Restore All"
 
 def command_354( parameters ):
     assert parameters==None
@@ -459,32 +492,32 @@ def command_354( parameters ):
 def command_355( parameters ):
     #print(f'command_355: parameters={parameters}, {type(parameters)}')
     assert isinstance( parameters, str )
-    return "Script, "+quote(parameters)
+    return f's:{parameters}'
 
 def command_655( parameters ):
     #print(f'command_655: parameters={parameters}, {type(parameters)}')
     global last_code
-    
+
     if not (last_code==355 or last_code==655):
         raise ValueError( f'command_655: last_code={last_code}, not 355 or 655' )
-    
+
     assert isinstance(parameters, str)
-    return (quote(parameters), True)
+    return (parameters, True)
     #print(f'command_355: parameters={parameters}, {type(parameters)}')
     #return "Script continued"
 
 def command_402( parameters ):
     #print(f'command_402: parameters={parameters}, {type(parameters)}')
     assert isinstance( parameters, list )
-    choice_id=parameters[0]
-    choice_str=parameters[1]
+    choice_id = parameters[0]
+    choice_str= parameters[1]
     assert isinstance( choice_id, int )
     assert isinstance( choice_str, str )
-    return f"When '{choice_str}'"
+    return f'When "{choice_str}"'
 
 def command_404( parameters ):
     assert parameters==None
-    return None#"NOP/end of 'When'"
+    return "" #"NOP/end of 'When'"
 
 def command_411( parameters ):
     assert parameters==None
@@ -492,13 +525,9 @@ def command_411( parameters ):
 
 def command_412( parameters ):
     assert parameters==None
-    return "Branch END"
+    return "" # "Branch END"
 
-def command_413( parameters ): # Goes with Loop:112
-    print(f'command_413: parameters={parameters}, {type(parameters)}')
-    return "Repeat Above"
-
-'''
+''' 
 when 37 # Walk through walls
     return "WTW ON"
 when 38 # Walk through walls
@@ -896,14 +925,11 @@ def command_to_str( code, parameters, indent=0 ):
         elif (isinstance( res, tuple ) and isinstance(res[0],str) and isinstance(res[1],bool)):
             ret = (indent_symbol*indent + res[0].strip(), res[1])
         else:
-            raise ValueError( f'command_to_str: Code {code} has no output') 
+            raise ValueError( f'command_to_str: Code {code} has no output')
     else:
         raise ValueError( f'command_to_str: Undocumented code {code}')
-    
+
 
     last_code=code
     if ret:
         return ret
-
-
-

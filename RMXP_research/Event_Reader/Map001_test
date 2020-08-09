@@ -1,9 +1,30 @@
+# Test event, to check configuration is read correctly
+# Non-default configuration only, mixed booleans
+
 [EVENT]
 xy=[0, 1]
-cfg1=hello42
-cfg2=0.99
+name=Test
+graphic=588
+pattern=3
+opacity=200
+transparent=:ON
+direction=N
+trigger=ready
+move_animation=:OFF
+stop_animation=True
+direction_fix=:ON
+through=True
+always_on_top=True
+movement="Random"
+movement_speed="Fast"
+preset="test"
+
 
 [PAGE]
+through=:OFF
+always_on_top=False
+movement="Fixed"
+
 
 Show Text "Hello, World !"
 Show Text "Hello, World !"

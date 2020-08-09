@@ -1,0 +1,20 @@
+[EVENT]
+xy=[10, 5]
+graphic=trchar027
+direction=W
+
+[PAGE]
+
+
+
+if s:$PokemonBag.pbHasItem?(:OLDSEAMAP)
+  Show Text "\\bI've already given you an Old Sea Map. Have you gone to Faraday Island yet?"
+Else
+  Show Text "\\bHere, have this Old Sea Map."
+  if s:Kernel.pbReceiveItem(:OLDSEAMAP)
+    Show Text "\\bYou can use that to sail to Faraday Island."
+  Else
+    Show Text "\\bOh, you don't have any space in your Bag for it."
+  
+[end]
+

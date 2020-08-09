@@ -1,0 +1,27 @@
+[EVENT]
+xy=[6, 7]
+
+
+[PAGE]
+graphic="Object ball"
+
+
+# This is an example of giving a Pokémon which has
+# been modified. The Pokémon is defined separately
+# before being given to the player.
+if s:!pbBoxesFull?
+  s:p=PokeBattle_Pokemon.new(:PICHU,30, $Trainer) p.setItem(:ZAPPLATE) p.form=1 # Spiky-eared p.makeFemale p.makeNotShiny p.pbLearnMove(:VOLTTACKLE) p.pbLearnMove(:HELPINGHAND) p.pbLearnMove(:SWAGGER) p.pbLearnMove(:PAINSPLIT) p.calcStats"
+  s:Kernel.pbAddPokemon(p)
+  :A = :ON
+Else
+  Show Text "There's no more room for Pokémon!"
+  Show Text "The Pokémon Boxes are full and can't accept any more!"
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+[end]
+

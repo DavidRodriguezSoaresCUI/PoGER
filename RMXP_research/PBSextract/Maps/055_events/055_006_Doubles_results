@@ -1,0 +1,21 @@
+[EVENT]
+xy=[18, 3]
+
+
+[PAGE]
+
+
+
+Show Text "Check results for which challenge?"
+Show Choices choices=['Level 50', 'Open Level', 'Cancel'], default=3
+When 'Level 50'
+  s:$game_variables[1]= pbBattleChallenge.getPreviousWins(towerdouble) $game_variables[2]= pbBattleChallenge.getMaxWins(towerdouble)"
+  Show Text "\\PN's Battle Tower Level 50 Double Battle results:"
+  Show Text "Last win streak: \\v[1]\\nRecord win streak: \\v[2]"
+When 'Open Level'
+  s:$game_variables[1]= pbBattleChallenge.getPreviousWins(towerdoubleopen) $game_variables[2]= pbBattleChallenge.getMaxWins(towerdoubleopen)"
+  Show Text "\\PN's Battle Tower Open Level Double Battle results:"
+  Show Text "Last win streak: \\v[1]\\nRecord win streak: \\v[2]"
+When 'Cancel'
+[end]
+

@@ -1,0 +1,29 @@
+[EVENT]
+xy=[6, 5]
+graphic=trchar059
+
+[PAGE]
+
+
+
+s:pbTrainerIntro(:LEADER_Brock)
+Show Text "\\bYou've made it this far, but can you beat me?"
+if s:pbTrainerBattle(PBTrainers::LEADER_Brock,"Brock",_I("Very good."))
+  Show Text "\\bYou've earned the Boulder Badge."
+  s:$Trainer.badges[0]=true
+  Show Text "\\bHere, have this TM too."
+  s:Kernel.pbReceiveItem(:TM80)
+  :DefeatedGym1 = :ON
+  :A = :ON
+s:pbTrainerEnd
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+Show Text "\\bI often work in the caves on Route 7, digging up fossils."
+Show Text "\\bThere's a man in the Pokémon Institute who can revive fossils into living Pokémon."
+[end]
+

@@ -1,0 +1,15 @@
+[EVENT]
+xy=[12, 21]
+graphic="NPC 19"
+
+[PAGE]
+
+
+
+# This vendor is selling a Key Item, the Poké Flute.
+if :DefeatedEliteFour == :ON
+  s:pbPokemonMart([ :POKEFLUTE, :ULTRABALL, :LEMONADE, :SODAPOP, :FRESHWATER, :MOOMOOMILK, :TIMERBALL, :REPEATBALL, :LAVACOOKIE ])"
+  End Execution
+s:pbPokemonMart([ :POKEFLUTE, :ULTRABALL, :GREATBALL, :SODAPOP, :FRESHWATER ])"
+[end]
+

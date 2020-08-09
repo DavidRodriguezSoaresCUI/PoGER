@@ -1,0 +1,28 @@
+[EVENT]
+xy=[15, 13]
+graphic=trchar035
+
+[PAGE]
+
+
+
+if s:$Trainer.ablePokemonCount<=1
+  Show Text "\\bYou'll need at least two Pokémon if you want to battle us."
+  End Execution
+s:pbTrainerIntro(:COOLCOUPLE)
+Show Text "\\bAh, looks like a challenging trainer.  Ready, Alice?"
+if s:pbTrainerBattle(:COOLCOUPLE,"Alice & Bob",_I("Our teamwork failed!"),true)
+  :A = :ON
+  # Set the partner event's Self Switch "A" on.
+  s:pbSetSelfSwitch(11,"A",true)
+s:pbTrainerEnd
+[end]
+
+
+[PAGE]
+
+:A == :ON
+
+Show Text "\\bNotice that our events aren't created by comments."
+[end]
+

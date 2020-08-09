@@ -1,0 +1,673 @@
+﻿[
+{ "_class":"Event", "id": 9, "name": "OutdoorLight", "x": 8, "y": 41, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 47, "name": "OutdoorLight", "x": 27, "y": 61, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 85, "name": "Shadow", "x": 8, "y": 98, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 28, "name": "Shadow", "x": 20, "y": 8, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 66, "name": "Shadow", "x": 27, "y": 63, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 76, "name": "OutdoorLight", "x": 8, "y": 116, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 19, "name": "Shadow", "x": 8, "y": 3, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 57, "name": "Shadow", "x": 8, "y": 63, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 95, "name": "Shadow", "x": 27, "y": 113, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 38, "name": "OutdoorLight", "x": 8, "y": 61, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 10, "name": "OutdoorLight", "x": 20, "y": 1, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 48, "name": "OutdoorLight", "x": 27, "y": 66, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 86, "name": "Shadow", "x": 8, "y": 103, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 29, "name": "Shadow", "x": 27, "y": 13, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 67, "name": "Shadow", "x": 27, "y": 68, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 20, "name": "Shadow", "x": 8, "y": 8, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 58, "name": "Shadow", "x": 8, "y": 68, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 96, "name": "Shadow", "x": 27, "y": 118, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 1, "name": "OutdoorLight", "x": 8, "y": 1, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 39, "name": "OutdoorLight", "x": 8, "y": 66, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 77, "name": "OutdoorLight", "x": 27, "y": 91, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 87, "name": "Shadow", "x": 8, "y": 108, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 30, "name": "Shadow", "x": 27, "y": 18, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 68, "name": "Shadow", "x": 27, "y": 73, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 11, "name": "OutdoorLight", "x": 20, "y": 6, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 49, "name": "OutdoorLight", "x": 27, "y": 71, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 21, "name": "Shadow", "x": 8, "y": 13, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 59, "name": "Shadow", "x": 8, "y": 73, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 2, "name": "OutdoorLight", "x": 8, "y": 6, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 40, "name": "OutdoorLight", "x": 8, "y": 71, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 78, "name": "OutdoorLight", "x": 27, "y": 96, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 31, "name": "Shadow", "x": 27, "y": 23, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 69, "name": "Shadow", "x": 27, "y": 78, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 12, "name": "OutdoorLight", "x": 27, "y": 11, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 50, "name": "OutdoorLight", "x": 27, "y": 76, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 88, "name": "Shadow", "x": 8, "y": 113, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 3, "name": "OutdoorLight", "x": 8, "y": 11, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 41, "name": "OutdoorLight", "x": 8, "y": 76, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 79, "name": "OutdoorLight", "x": 27, "y": 101, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 22, "name": "Shadow", "x": 8, "y": 18, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 60, "name": "Shadow", "x": 8, "y": 78, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 32, "name": "Shadow", "x": 27, "y": 28, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 70, "name": "Shadow", "x": 27, "y": 83, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 13, "name": "OutdoorLight", "x": 27, "y": 16, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 51, "name": "OutdoorLight", "x": 27, "y": 81, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 89, "name": "Shadow", "x": 8, "y": 118, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 4, "name": "OutdoorLight", "x": 8, "y": 16, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 42, "name": "OutdoorLight", "x": 8, "y": 81, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 80, "name": "OutdoorLight", "x": 27, "y": 106, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 23, "name": "Shadow", "x": 8, "y": 23, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 61, "name": "Shadow", "x": 8, "y": 83, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 14, "name": "OutdoorLight", "x": 27, "y": 21, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 52, "name": "OutdoorLight", "x": 27, "y": 86, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 90, "name": "Shadow", "x": 27, "y": 88, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 33, "name": "Shadow", "x": 27, "y": 33, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 71, "name": "OutdoorLight", "x": 8, "y": 91, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 43, "name": "OutdoorLight", "x": 8, "y": 86, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 81, "name": "OutdoorLight", "x": 27, "y": 111, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 24, "name": "Shadow", "x": 8, "y": 28, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 62, "name": "Shadow", "x": 27, "y": 43, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 5, "name": "OutdoorLight", "x": 8, "y": 21, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 15, "name": "OutdoorLight", "x": 27, "y": 26, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 53, "name": "Shadow", "x": 8, "y": 43, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 91, "name": "Shadow", "x": 27, "y": 93, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 34, "name": "Shadow", "x": 27, "y": 38, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 72, "name": "OutdoorLight", "x": 8, "y": 96, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 82, "name": "OutdoorLight", "x": 27, "y": 116, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 25, "name": "Shadow", "x": 8, "y": 33, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 63, "name": "Shadow", "x": 27, "y": 48, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 6, "name": "OutdoorLight", "x": 8, "y": 26, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 44, "name": "OutdoorLight", "x": 27, "y": 46, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 92, "name": "Shadow", "x": 27, "y": 98, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 73, "name": "OutdoorLight", "x": 8, "y": 101, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 54, "name": "Shadow", "x": 8, "y": 48, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 35, "name": "OutdoorLight", "x": 8, "y": 46, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 16, "name": "OutdoorLight", "x": 27, "y": 31, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 83, "name": "Shadow", "x": 8, "y": 88, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 26, "name": "Shadow", "x": 8, "y": 38, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 64, "name": "Shadow", "x": 27, "y": 53, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 7, "name": "OutdoorLight", "x": 8, "y": 31, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 45, "name": "OutdoorLight", "x": 27, "y": 51, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 93, "name": "Shadow", "x": 27, "y": 103, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 74, "name": "OutdoorLight", "x": 8, "y": 106, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 36, "name": "OutdoorLight", "x": 8, "y": 51, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 17, "name": "OutdoorLight", "x": 27, "y": 36, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 55, "name": "Shadow", "x": 8, "y": 53, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 84, "name": "Shadow", "x": 8, "y": 93, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 65, "name": "Shadow", "x": 27, "y": 58, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 8, "name": "OutdoorLight", "x": 8, "y": 36, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 46, "name": "OutdoorLight", "x": 27, "y": 56, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 27, "name": "Shadow", "x": 20, "y": 3, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 94, "name": "Shadow", "x": 27, "y": 108, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 75, "name": "OutdoorLight", "x": 8, "y": 111, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 37, "name": "OutdoorLight", "x": 8, "y": 56, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 18, "name": "OutdoorLight", "x": 27, "y": 41, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": null,
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+,
+
+{ "_class":"Event", "id": 56, "name": "Shadow", "x": 8, "y": 58, "pages": { "0": { "_class":"Page", "condition": { "_class":"Page::Condition", "S1":null, "S2":null, "Var":null, "SS":null },
+ "graphic": { "_class":"Page::Graphic", "tile_id":0, "character_name":"", "character_hue":0, "direction":"Down", "pattern":0, "opacity":255, "blend_type":"Normal" },
+ "list": [ { "_class":"EventCommand", "code": 108, "indent": 0, "parameters": "begin Shadow Source" } ],
+ "move":"Fixed",
+ "move_speed":3, "move_frequency":3, "walk_anime":true, "step_anime":false, "direction_fix":false, "through":false, "always_on_top":false, "trigger":"onPlayerAction" } } }
+
+]

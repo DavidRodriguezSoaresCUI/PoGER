@@ -1,0 +1,12 @@
+[EVENT]
+xy=[34, 28]
+
+
+[PAGE]
+
+
+
+Show Text "\\w[signskin]Pokémon Institute"
+Show Text "\\w[signskin]\"Building Tomorrow Out Of Yesterday\""
+[end]
+

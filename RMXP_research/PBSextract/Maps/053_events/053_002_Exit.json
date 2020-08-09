@@ -1,0 +1,60 @@
+{
+    "_class": "Event",
+    "id": 2,
+    "name": "Exit",
+    "xy": [
+        7,
+        9
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerTouch",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 201,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        52,
+                        17,
+                        13,
+                        0,
+                        0
+                    ]
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

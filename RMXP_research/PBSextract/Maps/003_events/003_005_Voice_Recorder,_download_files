@@ -1,0 +1,26 @@
+[EVENT]
+xy=[25, 1]
+
+
+[PAGE]
+
+
+
+Label Start
+Show Text "Choose a topic."
+Show Choices choices=['Voice Recorder', 'Cancel'], default=2
+When 'Voice Recorder'
+  Show Text "Do you want to record your voice for the Trainer Card?"
+  Show Choices choices=['Yes', 'No'], default=2
+  When 'Yes'
+    if s:pbRecordTrainer
+      Show Text "Thank you. Check your Trainer Card."
+    Else
+      Show Text "You can record your voice later if you change your mind."
+    
+  When 'No'
+    Show Text "You can record your voice later if you change your mind."
+  Goto Start
+When 'Cancel'
+[end]
+

@@ -1,0 +1,11 @@
+[EVENT]
+xy=[33, 21]
+trigger=onPlayerTouch
+
+[PAGE]
+
+
+
+Transfer Player map=29, x=1, y=5, direction="K", fading="Fading"
+[end]
+

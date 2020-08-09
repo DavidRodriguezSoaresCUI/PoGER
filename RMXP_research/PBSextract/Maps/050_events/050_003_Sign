@@ -1,0 +1,11 @@
+[EVENT]
+xy=[14, 7]
+
+
+[PAGE]
+
+
+
+Show Text "When pushing a boulder down a hole, make sure it doesn't appear in the same place as the player does when they drop down."
+[end]
+

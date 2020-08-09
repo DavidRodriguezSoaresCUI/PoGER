@@ -1,0 +1,113 @@
+{
+    "_class": "Event",
+    "id": 1,
+    "name": "Exit_south",
+    "xy": [
+        12,
+        15
+    ],
+    "config": null,
+    "preset": null,
+    "pages": [
+        {
+            "_class": "Page",
+            "condition": {
+                "_class": "Page::Condition",
+                "switch1": null,
+                "switch2": null,
+                "self_switch": null,
+                "variable": null,
+                "variable_value": null
+            },
+            "graphic": {
+                "_class": "Page::Graphic",
+                "tile_id": 0,
+                "graphic": "",
+                "character_hue": 0,
+                "direction": "Down",
+                "pattern": 0,
+                "opacity": 255,
+                "blend_type": "Normal"
+            },
+            "move": "Fixed",
+            "move_speed": 3,
+            "move_frequency": 3,
+            "walk_anime": true,
+            "step_anime": false,
+            "direction_fix": false,
+            "through": false,
+            "always_on_top": false,
+            "trigger": "onPlayerTouch",
+            "list": [
+                {
+                    "_class": "EventCommand",
+                    "code": 250,
+                    "indent": 0,
+                    "parameters": {
+                        "_class": "AudioFile",
+                        "name": "Door exit",
+                        "volume": 80,
+                        "pitch": 100
+                    }
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 223,
+                    "indent": 0,
+                    "parameters": [
+                        {
+                            "_class": "Tone",
+                            "red": -255,
+                            "green": -255,
+                            "blue": -255,
+                            "gray": 0
+                        },
+                        6
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 106,
+                    "indent": 0,
+                    "parameters": 8
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 355,
+                    "indent": 0,
+                    "parameters": "pbCaveExit"
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 201,
+                    "indent": 0,
+                    "parameters": [
+                        0,
+                        47,
+                        46,
+                        11,
+                        0,
+                        1
+                    ]
+                },
+                {
+                    "_class": "EventCommand",
+                    "code": 223,
+                    "indent": 0,
+                    "parameters": [
+                        {
+                            "_class": "Tone",
+                            "red": 0,
+                            "green": 0,
+                            "blue": 0,
+                            "gray": 0
+                        },
+                        6
+                    ]
+                }
+            ],
+            "own_cfg": null,
+            "tmp_cfg": null
+        }
+    ]
+}

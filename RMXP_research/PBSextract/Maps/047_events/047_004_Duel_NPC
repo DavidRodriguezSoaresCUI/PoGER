@@ -1,0 +1,39 @@
+[EVENT]
+xy=[34, 14]
+graphic=trchar031
+
+[PAGE]
+
+
+
+Show Text "\\bHaiiiii-yaaaaaah!"
+Memorize BGx
+Fade Out BGM ms=1000
+Wait ms=1000
+Play BGM="002-Battle02", volume=100, pitch=100
+# Duel Minigame, based on the version written by Alael,
+# modified for Pokémon Essentials.
+# The duel takes place in a row of 4 tiles, with the
+# player and opponent using the centre two. Make
+# sure you have enough space.
+# 3 texts for defense, 3 for precise attacks, 3 for fierce
+# attacks.
+s:$speeches=[] $speeches.push( I shall block all your attacks!, Nothing can pierce my armor!, Behold my dodging skills!, I'll show you my fighting skills!, Awe at the perfection of my skills!, I'll deliver a perfect blow!, Feel my power!, AAAAHHHH!, I'll attack with all my strength!)"
+# 3 texts for special attacks
+s:$speeches.push( Face my secret technique!, This is my secret technique!, Evil Blade Strike! )"
+# Only the trainer type needs to be defined. The
+# trainer itself doesn't need to appear in trainers.txt.
+# This information is only used to display a name and
+# graphic for the opponent.
+if s:Kernel.pbDuel(:BLACKBELT,"Dan",get_character(0),$speeches)
+  Fade Out BGM ms=1000
+  Wait ms=1000
+  Restore BGx
+  Show Text "\\bYou won, good job."
+Else
+  Fade Out BGM ms=1000
+  Wait ms=1000
+  Restore BGx
+  Show Text "You lost, too bad."
+[end]
+

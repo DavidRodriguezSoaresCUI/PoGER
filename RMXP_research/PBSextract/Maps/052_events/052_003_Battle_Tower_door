@@ -1,0 +1,30 @@
+[EVENT]
+xy=[29, 9]
+pattern=3
+
+[PAGE]
+trigger=onPlayerTouch
+
+
+Play SE="Door exit", volume=80, pitch=100
+Set property=transparent value=:ON
+Fadeout color=Black, ms=300
+Wait ms=400
+Set property=transparent value=:OFF
+Transfer Player map=55, x=9, y=12, direction="N", fading="NoFading"
+Fadein ms=300
+[end]
+
+
+[PAGE]
+trigger=onAutorun
+s:isSSoff("A") == :ON
+
+if s:get_character(0).onEvent?
+  Set Move Route :player
+    Play SE="Door exit", volume=80, pitch=100
+    Step S
+  
+s:setTempSwitchOn("A")
+[end]
+
