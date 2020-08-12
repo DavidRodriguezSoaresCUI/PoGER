@@ -94,15 +94,46 @@ This is a confidential document and should not be distributed under any circumst
 \endgroup
 
 \newpage
-\section{Inception}
+\section{A Bachelor's project's journey}
 
-\subsection{A Bachelor's project's journey}
+
 
 This is intended to document my journey through my Bachelor's project. Some information may be omitted for brevity or because it is present in accompanying scripts.
 
-There are 3 major steps : inception, research and implementation.
+It can be decomposed \textbf{3 major steps} : \textit{inception}, \textit{research} and \textit{implementation}.
 
-\subsection{Brainsorm}
+\subsection{Related documents}
+
+This is but one in a collection of manuscripts, each with its scope (\textit{sorted older to newer}) :
+
+\begin{itemize}
+	
+	\item \textbf{Vision document} : A very early analysis about Pokemon Essentials, focused on identifying its issues and properties of a hypothetical software solution.
+	
+	\item \textbf{\textit{PoGER}} : Gives information on the project itself, including motivations and objectives.
+	
+	\item \textbf{RMXP doc} : Contains the results of my research about RPG Maker XP's implementation of game data (mostly \textit{Maps} and \textit{Events}), with the objective to extract them to an interpretable format.
+	
+	\item \textbf{Extraction} : Contain a practical guide on the extraction process for anyone trying to reproduce it.
+\end{itemize}
+
+
+\subsection{Notes}
+
+Here are some of the abbreviations you can encounter :
+\begin{itemize}
+	\item \textbf{RMXP} - RPG Maker XP
+	\item \textbf{RGSS} - Ruby Game Scripting System
+	\item \textbf{PE} - Pokemon Essentials
+	\item \textbf{PU} - Pokemon Uranium
+\end{itemize}
+
+Please note that the author is not a native English speaker.
+
+
+\newpage
+\section{Inception}
+\subsection{Brainstorm}
 
 This is the \textbf{first step} of a Bachelor's project : choosing what to do. It took me significantly more time that I anticipated before I converged towards an answer.
 
@@ -124,7 +155,7 @@ Here were my requirements :
 	
 	\item I didn't want to just do a research work. I wanted to deliver an actual piece of software.
 	
-	\item The project should be some sort of program with an user interface.
+	\item The resulting software should be some sort of program with an user interface.
 \end{itemize}
 
 I had a hard time trying to find actual ideas that both matched my requirements and made any sense as an academic work.
@@ -147,17 +178,18 @@ My concept choice need an explanation : I remembered a game I played years ago. 
 
 What I discovered was a clustered universe of fan-made games :
 \begin{itemize}
-	\item ROM hacks : games that build upon the code commercial products, typically GameBoy games.
+	\item ROM hacks : games that build upon the code of commercial products, typically GameBoy games.
 	\begin{itemize}
-		\item[+] They can be played on common emulatory on any platform.
-		\item[-] Programming for them is very technical.
+		\item[+] They can be played on common emulators, therefore available for most platforms.
+		\item[-] Programming for them is very technical, with limited functionality.
 	\end{itemize}
 	
 	\item Games made with RPG Maker XP : They build on top of the \textit{Pokemon Essentials} project.
 	
 	\begin{itemize}
-		\item[+] Easier to program for than ROM hacks, has less limitations and RPG Maker XP offers convenient tools.
-		\item[-] RPG Maker XP is an aging RPG engine, programming for them is technical and they are only compatible with Windows (even running them on compatibility layers such as Wine on Linux isn't always functional). Also, performance is typically poor and RPG Maker XP is a closed-source software, making porting attempts extremely complex. Few projects were completed, typically closed-source.
+		\item[+] Easier to program for than ROM hacks, have less limitations and RPG Maker XP offers convenient tools.
+		
+		\item[-] RPG Maker XP is an aging RPG engine, programming for them is still technical and they are only compatible with Windows (even running them on compatibility layers such as Wine on Linux isn't always functional). Also, performance is typically poor and RPG Maker XP is a closed-source software, making porting attempts extremely complex. Few projects were completed, typically closed-source.
 	\end{itemize}
 
 	\item Original games : Original software, typically built for Windows or the web.
@@ -167,7 +199,7 @@ What I discovered was a clustered universe of fan-made games :
 	\end{itemize}
 \end{itemize}
 
-Quickly, I got discouraged by the apparent complexity and the sheer amount of failed/incomplete similar games (\href{https://pokemon-fan-game.fandom.com/wiki/Category:Incomplete_Games}{examples here}). But I never let go the idea of contributing that development scene.
+Quickly, I got discouraged by the apparent complexity and the sheer amount of failed/incomplete similar games (\href{https://pokemon-fan-game.fandom.com/wiki/Category:Incomplete_Games}{examples here}). But I never let go the idea of contributing to that development scene.
 
 
 \subsection{Defining the project through research}
@@ -183,8 +215,6 @@ At first I looked into implementing a similar engine that would be decoupled fro
 The concept of \href{https://en.wikipedia.org/wiki/Game_engine_recreation}{game engine recreation} seemed fitting for an academic work, so I validated that idea. 
 
 As I looked more into it, the project concept got more refined. As a placeholder name, \textbf{PoGER} (\textit{\textbf{Po}kemon Essentials \textbf{G}ame \textbf{E}ngine \textbf{R}ecreation}) was chosen.
-
-%TODO
 
 The Problem Statement is a crucial : it defines the observed issues with the current situation and what the objectives for the proposed solution are. The following is taken from the \textit{vision document} for PoGER :
 
@@ -230,20 +260,12 @@ The Problem Statement is a crucial : it defines the observed issues with the cur
 	\hline
 \end{tabular}
 
+\vspace{4mm}
 As you can see, I believe there are sufficient issues with the current solution to warrant an alternative.
 
 The following sections focus on documenting what the studied software are and some of the useful information I learned about them.
 
 
-\subsubsection{Abbreviations}
-
-Here are some of the abbreviations you can encounter :
-\begin{itemize}
-	\item RMXP - RPG Maker XP
-	\item RGSS - Ruby Game Scripting System
-	\item PE - Pokemon Essentials
-	\item PU - Pokemon Uranium
-\end{itemize}
 
 
 
@@ -275,7 +297,7 @@ This is only one instance among the long line of RPG Maker releases, some of whi
 
 \subsubsection{Ruby Game Scripting System}
 
-\href{https://rmvxace.fandom.com/wiki/RGSS}{An article} writes : 
+\href{https://rmvxace.fandom.com/wiki/RGSS}{This article} writes : 
 
 \say{RGSS stands for Ruby Game Scripting System, a library that has been used in RPG Maker engines since RPG Maker XP.  It's a Ruby library, and as such, all scripting is done in the Ruby language.
 	
@@ -339,8 +361,8 @@ I believe this is the reason most projects never see a release, and the ones tha
 According to its \href{https://en.wikipedia.org/wiki/Pok\%C3\%A9mon_Uranium}{Wikipedia page}, its \href{http://pokemonuranium.org/}{official website} and its \href{https://pokemon-uranium.fandom.com/wiki/Main_Page}{Fan-made Wiki website}, Pokemon Uranium :
 \begin{itemize}
 	\item is a fan-made game
-	\item uses the RPG Maker XP engine and Pokemon Essentials
-	\item has unique region, creatures, plot and quests
+	\item uses the RPG Maker XP engine and is based on Pokemon Essentials (version used is unclear)
+	\item has unique region, creatures, assets, plot and quests
 	\item was developped by a small team (2 main devs) for about 9 years and released in August 2016.
 	\begin{itemize}
 		\item Game designer and developer : JV12345 (aka. $\sim$JV$\sim$)
@@ -382,6 +404,8 @@ Here are the high-level steps I took to study and experiment with RMXP, PE and P
 	\item Opening the PE project
 	
 	This helped me understand how the project is structured, where the assets are located and how the scripting language works. Most of my experimentation started from it.
+	
+	I spent almost all of my time working on PE.
 	
 	\item Opening the PU project
 	
@@ -433,8 +457,8 @@ The data that constitutes a PE project is diverse :
 	\hline
 	Maps & Contain map representation (incl. events), one per file & \verb|MapXXX.rxdata| \\
 	\hline
-	Dialogue & Contain dialogue & TODO \\
-	\hline
+	%Dialogue & Contain dialogue & TODO \\
+	%\hline
 \end{tabular}
 
 Findings :
@@ -471,14 +495,47 @@ As if the challenges facing such endeavors weren't great enough already, they we
 
 
 
-Fortunately, we can learn from the failures of the past how to better go forward. It is my firm belief that there is a solution that solves the challenges that brought these projects down.
+Fortunately, we can learn from the failures of the past how to better go forward. It is my firm belief that there are technical solutions to the challenges that brought these projects down.
 
 \newpage
 \subsection{Extracting data}
 
-% TODO : move to another document
+Due to the documentation-heavy nature of this part of the project, I gave it its own separate manuscript : \textbf{RMXP doc}
+
+Here is a high-level view of game data categories and their corresponding extraction methods :
+
+\begin{tabular}{|c |L{.6\linewidth}|}
+	\hline
+	\rowcolor{mylightgray}
+	\textbf{Category} & \textbf{Extraction method} \\
+	\hline
+	Scripts & Re-implementation. \\
+	\hline
+	Events & Extraction script to JSON representation. \\
+	\hline
+	Maps & Extraction script to JSON representation. \\
+	\hline
+	Data & May need a tool (see \textbf{Extraction}).  \\
+	\hline
+	Fonts & No need for extraction. \\
+	\hline
+	Graphics & No need for extraction. \\
+	\hline
+	Audio & No need for extraction. \\
+	\hline
+	PBS & No need for extraction (usually; extraction by script possible). \\
+	\hline
+\end{tabular}
+
+The extraction method is detailed in the \textbf{Extraction} document.
 
 
+
+
+
+
+\newpage
+\section{Implementation}
 
 
 

@@ -187,6 +187,22 @@ The following abbreviations may be present :
 Please note that the author is not a native English speaker.
 
 
+\subsection{Related documents}
+
+This is but one in a collection of manuscripts, each with its scope (\textit{sorted older to newer}) :
+
+\begin{itemize}
+	
+	\item \textbf{Vision document} : A very early analysis about Pokemon Essentials, focused on identifying its issues and properties of a hypothetical software solution.
+	
+	\item \textbf{PoGER} : Gives information on the project itself, including motivations and objectives.
+	
+	\item \textbf{\textit{RMXP doc}} : Contains the results of my research about RPG Maker XP's implementation of game data (mostly \textit{Maps} and \textit{Events}), with the objective to extract them to an interpretable format.
+	
+	\item \textbf{Extraction} : Contain a practical guide on the extraction process for anyone trying to reproduce it.
+\end{itemize}
+
+
 
 % TODO : Common events, RMXP animations
 
@@ -549,8 +565,8 @@ Implementation details :
 	%& Representation & "AOT, OFF" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Change event's graphic \\
-	& Parameters & [2] - \textbf{0}:texture file (no ext) \verb|[String]|, \ \textbf{1}:hue - unused, \ \textbf{2}:direction $d$ \verb|[integer]|, \ \textbf{3}:step \verb|[integer 0-3]| \\
-	& Notes & \textit{step} is the horizontal offset (column), \textit{direction} is the vertical offset \\
+	& Parameters & [2] - \textbf{0}:texture file \verb|[String]|, \ \textbf{1}:hue, \ \textbf{2}:direction $d$ \verb|[integer]|, \textbf{3}:step \verb|[integer 0-3]| \\
+	& Notes & See note\footnotemark[5]. \textbf{0} without extension. \textbf{1} is unused. \\
 	%& Representation & "TODO" \\
 	\hline
 	\nextcodeID & Description & \verb|RPG::MoveCommand| - Change event's graphic opacity \\
@@ -635,7 +651,7 @@ Implementation details :
 	%& Representation & "Goto, $s$" \\
 	\hline
 	\multirow{3}{*}[-1mm]{121} & Description & \verb|RPG::EventCommand| - Control switches \\
-	& Parameters & [3] - \textbf{0}:starting switch $ssa$ \verb|[integer]|, \ \textbf{0}:starting switch $ssz$ \verb|[integer]|, \ \textbf{0}:new state $n$ \verb|[integer]| \\
+	& Parameters & [3] - \textbf{0}:starting switch $ssa$ \verb|[integer]|, \ \textbf{0}:ending switch $ssz$ \verb|[integer]|, \ \textbf{0}:state $n$ \verb|[integer]| \\
 	& Notes & \parbox{.7\linewidth}{Batch control is unused in PE, therefore deprecated. $n$ follows "common relation 3".} \\
 	%& Representation & "Control Switch, $ssa$.toString(), $n$.toString()" \\
 	\hline
@@ -813,6 +829,7 @@ Implementation details :
 \footnotetext[2]{Turs consolidated with new \textit{Turn} command with argument.}
 \footnotetext[3]{Unknown algorithm to determine direction "towards player" and "away from player.}
 \footnotetext[4]{Is part of a command sequence that should be merged in a sensible way.}
+\footnotetext[5]{\textit{step} is the horizontal offset (column), \textit{direction} is the vertical offset.}
 
 \newpage
 \subsubsection{Common relations}
@@ -929,7 +946,7 @@ Parameter \textbf{2} $o$ \verb|[integer 0-5]| sets the \textbf{operation} to be 
 Parameter \textbf{3} defines the \textbf{operand type} \verb|[integer 0-7]| :
 \begin{itemize}
 	
-	\item[0] Constant.
+	\item[0] - Constant.
 	
 	\begin{tabular}{|a l|}
 		\hline
@@ -939,7 +956,7 @@ Parameter \textbf{3} defines the \textbf{operand type} \verb|[integer 0-7]| :
 		\hline
 	\end{tabular}
 	
-	\item[2] Random integer.
+	\item[2] - Random integer.
 	
 	\begin{tabular}{|a l|}
 		\hline
@@ -949,7 +966,7 @@ Parameter \textbf{3} defines the \textbf{operand type} \verb|[integer 0-7]| :
 		\hline
 	\end{tabular}
 	
-	\item[6] Event's attribute.
+	\item[6] - Event's attribute.
 	
 	\begin{tabular}{|a l|}
 		\hline
@@ -959,7 +976,7 @@ Parameter \textbf{3} defines the \textbf{operand type} \verb|[integer 0-7]| :
 		\hline
 	\end{tabular}
 	
-	\item[7] Only used once, to put the "Money"/"Gold" special variable in a temporary variable to be used in a condition, therefore isn't really needed.
+	\item[7] - Only used once, to put the "Money"/"Gold" special variable in a temporary variable to be used in a condition, therefore isn't really needed.
 	
 \end{itemize}
 
@@ -1403,7 +1420,7 @@ Mostly contained in the event, but can be overridden by the pages.
 
 \begin{table}[!h]
 	\centering
-	{\small 
+	{\footnotesize 
 	\begin{tabular}{|a|c|c|l|}
 		\hline
 		\textbf{CONFIG\_VAR} & \textbf{type} & \textbf{Default} & \textbf{Description}. \\
@@ -1640,21 +1657,23 @@ There should be a well-defined way of representing extracted map and tileset inf
 \textbf{Map}
 \begin{itemize}
 
-	\item Located in the "Maps" directory.
+	\item Located in the "\verb|Maps|" directory.
 	
-	\item Naming convention : \verb|<id>_<name>.txt| (\textit{id} must have 3 digits and use zero-padding). The \textit{name} is only here as a quality-of-life addition, for developers to easily know what map they're dealing with. It must be present, though.
+	\item Naming convention : \verb|<id>_<name>.json |. The \textit{name} is only here as a quality-of-life addition, for developers to easily know what map they're dealing with. It must be present, though.
+	
+	Extension isn't really important and can always be changed in the future.
 	
 	\item Location agnostic : A map file can be at the root of the "Maps" directory, or in any subdirectory, allowing for the same flexibility as RMXP's UI.
 	
 	
-	\item Content : JSON with the following entries
+	\item Content : utf-8 encoded JSON with the following entries
 	
 	{\small
 	\begin{tabular}{|a | l | l|}
 		\hline
 		{\ttfamily \_class} & String & Must be \verb|"Map"|. \\
 		\hline
-		{\ttfamily name} & String & Map's name. \\
+		{\ttfamily name} & String & Map's name. Used for displaying current location. \\
 		\hline
 		{\ttfamily width} & int & Map's width. Should be checked against the content of {\ttfamily table}. \\
 		\hline
@@ -1662,7 +1681,7 @@ There should be a well-defined way of representing extracted map and tileset inf
 		\hline
 		{\ttfamily battleback} & String & Picture to be displayed behind battles. \\
 		\hline
-		{\ttfamily tileset} & String & Map's tileset (without extension). \\
+		{\ttfamily tileset} & String & Map's tileset (file name without extension). \\
 		\hline
 		{\ttfamily autoplay\_bgm} & bool & Sets whether the bmg should be played when entering the map. \\
 		\hline
@@ -1680,9 +1699,9 @@ There should be a well-defined way of representing extracted map and tileset inf
 \textbf{Tileset}
 \begin{itemize}
 
-	\item Located in the "Tileset" directory.
+	\item Located in the "\verb|Tileset_data|" directory.
 	
-	\item Naming convention : \verb|<id>_<name>.txt| (\textit{id} must have 3 digits and use zero-padding). The \textit{name} is only here as a quality-of-life addition, for developers to easily know what map they're dealing with. It must be present, though.
+	\item Naming convention : \verb|<name>.json |. The \textit{name} is only here as a quality-of-life addition, for developers to easily know what map they're dealing with. It must be present, though.
 	
 	
 	\item Content : JSON with the following entries
@@ -1700,38 +1719,56 @@ There should be a well-defined way of representing extracted map and tileset inf
 			\hline
 	\end{tabular}}
 
-	\item Advantages : Decoupling a \verb|Tileset| from the autotilesets used for a particular map allows
+	\item Advantages : Decoupling a \verb|Tileset| from the autotilesets used for a particular map allows added flexibility.
 \end{itemize}
 
-
-
 \newpage
-\section{Manual extraction}
+\subsubsection{On naming decisions}
 
-Unfortunately, I found some elements of RPG Maker XP to not be accessible using scripting or external utilities, thus making it impossible to automatically extract.
-
-Fortunately, they are scarce and there is a manual way to extract them from the UI.
-
-\subsection{Switch and Variable names}
-
-There are around 34 switches and a dozen variables used by PE. Commands that use them use their \textit{id} to reference them, not their name.
-
-While it is not strictly necessary to extract their corresponding names, it makes resulting commands way easier to read.
-
-The most straightforward id-to-name conversion strategy is to create a Python dictionary with ids as key and name as values. This allows the conversion with a simple dictionary call.
-
-You can find such an implementation in the \verb|PE_variables_switches.py| file.
-
-Procedure to extract names :
-\begin{enumerate}
-	\item Create/Select an event, to display the "Event" window.
+I was asked about the choice of using a numerical identifier in the file names, and why I didn't choose to use name identifiers instead. This is a decision that was taken after careful consideration :
+\begin{itemize}
+	\item First of all, numerical identification was originally used for maps, tilesets, etc
 	
-	\item Create a new event command. In the "Event command" window, select "Conditional Branch". \textit{There are other commands that could do the trick, I just chose this one}.
+	Therefore, transitioning to another identification system would be complex and an exercise in reinventing the wheel, all that for questionable gain.
 	
-	\item On the "Conditional Branch" window, select either "Switch" or "Variable" and click on the switch/variable selection box immediately to its right.
+	\item Using a file name identifier removes the need to have that information inside the file itself.
 	
-	\item You should see a new window lists of items. Just select them one by one and copy-paste their name in the dictionary you're building (at the corresponding index of course).
-\end{enumerate}
+	Without it, some other strategy of file identification would be needed :
+	\begin{itemize}
+		\item Reading each file, looking for the one containing the right id
+		\item A database associating each file with its id
+	\end{itemize}
+	Both of these aren't particularly attractive.
+	
+	\item The idea of using names for identification is attractive at first glance : user-friendly and intuitive, it's basically the greatest thing since sliced bread !
+	
+	Unfortunately, there are some issues with this solution, including but not limited to :
+	\begin{itemize}
+		\item As stated before, it would be complex to transition to this new identification system.
+		
+		\item Not all characters are usable : every file system imposes limitations, which would impose unwanted restrictions for developers.
+		
+		
+		\item Developers involved in this type of project are typically capable of dealing with numerical ids without issue already.
+		
+		\item For large projects with hundreds/thousands of maps, name collisions may force developers to use convoluted or cumbersome naming schemes.
+	\end{itemize}
+
+	Note that some of the issues identified may be circumvented by re-introducing the "name" field in the files themselves, but at this point the percieved value of the change would become nil.
+	
+	\item While it is true that numerical id collisions is possible and using name ids may help preventing them, there are other strategies available. 
+	
+	Planning, for example : reserving ranges of values for specific uses ahead of time.
+\end{itemize}
+
+\vspace{4mm}
+In conclusion, it is my estimation that using numerical ids is a reasonable choice, as it is a tried-and-true that doesn't compromise on usability (at least not too much).
+
+On the other hand, the suggestion of abandoning the 3 digit format for numerical ids was considered and adopted, as it would allow larger projects to exist and didn't pose any technical problem.
+
+
+
+
 
 
 \newpage

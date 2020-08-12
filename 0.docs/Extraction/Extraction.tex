@@ -318,31 +318,31 @@ English dialogue is hard-coded in events, therefore in order to propose alternat
 More research is needed here.
 
 
-\section{Extraction process}
+\section{Automated extraction process}
 
 Unfortunately, the first steps require the use of RPG Maker XP (version 1.02 tested, other may work also), and therefore Microsoft Windows (XP-10).
 
 It may be possible to run RPG Maker XP on other operating systems using compatibility layers (such as Wine for GNU/Linux), but I didn't try it.
 
-\subsection{Obtaining a copy}
+\subsection{Opening a project with RPG Maker XP}
 
 First things first, a copy of the project to extract is needed. It should have the same structure as described in \verb|section 1.2.1|. If so, it should be possible to open it and run it using RPG Maker XP.
 
 Read more about obtaining a copy in \verb|PoGER|.
 
-Notes :
+The following information was obtained through a trial-and-error process when trying to open the Pokemon Essentials and a derivative game (Pokemon Uranium) in RPG Maker XP and run them in order to extract data from them. As such, they may contain erroneous statements or not apply/work for someone else trying to replicate the same process.
 
 \begin{itemize}
 	\item You need the following files in the root directory :
 	
 	\begin{itemize}
 		\item \verb|Game.exe| : The executable that launches the game.
-		\item \verb|Game.ini| : A configuration file.
+		\item \verb|Game.ini| : A configuration file. If the \verb|*.ini| in the project has an other name, \textit{rename a copy} and \textbf{leave the original untouched}, because it seems RMXP needs a \verb|Game.ini| file and game can specify an other name (hard coded in scripts)
 		\item \verb|Game.rxproj| : Entry point for RMXP.
 		\item \verb|RGSS102E.dll| : Contain RGSS dynamic libraries, probably necessary tu run the executable correctly.
 	\end{itemize}
 
-	Renaming files may be needed.
+	Renaming files may be needed for some project files.
 	
 	\item For projects with \textit{compressed data} (no \verb|Data| directory but there is one \verb|*.rgssad| file at root), you need to use an extraction utility.
 	
@@ -350,6 +350,14 @@ Notes :
 	
 	\begin{lstlisting}
 	python rgsstool.py -x -d "path\for\output\files" "path\of\rgssad\file"\end{lstlisting}
+	\vspace{-8mm}
+	
+	This worked with Python 3.x, google search it if you're not sure if you have a recent version of Python and how to launch it on your computer.
+	
+	Exemple for Pokemon Uranium when command line is at root :
+	
+	\begin{lstlisting}
+	python rgsstool.py -x -d . Uranium.rgssad\end{lstlisting}
 	\vspace{-6mm}
 	
 	\item For projects missing the \verb|*.rxproj| file, simply create a new empty file and write the following : 
@@ -357,36 +365,48 @@ Notes :
 	\fbox{\ttfamily RPGXP 1.02}
 	
 	Save it with UTF-8 encoding and no "new line" character.
+	
+	\item Save files should be located in \verb|C:\Users\<user_name>\Saved Games\<name_of_the_game>\|
+	
+	\item Tip : When running the project from RPG Maker XP, some files in the \verb|Data| directory may be recompiled, which can cause errors. Keep a copy of the content of this directory in case you need to restore its content (you can exclude the \verb|Scripts.rxdata| if you're editing the scripts, so you don't lose progress on this file).
 \end{itemize}
 
 
-
+\newpage
 \subsection{RMXP script}
 
 The first step uses RPG Maker XP itself and a handmade script.
 
 Steps :
 \begin{enumerate}
-	\item Open the project in RPG Maker XP. Then, open the script editor.
+	\item Open the project in RPG Maker XP. Make sure the game can be launched (press \verb|F12| or click on the arrow next to the note icon).
+	
+	\item Open the script editor.
 	
 	\item Open \verb|Extraction.rb| and copy-paste its content to a new page in the script editor.
 	
 	\item Next step is tricky : You need to call the script from somewhere. 
 	
-	Recommended way : Run the game within RPG Maker XP (press \verb|F12| or click on the arrow next to the note icon) and play until you can gain control of the character and save. Close the game. Then, create an event close to your character and add a script command with parameter \fbox{{\ttfamily pbSaveAll()}}. 
+	Recommended way : Run the game within RPG Maker XP and play until you can gain control of the character and save. Close the game. Then, create an event close to your character and add a script command with parameter \fbox{{\ttfamily pbSaveAll()}}. 
 	
-	"Fast" way : Find the initial event that runs when the game launches and add to it a script command with parameter \fbox{{\ttfamily pbSaveAll()}}.
+	"Fast" (theoretical, untested) way : Find the initial event that runs when the game launches and add to it a script command with parameter \fbox{{\ttfamily pbSaveAll()}}.
 	
 	\item Now, Launch the game again and trigger the event.
 \end{enumerate}
 
-It works for Pokemon essentials but may not work for its derivative works, especially if they changed data representations (unlikely) or if they contain unexpected data (likely).
+\begin{itemize}
+	\item Tip : Add "show text" commands before and after the script call to better visualize its execution (ex: "\textit{Click to save data.}" and "\textit{Done !}").
+\end{itemize}
+
+It works for Pokemon Essentials but may not work for its derivative works, especially if they changed data representations (unlikely) or if they contain unexpected data (likely).
 
 After running the script, a few new folders should have appeared :
 \begin{itemize}
 	\item \verb|Maps| : Contain 2 files for each map (one for the map itself, the other for its events)
-	\item \verb|Tileset| : Contain one file per tileset.
+	\item \verb|Tileset_data| : Contain one file per tileset.
 \end{itemize}
+
+There should also be a \verb|Extraction.log| file, used to help debug issues with the script.
 
 
 
@@ -403,6 +423,36 @@ Unfortunately, event porting is particularly complex for multiple reasons, inclu
 
 For this reason, a Python program was written for the purpose of processing the JSON-formatted event files from the previous step into usable files.
 
+
+
+
+\newpage
+\section{Manual extraction}
+
+Unfortunately, I found some elements of RPG Maker XP to not be accessible using scripting or external utilities, thus making it impossible to automatically extract.
+
+Fortunately, they are scarce and it's easy to manually extract them from the UI.
+
+\subsection{Switch and Variable names}
+
+There are around 34 switches and a dozen variables used by PE. Commands that use them use their \textit{id} to reference them, not their name.
+
+While it is not strictly necessary to extract their corresponding names, it makes resulting commands way easier to read.
+
+The most straightforward id-to-name conversion strategy is to create a Python dictionary with ids as key and name as values. This allows the conversion with a simple dictionary call.
+
+You can find such an implementation in the \verb|PE_variables_switches.py| file.
+
+Procedure to extract names :
+\begin{enumerate}
+	\item Create/Select an event, to display the "Event" window.
+	
+	\item Create a new event command. In the "Event command" window, select "Conditional Branch". \textit{There are other commands that could do the trick, I just chose this one}.
+	
+	\item On the "Conditional Branch" window, select either "Switch" or "Variable" and click on the switch/variable selection box immediately to its right.
+	
+	\item You should see a new window lists of items. Just select them one by one and copy-paste their name in the dictionary you're building (at the corresponding index of course).
+\end{enumerate}
 
 
 
