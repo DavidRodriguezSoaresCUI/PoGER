@@ -369,7 +369,7 @@ starttime = timeit.default_timer()
 clear_screen()
 print('=========================================')
 print('=========================================')
-mapnames=['Map034']#['Map034_compacted']#['Map031','Map032','Map034']
+mapnames=['Map032']#['Map034_compacted']#['Map031','Map032','Map034']
 for mapname in mapnames:
     reader = ReadMap(mapname)
     print(reader)

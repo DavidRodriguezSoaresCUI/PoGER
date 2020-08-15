@@ -1649,6 +1649,115 @@ Each table contains \verb|int| values, one for each texture. This value is to be
 
 Proposition : integrate \verb|priorities| to \verb|passages| as a \nth{7} bit (\textit{bit 6 : Can be passed behind}).
 
+
+\subsection{About graphical assets}
+
+When dealing with (most) graphical assets in RPG Maker XP, including tilesets, autotiles and maps, a few constraints apply.
+
+\begin{itemize}
+	\item The base unit is the \textbf{tile}, which is a 32 by 32 square.
+	
+	\item Tilesets must have a horizontal dimension of exactly 8 tiles (256 pixels), but can be arbitrarily tall (n tiles tall).
+	
+	\item Tilesets can have up to 7 associated autotiles. This has proven to be a limiting factor in PE.
+	
+	\item Autotiles are special assets. They can be put on a map like any texture from a tileset, but have the properties of being context-aware and animation-capable :
+	
+	They form coherent surfaces by manipulating components of their texture in order to give the impression of continuity when multiple instances of the same autotile are neighbors. They can be used to create basically any surface that needs to deal with how its border with an other surface looks.
+	
+	I identified two formats (\textit{frames are situated side-by-side horizontally}) :
+	\begin{itemize}
+		\item $3N \times 4$ : a 3 tile horizontal, 4 tile vertical, $N$ frame image. This is the official autotile format for RMXP.
+		
+		\item $N \times 1$ : a 1 tile horizontal, 1 tile vertical, $N$ frame image. This is used for animated tiles.
+	\end{itemize}
+
+	\item Every tile has properties (see section "values for tileset tables"). This includes autotiles, which notably have a single \verb|passages|, \verb|terrain_tag| and \verb|priorities| value.
+	
+	\item During my map reconstruction attempts, I found out that most maps only use a fraction of tiles available to them and programmed a way of converting maps and their tilesets to a "compact" format (creating an alternate tileset with only used tiles, and adapting map data accordingly).
+	
+	Although it is functional and may be advantageous for running on low memory systems, the scattering of graphical assets and the loss of tile adjacency render this approach pointless or impractical. 
+\end{itemize}
+
+
+I believe the decision of tying tiles and autotiles together in their object representation, and then using the original tileset file name to refer to said object in maps, was a poor design choice. In consequence, the extraction script decouples maps, autotiles and tilesets, allowing for more flexibility (for example, it raises the possibility of removing the 7 autotile per tileset limit).
+
+
+
+\subsection{Autotile format}
+
+Researching how autotiles are adaptively generated proved to be a tedious manual process of reverse-engineering. 
+
+I used the "test map" that was created as a starting point for studying Pokémon Essentials. By placing autotiles in various shapes and extracting map data, I was able to manually correlate tile content to their index (and understand both the absolute and relative indexing systems).
+
+It turns out that autotiles tiles are divided into four separate "sub-tiles" of 16 by 16 pixels, and each index correspond to a combination of sub-tiles into a unique tile.
+
+\vspace{4mm}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=.3\linewidth]{Autotiles_16x16}
+	\caption{3 by 4, single frame autotile format}
+\end{figure}
+\vspace{4mm}
+
+As you can see, only 10 tiles are actually used out of 12. Some autotile assets contained texture for the redundant/unused tiles for some unidentified reason, which make me suspect there might be something I'm missing about autotiles.
+
+The result of my research can be found in the \verb|AutotilesSubtileMap.ods| spreadsheet file. It lists indexes and their corresponding subtile components. I also implemented a Python program (\verb|LoadImage.py|) that reconstructs maps from map data, tileset and autotiles, including GIF output (see \verb|Map032_out.gif| for example), demonstrating the feasability of lossless map extraction and reconstruction.
+
+Note : I found \href{https://blog.rpgmakerweb.com/tutorials/tutorial-making-an-autotile/}{this article} helpful for understanding how autotiles work.
+
+
+\newpage
+\subsection{Map representation}
+
+At its core, a RPG Make XP map is a \textit{tiled map} : it is a 2-dimensional grid of textures (tiles) of fixed size.
+
+The \verb|data| component is a 3-dimensional table of integer values with the following properties :
+\begin{itemize}
+	\item The \nth{3} dimension is used to represent \textbf{layers} : exactly 3 tiled maps are used for any RMXP map :
+	\begin{itemize}
+		\item Background : Contains mainly the textures that make the ground and other elements that are always "below player's level". Any event or texture of higher layer will be displayed \textit{above} it.
+		
+		\item Intermediate : Contains mainly the textures that should be "at player's level", which includes most elements the player can interact with (including bumping into).
+		
+		\item Foreground : Contains mainly the textures that should be "above player's level", typically used for elements below which the player can stand.
+	\end{itemize}
+
+	\item Each layer obeys the same indexing convention :
+	
+	\begin{tabular}{|c|l|}
+		\hline
+		\rowcolor{mylightgray}
+		\textbf{Value(s)} & \textbf{Description} \\
+		\hline
+		\verb|0| & Reserved value for "No texture" \\
+		\hline
+		\verb|1-47| & Reserved, unused. \\
+		\hline
+		\verb|48-95| & Range used for autotile 1. \\
+		\hline
+		\verb|96-143| & Range used for autotile 2. \\
+		\hline
+		$\vdots$ & \phantom{hi reader :wink:}$\vdots$ \\
+		\hline
+		\verb|336-383| & Range used for autotile 7. \\
+		\hline
+		\verb|384-| & Range used for tileset. \\
+		\hline
+	\end{tabular}
+
+	This way of reserving 48 indexes per autotile results from autotile's mechanism for generating context-aware textures.
+	
+	Note : each range describes the \textit{absolute positions} between which a \textit{relative indexing system} takes place. For example, index 52 is interpreted as index 4 for autotile 1 and index 485 is index 100 on the tileset (remember that indexes begin at zero, not one).
+	
+\end{itemize}
+
+
+
+
+
+
+
 \newpage
 \subsection{Map and Tileset files}
 
@@ -1683,6 +1792,8 @@ There should be a well-defined way of representing extracted map and tileset inf
 		\hline
 		{\ttfamily tileset} & String & Map's tileset (file name without extension). \\
 		\hline
+		{\ttfamily autotiles} & Array of String & Map's autotiles (file name without extension). \\
+		\hline
 		{\ttfamily autoplay\_bgm} & bool & Sets whether the bmg should be played when entering the map. \\
 		\hline
 		{\ttfamily bgm} & String & Map's background music.  \\
@@ -1696,10 +1807,10 @@ There should be a well-defined way of representing extracted map and tileset inf
 	Note : \verb|table| must have dimensions \verb|width x height x 3|
 \end{itemize} 
 
-\textbf{Tileset}
+\textbf{Tileset and Autotiles}
 \begin{itemize}
 
-	\item Located in the "\verb|Tileset_data|" directory.
+	\item Located in the "\verb|Tileset_data\Tilesets|" and "\verb|Tileset_data\Autotiles|" directories respectively.
 	
 	\item Naming convention : \verb|<name>.json |. The \textit{name} is only here as a quality-of-life addition, for developers to easily know what map they're dealing with. It must be present, though.
 	
@@ -1711,13 +1822,17 @@ There should be a well-defined way of representing extracted map and tileset inf
 			\hline
 			{\ttfamily \_class} & String & Must be \verb|"Tileset"|. \\
 			\hline
-			{\ttfamily name} & String & Tileset's file name (without extension). Referenced by map's property \verb|tileset| \\
+			{\ttfamily name} & String & Tileset's file name (no extension). Referenced by map's property \verb|tileset| \\
 			\hline
-			{\ttfamily passages} & 1D array of int & Tileset's passage table. \\
+			{\ttfamily passages} & (1D array of) int & Tileset's passage table. \\
 			\hline
-			{\ttfamily terrain\_tags} & 1D array of int & Tileset's terrain tag table. \\
+			{\ttfamily terrain\_tags} & (1D array of) int & Tileset's terrain tag table. \\
 			\hline
 	\end{tabular}}
+
+	Note : for autotiles, all values in \verb|passages| and \verb|terrain_tags|, therefore these fields were simplified to a \textit{single integer value}.
+	
+	Note : RMXP seem to fail to load tilesets/autotiles after an extraction with destination "\verb|Graphics\Tilesets|" and "\verb|Graphics\Autotiles|" directories, probably because there are foreign files in the graphic folder. For that reason, other directories were used.
 
 	\item Advantages : Decoupling a \verb|Tileset| from the autotilesets used for a particular map allows added flexibility.
 \end{itemize}
@@ -1731,7 +1846,7 @@ I was asked about the choice of using a numerical identifier in the file names, 
 	
 	Therefore, transitioning to another identification system would be complex and an exercise in reinventing the wheel, all that for questionable gain.
 	
-	\item Using a file name identifier removes the need to have that information inside the file itself.
+	\item Using a file name identifier means that information needs to reside inside the file itself.
 	
 	Without it, some other strategy of file identification would be needed :
 	\begin{itemize}
@@ -1747,6 +1862,8 @@ I was asked about the choice of using a numerical identifier in the file names, 
 		\item As stated before, it would be complex to transition to this new identification system.
 		
 		\item Not all characters are usable : every file system imposes limitations, which would impose unwanted restrictions for developers.
+		
+		\item Dealing with names/strings means that ids are typically longer and less formally defined (can contain more caracters, including casing, accents, etc), therefore amplifying the risk of any id containing errors.
 		
 		
 		\item Developers involved in this type of project are typically capable of dealing with numerical ids without issue already.

@@ -97,7 +97,8 @@ def parse( tokens ):
     # unarg(f) [function] takes arguments and returns f(*x)
     unarg  = lambda f: lambda x: f(*x)
     tokval = lambda tok: tok.value
-    symval = lambda tok: f'glob["{tok.value}"]'
+    tokval_noSpace = lambda tok: tok.value.replace(' ','_')
+    symval = lambda tok: '{}["{}"]'.format('local' if len(tok.value)==2 else 'glob', tok.value)
     scriptval = lambda tok: tok.value[2:] if ( '(' in tok.value ) else tok.value[2:]+'()'
     # makeop(s,f) [function] returns an operator : symbol s, behaves like actual operator f
     makeop = lambda s, f: op(s) >> const(f)
@@ -119,7 +120,7 @@ def parse( tokens ):
 
     cmd_id = (
         some(lambda tok: tok.type=='CMD_ID')
-        >> tokval )
+        >> tokval_noSpace )
 
     comma = (
         some(lambda tok: tok.type=='Comma')
@@ -323,17 +324,23 @@ def parse( tokens ):
     return res
 
 def boolean_converter( s ):
-    return s.replace('true','True').replace('false','False')
+    return s.replace('true','True').replace('false','False').replace(':on', 'True').replace(':off', 'False')
 
 def build_event( event_file, test=True ):
     assert isinstance( event_file, pathlib.Path ) and event_file.is_file()
-
+    import re
     content = None
     with event_file.open( 'r' ) as f:
-        content = f.read().lower()
+        content = f.read()
+        # We need to lowercase everything but things in quotes
+        content_lowercase = re.sub(r'([^"]+)("?.*)', lambda match: match.group(1).lower()+match.group(2), content)
+        '''with open('test_lower.txt','w') as g:
+            g.write(content_lowercase)
+
+        sys.exit()'''
     
-    assert not ( '\t' in content )
-    content_ok = boolean_converter( indentation_converter(content) )
+    assert not ( '\t' in content_lowercase )
+    content_ok = boolean_converter( indentation_converter(content_lowercase) )
     tok = tokenize( content_ok )
     
     if test:
@@ -352,10 +359,25 @@ def build_event( event_file, test=True ):
 if __name__ == "__main__":
     cwd = pathlib.Path()
     events = list(cwd.glob('011_*'))
-    pprint(events)
+    #pprint(events)
+
+    from Interpreter import Interpreter
 
     for event_file in events:
+        interpreter = Interpreter()
+        interpreter.set( ':Fossilrevivalinprogress', False )
         e = Event( event_file )
-        for b in e.behaviors:
+        e.finalize_behaviors()
+        e.trigger( 'onPlayerAction', interpreter )
+        while True:
+            #try:
+            #print('step called')
+            try:
+                e.step()
+            except NotImplementedError:
+                break
+        break
+
+        '''for b in e.behaviors:
             print('behavior')
-            pprint(str(b))
+            pprint(str(b))'''

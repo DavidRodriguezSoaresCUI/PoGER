@@ -1,0 +1,68 @@
+[event]
+xy=[10, 3]
+graphic=trchar028
+
+[page]
+
+
+
+if :b is :off
+  show text "\\bOh, hello. I'm a scientist."
+  show text "\\bI can turn fossils into living, breathing Pokémon!"
+  :b = :on
+else
+  show text "\\bAiyah! You come again!"
+show text "\\bDo you have a fossil for me?"
+choose choices=["Yes", "No"], default=2
+when "Yes"
+  :DEBUG = :ON
+  show text "\\bWhich fossil do you want me to revive?"
+  s:pbchoosefossil(9)
+  if :fossilbeingrevived == 0
+    # player didn't choose a fossil.
+    show text "\\bLet me know when you want me to revive a fossil for you."
+  else
+    s:$pokemonbag.pbdeleteitem(pbget(9))
+    s:pbset(3,pbitems.getname(pbget(9)))
+    show text "\\bOkay. I'll see if I can revive your \\v[3]."
+    show text "\\bCome back later."
+    # convert fossil into species now.
+    s:pbconvertitemtopokemon(9,[ :helixfossil,:omanyte, :domefossil,:kabuto, :oldamber,:aerodactyl, :rootfossil,:lileep, :clawfossil,:anorith, :skullfossil,:cranidos, :armorfossil,:shieldon, :coverfossil,:tirtouga, :plumefossil,:archen])"
+    :a = :on
+    :fossilrevivalinprogress = :on
+  
+when "No"
+  # player doesn't want to choose a fossil.
+  show text "\\bI'll be here if you want my help."
+[end]
+
+
+[page]
+
+:a == :on
+
+if :fossilbeingrevived > 0
+  show text "\\bWhere have you been? I've finished reviving your fossil."
+  s:pbset(3,pbspecies.getname(pbget(9)))
+  show text "\\bIt was \\v[3] like I thought."
+  if s:pbaddtoparty(pbget(9),1)
+    :fossilbeingrevived = 0
+    :a = :off
+  else
+    show text "\\bYou have no room left. Make room, then come see me."
+  
+else
+  show text "\\bI managed to revive your fossil."
+  show text "\\bHowever, what I brought back didn't live long...\\1 fortunately."
+  show text "\\bSorry."
+  :a = :off
+[end]
+
+
+[page]
+
+:fossilrevivalinprogress == :on
+
+show text "\\bI told you, come back later."
+[end]
+

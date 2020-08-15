@@ -15,6 +15,7 @@ Else
 Show Text "\\bDo you have a fossil for me?"
 Choose choices=["Yes", "No"], default=2
 When "Yes"
+  # :DEBUG = :ON
   Show Text "\\bWhich fossil do you want me to revive?"
   s:pbChooseFossil(9)
   if :Fossilbeingrevived == 0

@@ -24,3 +24,43 @@ def ast_cleanup( ast ):
 
 def unquote( s ):
     return s.replace('"','')
+
+def get_list_element_count( l ):
+    assert isinstance( l, list )
+    count = 0
+    for elem in l:
+        count += get_list_element_count(elem) if isinstance(elem, list) else 1
+    return count
+
+def retrieve_single_element_h( l ):
+    if isinstance( l, list ):
+        for e in l:
+            tmp = retrieve_single_element_h( e )
+            if tmp:
+                return tmp
+    else:
+        return l
+
+def retrieve_single_element( l ):
+    assert isinstance( l, list )
+    res = retrieve_single_element_h( l )
+    #print( f'retrieve_single_element: {l}->{res}' )
+    return res
+
+def unpack_list( l ):
+    assert isinstance( l, list )
+    if len(l)==0:
+        raise ValueError('Failed to unpack list, perhaps is it empty ?')
+    elif len(l)==1:
+        return unpack_list(l[0])
+    else:
+        return l
+
+def try_make_number(s):
+    try:
+        return int(s)
+    except ValueError:
+        try:
+            return float(s)
+        except ValueError:
+            return s

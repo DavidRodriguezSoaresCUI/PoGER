@@ -1,7 +1,7 @@
 from pprint import pprint
 import sys
 
-debug = True
+debug = False
 
 class Event:
 
@@ -24,6 +24,13 @@ class Event:
         'preset':None,
     }
 
+    EVENT_SS_DEFAULT = {
+        ':a':False,
+        ':b':False,
+        ':c':False,
+        ':d':False,
+    }
+
     PRESET_LIST = ['door', 'exit', 'berry_plant']
 
     VALID_DIRECTIONS = ['s', 'w', 'n', 'e']
@@ -34,9 +41,12 @@ class Event:
 
     VALID_MOVEMENT_SPEEDS = ['slow', 'fast']
 
+    PAGE_NBR = 0
+
     def __init__(self, event_file):
         self.file = event_file
         self.config=dict( self.DEFAULT_CONFIG )
+        self.ss=dict( self.EVENT_SS_DEFAULT )
         self.behaviors=list()
         self.current_behavior=None
         self.triggered = False
@@ -53,8 +63,9 @@ class Event:
         self.enforce_config_compliance()
 
         for b in ast[1]:
-            self.add_behavior( b )
-        print(self)
+            self.add_behavior( b, Event.PAGE_NBR )
+            Event.PAGE_NBR += 1
+        #print(self)
 
     def apply_config( self, ast ):
         from utils import unquote
@@ -94,15 +105,15 @@ class Event:
 
         assert cfg('movement_speed') in Event.VALID_MOVEMENT_SPEEDS
 
-    def add_behavior( self, ast ):
+    def add_behavior( self, ast, nbr ):
         assert not self.final, 'E.add_behavior: Cannot add behavior to finalized Event.'
         if debug:
             print(f'E:add_behavior : adding a behavior')
 
-        self.behaviors.append(Behavior(ast))
+        self.behaviors.append(Behavior(ast, nbr))
 
-    def choose_behavior(self):
-        valid_b = [ idx for idx,b in enumerate(self.behaviors) if b.satisfies_conditions() ]
+    def choose_behavior(self, interpreter ):
+        valid_b = [ idx for idx,b in enumerate(self.behaviors) if b.satisfies_conditions( self.ss, interpreter ) ]
         assert 0 < len(valid_b), 'E.choose_behavior: no behavior satisfies its conditions'
         self.current_behavior = max(valid_b)
 
@@ -112,13 +123,15 @@ class Event:
                 b.finalize()
             self.final = True
 
-    def trigger( self, t ):
+    def trigger( self, t, interpreter ):
         assert self.triggered==False, 'E.trigger : Already triggered.'
         tri = self.config.get( 'trigger', None )
-        if tri and (tri==t):
+        
+        if tri and (tri==t.lower()):
             self.triggered = True
             self.finalize_behaviors()
-            self.choose_behavior()
+            self.choose_behavior( interpreter )
+            self.behaviors[self.current_behavior].setup( self.ss, interpreter )
 
     def walk(self):
         pass
@@ -128,20 +141,24 @@ class Event:
         if self.triggered:
             self.triggered = self.behaviors[self.current_behavior].step()
         if not self.triggered:
-            self.walk()
+            #self.walk()
+            raise NotImplementedError('Untriggered event can\'t step')
 
     def __str__(self):
         return 'Event: '+str(self.__dict__) # + '\n'.join([ str(b) for b in self.behaviors ])
 
-
 class Behavior:
 
-    def __init__(self,  ast):
+    def __init__(self,  ast, nbr):
         self.config=dict()
         self.conditions=list()
         self.instructions=list()
         self.final = False
         self.tick = 0
+        self.page_number = nbr
+        self.interpreter = None
+        self.ss = None
+        self.remaining_isntr = None
 
         self.process_ast( ast )
 
@@ -155,6 +172,15 @@ class Behavior:
         self.apply_config_cond( ast[0] )
         if l==2:
             self.build_instructions( ast[1] )
+
+        self.save_instructions()
+
+    def save_instructions( self ):
+        import pprint
+        #print('save_instructions')
+        with open(f'map_instr_{self.page_number}','w') as f:
+            f.write( pprint.pformat(self.instructions) )
+            #print('save_instructions OK')
 
     def apply_config_cond( self, ast ):
         from utils import ast_display
@@ -172,7 +198,8 @@ class Behavior:
     def build_instructions( self, ast ):
         from utils import ast_display
         #print(f'B:build_instructions')
-        ast_display( ast )
+        if debug:
+            ast_display( ast[0] )
         for item in ast:
             self.instructions.append( item )
 
@@ -182,23 +209,55 @@ class Behavior:
 
     def finalize( self ):
         self.final = True
-    pass
 
-    def satisfies_conditions(self):
-        return all([ exec(cond) for cond in self.conditions ])
+    def setup( self, ss, interpreter ):
+        self.ss = ss
+        self.interpreter = interpreter
+
+    def satisfies_conditions(self, ss, interpreter):
+        #print(f'satisfies_conditions: self.ss={self.ss}')
+        return all([ interpreter.check_condition(ss, cond) for cond in self.conditions ])
 
     def step(self):
         # implement 
         assert self.final, 'B.step : behavior unfinalized'
-        try:
-            instr = self.instructions[self.tick]
-            # TODO : exec()
-        except IndexError:
-            self.tick = 0
-            return False
+        assert self.interpreter!=None
+        assert self.ss
+        from Interpreter import DEBUG_LVL
 
-        self.tick += 1
+        from utils import ast_display
+        if self.interpreter.debug():
+            ast_display( self.instructions )
+
+        if self.remaining_isntr:
+            instr = self.remaining_isntr
+            if DEBUG_LVL > 0:
+                print('B:step:remaining instruction')
+        else:
+            try:
+                instr = self.instructions[self.tick]
+                if DEBUG_LVL > 0:
+                    print(f'B:step:next instruction {self.tick}')
+                self.tick += 1
+            except IndexError:
+                self.tick = 0
+                if DEBUG_LVL > 0:
+                    print('B:step: NO next instruction !')
+                return False
+
+        if DEBUG_LVL > 0:
+            print(f'B: launching execution of {instr}')
+        ( remaining_isntr, do_continue ) = self.interpreter.execute( self.ss, instr )
+        while do_continue and remaining_isntr:
+            ( remaining_isntr, do_continue ) = self.interpreter.execute( self.ss, remaining_isntr )
+        
+        if DEBUG_LVL > 0:
+            print(f'B:step: END OF STEP')
+        self.remaining_isntr = remaining_isntr
+
+        
         return True
+
 
     def __str__(self):
         return str(self.__dict__)

@@ -1,0 +1,17 @@
+[['if',
+  'glob[":fossilbeingrevived"] > 0',
+  [['show_text',
+    [['"\\\\bWhere have you been? I\'ve finished reviving your fossil."']]],
+   'pbset(3,pbspecies.getname(pbget(9)))',
+   ['show_text', [['"\\\\bIt was \\\\v[3] like I thought."']]],
+   ['if',
+    'pbaddtoparty(pbget(9),1)',
+    ['glob[":fossilbeingrevived"] = 0', 'local[":a"] = False'],
+    [['show_text',
+      [['"\\\\bYou have no room left. Make room, then come see me."']]]]]],
+  [['show_text', [['"\\\\bI managed to revive your fossil."']]],
+   ['show_text',
+    [['"\\\\bHowever, what I brought back didn\'t live long...\\\\1 '
+      'fortunately."']]],
+   ['show_text', [['"\\\\bSorry."']]],
+   'local[":a"] = False']]]
