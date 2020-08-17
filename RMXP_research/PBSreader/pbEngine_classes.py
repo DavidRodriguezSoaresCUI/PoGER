@@ -3,8 +3,15 @@ from pprint import pprint
 class Dex:
     ''' Basic class for indexing instances '''
     def __init__(self, items, id_field, name_field):
-        self.items = { e[id_field]:e for e in items }
-        self.name2id = { e[name_field]:_id for _id,e in self.items.items() }
+        if isinstance(items, list):
+            if isinstance(items[0], PokedexEntry):
+                self.items = { e.data[id_field]:e for e in items }
+                self.name2id = { e.data[name_field]:_id for _id,e in self.items.items() }
+            else:
+                self.items = { e[id_field]:e for e in items }
+                self.name2id = { e[name_field]:_id for _id,e in self.items.items() }
+        else:
+            raise NotImplementedError
 
     def get(self, _id):
         if isinstance( _id, str ):
@@ -77,24 +84,21 @@ class PokedexEntry:
         'Genderless':-1
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, parsed_item):
         self.data = dict()
 
-        from_pbs = kwargs.get( 'pbs_item', None )
-        if from_pbs:
-            self.init_from_pbs( from_pbs )
+        
+        if isinstance(parsed_item, dict):
+            self.init_cleanup( parsed_item )
         else:
             raise NotImplementedError('Pokemon not initialized via known method.')
 
-    def init_from_pbs( self, item ):
+    def init_cleanup( self, parsed_item ):
         #print('P.init_from_pbs')
         import ini, sys, re
         from utils import try_make_int_list, try_make_number
 
-        tmp = ini.parse( item )
-        key = list(tmp.keys())[0]
-        config = tmp[key]
-        config['id'] = int( key )
+        config = parsed_item
         
         for e in [ 'BaseStats', 'EffortPoints', 'RegionalNumbers' ]:
             try:
@@ -130,6 +134,10 @@ class PokedexEntry:
             assert e in config, f"Pokemon {config['id']} lacks mandatory element {e}."
 
         self.data = config
+
+    def add_shadow_moves( self, moves ):
+        for sm in moves:
+            (self.data['Moves'])[sm] = 'Shadow'
 
     def __str__(self):
         return str(self.__dict__)

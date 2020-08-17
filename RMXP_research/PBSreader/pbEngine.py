@@ -2,9 +2,20 @@ from pathlib import Path
 from pprint import pprint
 import time, re, ini, sys, csv
 
-DEBUG = False
+DEBUG = True
 
 class pbEngine:
+
+    # Current entries in the self.data dict :
+    # - Machines : dict (move [str] => pokemon InternalName [list of str])
+    # - PokemonForms : dict (pokemon InternalName+'-'+formID [str] => dict( PokedexEntry override [str] => value [*] ))
+    # - Moves : Dex of moves [dict], see documentation for field names
+    # - Metadata : dict( map id [int] => dict( field name [str] => value [*] ) ), see documentation for field names
+    # - Items : Dex of items [dict], see documentation for field names
+    # - Abilities : Dex of abilities [dict], see documentation for field names
+    # - Berryplants : dict( berry tree InternalName [str] => list of 4 values )
+    # - Pokedex : Dex of PokedexEntries
+    # - Types : To be redone in a more elegant manner, Dex of types [dict], see documentation for field names
 
     PBS_FILES = [
         'pokemon.txt',
@@ -13,7 +24,10 @@ class pbEngine:
         'items.txt',
         'metadata.txt',
         'moves.txt',
-        'pokemonforms.txt'
+        'pokemonforms.txt',
+        'shadowmoves.txt',
+        'tm.txt',
+        'types.txt'
     ]
 
     def __init__(self, pbs_location, demo=False):
@@ -53,7 +67,7 @@ class pbEngine:
         if DEBUG:
             print(f'readPBS_pokemon called')
 
-        from pbEngine_classes import Dex
+        from pbEngine_classes import Dex, PokedexEntry
 
         start = time.time()
 
@@ -64,8 +78,9 @@ class pbEngine:
         pkmns = list()
         for k,v in parsed.items():
             v['id'] = k
-            pkmns.append(v)
+            pkmns.append( PokedexEntry(v) )
         self.data['Pokedex'] = Dex( pkmns, id_field='id', name_field='InternalName' )
+        print(f"{len(list(self.data['Pokedex'].items.keys()))} pokémon found !")
         print(f'Loaded pokedex in {round((time.time()-start)*1000)} ms.')
 
         while self.demo:
@@ -193,22 +208,61 @@ class pbEngine:
         print(f'{len(list(parsed.keys()))} forms found !')
         print(f'Loaded pokemon forms in {round((time.time()-start)*1000)} ms.')
 
+    def readPBS_shadowmoves( self, items ):
+        if DEBUG:
+            print(f'readPBS_shadowmoves called')
+
+        from pbEngine_classes import Dex
+        pokedex = self.data['Pokedex']
+
+        start = time.time()
+        parsed = ini.parse( items )
+        for pkmn_name,moves in parsed.items():
+            #print(f'Adding move(s) {moves} to {pkmn_name}.')
+            pkmn = pokedex.get( pkmn_name )
+            pkmn.add_shadow_moves( [ s for s in moves.split(',') ] )
+
+        print(f'Loaded shadow moves in {round((time.time()-start)*1000)} ms.')
+        #print( self.data['Pokedex'].get('BUTTERFREE') )
+
+    def readPBS_tm( self, items ):
+        if DEBUG:
+            print(f'readPBS_tm called')
+
+        from pbEngine_classes import Dex
+
+        start = time.time()
+        parsed = ini.parse( items )
+        machines = dict()
+        for move, pkmns in parsed.items():
+            assert isinstance(move, str)
+            l = list(pkmns.keys())
+            assert len(l)==1
+            _pkmns = [ s for s in l[0].split(',') ]
+            machines[move] = _pkmns
+
         
+        self.data['Machines'] = machines
+        print(f'{len(machines)} machines found !')
+        print(f'Loaded machines in {round((time.time()-start)*1000)} ms.')
+        #print( self.data['Pokedex'].get('BUTTERFREE') )
 
+    def readPBS_types( self, items ):
+        if DEBUG:
+            print(f'readPBS_types called')
 
-    
+        from pbEngine_classes import Dex
 
+        start = time.time()
+        parsed = ini.parse( items )
+        types = list()
+        for k,v in parsed.items():
+            v['id'] = int(k)
+            types.append(v)
+        
+        self.data['Types'] = Dex( types, id_field='id', name_field='InternalName' )
+        print(f'{len(types)} types found !')
+        print(f'Loaded types in {round((time.time()-start)*1000)} ms.')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        
