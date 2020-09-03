@@ -1,0 +1,465 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{PkmnCreator}{online}{}
+      \name{author}{1}{}{%
+        {{hash=8d9206e77ebaf386902e019a93978573}{%
+           family={Encyclopaedia\bibnamedelima Britannica},
+           familyi={E\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={The\bibnamedelima Editors},
+           giveni={T\bibinitperiod\bibinitdelim E\bibinitperiod},
+           prefix={of},
+           prefixi={o\bibinitperiod}}}%
+      }
+      \strng{namehash}{8d9206e77ebaf386902e019a93978573}
+      \strng{fullhash}{8d9206e77ebaf386902e019a93978573}
+      \strng{bibnamehash}{8d9206e77ebaf386902e019a93978573}
+      \strng{authorbibnamehash}{8d9206e77ebaf386902e019a93978573}
+      \strng{authornamehash}{8d9206e77ebaf386902e019a93978573}
+      \strng{authorfullhash}{8d9206e77ebaf386902e019a93978573}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Pokémon}
+      \verb{urlraw}
+      \verb https://www.britannica.com/topic/Pokemon-electronic-game
+      \endverb
+      \verb{url}
+      \verb https://www.britannica.com/topic/Pokemon-electronic-game
+      \endverb
+    \endentry
+    \entry{SatoshiBook}{book}{}
+      \name{author}{1}{}{%
+        {{hash=7b3210ec9e340b2190fe4ad6ffcd9ce6}{%
+           family={Tajiri},
+           familyi={T\bibinitperiod},
+           given={Satoshi},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{7b3210ec9e340b2190fe4ad6ffcd9ce6}
+      \strng{fullhash}{7b3210ec9e340b2190fe4ad6ffcd9ce6}
+      \strng{bibnamehash}{7b3210ec9e340b2190fe4ad6ffcd9ce6}
+      \strng{authorbibnamehash}{7b3210ec9e340b2190fe4ad6ffcd9ce6}
+      \strng{authornamehash}{7b3210ec9e340b2190fe4ad6ffcd9ce6}
+      \strng{authorfullhash}{7b3210ec9e340b2190fe4ad6ffcd9ce6}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-4870258587}
+      \field{month}{12}
+      \field{title}{Satoshi Tajiri: New Game Design}
+      \field{year}{1995}
+      \field{dateera}{ce}
+    \endentry
+    \entry{PkmnPop}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labeltitlesource}{title}
+      \field{day}{25}
+      \field{month}{2}
+      \field{title}{How Pokemon Became a Pop Culture Sensation in America}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://v1.escapistmagazine.com/articles/view/video-games/15498-How-Pokemon-Became-a-Lasting-Pop-Culture-Phenomenon-in-America
+      \endverb
+      \verb{url}
+      \verb https://v1.escapistmagazine.com/articles/view/video-games/15498-How-Pokemon-Became-a-Lasting-Pop-Culture-Phenomenon-in-America
+      \endverb
+    \endentry
+    \entry{PkmnEffect}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labeltitlesource}{title}
+      \field{day}{27}
+      \field{month}{2}
+      \field{title}{The Pokémon Effect: How 20-Year Old Game Boy Cartridges Shaped a Generation}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.huffpost.com/entry/the-pokemon-effect-how-20_b_9303926
+      \endverb
+      \verb{url}
+      \verb https://www.huffpost.com/entry/the-pokemon-effect-how-20_b_9303926
+      \endverb
+    \endentry
+    \entry{PkmnRPG}{online}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labeltitlesource}{title}
+      \field{day}{18}
+      \field{month}{7}
+      \field{title}{Why Pokemon is the most Influential RPG of All Time}
+      \field{year}{2009}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://venturebeat.com/2009/07/18/why-pokemon-is-the-most-influential-rpg-of-all-time-or-the-crisis-of-the-rpg/
+      \endverb
+      \verb{url}
+      \verb https://venturebeat.com/2009/07/18/why-pokemon-is-the-most-influential-rpg-of-all-time-or-the-crisis-of-the-rpg/
+      \endverb
+    \endentry
+    \entry{PkmnSales}{online}{}
+      \name{author}{1}{}{%
+        {{hash=c6db31f53f9d7a82c97256641cbf2a45}{%
+           family={VGSales},
+           familyi={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{c6db31f53f9d7a82c97256641cbf2a45}
+      \strng{fullhash}{c6db31f53f9d7a82c97256641cbf2a45}
+      \strng{bibnamehash}{c6db31f53f9d7a82c97256641cbf2a45}
+      \strng{authorbibnamehash}{c6db31f53f9d7a82c97256641cbf2a45}
+      \strng{authornamehash}{c6db31f53f9d7a82c97256641cbf2a45}
+      \strng{authorfullhash}{c6db31f53f9d7a82c97256641cbf2a45}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Sales figures compiled from Nintendo Japan}
+      \field{title}{Pokémon sales}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://vgsales.fandom.com/wiki/Pokémon
+      \endverb
+      \verb{url}
+      \verb https://vgsales.fandom.com/wiki/Pok%C3%A9mon
+      \endverb
+    \endentry
+    \entry{PkmnFigures}{online}{}
+      \name{author}{1}{}{%
+        {{hash=c8e4788abab3fd99f7a667c35e9ac4ab}{%
+           family={Company},
+           familyi={C\bibinitperiod},
+           given={The\bibnamedelima Pokémon},
+           giveni={T\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{c8e4788abab3fd99f7a667c35e9ac4ab}
+      \strng{fullhash}{c8e4788abab3fd99f7a667c35e9ac4ab}
+      \strng{bibnamehash}{c8e4788abab3fd99f7a667c35e9ac4ab}
+      \strng{authorbibnamehash}{c8e4788abab3fd99f7a667c35e9ac4ab}
+      \strng{authornamehash}{c8e4788abab3fd99f7a667c35e9ac4ab}
+      \strng{authorfullhash}{c8e4788abab3fd99f7a667c35e9ac4ab}
+      \field{sortinit}{5}
+      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Pokémon in figures}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://corporate.pokemon.co.jp/en/aboutus/figures/
+      \endverb
+      \verb{url}
+      \verb https://corporate.pokemon.co.jp/en/aboutus/figures/
+      \endverb
+    \endentry
+    \entry{PkmnSalesIll}{online}{}
+      \name{author}{1}{}{%
+        {{hash=7fe9236c405c9efcd7e33b2f9fe355ab}{%
+           family={IanMazgelis},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{7fe9236c405c9efcd7e33b2f9fe355ab}
+      \strng{fullhash}{7fe9236c405c9efcd7e33b2f9fe355ab}
+      \strng{bibnamehash}{7fe9236c405c9efcd7e33b2f9fe355ab}
+      \strng{authorbibnamehash}{7fe9236c405c9efcd7e33b2f9fe355ab}
+      \strng{authornamehash}{7fe9236c405c9efcd7e33b2f9fe355ab}
+      \strng{authorfullhash}{7fe9236c405c9efcd7e33b2f9fe355ab}
+      \field{sortinit}{6}
+      \field{sortinithash}{7851c86048328b027313775d8fbd2131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Illustration of sales figures from VGSales}
+      \field{title}{Pokémon sales per game}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.reddit.com/r/gaming/comments/4kjzq7/pokemon_sales_per_game/
+      \endverb
+      \verb{url}
+      \verb https://www.reddit.com/r/gaming/comments/4kjzq7/pokemon_sales_per_game/
+      \endverb
+      \keyw{sales}
+    \endentry
+    \entry{PkmnArt}{online}{}
+      \field{sortinit}{7}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{labeltitlesource}{title}
+      \field{title}{Artist Re-imagines Starter Pokemon in Amazing Ancient Mayan Art Style Paintings}
+      \verb{urlraw}
+      \verb https://grapee.jp/en/115487
+      \endverb
+      \verb{url}
+      \verb https://grapee.jp/en/115487
+      \endverb
+    \endentry
+    \entry{Pikachurin}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{2}{}{%
+        {{hash=3b1952afc94230d011756aea9b5e04cf}{%
+           family={Sato},
+           familyi={S\bibinitperiod},
+           given={Shigeru},
+           giveni={S\bibinitperiod}}}%
+        {{hash=98711cee929b94ad3982b211a85ab624}{%
+           family={Omori},
+           familyi={O\bibinitperiod},
+           given={Yoshihiro},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{c929ea409c53fdf0603b090598806578}
+      \strng{fullhash}{c929ea409c53fdf0603b090598806578}
+      \strng{bibnamehash}{c929ea409c53fdf0603b090598806578}
+      \strng{authorbibnamehash}{c929ea409c53fdf0603b090598806578}
+      \strng{authornamehash}{c929ea409c53fdf0603b090598806578}
+      \strng{authorfullhash}{c929ea409c53fdf0603b090598806578}
+      \field{sortinit}{8}
+      \field{sortinithash}{1b24cab5087933ef0826a7cd3b99e994}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{Nature Neuroscience 11 (923–931)}
+      \field{title}{Pikachurin, a dystroglycan ligand, is essential for photoreceptor ribbon synapse formation}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://doi.org/10.1038/nn.2160
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1038/nn.2160
+      \endverb
+    \endentry
+    \entry{Etymology}{online}{}
+      \field{sortinit}{8}
+      \field{sortinithash}{1b24cab5087933ef0826a7cd3b99e994}
+      \field{labeltitlesource}{title}
+      \field{title}{Etymology: Names from Fictional Characters, section Video and Role-playing Games}
+      \verb{urlraw}
+      \verb https://www.curioustaxonomy.net/etym/fiction.html
+      \endverb
+      \verb{url}
+      \verb https://www.curioustaxonomy.net/etym/fiction.html
+      \endverb
+    \endentry
+    \entry{Novel}{online}{}
+      \field{sortinit}{9}
+      \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
+      \field{labeltitlesource}{title}
+      \field{title}{Jim Butcher chats about Pokemon, responsibility, and Changes}
+      \verb{urlraw}
+      \verb http://www.fantasyliterature.com/author-interviews/jim-butcher/
+      \endverb
+      \verb{url}
+      \verb http://www.fantasyliterature.com/author-interviews/jim-butcher/
+      \endverb
+    \endentry
+    \entry{PkmnFangames}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labeltitlesource}{title}
+      \field{title}{Fan Made Pokemon Games List}
+      \verb{urlraw}
+      \verb https://www.pokemoncoders.com/fan-made-pokemon-games/
+      \endverb
+      \verb{url}
+      \verb https://www.pokemoncoders.com/fan-made-pokemon-games/
+      \endverb
+    \endentry
+    \entry{PkmnUV}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labeltitlesource}{title}
+      \field{title}{Pokemon Ultra Violet}
+      \verb{urlraw}
+      \verb https://www.etsy.com/fr/listing/502285451/pokemon-ultra-violet-fan-made-hack-gba
+      \endverb
+      \verb{url}
+      \verb https://www.etsy.com/fr/listing/502285451/pokemon-ultra-violet-fan-made-hack-gba
+      \endverb
+    \endentry
+    \entry{PkmnCartridge}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labeltitlesource}{title}
+      \field{title}{Obscure Pokemon Hacks ON REAL GBA CARTRIDGES!}
+      \verb{urlraw}
+      \verb https://andisgamesrealm.wordpress.com/2013/11/15/obscure-pokemon-hacks-on-real-gba-cartridges/
+      \endverb
+      \verb{url}
+      \verb https://andisgamesrealm.wordpress.com/2013/11/15/obscure-pokemon-hacks-on-real-gba-cartridges/
+      \endverb
+    \endentry
+    \entry{Homebrew}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labeltitlesource}{title}
+      \field{title}{Play Homebrews on Your GBA}
+      \verb{urlraw}
+      \verb https://www.oreilly.com/library/view/retro-gaming-hacks/0596009178/ch04s16.html
+      \endverb
+      \verb{url}
+      \verb https://www.oreilly.com/library/view/retro-gaming-hacks/0596009178/ch04s16.html
+      \endverb
+    \endentry
+    \entry{PkmnRH}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labeltitlesource}{title}
+      \field{title}{Pokémon ROM hack stopped by Nintendo four days before launch}
+      \verb{urlraw}
+      \verb https://arstechnica.com/gaming/2016/12/nintendo-sends-cease-and-desist-notice-to-pokemon-rom-hacker/
+      \endverb
+      \verb{url}
+      \verb https://arstechnica.com/gaming/2016/12/nintendo-sends-cease-and-desist-notice-to-pokemon-rom-hacker/
+      \endverb
+    \endentry
+    \entry{Essentials}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labeltitlesource}{title}
+      \field{title}{Essentials Docs Wiki}
+      \verb{urlraw}
+      \verb https://essentialsdocs.fandom.com/wiki/Essentials_Docs_Wiki
+      \endverb
+      \verb{url}
+      \verb https://essentialsdocs.fandom.com/wiki/Essentials_Docs_Wiki
+      \endverb
+    \endentry
+    \entry{PkmnPlanet}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labeltitlesource}{title}
+      \field{title}{Pokémon Planet}
+      \verb{urlraw}
+      \verb https://pokemon-planet.com/
+      \endverb
+      \verb{url}
+      \verb https://pokemon-planet.com/
+      \endverb
+    \endentry
+    \entry{PkmnLegends}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labeltitlesource}{title}
+      \field{title}{Pokémon Legends}
+      \verb{urlraw}
+      \verb https://www.pokemonlegends.com/
+      \endverb
+      \verb{url}
+      \verb https://www.pokemonlegends.com/
+      \endverb
+    \endentry
+    \entry{PkmnFanGameList}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labeltitlesource}{title}
+      \field{title}{Pokemon Fan Games List}
+      \verb{urlraw}
+      \verb https://www.gbahacks.com/p/pokemon-pc-games.html
+      \endverb
+      \verb{url}
+      \verb https://www.gbahacks.com/p/pokemon-pc-games.html
+      \endverb
+    \endentry
+    \entry{RMXP}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labeltitlesource}{title}
+      \field{title}{RPG Maker XP: Make your own game !}
+      \verb{urlraw}
+      \verb https://www.rpgmakerweb.com/products/rpg-maker-xp
+      \endverb
+      \verb{url}
+      \verb https://www.rpgmakerweb.com/products/rpg-maker-xp
+      \endverb
+    \endentry
+    \entry{PoorPerf}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labeltitlesource}{title}
+      \field{title}{Can we get a solution for Essentials / RPG Maker running poorly in W10?}
+      \verb{urlraw}
+      \verb https://reliccastle.com/threads/1521/
+      \endverb
+      \verb{url}
+      \verb https://reliccastle.com/threads/1521/
+      \endverb
+    \endentry
+    \entry{PkmnBestFG}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labeltitlesource}{title}
+      \field{title}{Best Pokémon Fan Games 2020}
+      \verb{urlraw}
+      \verb https://thetecsite.com/best-pokemon-fan-games
+      \endverb
+      \verb{url}
+      \verb https://thetecsite.com/best-pokemon-fan-games
+      \endverb
+    \endentry
+    \entry{PkmnBestFG2}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labeltitlesource}{title}
+      \field{title}{The 10 Best Pokémon Fan Games Ever Made}
+      \verb{urlraw}
+      \verb https://gaminggorilla.com/best-pokemon-fan-games/
+      \endverb
+      \verb{url}
+      \verb https://gaminggorilla.com/best-pokemon-fan-games/
+      \endverb
+    \endentry
+    \entry{PUtakedown}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labeltitlesource}{title}
+      \field{title}{Pokémon Uranium Creators Pull Game After 1.5 Million Downloads}
+      \verb{urlraw}
+      \verb https://www.kotaku.com.au/2016/08/pokmon-uranium-creators-pull-game-after-15-million-downloads/
+      \endverb
+      \verb{url}
+      \verb https://www.kotaku.com.au/2016/08/pokmon-uranium-creators-pull-game-after-15-million-downloads/
+      \endverb
+    \endentry
+    \entry{PUsidequests}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labeltitlesource}{title}
+      \field{title}{Unimplemented/Unfinished Sidequests}
+      \verb{urlraw}
+      \verb https://pokemon-uranium.fandom.com/wiki/Sidequests
+      \endverb
+      \verb{url}
+      \verb https://pokemon-uranium.fandom.com/wiki/Sidequests
+      \endverb
+    \endentry
+    \entry{NOP}{online}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \true{nocite}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
