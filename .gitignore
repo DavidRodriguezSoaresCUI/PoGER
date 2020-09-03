@@ -4,4 +4,8 @@
 *.toc
 *.out
 *.pyc
+*.bbl
+*.bcf
+*.blg
+*.run.xml
 testfile
