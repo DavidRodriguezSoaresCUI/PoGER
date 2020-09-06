@@ -54,17 +54,18 @@ class Event:
         self.process_init()
 
     def process_init( self ):
-        from eventReader import build_event
+        from eventReader import get_event_ast
         from utils import ast_display, ast_cleanup
         
-        ast = ast_cleanup( build_event( self.file ) )
+        ast = ast_cleanup( get_event_ast( self.file ) )
+        ast_conf, ast_behaviours = ast[0], ast[1]
 
-        self.apply_config( ast[0] )
+        self.apply_config( ast_conf )
         self.enforce_config_compliance()
 
-        for b in ast[1]:
-            self.add_behavior( b, Event.PAGE_NBR )
-            Event.PAGE_NBR += 1
+        for idx,b in enumerate( ast_behaviours ):
+            self.add_behavior( b, idx )
+            
         #print(self)
 
     def apply_config( self, ast ):

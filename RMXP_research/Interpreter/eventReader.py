@@ -326,7 +326,7 @@ def parse( tokens ):
 def boolean_converter( s ):
     return s.replace('true','True').replace('false','False').replace(':on', 'True').replace(':off', 'False')
 
-def build_event( event_file, test=True ):
+def get_event_ast( event_file, test=True ):
     assert isinstance( event_file, pathlib.Path ) and event_file.is_file()
     import re
     content = None

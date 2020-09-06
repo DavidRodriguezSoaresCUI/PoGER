@@ -860,6 +860,18 @@
       \verb https://essentialsdocs.fandom.com/wiki/Messages
       \endverb
     \endentry
+    \entry{funcparserlib}{online}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labeltitlesource}{title}
+      \field{title}{GitHub - vlasovskikh/funcparserlib}
+      \verb{urlraw}
+      \verb https://github.com/vlasovskikh/funcparserlib
+      \endverb
+      \verb{url}
+      \verb https://github.com/vlasovskikh/funcparserlib
+      \endverb
+    \endentry
     \entry{Autotile}{online}{}
       \field{sortinit}{4}
       \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}

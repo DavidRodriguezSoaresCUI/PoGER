@@ -391,7 +391,7 @@ In order to define the scope of this project, becoming familiar with the games a
 \subsection{RPG Maker XP}
 
 
-According to its Wikipedia article\footnote{https://en.wikipedia.org/wiki/RPG\_Maker\#RPG\_Maker\_series\_timeline} and its official website\footnote{https://www.rpgmakerweb.com/products/programs/rpg-maker-xp}, RPG Maker XP was developped by Enterbrain and released on July of 2004 for Microsoft Windows. 
+According to its official website\footnote{https://www.rpgmakerweb.com/products/programs/rpg-maker-xp} and its Steam listing\footnote{https://store.steampowered.com/app/235900/RPG\_Maker\_XP/}, RPG Maker XP was developped by Enterbrain and released on July of 2004 for Microsoft Windows. 
 
 It allows its users to create their own role-playing game with powerful dedicated tools and its engine is based on the Ruby programming language, making complex behavior possible through the use of \textit{scripts}.
 
@@ -455,9 +455,9 @@ They were hit by DMCA takedown notices shortly after release and stopped develop
 
 The game was mostly complete when released, but its website and following game updates are community efforts. Fans were able to add elements to push it farther towards completion but there still are some hanging threads, particularly in the post game (after the main plot is over) \cite{PUsidequests}.
 
-Fans have been able to patch bugs and update the game for some time. It's indicative there is a small group of people with access to the project's source code and files that have been maintaining it and its online services. Despite efforts to patch it, the game has a long list of unresolved bugs and game breaking/crashing situations\footnote{https://pokemon-uranium.fandom.com/wiki/Bugs\_and\_Errors}.
+Fans have been able to patch bugs and update the game for some time\footnote{https://pokemon-uranium.fandom.com/wiki/Official\_Patch\_Notes}. It's indicative there is a small group of people with access to the project's source code and files that have been maintaining it and its online services. Despite these efforts, the game has a long list of unresolved bugs and game breaking/crashing situations\footnote{https://pokemon-uranium.fandom.com/wiki/Bugs\_and\_Errors}.
 	
-We weren't able to identify the used versions of RPG Maker XP or Pokemon Essentials, but it was determined this wouldn't significantly impact on working on it.
+We weren't able to identify what versions of RPG Maker XP or Pokemon Essentials were used by the original developers, but it was determined to be of little importance, because any porting project would imply working with the given version regardless.
 	
 GitHub user \textit{acedogblast} launched a re-implementation project\footnote{https://github.com/acedogblast/Project-Uranium-Godot} on the Godot game engine in early 2019. As of writing, he states that :
 	\say{Only a limited portion of the game is playable currently.}
@@ -490,9 +490,9 @@ Pokemon Essentials and its derivatives can be downloaded and their root director
 	\hline
 	\rotatebox[origin=c]{180}{$\Lsh$} & (Data) & Contains the logic of the game and most of its data.  \\
 	\hline
-	\rotatebox[origin=c]{180}{$\Lsh$} & Fonts & Contain fonts used for displaying text. \\
+	\rotatebox[origin=c]{180}{$\Lsh$} & Fonts & Contain fonts used for displaying text, formats include TTF and OTF. \\
 	\hline
-	\rotatebox[origin=c]{180}{$\Lsh$} & Graphics & Contains the graphical assets of the game, typically tile sets, in a well organized folder structure. \\
+	\rotatebox[origin=c]{180}{$\Lsh$} & Graphics & Contains the graphical assets of the game, typically tile sets, using mainly PNG format, in a well organized folder structure. \\
 	\hline
 	\rotatebox[origin=c]{180}{$\Lsh$} & (\textit{PBS}) & Contains human-readable data to be compiled, like items, species, types, dialogue (and translations), etc. \\
 	\hline
@@ -618,7 +618,7 @@ Unfortunately, no other way of retrieving the names associated with in-game vari
 
 Events are surprisingly complex elements in RPG Maker XP, and the need for a new representation drove the development of an utility dedicated to that process.
 
-Events are converted to a \textbf{domain-specific language} and packaged into individual files and easily editable.
+Events are converted to a \textbf{domain-specific language} and packaged into individual easily editable files.
 
 \vspace{2mm}
 \textbf{Final result}
@@ -722,22 +722,6 @@ There should also be an \verb|Extraction.log| file, used to help debug issues wi
 
 Unfortunately, we found some elements of RPG Maker XP to not be accessible using scripting or external utilities, thus making it impossible to automatically extract. Fortunately, they are scarce and easy to manually obtain from the UI.
 
-
-\subsection{Event processing}
-
-Unfortunately, event porting is particularly complex for multiple reasons, including but not limited to :
-\begin{itemize}
-	\item The extracted objects are representations of RPG Maker XP's event interface, therefore inherits its structure additionally to useful information.
-	
-	\item The bulk of the behavior is expressed as event commands, which are numerous and need individual attention.
-	
-	\item The goal is to extract semantics into a new domain-specific language.
-\end{itemize}
-
-For this reason, a Python program was written for the purpose of processing the JSON-formatted event files from the previous step into usable files.
-
-
-
 \subsubsection{Switch and Variable names}
 
 There are around 34 switches and a dozen variables used by Pokémon Essentials. They are used to store long-term information that are typically not specific to a particular event. Commands using them use their \textit{id} as reference, not their name.
@@ -756,6 +740,22 @@ Procedure to extract names :
 	
 	\item You should see a new window lists of items. Just select them one by one and copy-paste their name in the dictionary you're building (at the corresponding index of course).
 \end{enumerate}
+
+
+\subsection{Event processing}
+
+Unfortunately, event porting is particularly complex for multiple reasons, including but not limited to :
+\begin{itemize}
+	\item The extracted objects are representations of RPG Maker XP's event interface, therefore inherits its structure additionally to useful information.
+	
+	\item The bulk of the behavior is expressed as event commands, which are numerous and need individual attention.
+	
+	\item The goal is to extract semantics into a new domain-specific language.
+\end{itemize}
+
+For this reason, a Python program was written for the purpose of processing the JSON-formatted event files from the previous step into usable files.
+
+
 
 
 
@@ -837,6 +837,10 @@ These require an understanding of conditional execution and scripting :
 
 Script calls are particularly powerful because it allows arbitrary code execution. In simple terms, it enables events to do almost anything, providing it can be done through RGSS scripts.
 
+As seen in \texttt{Figure 2}, every event can have up to 4 pages, and each page can have an arbitrary number of \texttt{EventCommand}s. Once the event is triggered, the appropriate page's command list will be executed.
+
+The page decision goes as follows : Each page's preconditions are evaluated, and the latest page with satisfied preconditions is executed. We found that a tacit rule is that the first page typically has no precondition, effectively making it the "default" behavior and avoiding game crashes caused by an inability to trigger events successfully.
+
 
 
 \subsection{Commands}
@@ -869,7 +873,7 @@ For the sake of brevity, a lot of content was moved to \textbf{Appendix A}, main
 
 
 
-
+\newpage
 \subsection{Command Representation}
 
 The representation chosen is a result of careful consideration of its future usage requirements, including but not limited to :
@@ -1038,9 +1042,64 @@ This could have been simply avoided by creating new variables. It is not technic
 
 
 \newpage 
-\section{Interpreter}
+\section{Event Interpreter}
 
 % Pokémon Essentials Next interpreter
+
+During the course of the extraction process, event's data was dumped and translated into the proposed Domain Specific Language. The last logical step would be to provide an interpreter capable of executing them, and that's what this section is about.
+
+\subsection{Proof of concept}
+
+You can find the files for this implementation in the \texttt{Interpreter} directory. It was coded in Python (version 3.x) but an equivalent program could be written in most popular languages.
+
+The proposed interpreter can be decomposed in two parts. The first builds an \texttt{Event} object from its file, and the second executes it. Let's focus on the first part :
+
+\begin{wrapfigure}[31]{l}{0.27\textwidth}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{Interpreter}
+	\end{center}
+	\caption{Interpreter}
+\end{wrapfigure}
+
+\textbf{Flow diagram syntax} : Rectangles are data manipulation functions and big arrows represent the passage of said data.
+
+\textbf{Read file} : The contents of the event file are read.
+
+\textbf{Lowercase} : As discussed in previous sections, the DSL is case-insensitive. To simplify next steps, lowercase transformation is applied. Note that text between double quotes must be excluded, and that uppercase transformation could have been chosen instead.
+
+\textbf{Indentation converter} : The DSL's specification indicate that indentation is significant. This step converts it because only relative indentation (from one line to the next) has semantic value and should be represented, and also because the tokenizer we used didn't produce intentation tokens.
+
+\textbf{Tokenizer} : We used the tokenizer generator from \texttt{funcparserlib} \cite{funcparserlib} to generate a stream of tokens from a string (the data at the input of the tokenizer) and a list of rules. This lexer is particular because it was made to work with the parser of the same library, which we use for the next step !
+
+\textbf{Parser} : We used the parser generator from \texttt{funcparserlib} \cite{funcparserlib} to generate an abstract syntax tree (AST) from the DSL's formal grammar.
+
+
+\verb|get_event_ast| is called by an \texttt{Event} during its initialization process: from its file, it gets an AST representation from which it can easily reconstruct its configuration and behaviors. This allows the creation of events with a very simple interface !
+
+This approach has a few key properties : Because the AST is generated from the DSL's formal grammar, its format is known in advance and it can be generically processed by \texttt{Event}s and its \texttt{Behavior}s, making it possible to expand the DSL without necessarily having to adapt  their implementation. Also, the event file may contain syntax or grammar errors. If so, the lexer or parser will raise an error with information to correct it.
+
+\newpage
+\subsection{Executing an event}
+
+Once an \texttt{Event} object is correctly initialized, it may be triggered. This is done by calling its \texttt{trigger()} method with the trigger identifier, which is compared to the event's trigger (defined via configuration). If matched, the event is successfully triggered.
+
+A triggered event will evaluate which behavior to execute based on the returned value of each associated \texttt{Behavior}'s method \texttt{satisfies\_conditions()}. See \texttt{Section 5.2.2} for details. 
+
+Then, the event's \texttt{step()} method may be called for it to execute one "step" of its behavior. What instructions represent a "step" or not is a decision left to the interpreter, but the general rule is : Only the instructions that have an observable impact on the game world (displaying text, moving the event, playing a sound, waiting, etc) should end a step. Therefore, calling \texttt{step()} implies the execution of an arbitrary number of instructions.
+
+Behavior execution is achieved by maintaining a representation of the instructions left to execute and passing it to the interpreter's \texttt{execute()} method, which takes care of executing instructions one by one and returning an updated "remaining instruction" object and whether the step is over or not.
+
+The implementation strategy for the \texttt{Interpreter} is straightforward : It holds the state of the game (keeps track of global variables) and each instruction of the DSL has its own function which is called by the \texttt{execute()} method. This modular approach was chosen for its ease of maintainability and expandability.  See \texttt{Interpreter.py}
+
+A secondary interpreter was created, with a very similar structure, but with the goal of enabling \textit{script interpretation}. As previously discussed, some events rely on RGSS script calls to implement part of their behavior, but writing a full RGSS interpreter would be too complicated. The envisioned solution was to re-implement these specific scripts in that interpreter, massively reducing its scope while keeping functionality intact. See \texttt{pbInterpreter.py}
+
+
+\subsection{Current state of the interpreter}
+
+For the moment, the event interpreter only exists as a "proof of concept" (POC), therefore is very basic and implements only a few instruction of the proposed DSL. It was made tested with basic handcrafted event files and Pokémon Essentials's \textit{Fossil reviver} (found at map 11, chosen because its behavior is neither too simple nor too complex), so the best it can do is a short demo.
+
+With some more work, it could be made into a fully-featured interpreter capable of executing every event in Pokémon Essentials or a derived project. Such a piece of software would be a module of the PoGER project, which aims at running these games.
+
 
 
 \newpage 
@@ -1057,7 +1116,7 @@ As stated previously, maps are instances of \verb|RPG::Map|, which constitutes t
 	\hline
 	{\ttfamily autoplay\_bgX} & bool & Indicated whether an audio is to be played as soon as the map is loaded. \\
 	\hline
-	{\ttfamily bgm/bgs} & AudioFile & The audio that is to be played when loading the map. \textit{bgs unused by Pokémon Essentials} \\
+	{\ttfamily bgm/bgs} & AudioFile & The audio to be played when loading the map. \textit{bgs unused by PE} \\
 	\hline
 	{\ttfamily encounter\_list} & Array & \textit{Unused by Pokémon Essentials}. \\
 	\hline
