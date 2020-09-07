@@ -197,6 +197,15 @@ This paper presents PoGER, an software preservation and game engine recreation p
 %
 %Please note that the author is not a native English speaker.
 
+\newpage
+\section*{Acknowledgments}
+
+I would like to express my sincere thanks to the team that followed my work with interest for their guidance, continued support and encouragement: Prof. Didier Buchs, Dr. Dimitri Racordon, Dr. Damien Morard and Mr. Aurélien Coet. I couldn't have made as much progress without you.
+
+Additionally, I would also like to thank Clara, Sofia, Juan and my other relatives for allowing me time away from them to dedicate to this project and produce a report in time. My mission will be to replace the many occasions I couldn't attend with you.
+
+Finally, to my loving girlfriend I treasure, Tiffany. Your cheers kept me going at the hardest times and your unyielding devotion was profoundly appreciated. May the enchanted butterflies of my gratitude fly to thee.
+
 
 \newpage
 \section{Introduction}
@@ -385,7 +394,12 @@ Source code has interesting particularities : It's hard/expensive to produce and
 
 \subsection{Link with PoGER}
 
-One of the goals of this project is to present a candidate framework for recovering source code, give it an alternative representation, insure the ability to execute it independently to its original platform and do so in a open-source-oriented fashion.
+Some of the goals of this project are to present a candidate framework for recovering source code, give it an alternative representation, insure the ability to execute it independently to its original platform and do so in a open-source-oriented fashion, which would enable software and source code preservation much easier.
+
+This approach admittedly deviates from the norm : not fitting the description of neither virtualization, emulation nor translation, rather being some kind of \textit{transformation}. It was chosen because the commonly found practices were either not applicable or too ambitious for the scope this project.
+
+
+
 
 
 
@@ -394,6 +408,7 @@ One of the goals of this project is to present a candidate framework for recover
 \section{Research subjects}
 
 In order to define the scope of this project, becoming familiar with the games and tools used to make them was a crucial step. In this section, we detail relevant information on RPG Maker XP/Pokémon Essentials and present a case study for a particular game : \texttt{Pokémon Uranium}
+
 
 \subsection{RPG Maker XP}
 
@@ -643,7 +658,7 @@ Unfortunately, the first steps require the use of RPG Maker XP (version 1.02 tes
 
 Requirements : A copy of the project to extract. It should have the same structure as described in \verb|section 4.1.1|. Also, as previously mentioned, you need RPG Maker XP.
 
-The following information was obtained through a trial-and-error process when trying to open the Pokemon Essentials and a derivative game (Pokemon Uranium) in RPG Maker XP and execute them in order to extract data from them. As such, they may contain erroneous statements or not apply/work for someone else trying to replicate the same process.
+The following information was obtained through a trial-and-error process when trying to open Pokemon Essentials and a derivative game (Pokémon Uranium) in RPG Maker XP and execute them in order to extract data from them. As such, they may contain erroneous statements or not apply/work for someone else trying to replicate the same process.
 
 The following points should help you successfully opening a RPG Maker XP/Pokémon Essentials project :
 
@@ -654,12 +669,12 @@ The following points should help you successfully opening a RPG Maker XP/Pokémo
 		\item \verb|Game.exe| : The executable that launches the game.
 		\item \verb|Game.ini| : A configuration file. If the \verb|*.ini| in the project has an other name, \textit{rename a copy} and \textbf{leave the original untouched}, because it seems RPG Maker XP needs a \verb|Game.ini| file and game can specify an other name (hard coded in scripts)
 		\item \verb|Game.rxproj| : Entry point for RPG Maker XP.
-		\item \verb|RGSS102E.dll| : Contain RGSS dynamic libraries, probably necessary tu run the executable correctly.
+		\item \verb|RGSS102E.dll| : Contain RGSS dynamic libraries, necessary tu run the executable correctly.
 	\end{itemize}
 	
 	\item For projects with \textit{compressed data} (no \verb|Data| directory but there is one \verb|*.rgssad| file at root), you need to use an extraction utility.
 	
-	I used \texttt{RGSS Tool}\footnote{https://gitlab.com/rgss/rgsstool} :
+	\texttt{RGSS Tool}\footnote{https://gitlab.com/rgss/rgsstool} was used :
 	
 	\begin{lstlisting}
 	python rgsstool.py -x -d "path\for\output\files" "path\of\rgssad\file"\end{lstlisting}
@@ -699,7 +714,7 @@ Steps :
 	
 	\item Open the script editor.
 	
-	\item Open \verb|Extraction.rb| and copy-paste its content to a new page in the script editor.
+	\item Open \verb|Extraction.rb|\footnote{gitlab repository/master/RMXP\_research/Extraction\%20script/Extraction.rb} and copy-paste its content to a new page in the script editor.
 	
 	\item Next step is tricky : You need to call the script from somewhere during execution. 
 	
@@ -714,7 +729,7 @@ Tip : Add "show text" commands before and after the script call to better visual
 
 It works for Pokemon Essentials but may not work for its derivative works, especially if they changed data representations (unlikely) or if they contain unexpected data (likely).
 
-After running the script, a few new folders should have appeared :
+After running the script, a few new folders should have appeared at the \texttt{root} :
 \begin{itemize}
 	\item \verb|Maps| : Contain 2 files for each map (one for the map itself, the other for its events) and mirror the tree structure of the original project.
 	\item \verb|Tileset_data| : Contain one file per tileset/autotile, storing metadata.
@@ -930,9 +945,8 @@ Let \verb|s| be the string representation (name) of the Switch/Self-switch/Varia
 
 \subsection{Proposed command representation}
 
-In an attempt to implement a Domain Specific Language (DSL) responding to previously stated requirements, a command list and formal grammar were included in \textbf{Appendix B} and \textbf{Appendix C} respectively.
+In an attempt to formalize a Domain Specific Language (DSL) responding to previously stated requirements, a command list and formal grammar were included in \textbf{Appendix B} and \textbf{Appendix C} respectively. We named it \texttt{PEN} (Pokémon Essentials Next). This is an internal name and a better "public name" should be proposed. Events written in the \texttt{PEN} language and following the proposed event format are qualified as "PEN compliant".
 
-\newpage
 \subsubsection{Configuration variables}
 
 These configuration variables are inherited from RPG Maker XP's events. They should be mostly contained at the root of the event, but can be overridden by the pages.
@@ -1011,9 +1025,6 @@ Notes :
 
 
 
-
-
-\newpage
 \subsection{Command conversion caveats} % Alliteration is fun !
 
 Unfortunately, it is not possible to cover every command used in Pokémon Essentials, just as it is not possible to extract the underlying semantic behind every event, for the simple reason that Pokémon Essentials doesn't always implement behavior in a straightforward way.
@@ -1041,9 +1052,22 @@ This could have been simply avoided by creating new variables. It is not technic
 
 
 
-\subsection{Event conversion software}
+\subsection{Event conversion}
 
-Subsection about contents of \texttt{Event converter} directory
+A piece of translation software is provided in the \texttt{/RMXP\_research/Event converter/} directory. It takes event files dumped by the extraction script (see \texttt{Section 4.5}) and outputs their "PEN compliant" equivalents.
+
+\textbf{Usage} : The \texttt{Maps} folder must be copied to root (where \texttt{Event\_reader.py} is) and \texttt{PE\_variables\_swi-\\tched.py} must have its content filled (see \texttt{Section 4.6}). Then, simply launch it :
+
+\begin{lstlisting}
+python Event_reader.py\end{lstlisting}
+\vspace{-8mm}
+
+The program scans the \texttt{Maps} directory for map's events dump files, reads them, separates data into individual events, translates them and finally outputs them into individual files.
+
+\textbf{Current state} : The basic functionality (translation) is entirely implemented for events from Pokémon Essentials. This is because each event's command call must have a translation method (see \texttt{RGSS\_Command\_conversion.py}) assigned to it and, as stated in \textbf{Appendix A}, only the 81 commands used by Pokémon Essentials were documented, and therefore implemented here. Expanding the list of supported commands may be needed to process derivative project's events.
+
+An additional feature is present : preset conversion. We previously pointed out the existence of recurring events like doors and the motivation to add a \texttt{preset} for these events, greatly simplifying their contents by abstracting their generic code. This feature introduces generic/common event detection and transforms them automatically. Unfortunately, every generic/common event pattern and replacement strategy has to be implemented manually and the current code covers only Pokémon Essential's \texttt{door}. 
+
 
 
 
@@ -1266,10 +1290,6 @@ When dealing with (most) graphical assets in RPG Maker XP, including tilesets, a
 	Animation is produced by iterating over frames of an autotile each time the screen is drawn.
 	
 	\item Every tile has properties (see section "values for tileset tables"). This includes autotiles, which notably have a single \verb|passages|, \verb|terrain_tag| and \verb|priorities| value.
-	
-	\item During map reconstruction attempts, we found out that most maps only use a fraction of tiles available to them and programmed a way of converting maps and their tilesets to a "compact" format (creating an alternate tileset with only used tiles, and adapting map data accordingly).
-	
-	Although it is functional and may be advantageous for running on low memory systems, the scattering of graphical assets and the loss of tile adjacency render this approach pointless or impractical. 
 \end{itemize}
 
 
@@ -1428,14 +1448,12 @@ There should be a well-defined way of representing extracted map and tileset inf
 	\item Advantages : Decoupling a \verb|Tileset| from the autotilesets used for a particular map allows added flexibility.
 \end{itemize}
 
-\newpage
+
 \subsubsection{On naming decisions}
 
-We were asked about the use of a 3-digit numerical identifier in the file names, and why we didn't choose to use name identifiers instead. Numerous considerations ensued :
+Originally, we kept the use of a \textit{3-digit numerical identifier} in the file names, because it was RPG Maker XP/Pokémon Essntials's identifier format for map. We were asked to consider switching to \textit{name identifiers} instead. Numerous considerations ensued :
 \begin{itemize}
-	\item First of all, numerical identification was originally used for maps, tilesets, etc
-	
-	Therefore, transitioning to another identification system would be complex and an exercise in reinventing the wheel, all that for questionable gain.
+	\item Transitioning to another identification system would be complex, for questionable gain.
 	
 	\item Using a file name identifier means that identification information needs to reside inside the file itself due to restriction on file name contents imposed by various file systems.
 	
@@ -1474,31 +1492,106 @@ In conclusion, it is our estimation that using numerical ids is a reasonable cho
 
 On the other hand, the suggestion of abandoning the 3 digit format for numerical ids was considered and adopted, as it would allow larger projects to exist and didn't pose any technical problem.
 
-\newpage
+
 \subsection{Map reconstruction}
 
+One of the technical challenges facing the PoGER project is its ability to generate maps from extracted information and original graphical assets. Without this capability, no graphical interpreter could run games and provide the same experience as the original game engine.
 
-Subsection about contents of \texttt{Map reconstruction} directory
+\textbf{Current state} : A proof of concept implementation is available here : \texttt{Map reconstruction/LoadMap.py}. It contains reader classes for \texttt{Tileset}s and \texttt{Autotile}s, allowing to reconstruct a whole map texture by texture, and even supports animation (for autotiles) and GIF output.
+
+The program is feature-complete but its performance isn't satisfactory, because it takes a few seconds to generate a map frame, which is considered excessive. This may be because of the lack of hardware acceleration or inadequacy of the used image library. We believe that an actual game engine, with optimized graphic libraries wouldn't exhibit these performance shortcomings.
 
 
+\subsubsection{Note on tileset compacting}
+
+During map reconstruction attempts, we found out that most maps only use a fraction of tiles available to them and programmed a way of converting maps and their tilesets to a "compact" format (creating an alternate tileset with only used tiles, and adapting map data accordingly).
+
+Although it is functional and may be advantageous for running on low memory systems, the scattering of graphical assets and the loss of tile adjacency render this approach pointless or impractical. 
 
 
 \newpage 
 \section{Roadmap for future works}
+
+Due to the large scope of the PoGER project, a lot of research and implementation work is left before the objective of proposing a Pokémon Essentials alternative game engine is met. We will discuss here the main subjects for future developments.
+
+
+\subsection{Event interpreter}
+
+As of now, the event interpreter is far from complete. Further development would mainly consist of implementing scripts call functions that replicate the behavior of the original RGSS scripts.
+
+\subsubsection{PEN}
+
+Along with the event interpreter, PEN may need to be expanded to fit unforeseen event commands or other features we have yet to consider.
+
+\subsection{PBS files}
+
+As mentioned in \texttt{Section 4.1.1}, PBS files contain data specific to the mechanics of a Pokémon world (items, species, types, etc).
+
+We tried to code a reader for PBS files (see \texttt{/RMXP\_research/PBSreader/}). What we found is that these files don't have a strictly uniform format, and therefore each requires a custom reader. About half of Pokémon Essentials's PBS files have a reader. Further development may try to continue implementing readers to cover every PBS file or explore another way of reading its data.
+
+\subsection{Maps}
+
+As in any RPG, the game world is a collage of contiguous maps the player can walk through. While map contents are well understood at this point, we still don't know how maps are assembled. Resolving this mystery and finding a way to implement "map coherence" in the final game engine will be an important step.
+
+On the subject of maps, a suitable tiled map graphical library is needed to display them, and more broadly any graphical user interface needs to be implemented.
+
+\subsection{Save files}
+
+A very basic feature of any game is its progress saving mechanic. It shall be implemented as part of the game engine. One interesting extension to this feature would be the capacity of importing save files from the original RPG Maker XP/Pokémon Essentials engine, allowing seamless transition for its players. We estimate that its probably feasible but it may require an extraction process similar to what can be seen in \texttt{Section 4.5}.
+
+
+\subsection{Dialogue}
+
+One of the obvious limitations of the original Pokémon Essentials was that dialogue is explicitly included in events, meaning that any game needing translations needed to implement it own dialogue translation system. This is bad because, with no standard, porting these games may involve a lot of manual work to keep this feature. Even worse, there would need to be one version of each game for every supported language.
+
+Further research is needed to define a satisfactory way of introducing multi-language support for the PoGER game engine, and a way of porting games that feature multiple languages.
+
+
+\subsection{Online features}
+
+From generation 4 and onward, Pokémon games have featured online capabilities, mainly online creature exchange and battle. Even before that, local wired and wireless console-to-console technologies have allowed players to perform these interactions. The PoGER game engine must implement similar features, therefore more research on this subject is needed.
+
+\subsection{Mini games}
+
+A "mini game" here refers to any temporary gameplay interruption in which the player doesn't explore the game world, including the Pokémon battles which are the hallmark of the series. Support for these "mini games" is an apparent necessity, and making it possible for game developers to create their own seems like a good idea. 
+
+We believe this is an important feature that would require a lot of research and implementation effort.
+
+\subsection{PoGER game engine}
+
+As previously discussed, there are a lot of considerations that would go into the design of the final PoGER game engine. Unfortunately, this is a bit outside of our capabilities and would require the guidance of people experienced with game engines.
+
+
+
 
 
 
 \newpage 
 \section{Conclusion}
 
+This section offers a summary of the work presented through this report and offers a critique of it.
+
+
+\subsection{Summary of contributions}
+
+Although the topic of fan-made Pokémon games isn't popular in the academic sphere, we believe we offered a pertinent insight into its challenges and put it into context with larger current trends and research fronts such as the software preservation efforts.
+
+While it is admittedly incomplete, we laid the foundations for the PoGER project, which aims at providing solutions to identified challenges, addressed feasibility concerns with proof of concepts and proposed a framework for future development.
+
+\textbf{Analysis} : We observed the state of the current game development scene and tried to identify systemic issues and their root causes. This enabled us to propose potentially effective solutions.
+
+\textbf{Research} : A large part of our contribution comes as information, sometimes in bulk in table format. This is the result of tedious reverse-engineering effort complemented with online research.
+
+\textbf{Implementation} : Multiple pieces of software were created to demonstrate the feasibility of the proposed framework and a language was defined (PEN) to answer open source and user friendliness issues.
+
 
 \subsection{Critique of contributions}
 
-\begin{itemize}
-	\item Incomplete implementation
-	\item No dialogue language
-	\item 
-\end{itemize}
+Originally, we thought the PoGER project would be mostly finished by the deadline we fixed, but history proved us wrong and \texttt{Section 8} is a testament to our underestimation of the task we took on. We estimate that the only realistic way we can ever push it to completion would be to continue working on it for at least a few thousand more developer hours.
+
+Legality concerns for this type of project were never seriously engaged. Stakeholders of the Pokémon franchise may decide this project goes against their interest and order its content to be censored or taken offline. This is a blind spot for us, as this is thought of as a grey area for research and development and we have no expertise on it. As far as we know, only media assets reused from official games may be protected by copyright law, not any code we wrote or information we gathered.
+
+Finally, PoGER is a large project born out of the intuition that bringing solutions to motivated game developers would revitalize a dormant game making scene. History is full of similar projects, and a lot of them failed. If it is ever completed, then only time will be able to tell if its destiny is to become successful or yet another failure.
 
 
 
