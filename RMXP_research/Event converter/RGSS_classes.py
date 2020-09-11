@@ -136,9 +136,9 @@ class Event:
                 self.switch1 = obj.get('S1', None)
                 self.switch2 = obj.get('S2', None)
                 self.self_switch = obj.get('SS', None)
-                var = obj.get('Var', False)
-                self.variable = var['id'] if var else None
-                self.variable_value = var['val'] if var else None
+                
+                self.variable = obj.get('variable', None)
+                self.variable_value = obj.get('variable_value', None)
 
             def __str__(self):
                 import PE_variables_switches

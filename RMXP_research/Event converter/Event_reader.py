@@ -95,68 +95,63 @@ def known_metaevents( source, verbose=False ):
 
     return source
 
-def process_map( map_nb ):
+def process_events( events, output_object_JSON=True ):
+    from pathlib import Path
+    assert isinstance( events, Path )
     global known_scripts
-    map = f'{map_nb:03}'
-    this_dir=pathlib.Path('Maps')
-    out_dir=this_dir.joinpath(f'{map}_events')
-    assert this_dir.is_dir(), f'{pathlib.Path().resolve()}'
+
+    map        = events.stem
+    events_dir = events.parents[0]
+    output_dir = events_dir.joinpath(f'{map}_events')
     
     print(f'processing {map}')
 
     def get_map_events():
-        events_file = this_dir.joinpath(f'{map}.events')
-        if not events_file.is_file():
-            print(f'get_map_events: event file "{str(events_file)}" not found.')
-            return None
-
-        with events_file.open('r', encoding='utf-8-sig') as f:
+        with events.open('r', encoding='utf-8-sig') as f:
             source=f.read()
             sourceOK = known_metaevents( source )
             sourceOK = sourceOK.replace('\\', '\\\\')
             sourceOK = sourceOK.replace('\\\\"', '\\"')
-            #sourceOK = sourceOK.replace('"', '\\"')
-            #sourceOK = sourceOK.replace("'", '"')
-            #pprint( source )
+            
             return sourceOK
 
     def make_safe_filenames( id, name, overwrite=False ):
-        out_file=out_dir.joinpath(f'{map}_{id:03}_{name}')
+        out_file = output_dir.joinpath(f'{map}_{id}_{name}')
         if not overwrite:
             idx=1
             while out_file.is_file():
-                out_file=out_dir.joinpath(f'{map}_{id:03}_{name}_{idx}')
+                out_file = output_dir.joinpath(f'{map}_{id}_{name}_{idx}')
                 idx+=1
         return out_file, pathlib.Path(str(out_file)+'.json')
-
 
     
     sourceOK = get_map_events()
     if not sourceOK:
         return
 
-    if not out_dir.is_dir():
-        out_dir.mkdir()
+    if not output_dir.is_dir():
+        output_dir.mkdir()
 
     eventObjects = json.loads( sourceOK, object_hook=JSONdecode )
     #print( type(eventObjects) )
 
 
     for eventObj in eventObjects:
-        #print( type(eventObj) )
-        #pprint( eventObj )
-
+        
         out_file, out_file_obj = make_safe_filenames( eventObj.id, eventObj.name, overwrite=True )
         #print(f'out_file, out_file_obj:{out_file}, {out_file_obj}')
 
-        with out_file_obj.open( 'w', encoding='utf-8') as f:
-            #print(f'Event_reader:writing to {out_file_obj}')
-            json.dump( eventObj, fp=f, indent=4, default=JSONencode )
+        if output_object_JSON:
+            with out_file_obj.open( 'w', encoding='utf-8') as f:
+                #print(f'Event_reader:writing to {out_file_obj}')
+                json.dump( eventObj, fp=f, indent=4, default=JSONencode )
 
         eventObj.conversion()
-        if RGSS_classes.commands_str == []:
-            out_file_obj.unlink()
-            return
+
+        if output_object_JSON:
+            if RGSS_classes.commands_str == []:
+                out_file_obj.unlink()
+                return
         
         with out_file.open( 'w', encoding='utf-8') as f:
             #print(f'Event_reader:writing to {out_file}')
@@ -172,43 +167,53 @@ def process_map( map_nb ):
                     if not (item in known_scripts):
                         #print( f'new script : {item} from {map}' )
                         known_scripts.append( item )
+                        
 
-def pickle_this(data, save_file, print_on_success=None):
-    save_file = pathlib.Path( save_file )
-    with save_file.open(mode="wb") as fp:   #Pickling
-        pickle.dump(data, fp)
-        if print_on_success:
-            assert isinstance( print_on_success, str )
-            print( print_on_success )
+def find_events():
+    import pathlib
+    mapfolder = pathlib.Path().joinpath('Maps')
+    assert mapfolder.is_dir(), f'{mapfolder} directory not found !'
 
-def unpickle_this(save_file, print_on_success=None):
-    save_file = pathlib.Path( save_file )
-    if save_file.is_file():
-        with save_file.open(mode="rb") as fp:   # Unpickling
-            if print_on_success:
-                assert isinstance( print_on_success, str )
-                print( print_on_success )
-            return pickle.load(fp)
-    return None
-
-def main():
-    '''global known_scripts
-    tmp = unpickle_this('known_scripts')
-    if tmp:
-        known_scripts = tmp'''
+    from FileCollector import FileCollector
+    fc = FileCollector( mapfolder )
+    res = fc.collect( pattern = '**/*.events' )
+    return [ f for f in res if f.is_file() and (f.stem).isdigit() ]
     
-    '''for i in range(2,75):
-        process_map( i )'''
-    process_map( 11 )
-
-    with open('scripts.log', 'w', encoding='utf-8') as f:
-        for item in known_scripts:
-            f.write( item + '\n' )
-
-    '''print(f'known_scripts: .')
-    for item in known_scripts:
-        print(item)
-    pickle_this( known_scripts, 'known_scripts' )'''
 
 if __name__ == "__main__":
-    main()
+    events = find_events()
+    print( f'Found {len(events)} maps with events !')
+    events_dict = { int(e.stem):e for e in events }
+    available_maps = sorted(list(events_dict.keys()))
+    from time import time
+
+    while True:
+        print( f'\nMaps : {available_maps}')
+        selection = input('Selection ([Q]uit/[A]ll/number) : ')
+        
+        start = time()
+        if selection.isdigit():
+            selection = int(selection)
+            if selection in available_maps:
+                process_events( events_dict[ selection ] )
+                print(f'Processing took {time()-start:0.1f} seconds !')
+            else:
+                print( f"Map {selection} is not available. Please try again.\n")
+        elif selection.lower() == 'q':
+            break
+        elif selection.lower() == 'a':
+            import multiprocessing as mp
+            pool = mp.Pool(mp.cpu_count()) # set up multiprocessing
+            pool.map_async( process_events, events ) # process all events in parallel
+            pool.close() # closes the pool
+            pool.join() # waits for every process_map to be finished
+            print(f'Processing took {time()-start:0.1f} seconds !')
+        else:
+            print( f'Selection "{selection}" unrecognized. Please try again.\n')
+
+    if known_scripts:
+        with open('scripts.log', 'w', encoding='utf-8') as f:
+            for item in known_scripts:
+                f.write( item + '\n' )
+
+    print( "\nEnd of program. Have a nice day !" )

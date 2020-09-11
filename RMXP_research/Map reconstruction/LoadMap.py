@@ -1,6 +1,6 @@
 
 import codecs, json
-import re, os
+import re, os, sys
 import pathlib, timeit
 from pprint import pprint
 from collections import defaultdict
@@ -22,7 +22,7 @@ def insureModuleInstalled( module ):
             pipmain(['install', module])
             globals()[module] = importlib.import_module(module)
 
-insureModuleInstalled( ['pandas', 'PIL', 'numpy'] )
+#insureModuleInstalled( ['pandas', 'Pillow', 'numpy'] )
 import pandas as pd
 import numpy as np
 from PIL import Image
@@ -55,6 +55,33 @@ GLOBAL_TILE_ACCESSOR=dict()
 https://www.pythoninformer.com/python-libraries/pillow/creating-animated-gif/
 '''
 
+
+
+
+def get_tileset( tileset_name ):
+    from pathlib import Path
+    graphic_dir = Path().joinpath('Graphics')
+    assert graphic_dir.is_dir(), f'Directory {graphic_dir} not found !'
+    tilesets_dir = graphic_dir.joinpath('Tilesets')
+    assert tilesets_dir.is_dir(), f'Directory {tilesets_dir} not found !'
+    tileset_f = tilesets_dir.joinpath( tileset_name )
+    if not tileset_f.is_file():
+        tileset_f = tilesets_dir.joinpath( tileset_name[:-4] + '.PNG' )
+        assert tileset_f.is_file(), f'{tileset_name} not found !'
+    return tileset_f
+
+
+def get_autotile( autotile_name ):
+    from pathlib import Path
+    graphic_dir = Path().joinpath('Graphics')
+    assert graphic_dir.is_dir(), f'Directory {graphic_dir} not found !'
+    autotiles_dir = graphic_dir.joinpath('Autotiles')
+    assert autotiles_dir.is_dir(), f'Directory {autotiles_dir} not found !'
+    autotile_f = autotiles_dir.joinpath( autotile_name )
+    if not autotile_f.is_file():
+        autotile_f = autotiles_dir.joinpath( autotile_name[:-4] + '.PNG' )
+        assert autotile_f.is_file(), f'{autotile_name} not found !'
+    return autotile_f
 
 
 class SpriteSheetReader:
@@ -230,22 +257,23 @@ class AutotileSetReader:
 
 
 class ReadMap:
-    def __init__(self, mapname):
-        with open(f'{mapname}.txt', encoding='utf-8-sig') as f:
+    def __init__(self, map):
+        with map.open(encoding='utf-8-sig') as f:
             try:
                 data = json.load(f)
             except:
-                print(f"Invalid JSON file '{mapname}'")
+                print(f"Invalid JSON file '{map}'")
                 sys.exit()
-            self.map=np.array(data['Table']['data'])
-            self.tilesetname=data["Tileset"]
-            self.tileset=GLOBAL_TILE_ACCESSOR[self.tilesetname+'.png'] if GLOBAL_TILE_ACCESSOR.get(self.tilesetname+'.png', False) else SpriteSheetReader(self.tilesetname+'.png')
-            self.autotilesetnames = [s+'.png' for s in re.split("([A-Z][^A-Z]*)", data["AutoTileset"]) if s]
-            self.autotilesets = [GLOBAL_TILE_ACCESSOR[s] if GLOBAL_TILE_ACCESSOR.get(s, False) else AutotileSetReader(s) for s in self.autotilesetnames]
+            self.map=np.array(data['table'])
+            self.tilesetname=data["tileset"]
+            self.mapName=data["name"]
+
+            self.tileset=GLOBAL_TILE_ACCESSOR[self.tilesetname+'.png'] if GLOBAL_TILE_ACCESSOR.get(self.tilesetname+'.png', False) else SpriteSheetReader( str(get_tileset(self.tilesetname+'.png')) )
+            self.autotilesetnames = [s+'.png' if s else None for s in data["autotiles"] ] # [s+'.png' for s in re.split("([A-Z][^A-Z]*)", data["autotiles"]) if s]
+            self.autotilesets = [ (GLOBAL_TILE_ACCESSOR[s] if GLOBAL_TILE_ACCESSOR.get(s, False) else AutotileSetReader( get_autotile(s) )) if s else None for s in self.autotilesetnames]
 
         (self.nbLayers, self.height, self.width) = self.map.shape
         self.nbTiles = self.height * self.width
-        self.mapName = mapname
         self.frame = 0
     
     def __str__(self):
@@ -266,7 +294,7 @@ class ReadMap:
         if tileID < TILESET_ZERO:
             (div,actualTileID) = divmod( tileID, 48 )
             autotileset_idx = (div)-1
-            #print(f'tileID={tileID}, Autotile={autotileset_idx}, idx={mod}')
+            #print(f'tileID={tileID}, Autotile={autotileset_idx}, self.autotiles={self.autotilesets}')
             return (self.autotilesets[autotileset_idx], actualTileID)
         else:
             #print(f'tileID={tileID}, Tileset, idx={tileID-TILESET_ZERO}')
@@ -331,13 +359,13 @@ class ReadMap:
     def makeSmallerTileset(self):
         tilesetStats = self.tileset.getStats()
         usedTileIDs = [id for id in tilesetStats]
-        print(usedTileIDs)
+        #print(usedTileIDs)
         # Creating a new map
         h = ((len(usedTileIDs)-1) // 8)+1
-        print(f'{self.tilesetname}: {len(usedTileIDs)} tiles used, so h={h}')
+        #print(f'{self.tilesetname}: {len(usedTileIDs)} tiles used, so h={h}')
         outImg = Image.new( "RGBA", (8*TILESIZE, h*TILESIZE), color=(0,0,0,1) )
         newMap = self.map.copy()
-        print(type(newMap))
+        #print(type(newMap))
         newID_base=0
         for id in usedTileIDs:
             absoluteID = id+TILESET_ZERO
@@ -346,7 +374,7 @@ class ReadMap:
             if tile:
                 (y,x) = divmod(newID_base,8)
                 destBox = (x * TILESIZE, y * TILESIZE, (x+1) * TILESIZE, (y+1) * TILESIZE)
-                print(f'ID map: {absoluteID}->{newID_base+TILESET_ZERO}, loc={destBox}')
+                #print(f'ID map: {absoluteID}->{newID_base+TILESET_ZERO}, loc={destBox}')
                 outImg.paste( tile, destBox )
             newID_base+=1
         newTilesetName=f'{self.mapName}_{self.tilesetname}'
@@ -364,7 +392,7 @@ class ReadMap:
 
 
 
-
+'''
 starttime = timeit.default_timer()
 clear_screen()
 print('=========================================')
@@ -376,7 +404,7 @@ for mapname in mapnames:
     #reader.printMap()
     reader.makeGIF()
     #reader.makeSmallerTileset()
-print('Done')
+print('Done')'''
 '''
 reader = AutotileSetReader('Flowers1.png')
 print(reader)
@@ -384,7 +412,73 @@ for i in range(8):
     tile=reader.getTilefromID(tileID=0, _frame=i)
     tile.save(f'Flowers1_{i}.png')'''
 
-print(f"Execution time : {timeit.default_timer() - starttime} s.")
+#print(f"Execution time : {timeit.default_timer() - starttime} s.")
 
 # Timeit data : Map034           : 18.1s
 #               Map034_compacted :  7.1s
+
+def process_map( map ):
+    reader = ReadMap(map)
+    #print(reader)
+    png_save = map.parent.joinpath( map.stem + '.png')
+    gif_save = map.parent.joinpath( map.stem + '.gif')
+    print( f'saving map png to {png_save} ..')
+    reader.makeLayeredPNG( str(png_save) )
+    reader.makeGIF( str(gif_save), FPS=3 )
+    print('Done !')
+
+def find_maps():
+    import pathlib
+    mapfolder = pathlib.Path().joinpath('Maps')
+    assert mapfolder.is_dir(), f'{mapfolder} directory not found !'
+
+    from FileCollector import FileCollector
+    fc = FileCollector( mapfolder )
+    res = fc.collect( pattern = '**/*.json' )
+    return [ f for f in res if json.loads(f.read_text( encoding='utf-8-sig' ))['_class'] == 'Map' ]
+
+
+if __name__ == "__main__":
+    maps = find_maps()
+    print( f'Found {len(maps)} maps !')
+    map_names = { int(m.stem[:m.stem.find('_')]):m for m in maps }
+    available_maps = list(map_names.keys())
+    #pprint( f'Maps : {map_names}')
+    from time import time
+
+    while True:
+        print( f'\nMaps : {available_maps}')
+        selection = input('Selection ([Q]uit/[A]ll/number) : ')
+
+        start = time()
+        if selection.isdigit():
+            selection = int(selection)
+            if selection in available_maps:
+                process_map( map_names[ selection ] )
+                print(f'Processing took {time()-start:0.1f} seconds !')
+            else:
+                print( f"Map {selection} is not available. Please try again.\n")
+        elif selection.lower() == 'q':
+            break
+        elif selection.lower() == 'a':
+            import multiprocessing as mp
+            pool = mp.Pool(mp.cpu_count()) # set up multiprocessing
+            pool.map_async( process_map, maps ) # process all maps in parallel
+            pool.close() # closes the pool
+            pool.join() # waits for every process_map to be finished
+            print(f'Processing took {time()-start:0.1f} seconds !')
+        else:
+            print( f'Selection "{selection}" unrecognized. Please try again.\n')
+
+    '''events_dict = { int(e.stem):e for e in events }
+    available_maps = sorted(list(events_dict.keys()))
+    
+
+    
+
+    if known_scripts:
+        with open('scripts.log', 'w', encoding='utf-8') as f:
+            for item in known_scripts:
+                f.write( item + '\n' )'''
+
+    print( "\nEnd of program. Have a nice day !" )
